@@ -1,0 +1,86 @@
+<!-- FORM — multi-step wizard: stepper, required / error states, choice cards, input groups,
+     line items, dropzone with progress, review step, sticky action bar. Logic: frame.js [data-f-wizard]. -->
+<section data-screen="form" hidden class="f-stack" style="gap:16px" data-f-wizard>
+  <div class="f-head">
+    <div><div class="f-crumb"><a data-go="orders">Orders</a><svg class="f-i f-i--sm"><use href="#i-chevron-right"/></svg><span>New order</span></div><h1 class="f-h1">New order</h1><p class="f-subtitle">Draft saved automatically · 2 minutes ago</p></div>
+    <div class="f-head__actions"><button class="f-btn f-btn--ghost" data-go="orders">Cancel</button><button class="f-btn" data-f-toast="ok|Draft saved|You can pick this up later from Orders.">Save draft</button></div>
+  </div>
+
+  <div class="f-card" style="padding:22px 28px">
+    <div class="f-steps">
+      <div class="f-step"><span class="f-step__dot"></span><b>Customer</b><span>Who is it for</span></div>
+      <div class="f-step"><span class="f-step__dot"></span><b>Parts</b><span>What to make</span></div>
+      <div class="f-step"><span class="f-step__dot"></span><b>Files</b><span>Drawings and specs</span></div>
+      <div class="f-step"><span class="f-step__dot"></span><b>Review</b><span>Check and submit</span></div>
+    </div>
+  </div>
+
+  <!-- step 1 -->
+  <div class="f-grid f-cols-2-1" data-f-step style="align-items:start">
+    <div class="f-stack">
+      <div class="f-card">
+        <div class="f-card__head"><div><h2 class="f-card__title">Customer</h2><p class="f-card__sub">Pick an existing customer or add a new one.</p></div></div>
+        <div class="f-choices">
+          <label class="f-choice"><input type="radio" class="f-radio" name="cust" checked><span><div class="f-choice__title">Halden Mechanical</div><div class="f-choice__sub">CU-1184 · 14 orders · Net 30</div></span></label>
+          <label class="f-choice"><input type="radio" class="f-radio" name="cust"><span><div class="f-choice__title">Northline Heating</div><div class="f-choice__sub">CU-0921 · 31 orders · Net 15</div></span></label>
+          <label class="f-choice"><input type="radio" class="f-radio" name="cust"><span><div class="f-choice__title">New customer</div><div class="f-choice__sub">Add details manually</div></span></label>
+        </div>
+      </div>
+      <div class="f-card">
+        <div class="f-card__head"><h2 class="f-card__title">Order details</h2></div>
+        <div class="f-grid f-cols-2">
+          <div class="f-field"><label class="f-label" for="fld-form-1">Customer PO number</label><input id="fld-form-1" class="f-input" value="PO-2210"><span class="f-hint">As it appears on the customer's purchase order.</span></div>
+          <div class="f-field f-field--error"><label class="f-label" for="fld-form-2">Contact email</label><input id="fld-form-2" class="f-input" value="priya@haldenmech"><span class="f-hint">Enter a valid email address, like name@company.com</span></div>
+          <div class="f-field"><label class="f-label" for="fld-form-3">Order value</label><div class="f-ig"><span class="f-ig__addon">$</span><input id="fld-form-3" class="f-input" value="48,200.00"></div></div>
+          <div class="f-field"><label class="f-label" for="fld-form-4">Delivery date</label><input id="fld-form-4" class="f-input" type="date" value="2026-10-09"></div>
+          <div class="f-field"><label class="f-label">Priority</label><div class="f-seg" style="align-self:flex-start"><button aria-pressed="false">Normal</button><button aria-pressed="true">High</button><button aria-pressed="false">Urgent</button></div></div>
+          <div class="f-field"><label class="f-label">Tags</label><div class="f-tags"><span class="f-tag">Repeat order<button data-f-remove aria-label="Remove">✕</button></span><span class="f-tag">Stainless<button data-f-remove aria-label="Remove">✕</button></span><input placeholder="Add tag…" aria-label="Add tag"></div></div>
+          <div class="f-field" style="grid-column:1/-1"><label class="f-label" for="fld-form-5">Notes for the shop floor</label><textarea id="fld-form-5" class="f-textarea" placeholder="Anything the production team should know"></textarea></div>
+        </div>
+      </div>
+    </div>
+    <div class="f-stack">
+      <div class="f-alert f-alert--info"><svg class="f-i"><use href="#i-sparkles"/></svg><div class="f-alert__body"><div class="f-alert__title">Repeat customer</div><div class="f-alert__text">Halden usually orders mild steel, 3 mm. We pre-filled their last settings.</div></div></div>
+      <div class="f-card"><h2 class="f-card__title">Customer summary</h2>
+        <dl class="f-kv"><dt>Terms</dt><dd>Net 30</dd><dt>Credit limit</dt><dd>$150,000</dd><dt>Open orders</dt><dd>3</dd><dt>On-time rate</dt><dd>96%</dd></dl></div>
+    </div>
+  </div>
+
+  <!-- step 2 -->
+  <div class="f-card f-card--flush" data-f-step hidden>
+    <div class="f-card__head"><div><h2 class="f-card__title">Parts</h2><p class="f-card__sub">Add every part in this order. Totals update as you type.</p></div><button class="f-btn f-btn--sm" id="addPart"><svg class="f-i f-i--sm"><use href="#i-plus"/></svg>Add part</button></div>
+    <div class="f-tablewrap"><table class="f-table"><thead><tr><th>Part</th><th>Material</th><th class="f-r" style="width:110px">Qty</th><th class="f-r" style="width:140px">Unit price</th><th class="f-r" style="width:130px">Total</th><th style="width:48px"></th></tr></thead><tbody id="partBody"></tbody>
+      <tfoot><tr><td colspan="4" class="f-r">Total</td><td class="f-r" id="partTotal">$0.00</td><td></td></tr></tfoot></table></div>
+  </div>
+
+  <!-- step 3 -->
+  <div class="f-grid f-cols-2-1" data-f-step hidden style="align-items:start">
+    <div class="f-card"><div class="f-card__head"><div><h2 class="f-card__title">Files</h2><p class="f-card__sub">DXF, DWG, STEP or PDF. Up to 50 MB each.</p></div></div>
+      <div class="f-drop" id="drop"><svg class="f-i f-i--lg"><use href="#i-upload"/></svg><div><b>Drag files here</b> or <a style="text-decoration:underline;cursor:pointer" data-f-toast="info|File picker|The native file dialog opens here.">browse</a></div><span class="f-hint">Revision C is required before production.</span></div>
+      <div class="f-list">
+        <div class="f-li"><span class="f-li__icon f-li__icon--ok"><svg class="f-i f-i--sm"><use href="#i-check"/></svg></span><div class="f-li__body"><div class="f-li__title">bracket-plate-rev-B.dxf</div><div class="f-li__sub">212 KB · uploaded</div></div><button class="f-btn f-btn--ghost f-btn--icon f-btn--sm" aria-label="Remove"><svg class="f-i f-i--sm"><use href="#i-x"/></svg></button></div>
+        <div class="f-li"><span class="f-li__icon"><svg class="f-i f-i--sm"><use href="#i-file-text"/></svg></span><div class="f-li__body"><div class="f-li__title">enclosure-spec.pdf</div><div class="f-li__sub">Uploading · 64%</div><div class="f-progress" style="--v:64;margin-top:8px"><i></i></div></div><button class="f-btn f-btn--ghost f-btn--icon f-btn--sm" aria-label="Cancel"><svg class="f-i f-i--sm"><use href="#i-x"/></svg></button></div>
+        <div class="f-li"><span class="f-li__icon f-li__icon--danger"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span><div class="f-li__body"><div class="f-li__title">gasket-outline.step</div><div class="f-li__sub" style="color:var(--danger-fg)">Failed · file is larger than 50 MB</div></div><button class="f-btn f-btn--sm">Retry</button></div>
+      </div></div>
+    <div class="f-card"><h2 class="f-card__title">Requirements</h2><div class="f-list">
+      <div class="f-li"><span class="f-li__icon f-li__icon--ok"><svg class="f-i f-i--sm"><use href="#i-check"/></svg></span><div class="f-li__body"><div class="f-li__title">Cut drawing</div></div></div>
+      <div class="f-li"><span class="f-li__icon f-li__icon--warn"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span><div class="f-li__body"><div class="f-li__title">Drawing, revision C</div><div class="f-li__sub">Missing</div></div></div>
+      <div class="f-li"><span class="f-li__icon"><svg class="f-i f-i--sm"><use href="#i-file-text"/></svg></span><div class="f-li__body"><div class="f-li__title">Material certificate</div><div class="f-li__sub">Optional</div></div></div></div></div>
+  </div>
+
+  <!-- step 4 -->
+  <div class="f-grid f-cols-2-1" data-f-step hidden style="align-items:start">
+    <div class="f-card"><h2 class="f-card__title">Review</h2>
+      <dl class="f-kv"><dt>Customer</dt><dd>Halden Mechanical</dd><dt>PO number</dt><dd>PO-2210</dd><dt>Delivery</dt><dd>Oct 9, 2026</dd><dt>Priority</dt><dd><span class="f-pill f-pill--warn">High</span></dd><dt>Parts</dt><dd>3 lines · 420 pcs</dd><dt>Files</dt><dd>2 attached, 1 failed</dd><dt>Total</dt><dd id="reviewTotal" style="font-size:18px">$48,200.00</dd></dl>
+      <div class="f-alert f-alert--warn"><svg class="f-i"><use href="#i-triangle-alert"/></svg><div class="f-alert__body"><div class="f-alert__title">One file failed to upload</div><div class="f-alert__text">You can submit now and add it later, but production will wait for revision C.</div></div></div></div>
+    <div class="f-card"><h2 class="f-card__title">Notify</h2>
+      <div class="f-setting"><div class="f-setting__text"><b>Email the customer</b><span>Send an order confirmation</span></div><input type="checkbox" class="f-switch" aria-label="Email the customer" checked></div>
+      <div class="f-setting"><div class="f-setting__text"><b>Notify the shop floor</b><span>Post in #production</span></div><input type="checkbox" class="f-switch" aria-label="Notify the shop floor" checked></div>
+      <div class="f-setting"><div class="f-setting__text"><b>Create invoice draft</b><span>In accounting</span></div><input type="checkbox" class="f-switch" aria-label="Create invoice draft"></div></div>
+  </div>
+
+  <div class="f-actionbar">
+    <span class="f-faint">Step <b data-f-stepno>1</b> of 4</span>
+    <div class="f-row"><button class="f-btn" data-f-prev hidden>Back</button><button class="f-btn f-btn--primary" data-f-next>Continue<svg class="f-i f-i--sm"><use href="#i-chevron-right"/></svg></button><button class="f-btn f-btn--primary" data-f-finish hidden data-f-toast="ok|Order submitted|ORD-4822 was created and the customer was notified."><svg class="f-i f-i--sm"><use href="#i-send"/></svg>Submit order</button></div>
+  </div>
+</section>

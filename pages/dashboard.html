@@ -1,0 +1,49 @@
+<section data-screen="dashboard" hidden class="f-stack" style="gap:20px">
+  <div class="f-head">
+    <div>
+      <div class="f-eyebrow">Operations overview</div>
+      <h1 class="f-h1" style="margin-top:6px">Good morning, Priya</h1>
+      <p class="f-subtitle">42 active orders · Tuesday, 6 Oct</p>
+    </div>
+    <div class="f-head__actions">
+      <div class="f-tabs" data-f-tabs><button class="f-tab" aria-selected="true">Today</button><button class="f-tab" aria-selected="false">Week</button><button class="f-tab" aria-selected="false">Month</button></div>
+      <button class="f-btn f-btn--primary" style="height:46px;padding:0 24px"><svg class="f-i"><use href="#i-plus"/></svg>New order</button>
+    </div>
+  </div>
+
+  <div class="f-grid f-cols-5-7">
+    <div class="f-card f-card--brand">
+      <div class="f-card__head"><span class="f-pill f-pill--white f-pill--lg"><svg class="f-i f-i--sm"><use href="#i-clock"/></svg>Revenue at risk</span>
+        <button class="f-btn f-btn--icon f-btn--sm" style="background:var(--surface);color:var(--text)" aria-label="Open"><svg class="f-i f-i--sm"><use href="#i-arrow-up-right"/></svg></button></div>
+      <div class="f-inset" style="padding:22px 22px 18px;flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:14px">
+        <div class="f-num f-num--xl">$184,500</div>
+        <div class="f-muted">across 8 orders that may miss their delivery date</div>
+      </div>
+      <div class="f-row" style="gap:10px;flex-wrap:wrap">
+        <div class="f-inset" style="flex:1;min-width:120px;padding:12px 14px"><div class="f-muted" style="font-size:12.5px">Recoverable this week</div><div style="font-weight:600">$121,300</div></div>
+        <div class="f-inset" style="flex:1.3;min-width:150px;padding:12px 14px"><div class="f-muted" style="font-size:12.5px">Largest order</div><div style="font-weight:600">$48,200 · Bracket plates</div></div>
+        <div class="f-inset" style="flex:1;min-width:110px;padding:12px 14px"><div class="f-muted" style="font-size:12.5px">Earliest due</div><div style="font-weight:600">Oct 9</div></div>
+      </div>
+    </div>
+    <div class="f-card">
+      <div class="f-card__head"><h2 class="f-card__title">Today</h2><div class="f-row"><button class="f-btn f-btn--icon f-btn--sm" aria-label="Adjust"><svg class="f-i f-i--sm"><use href="#i-sliders-horizontal"/></svg></button><button class="f-btn f-btn--icon f-btn--sm" aria-label="More"><svg class="f-i f-i--sm"><use href="#i-ellipsis"/></svg></button></div></div>
+      <div class="f-cq" style="flex:1;display:flex"><div class="f-kpis" style="flex:1">
+        <div class="f-kpi"><div class="f-kpi__top"><span>Open<br>orders</span><span class="f-kpi__badge f-kpi__badge--warn"><svg class="f-i f-i--sm"><use href="#i-hourglass"/></svg></span></div><div><div class="f-num">42</div><div class="f-delta"><b>↗ 6</b> vs last week</div></div></div>
+        <div class="f-kpi"><div class="f-kpi__top"><span>On-time<br>rate</span><span class="f-kpi__badge f-kpi__badge--ok"><svg class="f-i f-i--sm"><use href="#i-check"/></svg></span></div><div><div class="f-num">94.2<small>%</small></div><div class="f-delta"><b>↗ 2.1 pts</b> last 30 days</div></div></div>
+        <div class="f-kpi"><div class="f-kpi__top"><span>At<br>risk</span><span class="f-kpi__badge f-kpi__badge--warn"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span></div><div><div class="f-num">8<small>orders</small></div><div class="f-delta"><b>↘ 3</b> vs last week</div></div></div>
+        <div class="f-kpi"><div class="f-kpi__top"><span>Avg lead<br>time</span><span class="f-kpi__badge f-kpi__badge--ai"><svg class="f-i f-i--sm"><use href="#i-gauge"/></svg></span></div><div><div class="f-num">3.2<small>days</small></div><div class="f-delta"><b>↘ 0.4 d</b> to ship</div></div></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="f-grid f-cols-2-1">
+    <div class="f-card f-card--flush">
+      <div class="f-card__head"><div><h2 class="f-card__title">Attention required</h2><p class="f-card__sub">Sorted by due date, then risk</p></div><span class="f-pill f-pill--warn f-pill--dot f-pill--lg">8 orders need action</span></div>
+      <div class="f-tablewrap" style="padding:8px 14px 14px"><table class="f-table f-table--rows"><thead><tr><th>Order</th><th>Blocking issue</th><th>Customer</th><th>On-time odds</th><th>Due</th><th></th></tr></thead><tbody data-rows="attention"></tbody></table></div>
+    </div>
+    <div class="f-card">
+      <div class="f-card__head"><h2 class="f-card__title">Recent activity</h2><button class="f-btn f-btn--icon f-btn--sm" aria-label="More"><svg class="f-i f-i--sm"><use href="#i-ellipsis"/></svg></button></div>
+      <div class="f-list" data-rows="activity"></div>
+    </div>
+  </div>
+</section>

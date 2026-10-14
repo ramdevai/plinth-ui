@@ -1,0 +1,8 @@
+/* Per-client theme: copy to theme.css, load AFTER themes.css, set <html data-theme="acme">.
+   Minimum for a client: primary + accent + a neutral hue. Or paste a daisyUI theme-generator block here. */
+[data-theme="acme"] {
+  --neutral-hue: 300;
+  --color-primary: #7a1fa2;  --color-primary-content: #fff;
+  --color-accent: #ffe14d;   --color-accent-content: #1d1800;
+  /* optional: --radius-box: .5rem; --radius-field: .375rem; --radius-selector: .375rem; */
+}

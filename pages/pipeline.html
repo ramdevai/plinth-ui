@@ -1,0 +1,24 @@
+<!-- PIPELINE — kanban board. Cards are draggable between columns (frame.js, no config).
+     Column header: dot colour + title + count + column value. -->
+<section data-screen="pipeline" hidden class="f-stack" style="gap:16px;flex:1;min-height:0">
+  <div class="f-head">
+    <div><h1 class="f-h1">Pipeline</h1><p class="f-subtitle">Drag cards between stages · 41 open orders · $612,400 in flight</p></div>
+    <div class="f-head__actions">
+      <div class="f-seg"><button aria-pressed="true">Board</button><button aria-pressed="false" data-go="orders">List</button></div>
+      <button class="f-btn" data-f-menu="#groupMenu" data-align="end"><svg class="f-i f-i--sm"><use href="#i-sliders-horizontal"/></svg>Group by: Stage<svg class="f-i f-i--sm"><use href="#i-chevron-down"/></svg></button>
+      <button class="f-btn f-btn--primary" data-go="form"><svg class="f-i"><use href="#i-plus"/></svg>New order</button>
+    </div>
+  </div>
+  <div class="f-toolbar">
+    <div class="f-chips"><span class="f-fchip"><span>Owner</span> Anyone<button data-f-remove aria-label="Remove">✕</button></span><span class="f-fchip"><span>Due</span> This month<button data-f-remove aria-label="Remove">✕</button></span>
+      <button class="f-chip f-chip--drop"><svg class="f-i f-i--sm"><use href="#i-plus"/></svg>Add filter</button></div>
+    <span class="f-toolbar__grow"></span>
+    <div class="f-avatars"><span class="f-avatar" style="--av:40">PS</span><span class="f-avatar" style="--av:200">AK</span><span class="f-avatar" style="--av:320">RM</span><span class="f-avatar" style="--av:120">+4</span></div>
+  </div>
+  <div class="f-board" id="board">
+    <div class="f-col"><div class="f-col__head"><i class="f-col__dot" style="--c:var(--info)"></i><span class="f-col__title">New</span><span class="f-col__count">3</span><span style="flex:1"></span><span class="f-faint" style="font-size:12.5px">$34,100</span><button class="f-btn f-btn--ghost f-btn--icon f-btn--sm" aria-label="Add"><svg class="f-i f-i--sm"><use href="#i-plus"/></svg></button></div><div class="f-col__body" data-col-body="New"></div></div>
+    <div class="f-col"><div class="f-col__head"><i class="f-col__dot" style="--c:var(--warn)"></i><span class="f-col__title">Awaiting files</span><span class="f-col__count">2</span><span style="flex:1"></span><span class="f-faint" style="font-size:12.5px">$61,400</span><button class="f-btn f-btn--ghost f-btn--icon f-btn--sm" aria-label="Add"><svg class="f-i f-i--sm"><use href="#i-plus"/></svg></button></div><div class="f-col__body" data-col-body="Awaiting files"></div></div>
+    <div class="f-col"><div class="f-col__head"><i class="f-col__dot" style="--c:var(--ai)"></i><span class="f-col__title">In production</span><span class="f-col__count">3</span><span style="flex:1"></span><span class="f-faint" style="font-size:12.5px">$88,900</span><button class="f-btn f-btn--ghost f-btn--icon f-btn--sm" aria-label="Add"><svg class="f-i f-i--sm"><use href="#i-plus"/></svg></button></div><div class="f-col__body" data-col-body="In production"></div></div>
+    <div class="f-col"><div class="f-col__head"><i class="f-col__dot" style="--c:var(--ok)"></i><span class="f-col__title">Ready to ship</span><span class="f-col__count">2</span><span style="flex:1"></span><span class="f-faint" style="font-size:12.5px">$27,300</span><button class="f-btn f-btn--ghost f-btn--icon f-btn--sm" aria-label="Add"><svg class="f-i f-i--sm"><use href="#i-plus"/></svg></button></div><div class="f-col__body" data-col-body="Ready to ship"></div></div>
+  </div>
+</section>

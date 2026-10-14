@@ -1,0 +1,66 @@
+<section data-screen="detail" hidden class="f-stack" style="gap:16px">
+  <div class="f-head">
+    <div>
+      <div class="f-crumb"><a data-go="list">Orders</a><svg class="f-i f-i--sm"><use href="#i-chevron-right"/></svg><span>ORD-4821</span></div>
+      <h1 class="f-title">Bracket plates <span class="f-pill f-pill--warn f-pill--dot f-pill--lg">Needs files</span><span class="f-pill f-pill--danger f-pill--dot f-pill--lg">At risk</span></h1>
+      <p class="f-subtitle">Order from Halden Mechanical · ORD-4821 · 120 units</p>
+    </div>
+    <div class="f-head__actions">
+      <button class="f-btn"><svg class="f-i f-i--sm"><use href="#i-message-circle"/></svg>Message</button>
+      <button class="f-btn f-btn--icon" aria-label="More"><svg class="f-i"><use href="#i-ellipsis"/></svg></button>
+    </div>
+  </div>
+
+  <div class="f-card" style="padding:22px 26px">
+    <div class="f-steps">
+      <div class="f-step" data-state="done"><span class="f-step__dot"><svg class="f-i f-i--sm"><use href="#i-check"/></svg></span><b>Received</b><span>Sep 23</span></div>
+      <div class="f-step" data-state="done"><span class="f-step__dot"><svg class="f-i f-i--sm"><use href="#i-check"/></svg></span><b>Quoted</b><span>Sep 23</span></div>
+      <div class="f-step" data-state="warn"><span class="f-step__dot"></span><b>Files</b><span class="f-step__sub">Waiting 4 days</span></div>
+      <div class="f-step" data-state="todo"><span class="f-step__dot"></span><b>Production</b><span>Not started</span></div>
+      <div class="f-step" data-state="todo"><span class="f-step__dot"></span><b>Inspection</b><span>&nbsp;</span></div>
+      <div class="f-step" data-state="todo"><span class="f-step__dot"></span><b>Shipping</b><span>&nbsp;</span></div>
+    </div>
+  </div>
+
+  <div class="f-tabs" data-f-tabs style="align-self:flex-start"><button class="f-tab" aria-selected="true">Overview</button><button class="f-tab" aria-selected="false">Files <span class="f-tab__n">4/5</span></button><button class="f-tab" aria-selected="false">Quote</button><button class="f-tab" aria-selected="false">Schedule</button><button class="f-tab" aria-selected="false">Activity</button></div>
+
+  <div class="f-grid f-cols-detail" style="align-items:start">
+    <div class="f-card">
+      <div class="f-card__head"><h2 class="f-card__title">Order details</h2><button class="f-btn f-btn--icon f-btn--sm" aria-label="Edit"><svg class="f-i f-i--sm"><use href="#i-pencil"/></svg></button></div>
+      <div class="f-list">
+        <div class="f-li"><span class="f-li__icon"><svg class="f-i f-i--sm"><use href="#i-user"/></svg></span><div class="f-li__body"><div class="f-li__sub">Customer</div><div class="f-li__title">Halden Mechanical</div></div><span class="f-li__end f-mono">CU-1184</span></div>
+        <div class="f-li"><span class="f-li__icon"><svg class="f-i f-i--sm"><use href="#i-package"/></svg></span><div class="f-li__body"><div class="f-li__sub">Part</div><div class="f-li__title">Bracket plate, 3 mm</div></div><span class="f-li__end f-mono">BP-3-120</span></div>
+        <div class="f-li"><span class="f-li__icon"><svg class="f-i f-i--sm"><use href="#i-truck"/></svg></span><div class="f-li__body"><div class="f-li__sub">Delivery</div><div class="f-li__title">Pune warehouse</div></div><span class="f-li__end f-mono">Oct 9</span></div>
+      </div>
+      <dl class="f-kv"><dt>Material</dt><dd>Mild steel</dd><dt>Quantity</dt><dd>120</dd><dt>Order value</dt><dd>$48,200</dd><dt>Priority</dt><dd><span class="f-pill">Standard</span></dd></dl>
+    </div>
+
+    <div class="f-card">
+      <div class="f-card__head"><h2 class="f-card__title">Order status</h2><span class="f-faint">3 of 6 steps</span></div>
+      <div class="f-tl">
+        <div class="f-tl__item" data-state="done"><span class="f-tl__dot"><svg class="f-i f-i--sm"><use href="#i-check"/></svg></span><div><div class="f-tl__title">Order created</div><div class="f-tl__meta">Sep 18, 9:04 AM · Received from customer portal</div></div></div>
+        <div class="f-tl__item" data-state="done"><span class="f-tl__dot"><svg class="f-i f-i--sm"><use href="#i-check"/></svg></span><div><div class="f-tl__title">Quote approved</div><div class="f-tl__meta">Sep 19 · Halden Mechanical accepted the quote</div></div></div>
+        <div class="f-tl__item" data-state="warn"><span class="f-tl__dot"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span>
+          <div class="f-tl__body"><div><div class="f-tl__title">Files</div><div class="f-tl__meta">In progress · 4 of 5 requirements met</div></div>
+            <div class="f-li"><span class="f-li__icon f-li__icon--warn"><svg class="f-i f-i--sm"><use href="#i-file-text"/></svg></span><div class="f-li__body"><div class="f-li__title">Drawing, revision C</div><div class="f-li__sub">Required before production</div></div><button class="f-btn f-btn--sm">Request</button></div>
+            <div class="f-li"><span class="f-li__icon f-li__icon--warn"><svg class="f-i f-i--sm"><use href="#i-file-text"/></svg></span><div class="f-li__body"><div class="f-li__title">Material certificate</div><div class="f-li__sub">Signed by the customer</div></div><button class="f-btn f-btn--sm">Request</button></div>
+          </div></div>
+        <div class="f-tl__item" data-state="todo"><span class="f-tl__dot"></span><div><div class="f-tl__title">Production</div><div class="f-tl__meta">Not started</div></div></div>
+        <div class="f-tl__item" data-state="todo"><span class="f-tl__dot"></span><div><div class="f-tl__title">Dispatch</div><div class="f-tl__meta">Typical lead time for this customer: 3.1 days</div></div></div>
+      </div>
+    </div>
+
+    <div class="f-stack">
+      <div class="f-card">
+        <div class="f-card__head"><h2 class="f-card__title">On-time odds</h2><span class="f-pill f-pill--ai"><svg class="f-i f-i--sm"><use href="#i-sparkles"/></svg>Estimate</span></div>
+        <div class="f-inset"><div class="f-num f-num--lg">62<small>%</small></div><div style="margin:12px 0 6px"><span class="f-meter f-meter--lg f-meter--warn" style="--v:62"><i></i></span></div><div class="f-faint" style="font-size:12.5px">Medium · based on 214 similar orders</div></div>
+        <div class="f-row f-between"><span class="f-faint" style="font-size:12.5px;max-width:60%">An estimate from the order data available. Not a guarantee.</span><button class="f-btn f-btn--sm">View factors</button></div>
+      </div>
+      <div class="f-card f-card--accent">
+        <div class="f-row" style="font-size:13px;gap:6px"><svg class="f-i f-i--sm"><use href="#i-sparkles"/></svg>Next best action</div>
+        <div class="f-h2">Request revision C of the drawing from Halden Mechanical</div>
+        <div class="f-row"><button class="f-btn f-btn--primary"><svg class="f-i f-i--sm"><use href="#i-mail"/></svg>Request file</button><button class="f-btn"><svg class="f-i f-i--sm"><use href="#i-upload"/></svg>Upload</button></div>
+      </div>
+    </div>
+  </div>
+</section>

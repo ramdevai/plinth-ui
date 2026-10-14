@@ -1,0 +1,139 @@
+<!-- ===================== OVERLAYS (dialogs + menus) =====================
+     Dialogs live once at the end of <body>. Open with data-f-open="#id". -->
+
+<!-- Drawer: order peek (row click on Orders) -->
+<dialog class="f-drawer" id="orderDrawer" aria-labelledby="odTitle">
+  <div class="f-sheet__head"><div><h2 class="f-sheet__title" id="odTitle">Bracket plates</h2><p class="f-sheet__sub"><span class="f-mono" id="odId">ORD-4821</span> · <span id="odCust">Halden Mechanical</span></p></div>
+    <button class="f-btn f-btn--ghost f-btn--icon f-btn--sm" data-f-close aria-label="Close"><svg class="f-i"><use href="#i-x"/></svg></button></div>
+  <div class="f-sheet__body">
+    <div class="f-row" style="gap:8px"><span class="f-pill f-pill--warn f-pill--dot" id="odStatus">Waiting</span><span class="f-pill f-pill--danger" id="odPrio">Urgent</span><span class="f-pill f-pill--ai"><svg class="f-i f-i--sm"><use href="#i-sparkles"/></svg>62% on-time</span></div>
+    <div class="f-inset"><div class="f-steps" style="grid-auto-columns:minmax(70px,1fr)"><div class="f-step" data-state="done"><span class="f-step__dot"><svg class="f-i f-i--sm"><use href="#i-check"/></svg></span><b style="font-size:13px">Quoted</b></div><div class="f-step" data-state="warn"><span class="f-step__dot"></span><b style="font-size:13px">Files</b></div><div class="f-step" data-state="todo"><span class="f-step__dot"></span><b style="font-size:13px">Production</b></div><div class="f-step" data-state="todo"><span class="f-step__dot"></span><b style="font-size:13px">Ship</b></div></div></div>
+    <dl class="f-kv"><dt>Customer</dt><dd id="odCust2">Halden Mechanical</dd><dt>Owner</dt><dd class="f-row" style="justify-content:flex-end"><span class="f-avatar" style="--av:40">PS</span> Priya Shah</dd><dt>Material</dt><dd>Mild steel, 3 mm</dd><dt>Quantity</dt><dd>120</dd><dt>Value</dt><dd>$48,200</dd><dt>Due</dt><dd>Oct 9, 2026</dd></dl>
+    <div><h2 class="f-card__title" style="margin-bottom:10px">Recent activity</h2><div class="f-list">
+      <div class="f-li"><span class="f-li__icon f-li__icon--warn"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span><div class="f-li__body"><div class="f-li__title">Drawing revision C requested</div><div class="f-li__sub">Today, 9:20 AM</div></div></div>
+      <div class="f-li"><span class="f-li__icon f-li__icon--ok"><svg class="f-i f-i--sm"><use href="#i-check"/></svg></span><div class="f-li__body"><div class="f-li__title">Quote approved</div><div class="f-li__sub">Sep 19</div></div></div></div></div>
+  </div>
+  <div class="f-sheet__foot f-sheet__foot--between"><button class="f-btn" data-f-close data-go="detail">Open full page<svg class="f-i f-i--sm"><use href="#i-arrow-up-right"/></svg></button><div class="f-row"><button class="f-btn" data-f-menu="#assignMenu" data-align="end">Assign</button><button class="f-btn f-btn--primary" data-f-toast="ok|File requested|Priya was emailed.">Request file</button></div></div>
+</dialog>
+
+<!-- Drawer (wide): edit form -->
+<dialog class="f-drawer f-drawer--lg" id="editDrawer" aria-labelledby="edTitle">
+  <div class="f-sheet__head"><div><h2 class="f-sheet__title" id="edTitle">Edit order</h2><p class="f-sheet__sub">ORD-4821 · changes are saved when you click Save</p></div><button class="f-btn f-btn--ghost f-btn--icon f-btn--sm" data-f-close aria-label="Close"><svg class="f-i"><use href="#i-x"/></svg></button></div>
+  <div class="f-sheet__body">
+    <div class="f-grid f-cols-2"><div class="f-field"><label class="f-label" for="fld-_overlays-6">Order name</label><input id="fld-_overlays-6" class="f-input" value="Bracket plates"></div><div class="f-field"><label class="f-label" for="fld-_overlays-7">Customer PO</label><input id="fld-_overlays-7" class="f-input" value="PO-2210"></div>
+      <div class="f-field"><label class="f-label" for="fld-_overlays-8">Material</label><select id="fld-_overlays-8" class="f-select"><option>Mild steel</option><option>Stainless 304</option><option>Aluminium 5052</option></select></div><div class="f-field"><label class="f-label" for="fld-_overlays-9">Thickness</label><div class="f-ig f-ig--end"><input id="fld-_overlays-9" class="f-input" value="3"><span class="f-ig__addon">mm</span></div></div>
+      <div class="f-field"><label class="f-label" for="fld-_overlays-10">Quantity</label><input id="fld-_overlays-10" class="f-input" value="120"></div><div class="f-field"><label class="f-label" for="fld-_overlays-11">Delivery date</label><input id="fld-_overlays-11" class="f-input" type="date" value="2026-10-09"></div></div>
+    <div class="f-field"><label class="f-label">Priority</label><div class="f-choices"><label class="f-choice"><input type="radio" class="f-radio" name="ep"><span><div class="f-choice__title">Normal</div><div class="f-choice__sub">5–7 days</div></span></label><label class="f-choice"><input type="radio" class="f-radio" name="ep" checked><span><div class="f-choice__title">High</div><div class="f-choice__sub">3–4 days</div></span></label><label class="f-choice"><input type="radio" class="f-radio" name="ep"><span><div class="f-choice__title">Urgent</div><div class="f-choice__sub">24–48 h · +20%</div></span></label></div></div>
+    <div class="f-field"><label class="f-label" for="fld-_overlays-12">Notes</label><textarea id="fld-_overlays-12" class="f-textarea">Hold laser slot until revision C arrives.</textarea></div>
+    <div class="f-setting"><div class="f-setting__text"><b>Notify customer of changes</b><span>Send an email when the order is saved</span></div><input type="checkbox" class="f-switch" aria-label="Notify customer of changes" checked></div>
+  </div>
+  <div class="f-sheet__foot"><button class="f-btn f-btn--ghost" data-f-close>Cancel</button><button class="f-btn f-btn--primary" data-f-close data-f-toast="ok|Order updated|ORD-4821 was saved.">Save changes</button></div>
+</dialog>
+
+<!-- Drawer (left): filters -->
+<dialog class="f-drawer f-drawer--left f-drawer--sm" id="filterDrawer" aria-labelledby="fdTitle">
+  <div class="f-sheet__head"><div><h2 class="f-sheet__title" id="fdTitle">Filters</h2><p class="f-sheet__sub">Narrow the list</p></div><button class="f-btn f-btn--ghost f-btn--icon f-btn--sm" data-f-close aria-label="Close"><svg class="f-i"><use href="#i-x"/></svg></button></div>
+  <div class="f-sheet__body" style="gap:0">
+    <details class="f-acc" open><summary>Status<svg class="f-i f-i--sm"><use href="#i-chevron-down"/></svg></summary><div class="f-stack" style="gap:10px"><label class="f-row"><input type="checkbox" class="f-check" checked>New</label><label class="f-row"><input type="checkbox" class="f-check" checked>In production</label><label class="f-row"><input type="checkbox" class="f-check">Waiting</label><label class="f-row"><input type="checkbox" class="f-check">Shipped</label></div></details>
+    <details class="f-acc" open><summary>Priority<svg class="f-i f-i--sm"><use href="#i-chevron-down"/></svg></summary><div class="f-stack" style="gap:10px"><label class="f-row"><input type="checkbox" class="f-check" checked>Urgent</label><label class="f-row"><input type="checkbox" class="f-check">High</label><label class="f-row"><input type="checkbox" class="f-check">Normal</label></div></details>
+    <details class="f-acc"><summary>Order value<svg class="f-i f-i--sm"><use href="#i-chevron-down"/></svg></summary><div class="f-grid f-cols-2"><input class="f-input" placeholder="Min" aria-label="Minimum value"><input class="f-input" placeholder="Max" aria-label="Maximum value"></div></details>
+    <details class="f-acc"><summary>Due date<svg class="f-i f-i--sm"><use href="#i-chevron-down"/></svg></summary><div class="f-grid f-cols-2"><input class="f-input" type="date" aria-label="From date"><input class="f-input" type="date" aria-label="To date"></div></details>
+  </div>
+  <div class="f-sheet__foot f-sheet__foot--between"><button class="f-btn f-btn--ghost">Reset</button><button class="f-btn f-btn--primary" data-f-close>Show 18 results</button></div>
+</dialog>
+
+<!-- Drawer (small): notifications -->
+<dialog class="f-drawer f-drawer--sm" id="notifDrawer" aria-labelledby="ntTitle">
+  <div class="f-sheet__head"><div><h2 class="f-sheet__title" id="ntTitle">Notifications</h2><p class="f-sheet__sub">3 unread</p></div><button class="f-btn f-btn--ghost f-btn--icon f-btn--sm" data-f-close aria-label="Close"><svg class="f-i"><use href="#i-x"/></svg></button></div>
+  <div class="f-sheet__body" style="gap:14px">
+    <div class="f-tabs" data-f-tabs style="align-self:flex-start"><button class="f-tab" aria-selected="true">All</button><button class="f-tab" aria-selected="false">Mentions</button><button class="f-tab" aria-selected="false">Alerts</button></div>
+    <div class="f-list">
+      <div class="f-li"><span class="f-li__icon f-li__icon--warn"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span><div class="f-li__body"><div class="f-li__title">ORD-4821 may miss its date</div><div class="f-li__sub">Files are 4 days late · 2 min ago</div></div></div>
+      <div class="f-li"><span class="f-li__icon"><svg class="f-i f-i--sm"><use href="#i-message-circle"/></svg></span><div class="f-li__body"><div class="f-li__title">Priya replied on ORD-4821</div><div class="f-li__sub">“Can we hold the slot…” · 12 min ago</div></div></div>
+      <div class="f-li"><span class="f-li__icon f-li__icon--ok"><svg class="f-i f-i--sm"><use href="#i-check"/></svg></span><div class="f-li__body"><div class="f-li__title">ORD-4790 shipped</div><div class="f-li__sub">1 h ago</div></div></div>
+      <div class="f-li"><span class="f-li__icon f-li__icon--ai"><svg class="f-i f-i--sm"><use href="#i-sparkles"/></svg></span><div class="f-li__body"><div class="f-li__title">Weekly summary is ready</div><div class="f-li__sub">Yesterday</div></div></div>
+    </div>
+  </div>
+  <div class="f-sheet__foot f-sheet__foot--between"><button class="f-btn f-btn--ghost" data-f-toast="ok|All caught up">Mark all read</button><button class="f-btn" data-f-close data-go="settings">Settings</button></div>
+</dialog>
+
+<!-- Modal: invite (form) -->
+<dialog class="f-modal" id="inviteModal" aria-labelledby="ivTitle">
+  <div class="f-sheet__head"><div><h2 class="f-sheet__title" id="ivTitle">Invite a teammate</h2><p class="f-sheet__sub">They will get an email with a link to join.</p></div><button class="f-btn f-btn--ghost f-btn--icon f-btn--sm" data-f-close aria-label="Close"><svg class="f-i"><use href="#i-x"/></svg></button></div>
+  <div class="f-sheet__body"><div class="f-field"><label class="f-label" for="fld-_overlays-13">Email address</label><input id="fld-_overlays-13" class="f-input" type="email" placeholder="name@company.com" autofocus></div>
+    <div class="f-field"><label class="f-label">Role</label><div class="f-choices"><label class="f-choice"><input type="radio" class="f-radio" name="role" checked><span><div class="f-choice__title">Member</div><div class="f-choice__sub">Create and edit orders</div></span></label><label class="f-choice"><input type="radio" class="f-radio" name="role"><span><div class="f-choice__title">Admin</div><div class="f-choice__sub">Manage team and billing</div></span></label></div></div>
+    <div class="f-field"><label class="f-label" for="fld-_overlays-14">Personal message <span class="f-faint">(optional)</span></label><textarea id="fld-_overlays-14" class="f-textarea" style="min-height:72px"></textarea></div></div>
+  <div class="f-sheet__foot"><button class="f-btn f-btn--ghost" data-f-close>Cancel</button><button class="f-btn f-btn--primary" data-f-close data-f-toast="ok|Invite sent|We emailed the invitation.">Send invite</button></div>
+</dialog>
+
+<!-- Modal (large): compose -->
+<dialog class="f-modal f-modal--lg" id="composeModal" aria-labelledby="cmTitle">
+  <div class="f-sheet__head"><h2 class="f-sheet__title" id="cmTitle">New message</h2><button class="f-btn f-btn--ghost f-btn--icon f-btn--sm" data-f-close aria-label="Close"><svg class="f-i"><use href="#i-x"/></svg></button></div>
+  <div class="f-sheet__body"><div class="f-field"><label class="f-label" for="fld-_overlays-15">To</label><div class="f-tags"><span class="f-tag">Halden Mechanical<button data-f-remove aria-label="Remove">✕</button></span><input id="fld-_overlays-15" placeholder="Add recipient…"></div></div><div class="f-field"><label class="f-label" for="fld-_overlays-16">Subject</label><input id="fld-_overlays-16" class="f-input" value="Revision C of the bracket drawing"></div><div class="f-field"><label class="f-label" for="fld-_overlays-17">Message</label><textarea id="fld-_overlays-17" class="f-textarea" style="min-height:160px"></textarea></div></div>
+  <div class="f-sheet__foot f-sheet__foot--between"><button class="f-btn f-btn--ghost f-btn--icon" aria-label="Attach"><svg class="f-i"><use href="#i-file-text"/></svg></button><div class="f-row"><button class="f-btn f-btn--ghost" data-f-close>Discard</button><button class="f-btn f-btn--primary" data-f-close data-f-toast="ok|Message sent"><svg class="f-i f-i--sm"><use href="#i-send"/></svg>Send</button></div></div>
+</dialog>
+
+<!-- Modals: confirmations -->
+<dialog class="f-modal f-modal--sm f-confirm" id="confirmDelete" aria-labelledby="cdTitle">
+  <div class="f-sheet__body"><span class="f-confirm__icon f-confirm__icon--danger"><svg class="f-i f-i--lg"><use href="#i-triangle-alert"/></svg></span><div><h2 class="f-sheet__title" id="cdTitle">Delete <span data-f-n>3</span> orders?</h2><p class="f-sheet__sub" style="font-size:14px">This permanently removes the orders and their files. This cannot be undone.</p></div></div>
+  <div class="f-sheet__foot"><button class="f-btn" data-f-close>Cancel</button><button class="f-btn f-btn--destructive" data-f-close data-do="delete">Delete orders</button></div>
+</dialog>
+<dialog class="f-modal f-modal--sm f-confirm" id="confirmPublish" aria-labelledby="cpTitle">
+  <div class="f-sheet__body"><span class="f-confirm__icon"><svg class="f-i f-i--lg"><use href="#i-send"/></svg></span><div><h2 class="f-sheet__title" id="cpTitle">Send quote to customer?</h2><p class="f-sheet__sub" style="font-size:14px">Halden Mechanical will get an email with a link to review and approve.</p></div></div>
+  <div class="f-sheet__foot"><button class="f-btn" data-f-close>Not yet</button><button class="f-btn f-btn--primary" data-f-close data-f-toast="ok|Quote sent|Halden will be notified.">Send quote</button></div>
+</dialog>
+<dialog class="f-modal f-modal--sm f-confirm" id="confirmRevoke" aria-labelledby="crTitle">
+  <div class="f-sheet__body"><span class="f-confirm__icon f-confirm__icon--warn"><svg class="f-i f-i--lg"><use href="#i-triangle-alert"/></svg></span><div><h2 class="f-sheet__title" id="crTitle">Revoke the staging key?</h2><p class="f-sheet__sub" style="font-size:14px">Anything using it will stop working immediately.</p></div></div>
+  <div class="f-sheet__foot"><button class="f-btn" data-f-close>Cancel</button><button class="f-btn f-btn--destructive" data-f-close data-f-toast="ok|Key revoked">Revoke key</button></div>
+</dialog>
+<dialog class="f-modal f-modal--sm f-confirm" id="confirmWorkspace" aria-labelledby="cwTitle">
+  <div class="f-sheet__body" style="flex-wrap:wrap"><span class="f-confirm__icon f-confirm__icon--danger"><svg class="f-i f-i--lg"><use href="#i-triangle-alert"/></svg></span><div style="flex:1;min-width:200px"><h2 class="f-sheet__title" id="cwTitle">Delete this workspace?</h2><p class="f-sheet__sub" style="font-size:14px">All orders, customers and files are removed for everyone.</p></div>
+    <div class="f-field" style="width:100%"><label class="f-label" for="typeConfirm">Type <b>northwind</b> to confirm</label><input class="f-input" id="typeConfirm" placeholder="northwind" autocomplete="off"></div></div>
+  <div class="f-sheet__foot"><button class="f-btn" data-f-close>Cancel</button><button class="f-btn f-btn--destructive" id="typeConfirmBtn" disabled style="opacity:.5" data-f-close data-f-toast="danger|Workspace deleted|This is a preview, nothing was removed.">Delete workspace</button></div>
+</dialog>
+
+<!-- Modal: shortcuts -->
+<dialog class="f-modal" id="helpModal" aria-labelledby="hlTitle">
+  <div class="f-sheet__head"><h2 class="f-sheet__title" id="hlTitle">Keyboard shortcuts</h2><button class="f-btn f-btn--ghost f-btn--icon f-btn--sm" data-f-close aria-label="Close"><svg class="f-i"><use href="#i-x"/></svg></button></div>
+  <div class="f-sheet__body" style="gap:0"><div class="f-setting"><div class="f-setting__text"><b>Command palette</b></div><span class="f-kbd">⌘ K</span></div><div class="f-setting"><div class="f-setting__text"><b>New order</b></div><span class="f-kbd">N</span></div><div class="f-setting"><div class="f-setting__text"><b>Search</b></div><span class="f-kbd">/</span></div><div class="f-setting"><div class="f-setting__text"><b>Close dialog or menu</b></div><span class="f-kbd">Esc</span></div></div>
+</dialog>
+
+<!-- Command palette -->
+<dialog class="f-modal f-cmd" id="cmd" aria-label="Command palette">
+  <div class="f-cmd__search"><svg class="f-i"><use href="#i-search"/></svg><input placeholder="Type a command or search…" aria-label="Search commands"><span class="f-kbd">Esc</span></div>
+  <div class="f-cmd__list">
+    <div class="f-cmd__group">Go to</div>
+    <div class="f-cmd__item" data-go="dashboard" data-f-close><svg class="f-i"><use href="#i-layout-grid"/></svg>Overview</div>
+    <div class="f-cmd__item" data-go="orders" data-f-close><svg class="f-i"><use href="#i-inbox"/></svg>Orders</div>
+    <div class="f-cmd__item" data-go="pipeline" data-f-close><svg class="f-i"><use href="#i-package"/></svg>Pipeline</div>
+    <div class="f-cmd__item" data-go="inbox" data-f-close><svg class="f-i"><use href="#i-message-circle"/></svg>Inbox</div>
+    <div class="f-cmd__item" data-go="reports" data-f-close><svg class="f-i"><use href="#i-chart-column"/></svg>Reports</div>
+    <div class="f-cmd__group">Actions</div>
+    <div class="f-cmd__item" data-go="form" data-f-close><svg class="f-i"><use href="#i-plus"/></svg>Create new order<span class="f-kbd">N</span></div>
+    <div class="f-cmd__item" data-f-open="#inviteModal"><svg class="f-i"><use href="#i-users"/></svg>Invite a teammate</div>
+    <div class="f-cmd__item" data-f-close data-act="dark"><svg class="f-i"><use href="#i-sparkles"/></svg>Toggle dark mode</div>
+    <div class="f-cmd__group">Recent orders</div>
+    <div class="f-cmd__item" data-go="detail" data-f-close><svg class="f-i"><use href="#i-file-text"/></svg>ORD-4821 · Bracket plates</div>
+    <div class="f-cmd__item" data-go="detail" data-f-close><svg class="f-i"><use href="#i-file-text"/></svg>ORD-4790 · Gasket set</div>
+  </div>
+  <div class="f-cmd__foot"><span><span class="f-kbd">↑</span> <span class="f-kbd">↓</span> navigate</span><span><span class="f-kbd">↵</span> select</span><span><span class="f-kbd">Esc</span> close</span></div>
+</dialog>
+
+<!-- ===================== MENUS ===================== -->
+<div class="f-menu" id="rangeMenu" role="menu"><button class="f-menu__item" role="menuitemradio" aria-checked="false" data-f-set="Today">Today</button><button class="f-menu__item" role="menuitemradio" aria-checked="false" data-f-set="Last 7 days">Last 7 days</button><button class="f-menu__item" role="menuitemradio" aria-checked="true" data-f-set="Last 30 days">Last 30 days</button><button class="f-menu__item" role="menuitemradio" aria-checked="false" data-f-set="Last 90 days">Last 90 days</button><div class="f-menu__sep"></div><button class="f-menu__item"><svg class="f-i f-i--sm"><use href="#i-calendar"/></svg>Custom range…</button></div>
+<div class="f-menu" id="exportMenu" role="menu"><div class="f-menu__label">Export as</div><button class="f-menu__item" data-f-toast="ok|Exporting CSV…|Your download will start shortly."><svg class="f-i f-i--sm"><use href="#i-file-text"/></svg>CSV</button><button class="f-menu__item" data-f-toast="ok|Exporting Excel…"><svg class="f-i f-i--sm"><use href="#i-file-text"/></svg>Excel</button><button class="f-menu__item" data-f-toast="ok|Building PDF…"><svg class="f-i f-i--sm"><use href="#i-file-text"/></svg>PDF report</button><div class="f-menu__sep"></div><button class="f-menu__item"><svg class="f-i f-i--sm"><use href="#i-clock"/></svg>Schedule export…</button></div>
+<div class="f-menu" id="viewsMenu" role="menu"><div class="f-menu__label">Saved views</div><button class="f-menu__item" role="menuitemradio" aria-checked="true" data-f-set="Default view">Default view</button><button class="f-menu__item" role="menuitemradio" aria-checked="false" data-f-set="Urgent this week" data-view="urgent">Urgent this week</button><button class="f-menu__item" role="menuitemradio" aria-checked="false" data-f-set="Waiting on customers" data-view="waiting">Waiting on customers</button><button class="f-menu__item" role="menuitemradio" aria-checked="false" data-f-set="My orders">My orders</button><div class="f-menu__sep"></div><button class="f-menu__item" data-f-toast="ok|View saved|Find it under Saved views."><svg class="f-i f-i--sm"><use href="#i-plus"/></svg>Save current view…</button></div>
+<div class="f-menu" id="colsMenu" role="menu" data-f-cols="#ordersTable"><div class="f-menu__label">Show columns</div>
+  <label class="f-menu__item"><input type="checkbox" class="f-check" data-f-col="customer" checked>Customer</label><label class="f-menu__item"><input type="checkbox" class="f-check" data-f-col="priority" checked>Priority</label><label class="f-menu__item"><input type="checkbox" class="f-check" data-f-col="status" checked>Status</label><label class="f-menu__item"><input type="checkbox" class="f-check" data-f-col="owner" checked>Owner</label><label class="f-menu__item"><input type="checkbox" class="f-check" data-f-col="age" checked>Age</label><label class="f-menu__item"><input type="checkbox" class="f-check" data-f-col="sla" checked>SLA</label></div>
+<div class="f-menu f-menu--pop" id="filterPop" role="dialog" aria-label="Filters">
+  <div class="f-row f-between"><b>Filters</b><button class="f-btn f-btn--ghost f-btn--sm" id="resetFilters">Reset</button></div>
+  <div class="f-field"><label class="f-label" for="fPriority">Priority</label><select class="f-select" id="fPriority"><option value="">Any</option><option>Urgent</option><option>High</option><option>Normal</option></select></div>
+  <div class="f-field"><label class="f-label" for="fCustomer">Customer</label><select class="f-select" id="fCustomer"><option value="">Any</option><option>Halden Mechanical</option><option>Northline Heating</option><option>Ardent Electric</option><option>Brook &amp; Sons</option><option>Rivet Plumbing</option></select></div>
+  <div class="f-field"><label class="f-label">Owner</label><div class="f-seg" id="fOwner" style="align-self:flex-start"><button aria-pressed="true" data-v="">Anyone</button><button aria-pressed="false" data-v="PS">Me</button><button aria-pressed="false" data-v="AK">AK</button><button aria-pressed="false" data-v="RM">RM</button></div></div>
+  <div class="f-row f-between"><button class="f-btn f-btn--ghost" data-f-open="#filterDrawer">More filters…</button><button class="f-btn f-btn--primary" id="applyFilters">Apply</button></div></div>
+<div class="f-menu" id="rowMenu" role="menu"><button class="f-menu__item" id="rowOpen"><svg class="f-i f-i--sm"><use href="#i-arrow-up-right"/></svg>Open</button><button class="f-menu__item" data-f-toast="ok|Order duplicated|A copy was added to New."><svg class="f-i f-i--sm"><use href="#i-copy"/></svg>Duplicate</button><button class="f-menu__item" data-f-menu="#assignMenu"><svg class="f-i f-i--sm"><use href="#i-users"/></svg>Assign…<svg class="f-i f-i--sm" style="margin-left:auto"><use href="#i-chevron-right"/></svg></button><button class="f-menu__item" data-go="inbox"><svg class="f-i f-i--sm"><use href="#i-message-circle"/></svg>Message customer</button><div class="f-menu__sep"></div><button class="f-menu__item f-menu__item--danger" data-f-open="#confirmDelete"><svg class="f-i f-i--sm"><use href="#i-x"/></svg>Cancel order</button></div>
+<div class="f-menu" id="assignMenu" role="menu"><div class="f-menu__label">Assign to</div><button class="f-menu__item" data-f-toast="ok|Assigned to Priya Shah"><span class="f-avatar" style="--av:40">PS</span>Priya Shah</button><button class="f-menu__item" data-f-toast="ok|Assigned to Arun Kapoor"><span class="f-avatar" style="--av:200">AK</span>Arun Kapoor</button><button class="f-menu__item" data-f-toast="ok|Assigned to Rhea Mehta"><span class="f-avatar" style="--av:320">RM</span>Rhea Mehta</button><div class="f-menu__sep"></div><button class="f-menu__item" data-f-toast="info|Unassigned">Unassign</button></div>
+<div class="f-menu" id="groupMenu" role="menu"><div class="f-menu__label">Group by</div><button class="f-menu__item" role="menuitemradio" aria-checked="true">Stage</button><button class="f-menu__item" role="menuitemradio" aria-checked="false">Customer</button><button class="f-menu__item" role="menuitemradio" aria-checked="false">Owner</button><button class="f-menu__item" role="menuitemradio" aria-checked="false">Priority</button></div>
+<div class="f-menu" id="kebabMenu" role="menu"><button class="f-menu__item" data-f-copy="https://app.example.com/orders/4821"><svg class="f-i f-i--sm"><use href="#i-copy"/></svg>Copy link</button><button class="f-menu__item" data-f-toast="ok|Archived"><svg class="f-i f-i--sm"><use href="#i-inbox"/></svg>Archive</button><div class="f-menu__sep"></div><button class="f-menu__item f-menu__item--danger" data-f-open="#confirmDelete"><svg class="f-i f-i--sm"><use href="#i-x"/></svg>Delete</button></div>
+<div class="f-menu" id="userMenu" role="menu" style="min-width:250px"><div style="padding:10px;display:flex;gap:10px;align-items:center"><span class="f-avatar f-avatar--lg" style="--av:40">PS</span><div><div style="font-weight:600">Priya Shah</div><div class="f-faint" style="font-size:12.5px">priya@northwind.com</div></div></div><div class="f-menu__sep"></div><button class="f-menu__item" data-go="settings"><svg class="f-i f-i--sm"><use href="#i-user"/></svg>Profile</button><button class="f-menu__item" data-go="settings"><svg class="f-i f-i--sm"><use href="#i-settings"/></svg>Workspace settings</button><button class="f-menu__item" data-f-open="#helpModal"><svg class="f-i f-i--sm"><use href="#i-circle-help"/></svg>Keyboard shortcuts<span class="f-kbd">?</span></button><div class="f-menu__sep"></div><button class="f-menu__item" data-go="auth"><svg class="f-i f-i--sm"><use href="#i-arrow-up-right"/></svg>Sign out</button></div>
+<div class="f-menu" id="patternsMenu" role="menu"></div>

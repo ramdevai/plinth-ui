@@ -1,0 +1,52 @@
+<!-- DATA TABLES — the table patterns beyond the basic list:
+     grouped + expandable · inline editing with totals · sticky dense grid · empty / loading / error states.
+     Panels switch with frame.js tabs (data-f-tabs). -->
+<section data-screen="tables" hidden class="f-stack" style="gap:16px">
+  <div class="f-head">
+    <div><h1 class="f-h1">Data tables</h1><p class="f-subtitle">Grouping, expansion, inline editing, sticky headers, and the states people forget.</p></div>
+  </div>
+  <div class="f-tabs" data-f-tabs style="align-self:flex-start">
+    <button class="f-tab" aria-selected="true" aria-controls="tb-group">Grouped &amp; expandable</button>
+    <button class="f-tab" aria-selected="false" aria-controls="tb-edit">Inline editing</button>
+    <button class="f-tab" aria-selected="false" aria-controls="tb-grid">Sticky dense grid</button>
+    <button class="f-tab" aria-selected="false" aria-controls="tb-states">Empty, loading, error</button>
+  </div>
+
+  <!-- 1. grouped + expandable -->
+  <div id="tb-group" class="f-card f-card--flush">
+    <div class="f-card__head"><div><h2 class="f-card__title">Open orders by customer</h2><p class="f-card__sub">Click a group to collapse it, the chevron to see line items.</p></div>
+      <div class="f-row"><button class="f-btn f-btn--sm" id="collapseAll">Collapse all</button><button class="f-btn f-btn--sm" id="expandAll">Expand all</button></div></div>
+    <div class="f-tablewrap"><table class="f-table"><thead><tr><th style="width:36px"></th><th>Order</th><th>Status</th><th class="f-r">Qty</th><th class="f-r">Value</th><th>Due</th></tr></thead><tbody id="groupBody"></tbody></table></div>
+  </div>
+
+  <!-- 2. inline editing -->
+  <div id="tb-edit" class="f-card f-card--flush" hidden>
+    <div class="f-card__head"><div><h2 class="f-card__title">Quote line items</h2><p class="f-card__sub">Edit quantity and price in place. Totals recalculate as you type.</p></div><button class="f-btn f-btn--sm" id="addLine"><svg class="f-i f-i--sm"><use href="#i-plus"/></svg>Add line</button></div>
+    <div class="f-tablewrap"><table class="f-table"><thead><tr><th>Item</th><th>Material</th><th class="f-r" style="width:110px">Qty</th><th class="f-r" style="width:140px">Unit price</th><th class="f-r" style="width:130px">Line total</th><th style="width:48px"></th></tr></thead>
+      <tbody id="lineBody"></tbody>
+      <tfoot><tr><td colspan="4" class="f-r">Subtotal</td><td class="f-r" id="subTotal">$0.00</td><td></td></tr><tr><td colspan="4" class="f-r f-muted" style="font-weight:400;background:var(--surface)">GST (18%)</td><td class="f-r" id="gst" style="background:var(--surface);font-weight:400">$0.00</td><td style="background:var(--surface)"></td></tr><tr><td colspan="4" class="f-r">Total</td><td class="f-r" id="grandTotal" style="font-size:16px">$0.00</td><td></td></tr></tfoot></table></div>
+  </div>
+
+  <!-- 3. sticky dense grid -->
+  <div id="tb-grid" class="f-card f-card--flush" hidden>
+    <div class="f-card__head"><div><h2 class="f-card__title">Parts inventory</h2><p class="f-card__sub">Sticky header and first column, dense rows, zebra, mono identifiers. Scroll both ways.</p></div>
+      <div class="f-seg" id="gridDensity"><button aria-pressed="false" data-d="">Comfortable</button><button aria-pressed="true" data-d="dense">Dense</button></div></div>
+    <div class="f-tablewrap f-tablewrap--scroll" style="--table-h:380px"><table class="f-table f-table--sticky f-table--dense f-table--zebra" id="gridTable" style="min-width:980px"><thead><tr><th class="f-stick" data-sort>SKU</th><th data-sort>Part</th><th data-sort>Material</th><th class="f-r" data-sort>Thickness</th><th class="f-r" data-sort>On hand</th><th class="f-r" data-sort>Reserved</th><th>Stock level</th><th data-sort>Location</th><th class="f-r" data-sort>Unit cost</th></tr></thead><tbody id="gridBody"></tbody></table></div>
+    <div class="f-pager"><span>240 parts · 3 below reorder point</span><span class="f-mono">⌘ + F to find</span></div>
+  </div>
+
+  <!-- 4. states -->
+  <div id="tb-states" class="f-grid f-cols-3" hidden>
+    <div class="f-card f-card--flush"><div class="f-card__head"><h2 class="f-card__title">Loading</h2><span class="f-pill">skeleton</span></div>
+      <div style="padding:6px 24px 24px;display:flex;flex-direction:column;gap:18px">
+        <div class="f-row" style="gap:14px"><span class="f-skel f-skel--circle" style="width:36px;height:36px"></span><div class="f-grow" style="display:flex;flex-direction:column;gap:8px"><span class="f-skel" style="width:60%"></span><span class="f-skel" style="width:35%"></span></div><span class="f-skel" style="width:70px;height:24px"></span></div>
+        <div class="f-row" style="gap:14px"><span class="f-skel f-skel--circle" style="width:36px;height:36px"></span><div class="f-grow" style="display:flex;flex-direction:column;gap:8px"><span class="f-skel" style="width:72%"></span><span class="f-skel" style="width:28%"></span></div><span class="f-skel" style="width:70px;height:24px"></span></div>
+        <div class="f-row" style="gap:14px"><span class="f-skel f-skel--circle" style="width:36px;height:36px"></span><div class="f-grow" style="display:flex;flex-direction:column;gap:8px"><span class="f-skel" style="width:48%"></span><span class="f-skel" style="width:40%"></span></div><span class="f-skel" style="width:70px;height:24px"></span></div>
+        <div class="f-row" style="gap:14px"><span class="f-skel f-skel--circle" style="width:36px;height:36px"></span><div class="f-grow" style="display:flex;flex-direction:column;gap:8px"><span class="f-skel" style="width:66%"></span><span class="f-skel" style="width:30%"></span></div><span class="f-skel" style="width:70px;height:24px"></span></div>
+      </div></div>
+    <div class="f-card f-card--flush"><div class="f-card__head"><h2 class="f-card__title">Empty</h2><span class="f-pill">first use</span></div>
+      <div class="f-empty"><span class="f-empty__icon"><svg class="f-i f-i--lg"><use href="#i-inbox"/></svg></span><h3>No orders yet</h3><p>Orders from your customers will show up here. Create one to see how it flows.</p><div class="f-row"><button class="f-btn f-btn--primary" data-go="form"><svg class="f-i f-i--sm"><use href="#i-plus"/></svg>New order</button><button class="f-btn">Import CSV</button></div></div></div>
+    <div class="f-card f-card--flush"><div class="f-card__head"><h2 class="f-card__title">Error</h2><span class="f-pill f-pill--danger">failed</span></div>
+      <div class="f-empty"><span class="f-empty__icon" style="background:var(--danger-bg);color:var(--danger-fg)"><svg class="f-i f-i--lg"><use href="#i-triangle-alert"/></svg></span><h3>We could not load orders</h3><p>The connection to the server timed out. Your data is safe. Try again in a moment.</p><div class="f-row"><button class="f-btn f-btn--primary" data-f-toast="info|Retrying…|Reconnecting to the server.">Try again</button><button class="f-btn f-btn--ghost">Contact support</button></div></div></div>
+  </div>
+</section>

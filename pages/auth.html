@@ -1,0 +1,46 @@
+<!-- AUTH — full-bleed, no shell. Four views in one page: sign in, sign up, forgot password, two-factor.
+     Switch with data-f-view="#id" (frame.js). Large-logo slot (.f-logo--lg) and the brand panel. -->
+<section data-screen="auth" hidden style="height:100%">
+  <div class="f-auth">
+    <div class="f-auth__form">
+      <a class="f-logo f-logo--lg" data-logo="full"></a>
+      <form class="f-auth__box" id="au-in" data-f-viewitem onsubmit="return false">
+        <div style="text-align:center"><h1 class="f-h2">Welcome back</h1><p class="f-muted" style="margin:6px 0 0">Sign in to continue to your workspace.</p></div>
+        <button class="f-btn f-btn--block" style="height:46px" type="button"><svg class="f-i f-i--sm"><use href="#i-user"/></svg>Continue with SSO</button>
+        <div class="f-divider">or</div>
+        <div class="f-field"><label class="f-label" for="fld-auth-18">Work email</label><input id="fld-auth-18" class="f-input" type="email" placeholder="you@company.com" value="" style="height:46px" ></div>
+        <div class="f-field"><div class="f-row f-between"><label class="f-label" for="au-pw">Password</label><a class="f-faint" style="font-size:13px;cursor:pointer" data-f-view="#au-forgot">Forgot?</a></div><input id="au-pw" class="f-input" type="password" value="password" style="height:46px"></div>
+        <label class="f-row"><input type="checkbox" class="f-check" checked>Keep me signed in</label>
+        <button class="f-btn f-btn--primary f-btn--block" style="height:46px" data-f-view="#au-2fa">Sign in</button>
+        <p class="f-faint" style="text-align:center;margin:0;font-size:13px">New here? <a style="text-decoration:underline;cursor:pointer" data-f-view="#au-up">Create an account</a></p>
+      </form>
+      <form class="f-auth__box" id="au-up" data-f-viewitem hidden onsubmit="return false">
+        <div style="text-align:center"><h1 class="f-h2">Create your account</h1><p class="f-muted" style="margin:6px 0 0">Free for 14 days. No card needed.</p></div>
+        <div class="f-grid f-cols-2"><div class="f-field"><label class="f-label" for="fld-auth-19">First name</label><input id="fld-auth-19" class="f-input" type="text" placeholder="Priya" value="" style="height:46px" ></div><div class="f-field"><label class="f-label" for="fld-auth-20">Last name</label><input id="fld-auth-20" class="f-input" type="text" placeholder="Shah" value="" style="height:46px" ></div></div>
+        <div class="f-field"><label class="f-label" for="fld-auth-21">Work email</label><input id="fld-auth-21" class="f-input" type="email" placeholder="you@company.com" value="" style="height:46px" ></div>
+        <div class="f-field"><label class="f-label" for="fld-auth-22">Password</label><input id="fld-auth-22" class="f-input" type="password" placeholder="At least 10 characters" value="" style="height:46px" ></div>
+        <div class="f-progress" aria-label="Password strength"><i style="width:40%;background:var(--warn)"></i></div>
+        <label class="f-row" style="align-items:flex-start"><input type="checkbox" class="f-check" style="margin-top:2px">I agree to the Terms and Privacy Policy</label>
+        <button class="f-btn f-btn--primary f-btn--block" style="height:46px" data-go="onboarding">Create account</button>
+        <p class="f-faint" style="text-align:center;margin:0;font-size:13px">Already have an account? <a style="text-decoration:underline;cursor:pointer" data-f-view="#au-in">Sign in</a></p>
+      </form>
+      <form class="f-auth__box" id="au-forgot" data-f-viewitem hidden onsubmit="return false">
+        <div style="text-align:center"><span class="f-empty__icon" style="margin:0 auto 12px"><svg class="f-i"><use href="#i-mail"/></svg></span><h1 class="f-h2">Reset your password</h1><p class="f-muted" style="margin:6px 0 0">Enter your email and we will send a reset link.</p></div>
+        <div class="f-field"><label class="f-label" for="fld-auth-23">Work email</label><input id="fld-auth-23" class="f-input" type="email" placeholder="you@company.com" value="" style="height:46px" ></div>
+        <button class="f-btn f-btn--primary f-btn--block" style="height:46px" data-f-toast="ok|Check your inbox|If that address has an account, a link is on its way.">Send reset link</button>
+        <p class="f-faint" style="text-align:center;margin:0;font-size:13px"><a style="text-decoration:underline;cursor:pointer" data-f-view="#au-in">Back to sign in</a></p>
+      </form>
+      <form class="f-auth__box" id="au-2fa" data-f-viewitem hidden onsubmit="return false">
+        <div style="text-align:center"><span class="f-empty__icon" style="margin:0 auto 12px"><svg class="f-i"><use href="#i-shield-check"/></svg></span><h1 class="f-h2">Two-factor authentication</h1><p class="f-muted" style="margin:6px 0 0">Enter the 6-digit code from your authenticator app.</p></div>
+        <div class="f-row" style="justify-content:center;gap:8px" role="group" aria-label="6-digit code"><input class="f-input f-mono" inputmode="numeric" maxlength="1" aria-label="Digit 1" style="width:46px;height:54px;text-align:center;font-size:22px;padding:0"><input class="f-input f-mono" inputmode="numeric" maxlength="1" aria-label="Digit 2" style="width:46px;height:54px;text-align:center;font-size:22px;padding:0"><input class="f-input f-mono" inputmode="numeric" maxlength="1" aria-label="Digit 3" style="width:46px;height:54px;text-align:center;font-size:22px;padding:0"><input class="f-input f-mono" inputmode="numeric" maxlength="1" aria-label="Digit 4" style="width:46px;height:54px;text-align:center;font-size:22px;padding:0"><input class="f-input f-mono" inputmode="numeric" maxlength="1" aria-label="Digit 5" style="width:46px;height:54px;text-align:center;font-size:22px;padding:0"><input class="f-input f-mono" inputmode="numeric" maxlength="1" aria-label="Digit 6" style="width:46px;height:54px;text-align:center;font-size:22px;padding:0"></div>
+        <button class="f-btn f-btn--primary f-btn--block" style="height:46px" data-go="dashboard">Verify and continue</button>
+        <p class="f-faint" style="text-align:center;margin:0;font-size:13px">Lost your device? <a style="text-decoration:underline;cursor:pointer">Use a recovery code</a></p>
+      </form>
+    </div>
+    <div class="f-auth__panel">
+      <div class="f-row" style="gap:8px;opacity:.8"><span class="f-pill f-pill--white">v4.2</span><span>What's new</span></div>
+      <div class="f-stack" style="gap:20px"><h1 class="f-h1">Every order, on time.</h1><p class="f-muted" style="font-size:17px;max-width:44ch;margin:0;color:color-mix(in oklab,var(--on-brand),transparent 25%)">One place for quotes, production and delivery, with an early warning when something is about to slip.</p></div>
+      <div class="f-card f-card--accent" style="max-width:440px"><div class="f-row" style="gap:6px;font-size:13px"><svg class="f-i f-i--sm"><use href="#i-sparkles"/></svg>Next best action</div><div class="f-h2" style="font-size:20px">8 orders may miss their date. Review them now.</div></div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" data-theme="pine">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Client app</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23144'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="frame.css">
+  <link rel="stylesheet" href="themes/pine.css">   <!-- ONE theme file (light + dark). 40 to choose from in themes/ -->
+  <script src="frame.js" data-sprite="icons.svg" defer></script>
+</head>
+<body class="f-root">
+  <a class="f-skip" href="#main">Skip to content</a>
+<!-- STARTER: sidebar shell + one page. Serve over http (any static server) so the icon sprite loads.
+     Copy sections from pages/*.html. Validate: add data-check to the frame.js tag below and read the console. -->
+<div class="f-app f-app--side">
+  <aside class="f-side">
+    <div class="f-side__head"><a class="f-logo" href="#" aria-label="Home"><span class="f-logo__mark">A</span><span class="f-logo__word">Acme</span></a></div>
+    <nav class="f-nav" aria-label="Main">
+      <a href="#" aria-current="page"><svg class="f-i"><use href="#i-layout-grid"/></svg><span>Overview</span></a>
+      <a href="#"><svg class="f-i"><use href="#i-inbox"/></svg><span>Orders</span><span class="f-nav__n">12</span></a>
+      <a href="#"><svg class="f-i"><use href="#i-users"/></svg><span>Customers</span></a>
+      <a href="#"><svg class="f-i"><use href="#i-settings"/></svg><span>Settings</span></a>
+    </nav>
+  </aside>
+  <main class="f-main" id="main">
+    <div class="f-stack" style="gap:16px">
+      <div class="f-head"><div><h1 class="f-h1">Overview</h1><p class="f-subtitle">What needs attention today.</p></div>
+        <div class="f-head__actions"><button class="f-btn f-btn--primary"><svg class="f-i f-i--sm"><use href="#i-plus"/></svg>New order</button></div></div>
+      <div class="f-card">
+        <div class="f-card__head"><div><h2 class="f-card__title">Recent orders</h2><p class="f-card__sub">Last 7 days</p></div></div>
+        <div class="f-tablewrap"><table class="f-table">
+          <thead><tr><th data-sort>Order</th><th>Status</th><th class="f-r">Value</th></tr></thead>
+          <tbody>
+            <tr><td>#1042 Bracket plates</td><td><span class="f-pill f-pill--warn f-pill--dot">Waiting</span></td><td class="f-r">$4,820</td></tr>
+            <tr><td>#1041 Gasket kit</td><td><span class="f-pill f-pill--ok f-pill--dot">Shipped</span></td><td class="f-r">$1,260</td></tr>
+          </tbody></table></div>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

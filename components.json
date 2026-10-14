@@ -1,0 +1,682 @@
+{
+ "name": "Frame UI",
+ "version": "3.0",
+ "prefix": "f-",
+ "vocabulary": "Frame classes (f-). daisyUI names listed per component for translation. Tokens follow the daisyUI --color-* contract.",
+ "attributes": {
+  "html": {
+   "data-theme": "any name in themes.json; link themes/NAME.css",
+   "data-mode": "light|dark, works with every theme (or Frame.setMode(\"auto\"))",
+   "data-radius": "crisp|square",
+   "data-layout": "floating|docked",
+   "data-density": "compact"
+  }
+ },
+ "tokens": [
+  "--color-base-100",
+  "--color-base-200",
+  "--color-base-300",
+  "--color-base-content",
+  "--color-primary",
+  "--color-primary-content",
+  "--color-secondary",
+  "--color-secondary-content",
+  "--color-accent",
+  "--color-accent-content",
+  "--color-neutral",
+  "--color-neutral-content",
+  "--color-info",
+  "--color-success",
+  "--color-warning",
+  "--color-error",
+  "--radius-box",
+  "--radius-field",
+  "--radius-selector"
+ ],
+ "components": [
+  {
+   "name": "Button",
+   "purpose": "Any action. One primary button per view.",
+   "frame": [
+    "f-btn"
+   ],
+   "modifiers": [
+    "f-btn--primary",
+    "f-btn--accent",
+    "f-btn--ghost",
+    "f-btn--destructive",
+    "f-btn--sm",
+    "f-btn--icon",
+    "f-btn--block"
+   ],
+   "daisyui": [
+    "btn"
+   ],
+   "example": "<button class=\"f-btn f-btn--primary\">Save</button>",
+   "a11y": "Icon-only buttons need aria-label."
+  },
+  {
+   "name": "Badge / pill",
+   "purpose": "Status or count. Pair colour with text or an icon.",
+   "frame": [
+    "f-pill"
+   ],
+   "modifiers": [
+    "f-pill--ok",
+    "f-pill--warn",
+    "f-pill--danger",
+    "f-pill--info",
+    "f-pill--ai",
+    "f-pill--brand",
+    "f-pill--accent",
+    "f-pill--outline",
+    "f-pill--dot"
+   ],
+   "daisyui": [
+    "badge"
+   ],
+   "example": "<span class=\"f-pill f-pill--ok f-pill--dot\">Shipped</span>",
+   "a11y": ""
+  },
+  {
+   "name": "Card",
+   "purpose": "Container for a group of content.",
+   "frame": [
+    "f-card"
+   ],
+   "modifiers": [
+    "f-card--brand",
+    "f-card--accent",
+    "f-card--ai",
+    "f-card--ok",
+    "f-card--warn",
+    "f-card--flush"
+   ],
+   "daisyui": [
+    "card"
+   ],
+   "example": "<div class=\"f-card\"><div class=\"f-card__head\"><div><h3 class=\"f-card__title\">Title</h3><p class=\"f-card__sub\">Sub</p></div></div>\u2026</div>",
+   "a11y": ""
+  },
+  {
+   "name": "Tabs",
+   "purpose": "Switch panels. Container needs data-f-tabs; children aria-controls.",
+   "frame": [
+    "f-tabs",
+    "f-tab"
+   ],
+   "modifiers": [],
+   "daisyui": [
+    "tabs"
+   ],
+   "example": "<div class=\"f-tabs\" data-f-tabs role=\"tablist\"><button class=\"f-tab\" role=\"tab\" aria-selected=\"true\" aria-controls=\"p1\">One</button></div>",
+   "a11y": "role=tablist/tab, aria-selected."
+  },
+  {
+   "name": "Segmented control",
+   "purpose": "Small either/or choice.",
+   "frame": [
+    "f-seg"
+   ],
+   "modifiers": [],
+   "daisyui": [
+    "join",
+    "tabs"
+   ],
+   "example": "<span class=\"f-seg\"><button aria-pressed=\"true\">Month</button><button aria-pressed=\"false\">Week</button></span>",
+   "a11y": ""
+  },
+  {
+   "name": "Chips",
+   "purpose": "Single-select filter chips.",
+   "frame": [
+    "f-chips",
+    "f-chip"
+   ],
+   "modifiers": [
+    "f-chip__n"
+   ],
+   "daisyui": [
+    "badge",
+    "tabs"
+   ],
+   "example": "<div class=\"f-chips\" data-f-chips><button class=\"f-chip\" aria-pressed=\"true\">All <span class=\"f-chip__n\">12</span></button></div>",
+   "a11y": ""
+  },
+  {
+   "name": "Table",
+   "purpose": "Data table. Wrap in f-tablewrap. Sortable with th[data-sort].",
+   "frame": [
+    "f-table",
+    "f-tablewrap"
+   ],
+   "modifiers": [
+    "f-table--dense",
+    "f-table--zebra",
+    "f-table--sticky"
+   ],
+   "daisyui": [
+    "table"
+   ],
+   "example": "<div class=\"f-tablewrap\"><table class=\"f-table\"><thead><tr><th data-sort>Order</th></tr></thead><tbody><tr><td>\u2026</td></tr></tbody></table></div>",
+   "a11y": "Use <th scope> and a caption or aria-label for complex tables."
+  },
+  {
+   "name": "Input",
+   "purpose": "Text-like input inside a field.",
+   "frame": [
+    "f-input",
+    "f-field",
+    "f-label",
+    "f-hint"
+   ],
+   "modifiers": [
+    "f-field--error"
+   ],
+   "daisyui": [
+    "input",
+    "fieldset",
+    "label"
+   ],
+   "example": "<div class=\"f-field\"><label class=\"f-label\" for=\"e\">Email</label><input id=\"e\" class=\"f-input\" type=\"email\"></div>",
+   "a11y": "Every control needs a label (for/id) or aria-label."
+  },
+  {
+   "name": "Textarea",
+   "purpose": "Multi-line input.",
+   "frame": [
+    "f-textarea"
+   ],
+   "modifiers": [],
+   "daisyui": [
+    "textarea"
+   ],
+   "example": "<textarea class=\"f-textarea\" aria-label=\"Notes\"></textarea>",
+   "a11y": ""
+  },
+  {
+   "name": "Checkbox",
+   "purpose": "",
+   "frame": [
+    "f-check"
+   ],
+   "modifiers": [],
+   "daisyui": [
+    "checkbox"
+   ],
+   "example": "<label class=\"f-row\"><input type=\"checkbox\" class=\"f-check\">Remember me</label>",
+   "a11y": ""
+  },
+  {
+   "name": "Radio",
+   "purpose": "",
+   "frame": [
+    "f-radio"
+   ],
+   "modifiers": [],
+   "daisyui": [
+    "radio"
+   ],
+   "example": "<label class=\"f-row\"><input type=\"radio\" name=\"r\" class=\"f-radio\">Option</label>",
+   "a11y": ""
+  },
+  {
+   "name": "Switch",
+   "purpose": "On/off setting. Always give it a name.",
+   "frame": [
+    "f-switch"
+   ],
+   "modifiers": [],
+   "daisyui": [
+    "toggle"
+   ],
+   "example": "<input type=\"checkbox\" class=\"f-switch\" aria-label=\"Email alerts\">",
+   "a11y": ""
+  },
+  {
+   "name": "Modal",
+   "purpose": "Native dialog. Open with data-f-open.",
+   "frame": [
+    "f-modal",
+    "f-sheet__head",
+    "f-sheet__body",
+    "f-sheet__foot"
+   ],
+   "modifiers": [
+    "f-modal--sm"
+   ],
+   "daisyui": [
+    "modal"
+   ],
+   "example": "<dialog class=\"f-modal\" id=\"m\">\u2026</dialog> <button data-f-open=\"#m\">Open</button>",
+   "a11y": "Native dialog: focus trap and Esc included."
+  },
+  {
+   "name": "Drawer",
+   "purpose": "Side panel dialog.",
+   "frame": [
+    "f-drawer"
+   ],
+   "modifiers": [
+    "f-drawer--left",
+    "f-drawer--sm"
+   ],
+   "daisyui": [
+    "drawer"
+   ],
+   "example": "<dialog class=\"f-drawer\" id=\"d\">\u2026</dialog>",
+   "a11y": ""
+  },
+  {
+   "name": "Dropdown menu",
+   "purpose": "Action menu. Trigger has data-f-menu.",
+   "frame": [
+    "f-menu",
+    "f-menu__item"
+   ],
+   "modifiers": [
+    "f-menu--pop",
+    "f-menu__label",
+    "f-menu__sep",
+    "f-menu__item--danger"
+   ],
+   "daisyui": [
+    "dropdown",
+    "menu"
+   ],
+   "example": "<button data-f-menu=\"#mn\" class=\"f-btn\">More</button><div class=\"f-menu\" id=\"mn\" role=\"menu\"><button class=\"f-menu__item\">Edit</button></div>",
+   "a11y": ""
+  },
+  {
+   "name": "Alert",
+   "purpose": "Inline message.",
+   "frame": [
+    "f-alert"
+   ],
+   "modifiers": [
+    "f-alert--ok",
+    "f-alert--warn",
+    "f-alert--danger",
+    "f-alert--info"
+   ],
+   "daisyui": [
+    "alert"
+   ],
+   "example": "<div class=\"f-alert f-alert--warn\" role=\"alert\">\u2026</div>",
+   "a11y": ""
+  },
+  {
+   "name": "Toast",
+   "purpose": "Transient message. Frame.toast({kind,title,text}) or data-f-toast=\"ok|Title|Text\".",
+   "frame": [
+    "f-toast"
+   ],
+   "modifiers": [],
+   "daisyui": [
+    "toast"
+   ],
+   "example": "<button data-f-toast=\"ok|Saved|Done\">Save</button>",
+   "a11y": ""
+  },
+  {
+   "name": "Progress",
+   "purpose": "Linear progress. Set width inline.",
+   "frame": [
+    "f-progress",
+    "f-meter"
+   ],
+   "modifiers": [
+    "f-meter--lg",
+    "f-meter--warn",
+    "f-meter--danger"
+   ],
+   "daisyui": [
+    "progress"
+   ],
+   "example": "<div class=\"f-progress\"><i style=\"width:40%\"></i></div>",
+   "a11y": ""
+  },
+  {
+   "name": "Steps",
+   "purpose": "Process or wizard steps.",
+   "frame": [
+    "f-steps",
+    "f-step"
+   ],
+   "modifiers": [],
+   "daisyui": [
+    "steps"
+   ],
+   "example": "<div class=\"f-steps\"><div class=\"f-step\" data-state=\"done\"><span class=\"f-step__dot\"></span><b>Quote</b></div></div>",
+   "a11y": ""
+  },
+  {
+   "name": "Timeline",
+   "purpose": "Vertical history.",
+   "frame": [
+    "f-tl",
+    "f-tl__item"
+   ],
+   "modifiers": [],
+   "daisyui": [
+    "timeline"
+   ],
+   "example": "<div class=\"f-tl\"><div class=\"f-tl__item\" data-state=\"done\">\u2026</div></div>",
+   "a11y": ""
+  },
+  {
+   "name": "Avatar",
+   "purpose": "User image or initials.",
+   "frame": [
+    "f-avatar"
+   ],
+   "modifiers": [
+    "f-avatar--lg",
+    "f-avatars"
+   ],
+   "daisyui": [
+    "avatar"
+   ],
+   "example": "<span class=\"f-avatar\">PS</span>",
+   "a11y": ""
+  },
+  {
+   "name": "Skeleton",
+   "purpose": "Loading placeholder.",
+   "frame": [
+    "f-skel"
+   ],
+   "modifiers": [
+    "f-skel--circle"
+   ],
+   "daisyui": [
+    "skeleton"
+   ],
+   "example": "<div class=\"f-skel\" style=\"height:16px\"></div>",
+   "a11y": ""
+  },
+  {
+   "name": "Empty state",
+   "purpose": "No data yet or no results.",
+   "frame": [
+    "f-empty",
+    "f-empty__icon"
+   ],
+   "modifiers": [],
+   "daisyui": [
+    "hero"
+   ],
+   "example": "<div class=\"f-empty\"><span class=\"f-empty__icon\">\u2026</span><h3>No orders</h3><p>\u2026</p></div>",
+   "a11y": ""
+  },
+  {
+   "name": "List item",
+   "purpose": "Row with icon, text and action.",
+   "frame": [
+    "f-li",
+    "f-list"
+   ],
+   "modifiers": [
+    "f-li--plain",
+    "f-li__icon--ok",
+    "f-li__icon--danger"
+   ],
+   "daisyui": [
+    "list"
+   ],
+   "example": "<div class=\"f-li\"><span class=\"f-li__icon\">\u2026</span><div class=\"f-li__body\"><div class=\"f-li__title\">Title</div></div></div>",
+   "a11y": ""
+  },
+  {
+   "name": "Key-value list",
+   "purpose": "Label/value pairs.",
+   "frame": [
+    "f-kv"
+   ],
+   "modifiers": [],
+   "daisyui": [
+    "stats"
+   ],
+   "example": "<dl class=\"f-kv\"><dt>Status</dt><dd>Open</dd></dl>",
+   "a11y": ""
+  },
+  {
+   "name": "Stat / KPI",
+   "purpose": "Headline number with delta.",
+   "frame": [
+    "f-kpis",
+    "f-kpi",
+    "f-num",
+    "f-delta"
+   ],
+   "modifiers": [
+    "f-num--lg",
+    "f-num--xl"
+   ],
+   "daisyui": [
+    "stat"
+   ],
+   "example": "<div class=\"f-kpi\">\u2026</div>",
+   "a11y": ""
+  },
+  {
+   "name": "Kanban board",
+   "purpose": "Drag cards between columns.",
+   "frame": [
+    "f-board",
+    "f-col",
+    "f-kcard"
+   ],
+   "modifiers": [],
+   "daisyui": [
+    "(none)"
+   ],
+   "example": "<div class=\"f-board\"><div class=\"f-col\">\u2026</div></div>",
+   "a11y": ""
+  },
+  {
+   "name": "Command palette",
+   "purpose": "Ctrl/Cmd+K search dialog.",
+   "frame": [
+    "f-cmd"
+   ],
+   "modifiers": [],
+   "daisyui": [
+    "(none)"
+   ],
+   "example": "<dialog class=\"f-cmd\" id=\"cmd\">\u2026</dialog>",
+   "a11y": ""
+  },
+  {
+   "name": "Calendar",
+   "purpose": "Month grid with events.",
+   "frame": [
+    "f-cal"
+   ],
+   "modifiers": [
+    "f-cal__ev--ok",
+    "f-cal__ev--warn",
+    "f-cal__ev--danger",
+    "f-cal__ev--info"
+   ],
+   "daisyui": [
+    "calendar"
+   ],
+   "example": "See pages/calendar.html",
+   "a11y": ""
+  },
+  {
+   "name": "Search",
+   "purpose": "Search field with icon.",
+   "frame": [
+    "f-search"
+   ],
+   "modifiers": [],
+   "daisyui": [
+    "input"
+   ],
+   "example": "<label class=\"f-search\"><svg class=\"f-i\"><use href=\"#i-search\"/></svg><input placeholder=\"Search\" aria-label=\"Search\"></label>",
+   "a11y": ""
+  },
+  {
+   "name": "Icon",
+   "purpose": "Lucide SVG sprite. Names in icons.json.",
+   "frame": [
+    "f-i"
+   ],
+   "modifiers": [
+    "f-i--sm",
+    "f-i--lg"
+   ],
+   "daisyui": [
+    "(svg)"
+   ],
+   "example": "<svg class=\"f-i\"><use href=\"#i-search\"/></svg>",
+   "a11y": "Decorative: no label. Meaningful: wrap in labelled button."
+  },
+  {
+   "name": "Logo",
+   "purpose": "Three slots: sidebar, top bar, sign-in.",
+   "frame": [
+    "f-logo"
+   ],
+   "modifiers": [
+    "f-logo--mark",
+    "f-logo--lg"
+   ],
+   "daisyui": [
+    "(none)"
+   ],
+   "example": "<a class=\"f-logo\" data-logo=\"full\"></a>",
+   "a11y": ""
+  },
+  {
+   "name": "Live filter / search",
+   "purpose": "Filter rows, list items or cards as you type. No JavaScript to write.",
+   "frame": [
+    "f-search"
+   ],
+   "modifiers": [],
+   "daisyui": [
+    "(none)"
+   ],
+   "example": "<input data-f-filter=\"#rows\" aria-label=\"Search\"> <table class=\"f-table\"><tbody id=\"rows\"><tr data-f-text=\"acme tools active\">\u2026</tr></tbody></table> <div class=\"f-empty\" data-f-filter-empty=\"#rows\" hidden>No matches</div>",
+   "a11y": "Give the input a label. Optional chips: data-f-filter-cat; count: data-f-filter-count."
+  },
+  {
+   "name": "Light / dark switch",
+   "purpose": "Switch mode for any theme without custom JS.",
+   "frame": [
+    "f-btn"
+   ],
+   "modifiers": [],
+   "daisyui": [
+    "theme-controller",
+    "swap"
+   ],
+   "example": "<button class=\"f-btn\" data-f-mode=\"dark\">Dark</button> <button class=\"f-btn\" data-f-mode=\"light\">Light</button>",
+   "a11y": "Use real buttons with text or aria-label."
+  },
+  {
+   "name": "Select",
+   "purpose": "Native select styled like an input.",
+   "frame": [
+    "f-select"
+   ],
+   "modifiers": [],
+   "daisyui": [
+    "select"
+   ],
+   "example": "<div class=\"f-field\"><label class=\"f-label\" for=\"c\">Category</label><select id=\"c\" class=\"f-select\"><option>Tools</option></select></div>",
+   "a11y": "Label required."
+  }
+ ],
+ "pages": [
+  {
+   "file": "pages/dashboard.html",
+   "screen": "dashboard",
+   "pattern": "KPI cards, hero, attention list, activity"
+  },
+  {
+   "file": "pages/orders.html",
+   "screen": "orders",
+   "pattern": "Filtered table, chips, bulk actions, drawer"
+  },
+  {
+   "file": "pages/detail.html",
+   "screen": "detail",
+   "pattern": "Record detail with steps, tabs, timeline"
+  },
+  {
+   "file": "pages/pipeline.html",
+   "screen": "pipeline",
+   "pattern": "Kanban"
+  },
+  {
+   "file": "pages/inbox.html",
+   "screen": "inbox",
+   "pattern": "Threads + conversation"
+  },
+  {
+   "file": "pages/reports.html",
+   "screen": "reports",
+   "pattern": "Charts"
+  },
+  {
+   "file": "pages/tables.html",
+   "screen": "tables",
+   "pattern": "Grouping, inline edit, column picker"
+  },
+  {
+   "file": "pages/form.html",
+   "screen": "form",
+   "pattern": "Wizard and form sections"
+  },
+  {
+   "file": "pages/calendar.html",
+   "screen": "calendar",
+   "pattern": "Month calendar"
+  },
+  {
+   "file": "pages/notifications.html",
+   "screen": "notifications",
+   "pattern": "Feed with filters"
+  },
+  {
+   "file": "pages/settings.html",
+   "screen": "settings",
+   "pattern": "Branding, team, API keys"
+  },
+  {
+   "file": "pages/profile.html",
+   "screen": "profile",
+   "pattern": "Account and security"
+  },
+  {
+   "file": "pages/billing.html",
+   "screen": "billing",
+   "pattern": "Plans, usage, invoices"
+  },
+  {
+   "file": "pages/onboarding.html",
+   "screen": "onboarding",
+   "pattern": "Checklist"
+  },
+  {
+   "file": "pages/errors.html",
+   "screen": "errors",
+   "pattern": "404 403 500 maintenance offline"
+  },
+  {
+   "file": "pages/ui.html",
+   "screen": "ui",
+   "pattern": "All overlays and controls"
+  },
+  {
+   "file": "pages/auth.html",
+   "screen": "auth",
+   "pattern": "Sign in, up, forgot, 2FA"
+  }
+ ],
+ "validation": "Add data-check to the frame.js script tag (or ?check in the URL). Console + badge list problems; Frame.check() returns an array."
+}

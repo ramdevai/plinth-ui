@@ -1,0 +1,470 @@
+# Frame UI: complete reference for AI agents
+
+Everything needed to build with Frame in one document. No Python, Node or npm. BASE = the URL this file is served from (or the folder).
+
+---
+## 1. Rules and workflow
+Frame is a no-build CSS + JS kit for client apps: tight, professional, responsive, accessible and fast.
+No Python, Node or npm needed to build with it. Read this file fully before writing UI.
+
+## How you were pointed at it
+- **A folder** (`frame/` in the project, or this repo): use the files directly, paths below are relative to it.
+- **A URL** (`https://HOST/llms.txt` or any file on that host): HOST is the base. Fetch `BASE/llms-full.txt` for everything in one document, then link the kit straight from BASE:
+  ```html
+  <link rel="stylesheet" href="BASE/frame.css" crossorigin>
+  <link rel="stylesheet" href="BASE/themes/pine.css" crossorigin>
+  <script src="BASE/frame.js" data-sprite="BASE/icons.svg" defer></script>
+  ```
+  Page templates are at `BASE/pages/NAME.html`. (The icon sprite loads cross-origin only if the host sends CORS headers: GitHub Pages, Cloudflare Pages, jsDelivr and the bundled `_headers` file do. Otherwise copy `icons.svg` next to your page.)
+
+## Principles
+- **No build.** Plain HTML, CSS, a little JS. Never add Tailwind, npm, bundlers or frameworks.
+- **Write less, copy more.** Start from the closest page in `pages/` (or `starter.html`), edit text and data. Do not invent layouts.
+- **Frame classes only.** Use `f-` classes from `components.json`. Do not write new CSS. Per-client styling is colours in `theme.css`.
+- **Semantic tokens, never raw colours.** `var(--primary)`, `var(--surface)`, `var(--text)`, `var(--ok)` … never hex in markup.
+- **Accessible by default.** Every control has a name. Status is never colour alone. Keep focus rings.
+- **Icons from `icons.json` only.** `<svg class="f-i"><use href="#i-NAME"/></svg>`.
+- **Minimal HTML.** Inline `style` only for layout tweaks (gap, width). No `!important`.
+- **App logic is yours, UI behaviour is the kit's.** Data loading, saving forms and rendering rows go in your own `app.js` (never inline `<script>` blocks). Never re-implement what `data-f-*` already does (modals, tabs, menus, sorting, filtering, wizards, toasts, copy, light/dark).
+
+## Files
+| File | Use |
+|---|---|
+| `frame.css`, `frame.js` | The kit. Do not edit per client |
+| `themes/NAME.css` | ONE theme, light + dark. Link exactly one. 40 names in `themes.json` (5 Frame + 35 daisyUI) |
+| `theme.css` | A client's own colours (copy `theme.example.css`), linked after the theme |
+| `components.json` | Every component: classes, modifiers, example markup, daisyUI name |
+| `icons.svg`, `icons.json` | 320+ Lucide icons with tags. All are in the sprite |
+| `pages/*.html` | 17 page templates + `_overlays.html` (modals, drawers, menus) |
+| `starter.html` | Minimal working app shell |
+| `preview.html` | Whole kit in one file: open it to see everything |
+| `llms-full.txt` | All of the above condensed into one document |
+
+## Workflow
+1. Identify the screen type; copy the matching `<section>` from `pages/` (or start from `starter.html`).
+2. Look components up in `components.json`; copy their `example`.
+3. Wire behaviour with `data-f-*` attributes (header comment of `frame.js`). Never write JS for tabs, modals, menus, sorting, filtering, wizards, toasts, copy, view switching, light/dark.
+4. Pick a theme: `<html data-theme="NAME">` + `<link href="themes/NAME.css">`. Light/dark: `data-mode="dark|light"` (works with every theme; with no data-mode a theme shows its natural scheme) or `Frame.setMode('auto')`.
+5. **Validate in the browser:** add `data-check` to the frame.js script tag (or open the page with `?check`). The console lists problems and a badge shows the count; `Frame.check()` returns them as an array. Fix every error and warning, then remove `data-check`.
+   Optional static check if Python is available: `python3 tools/check.py file.html`.
+
+## Behaviour recipes (no custom JS)
+```html
+<!-- live search over rows, with an empty state -->
+<label class="f-search"><svg class="f-i"><use href="#i-search"/></svg><input data-f-filter="#rows" placeholder="Search" aria-label="Search"></label>
+<table class="f-table"><tbody id="rows"><tr data-f-text="acme tools active"><td>…</td></tr></tbody></table>
+<div class="f-empty" data-f-filter-empty="#rows" hidden>…no matches…</div>
+<!-- modal --> <button class="f-btn" data-f-open="#m">Add</button> <dialog class="f-modal" id="m">… <button data-f-close>Cancel</button></dialog>
+<!-- toast --> <button data-f-toast="ok|Saved|Supplier added">Save</button>
+<!-- light / dark --> <button data-f-mode="dark">Dark</button> <button data-f-mode="light">Light</button>
+```
+
+## Rules
+- Shell: `<div class="f-app f-app--side">` (sidebar) or `f-app--top`; content in `<main class="f-main">`. `<body class="f-root">`.
+- Load order: `frame.css`, then the theme, then `theme.css`.
+- Page header: `.f-head` with `.f-h1`, `.f-subtitle`, actions in `.f-head__actions`. One primary button per view.
+- Tables inside `.f-tablewrap` (wide tables scroll inside it on phones, nothing else needed); sortable headers `th[data-sort]`.
+- Dialogs are native `<dialog class="f-modal|f-drawer">`, opened with `data-f-open="#id"`.
+- Forms: `.f-field` > `.f-label[for]` + `.f-input[id]`. Errors: `.f-field--error` + `.f-hint`.
+- Status colour only via `f-pill--ok|warn|danger|info` / `f-alert--*`, with text or an icon.
+- Charts use `--chart-1..4`, never the brand colour as a series.
+- Corners/density: `data-radius="crisp|square"`, `data-density="compact"`. Do not hand-edit radii.
+- Accessibility: first in `<body>` put `<a class="f-skip" href="#main">Skip to content</a>` and give `<main>` `id="main"`. One `<h1>` per page, card titles are `<h2 class="f-card__title">`, never skip a level. Icon-only buttons need `aria-label`. Tabs, toggles and group rows get their ARIA roles from frame.js: write `data-f-tabs`, do not hand-roll roles.
+- Phones (≤600px): the sidebar becomes a bottom tab bar, so keep the sidebar to 5 to 6 destinations (more scroll sideways). Content gets the full width.
+- Do not use daisyUI/Tailwind class names (`btn`, `card`, `flex`…): the checker warns with the Frame equivalent.
+
+## Don't
+- Add a framework, CSS reset, utility library or a second icon set.
+- Hard-code colours, fonts or pixel radii.
+- Remove `:focus-visible` styles, or rely on colour alone.
+- Edit `frame.css` for one client's request: change `theme.css` or ask.
+
+## Definition of done
+The browser check reports no issues; keyboard-only walk-through works; looks right in light and dark at 375px and 1440px.
+
+
+---
+## 2. Themes (link ONE: BASE/themes/NAME.css; every theme has light + dark via data-mode)
+- natural light: pine, indigo, ink, terracotta, ocean, acid, autumn, bumblebee, caramellatte, cmyk, corporate, cupcake, cyberpunk, emerald, fantasy, garden, lemonade, light, lofi, nord, pastel, retro, silk, valentine, winter, wireframe
+- natural dark: abyss, aqua, black, business, coffee, dark, dim, dracula, forest, halloween, luxury, night, sunset, synthwave
+
+Client colours: copy theme.example.css to theme.css (--color-primary, --color-primary-content, --color-accent, --color-accent-content, --neutral-hue), or paste a daisyUI theme-generator block.
+Tokens (daisyUI contract): --color-base-100, --color-base-200, --color-base-300, --color-base-content, --color-primary, --color-primary-content, --color-secondary, --color-secondary-content, --color-accent, --color-accent-content, --color-neutral, --color-neutral-content, --color-info, --color-success, --color-warning, --color-error, --radius-box, --radius-field, --radius-selector
+
+Attributes on <html>: data-theme=any name in themes.json; link themes/NAME.css; data-mode=light|dark, works with every theme (or Frame.setMode("auto")); data-radius=crisp|square; data-layout=floating|docked; data-density=compact
+
+---
+## 3. Components (class, modifiers, daisyUI name, example)
+### Button
+Any action. One primary button per view.
+- classes: f-btn
+- modifiers: f-btn--primary f-btn--accent f-btn--ghost f-btn--destructive f-btn--sm f-btn--icon f-btn--block
+- daisyUI: btn
+- example: `<button class="f-btn f-btn--primary">Save</button>`
+- a11y: Icon-only buttons need aria-label.
+
+### Badge / pill
+Status or count. Pair colour with text or an icon.
+- classes: f-pill
+- modifiers: f-pill--ok f-pill--warn f-pill--danger f-pill--info f-pill--ai f-pill--brand f-pill--accent f-pill--outline f-pill--dot
+- daisyUI: badge
+- example: `<span class="f-pill f-pill--ok f-pill--dot">Shipped</span>`
+
+### Card
+Container for a group of content.
+- classes: f-card
+- modifiers: f-card--brand f-card--accent f-card--ai f-card--ok f-card--warn f-card--flush
+- daisyUI: card
+- example: `<div class="f-card"><div class="f-card__head"><div><h3 class="f-card__title">Title</h3><p class="f-card__sub">Sub</p></div></div>…</div>`
+
+### Tabs
+Switch panels. Container needs data-f-tabs; children aria-controls.
+- classes: f-tabs f-tab
+- modifiers: (none)
+- daisyUI: tabs
+- example: `<div class="f-tabs" data-f-tabs role="tablist"><button class="f-tab" role="tab" aria-selected="true" aria-controls="p1">One</button></div>`
+- a11y: role=tablist/tab, aria-selected.
+
+### Segmented control
+Small either/or choice.
+- classes: f-seg
+- modifiers: (none)
+- daisyUI: join, tabs
+- example: `<span class="f-seg"><button aria-pressed="true">Month</button><button aria-pressed="false">Week</button></span>`
+
+### Chips
+Single-select filter chips.
+- classes: f-chips f-chip
+- modifiers: f-chip__n
+- daisyUI: badge, tabs
+- example: `<div class="f-chips" data-f-chips><button class="f-chip" aria-pressed="true">All <span class="f-chip__n">12</span></button></div>`
+
+### Table
+Data table. Wrap in f-tablewrap. Sortable with th[data-sort].
+- classes: f-table f-tablewrap
+- modifiers: f-table--dense f-table--zebra f-table--sticky
+- daisyUI: table
+- example: `<div class="f-tablewrap"><table class="f-table"><thead><tr><th data-sort>Order</th></tr></thead><tbody><tr><td>…</td></tr></tbody></table></div>`
+- a11y: Use <th scope> and a caption or aria-label for complex tables.
+
+### Input
+Text-like input inside a field.
+- classes: f-input f-field f-label f-hint
+- modifiers: f-field--error
+- daisyUI: input, fieldset, label
+- example: `<div class="f-field"><label class="f-label" for="e">Email</label><input id="e" class="f-input" type="email"></div>`
+- a11y: Every control needs a label (for/id) or aria-label.
+
+### Textarea
+Multi-line input.
+- classes: f-textarea
+- modifiers: (none)
+- daisyUI: textarea
+- example: `<textarea class="f-textarea" aria-label="Notes"></textarea>`
+
+### Checkbox
+
+- classes: f-check
+- modifiers: (none)
+- daisyUI: checkbox
+- example: `<label class="f-row"><input type="checkbox" class="f-check">Remember me</label>`
+
+### Radio
+
+- classes: f-radio
+- modifiers: (none)
+- daisyUI: radio
+- example: `<label class="f-row"><input type="radio" name="r" class="f-radio">Option</label>`
+
+### Switch
+On/off setting. Always give it a name.
+- classes: f-switch
+- modifiers: (none)
+- daisyUI: toggle
+- example: `<input type="checkbox" class="f-switch" aria-label="Email alerts">`
+
+### Modal
+Native dialog. Open with data-f-open.
+- classes: f-modal f-sheet__head f-sheet__body f-sheet__foot
+- modifiers: f-modal--sm
+- daisyUI: modal
+- example: `<dialog class="f-modal" id="m">…</dialog> <button data-f-open="#m">Open</button>`
+- a11y: Native dialog: focus trap and Esc included.
+
+### Drawer
+Side panel dialog.
+- classes: f-drawer
+- modifiers: f-drawer--left f-drawer--sm
+- daisyUI: drawer
+- example: `<dialog class="f-drawer" id="d">…</dialog>`
+
+### Dropdown menu
+Action menu. Trigger has data-f-menu.
+- classes: f-menu f-menu__item
+- modifiers: f-menu--pop f-menu__label f-menu__sep f-menu__item--danger
+- daisyUI: dropdown, menu
+- example: `<button data-f-menu="#mn" class="f-btn">More</button><div class="f-menu" id="mn" role="menu"><button class="f-menu__item">Edit</button></div>`
+
+### Alert
+Inline message.
+- classes: f-alert
+- modifiers: f-alert--ok f-alert--warn f-alert--danger f-alert--info
+- daisyUI: alert
+- example: `<div class="f-alert f-alert--warn" role="alert">…</div>`
+
+### Toast
+Transient message. Frame.toast({kind,title,text}) or data-f-toast="ok|Title|Text".
+- classes: f-toast
+- modifiers: (none)
+- daisyUI: toast
+- example: `<button data-f-toast="ok|Saved|Done">Save</button>`
+
+### Progress
+Linear progress. Set width inline.
+- classes: f-progress f-meter
+- modifiers: f-meter--lg f-meter--warn f-meter--danger
+- daisyUI: progress
+- example: `<div class="f-progress"><i style="width:40%"></i></div>`
+
+### Steps
+Process or wizard steps.
+- classes: f-steps f-step
+- modifiers: (none)
+- daisyUI: steps
+- example: `<div class="f-steps"><div class="f-step" data-state="done"><span class="f-step__dot"></span><b>Quote</b></div></div>`
+
+### Timeline
+Vertical history.
+- classes: f-tl f-tl__item
+- modifiers: (none)
+- daisyUI: timeline
+- example: `<div class="f-tl"><div class="f-tl__item" data-state="done">…</div></div>`
+
+### Avatar
+User image or initials.
+- classes: f-avatar
+- modifiers: f-avatar--lg f-avatars
+- daisyUI: avatar
+- example: `<span class="f-avatar">PS</span>`
+
+### Skeleton
+Loading placeholder.
+- classes: f-skel
+- modifiers: f-skel--circle
+- daisyUI: skeleton
+- example: `<div class="f-skel" style="height:16px"></div>`
+
+### Empty state
+No data yet or no results.
+- classes: f-empty f-empty__icon
+- modifiers: (none)
+- daisyUI: hero
+- example: `<div class="f-empty"><span class="f-empty__icon">…</span><h3>No orders</h3><p>…</p></div>`
+
+### List item
+Row with icon, text and action.
+- classes: f-li f-list
+- modifiers: f-li--plain f-li__icon--ok f-li__icon--danger
+- daisyUI: list
+- example: `<div class="f-li"><span class="f-li__icon">…</span><div class="f-li__body"><div class="f-li__title">Title</div></div></div>`
+
+### Key-value list
+Label/value pairs.
+- classes: f-kv
+- modifiers: (none)
+- daisyUI: stats
+- example: `<dl class="f-kv"><dt>Status</dt><dd>Open</dd></dl>`
+
+### Stat / KPI
+Headline number with delta.
+- classes: f-kpis f-kpi f-num f-delta
+- modifiers: f-num--lg f-num--xl
+- daisyUI: stat
+- example: `<div class="f-kpi">…</div>`
+
+### Kanban board
+Drag cards between columns.
+- classes: f-board f-col f-kcard
+- modifiers: (none)
+- daisyUI: (none)
+- example: `<div class="f-board"><div class="f-col">…</div></div>`
+
+### Command palette
+Ctrl/Cmd+K search dialog.
+- classes: f-cmd
+- modifiers: (none)
+- daisyUI: (none)
+- example: `<dialog class="f-cmd" id="cmd">…</dialog>`
+
+### Calendar
+Month grid with events.
+- classes: f-cal
+- modifiers: f-cal__ev--ok f-cal__ev--warn f-cal__ev--danger f-cal__ev--info
+- daisyUI: calendar
+- example: `See pages/calendar.html`
+
+### Search
+Search field with icon.
+- classes: f-search
+- modifiers: (none)
+- daisyUI: input
+- example: `<label class="f-search"><svg class="f-i"><use href="#i-search"/></svg><input placeholder="Search" aria-label="Search"></label>`
+
+### Icon
+Lucide SVG sprite. Names in icons.json.
+- classes: f-i
+- modifiers: f-i--sm f-i--lg
+- daisyUI: (svg)
+- example: `<svg class="f-i"><use href="#i-search"/></svg>`
+- a11y: Decorative: no label. Meaningful: wrap in labelled button.
+
+### Logo
+Three slots: sidebar, top bar, sign-in.
+- classes: f-logo
+- modifiers: f-logo--mark f-logo--lg
+- daisyUI: (none)
+- example: `<a class="f-logo" data-logo="full"></a>`
+
+### Live filter / search
+Filter rows, list items or cards as you type. No JavaScript to write.
+- classes: f-search
+- modifiers: (none)
+- daisyUI: (none)
+- example: `<input data-f-filter="#rows" aria-label="Search"> <table class="f-table"><tbody id="rows"><tr data-f-text="acme tools active">…</tr></tbody></table> <div class="f-empty" data-f-filter-empty="#rows" hidden>No matches</div>`
+- a11y: Give the input a label. Optional chips: data-f-filter-cat; count: data-f-filter-count.
+
+### Light / dark switch
+Switch mode for any theme without custom JS.
+- classes: f-btn
+- modifiers: (none)
+- daisyUI: theme-controller, swap
+- example: `<button class="f-btn" data-f-mode="dark">Dark</button> <button class="f-btn" data-f-mode="light">Light</button>`
+- a11y: Use real buttons with text or aria-label.
+
+### Select
+Native select styled like an input.
+- classes: f-select
+- modifiers: (none)
+- daisyUI: select
+- example: `<div class="f-field"><label class="f-label" for="c">Category</label><select id="c" class="f-select"><option>Tools</option></select></div>`
+- a11y: Label required.
+
+---
+## 4. Behaviour (frame.js, all data-attributes)
+```
+frame.js — optional behaviour for Frame UI. No dependencies, no build.
+   Everything is driven by data-attributes, so pages stay plain HTML.
+
+   Check      <script src="frame.js" data-check defer>  or ?check in the URL: console + badge. Frame.check() returns the list
+   Base URL   [data-f-base]  replaces {BASE} in its text and data-f-copy with this page's folder URL
+   Sprite     <script src="frame.js" data-sprite="icons.svg" defer>   auto-inject the icon sprite (http only)
+   Attribute  data-f-set-attr="#grid > *|data-mode|dark"  set an attribute on every match (value - removes it)
+   Mode       Frame.setMode('light'|'dark'|'auto')   [data-f-mode="dark"] on any button; works with every theme
+   Overlays   data-f-open="#id"        open a <dialog class="f-drawer|f-modal">
+              data-f-close             close the dialog it sits in
+              data-f-menu="#id"        toggle a .f-menu (data-align="end|center")
+              Frame.toast({kind,title,text})   data-f-toast="ok|Title|Text"
+              ⌘K / Ctrl+K              opens #cmd if present
+   Tabs       [data-f-tabs] > [aria-controls="panelId"]
+   Wizard     [data-f-wizard]  [data-f-step]  [data-f-next] [data-f-prev] [data-f-finish]
+   Tables     [data-f-select="#bulkBar"]  [data-f-all]  [data-f-row]   select + bulk bar
+              th[data-sort]  (+ td[data-v] for raw values)             sorting
+              tr.f-group[aria-expanded]                                 collapsible groups
+              [data-f-expand]                                           expandable rows
+              [data-f-cols="#tableId"] > input[data-f-col="name"]       column visibility
+   Filter     <input data-f-filter="#rows">  filters the children of #rows (a <tbody>, list or grid) as you type.
+              Give each child data-f-text="searchable words". Optional: [data-f-filter-cat="#rows"] chips (children
+              carry data-cat), [data-f-filter-count="#rows"] shows the visible count, [data-f-filter-empty="#rows"] [hidden]
+              is shown when nothing matches (put your empty state there).
+   Misc       [data-f-chips]  single-select chips      [data-f-remove]  remove filter chip
+              [data-f-view="#id"]                     show one of several [data-f-viewitem] siblings (auth views)
+              [data-f-theme="name"]                   set <html data-theme> (theme gallery); fires 'f-theme'
+              [data-f-copy="text"]                     [data-f-dismiss] close an alert
+              [data-f-toggle="#id"]                    show/hide an element
+              .f-board  (cards .f-kcard[draggable])    drag between columns
+```
+
+---
+## 5. Page templates (fetch BASE/pages/NAME.html, copy the <section>)
+- dashboard: KPI cards, hero, attention list, activity
+- orders: Filtered table, chips, bulk actions, drawer
+- detail: Record detail with steps, tabs, timeline
+- pipeline: Kanban
+- inbox: Threads + conversation
+- reports: Charts
+- tables: Grouping, inline edit, column picker
+- form: Wizard and form sections
+- calendar: Month calendar
+- notifications: Feed with filters
+- settings: Branding, team, API keys
+- profile: Account and security
+- billing: Plans, usage, invoices
+- onboarding: Checklist
+- errors: 404 403 500 maintenance offline
+- ui: All overlays and controls
+- auth: Sign in, up, forgot, 2FA
+
+---
+## 6. Icons (use as <svg class="f-i"><use href="#i-NAME"/></svg>)
+- Navigation & layout: layout-grid layout-dashboard layout-list panel-left panel-left-close panel-left-open panel-right menu house compass map map-pin navigation arrow-left arrow-right arrow-up arrow-down arrow-up-right arrow-down-right arrow-up-left arrow-down-left arrow-left-right arrow-up-down chevron-left chevron-right chevron-up chevron-down chevrons-left chevrons-right chevrons-up-down corner-down-right external-link link unlink maximize minimize expand shrink move grip-vertical grip-horizontal columns-3 rows-3 table kanban list list-checks list-filter list-ordered list-todo
+- Actions: plus minus x check check-check search funnel sliders-horizontal sliders-vertical settings settings-2 pencil square-pen trash-2 copy clipboard clipboard-check clipboard-list save download upload share-2 send refresh-cw rotate-ccw rotate-cw undo-2 redo-2 log-in log-out power play pause square eye eye-off lock lock-open key-round shield shield-check shield-alert scan qr-code printer archive pin bookmark star heart thumbs-up thumbs-down flag tag tags ellipsis ellipsis-vertical
+- Status & feedback: circle-check circle-x circle-alert triangle-alert info circle-help octagon-alert ban bell bell-ring bell-off loader loader-circle hourglass clock timer alarm-clock calendar calendar-days calendar-check calendar-clock history activity zap flame sparkles bot brain wand-sparkles lightbulb rocket trophy party-popper accessibility
+- Files & data: file file-text file-plus file-check file-x file-spreadsheet file-chart-column file-image file-code file-archive files folder folder-open folder-plus paperclip image images camera video music database server hard-drive cloud cloud-upload cloud-download book-open notebook newspaper scroll-text receipt receipt-text
+- Charts & finance: chart-column chart-bar chart-line chart-pie chart-area chart-gantt trending-up trending-down gauge percent dollar-sign indian-rupee euro pound-sterling credit-card wallet banknote coins calculator landmark piggy-bank hand-coins badge-percent scale
+- People & communication: user user-round users users-round user-plus user-check user-x user-cog circle-user contact id-card mail mail-open inbox message-circle message-square messages-square phone phone-call at-sign megaphone headset handshake building building-2 factory store warehouse briefcase graduation-cap school book-marked languages globe
+- Operations & fabrication: package package-check package-open package-plus box boxes truck container shopping-cart shopping-bag barcode scan-barcode ruler drafting-compass hammer cog wrench forklift scissors drill hard-hat nut bolt blocks component layers layers-2 shapes box-select vector-square pen-tool square-dashed
+- Devices & developer: monitor smartphone tablet laptop keyboard mouse-pointer mouse-pointer-click terminal code code-xml git-branch git-pull-request bug webhook plug plug-zap cpu wifi wifi-off battery bluetooth braces
+- Appearance & text: sun moon sun-moon palette paintbrush brush droplet contrast type bold italic underline align-left align-center align-right align-justify text-cursor-input
+- Shapes & misc: circle triangle diamond hexagon circle-plus circle-minus circle-dot dot hash asterisk command option life-buoy hand-helping crown gift coffee leaf mountain sprout film
+
+---
+## 7. Minimal working page (starter.html)
+```html
+<!doctype html>
+<html lang="en" data-theme="pine">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Client app</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23144'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="frame.css">
+  <link rel="stylesheet" href="themes/pine.css">   <!-- ONE theme file (light + dark). 40 to choose from in themes/ -->
+  <script src="frame.js" data-sprite="icons.svg" defer></script>
+</head>
+<body class="f-root">
+  <a class="f-skip" href="#main">Skip to content</a>
+<!-- STARTER: sidebar shell + one page. Serve over http (any static server) so the icon sprite loads.
+     Copy sections from pages/*.html. Validate: add data-check to the frame.js tag below and read the console. -->
+<div class="f-app f-app--side">
+  <aside class="f-side">
+    <div class="f-side__head"><a class="f-logo" href="#" aria-label="Home"><span class="f-logo__mark">A</span><span class="f-logo__word">Acme</span></a></div>
+    <nav class="f-nav" aria-label="Main">
+      <a href="#" aria-current="page"><svg class="f-i"><use href="#i-layout-grid"/></svg><span>Overview</span></a>
+      <a href="#"><svg class="f-i"><use href="#i-inbox"/></svg><span>Orders</span><span class="f-nav__n">12</span></a>
+      <a href="#"><svg class="f-i"><use href="#i-users"/></svg><span>Customers</span></a>
+      <a href="#"><svg class="f-i"><use href="#i-settings"/></svg><span>Settings</span></a>
+    </nav>
+  </aside>
+  <main class="f-main" id="main">
+    <div class="f-stack" style="gap:16px">
+      <div class="f-head"><div><h1 class="f-h1">Overview</h1><p class="f-subtitle">What needs attention today.</p></div>
+        <div class="f-head__actions"><button class="f-btn f-btn--primary"><svg class="f-i f-i--sm"><use href="#i-plus"/></svg>New order</button></div></div>
+      <div class="f-card">
+        <div class="f-card__head"><div><h2 class="f-card__title">Recent orders</h2><p class="f-card__sub">Last 7 days</p></div></div>
+        <div class="f-tablewrap"><table class="f-table">
+          <thead><tr><th data-sort>Order</th><th>Status</th><th class="f-r">Value</th></tr></thead>
+          <tbody>
+            <tr><td>#1042 Bracket plates</td><td><span class="f-pill f-pill--warn f-pill--dot">Waiting</span></td><td class="f-r">$4,820</td></tr>
+            <tr><td>#1041 Gasket kit</td><td><span class="f-pill f-pill--ok f-pill--dot">Shipped</span></td><td class="f-r">$1,260</td></tr>
+          </tbody></table></div>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>
+```
+
+---
+## 8. Validate
+Add data-check to the frame.js <script> (or open the page with ?check). Console + badge list problems; Frame.check() returns them. Fix all, then remove data-check.

@@ -1,0 +1,3855 @@
+{
+ "source": "Lucide (ISC) https://lucide.dev",
+ "count": 323,
+ "sizes": {
+  "default": 18,
+  "sm": 15,
+  "lg": 22
+ },
+ "icons": [
+  {
+   "name": "layout-grid",
+   "category": "Navigation & layout",
+   "tags": [
+    "app",
+    "home",
+    "start"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-layout-grid\"/></svg>"
+  },
+  {
+   "name": "layout-dashboard",
+   "category": "Navigation & layout",
+   "tags": [
+    "masonry",
+    "brick"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-layout-dashboard\"/></svg>"
+  },
+  {
+   "name": "layout-list",
+   "category": "Navigation & layout",
+   "tags": [
+    "todo",
+    "tasks",
+    "items",
+    "pending",
+    "image",
+    "photo"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-layout-list\"/></svg>"
+  },
+  {
+   "name": "panel-left",
+   "category": "Navigation & layout",
+   "tags": [
+    "primary",
+    "drawer"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-panel-left\"/></svg>"
+  },
+  {
+   "name": "panel-left-close",
+   "category": "Navigation & layout",
+   "tags": [
+    "primary",
+    "drawer",
+    "hide",
+    "chevron",
+    "<"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-panel-left-close\"/></svg>"
+  },
+  {
+   "name": "panel-left-open",
+   "category": "Navigation & layout",
+   "tags": [
+    "primary",
+    "drawer",
+    "show",
+    "reveal",
+    "chevron",
+    "right",
+    ">"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-panel-left-open\"/></svg>"
+  },
+  {
+   "name": "panel-right",
+   "category": "Navigation & layout",
+   "tags": [
+    "sidebar",
+    "secondary",
+    "drawer"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-panel-right\"/></svg>"
+  },
+  {
+   "name": "menu",
+   "category": "Navigation & layout",
+   "tags": [
+    "bars",
+    "navigation",
+    "hamburger",
+    "options"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-menu\"/></svg>"
+  },
+  {
+   "name": "house",
+   "category": "Navigation & layout",
+   "tags": [
+    "home",
+    "living",
+    "building",
+    "residence",
+    "architecture"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-house\"/></svg>"
+  },
+  {
+   "name": "compass",
+   "category": "Navigation & layout",
+   "tags": [
+    "direction",
+    "north",
+    "east",
+    "south",
+    "west",
+    "browser"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-compass\"/></svg>"
+  },
+  {
+   "name": "map",
+   "category": "Navigation & layout",
+   "tags": [
+    "location",
+    "navigation",
+    "travel"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-map\"/></svg>"
+  },
+  {
+   "name": "map-pin",
+   "category": "Navigation & layout",
+   "tags": [
+    "location",
+    "waypoint",
+    "marker",
+    "drop"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-map-pin\"/></svg>"
+  },
+  {
+   "name": "navigation",
+   "category": "Navigation & layout",
+   "tags": [
+    "location",
+    "travel"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-navigation\"/></svg>"
+  },
+  {
+   "name": "arrow-left",
+   "category": "Navigation & layout",
+   "tags": [
+    "previous",
+    "back",
+    "direction",
+    "west",
+    "<-"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-arrow-left\"/></svg>"
+  },
+  {
+   "name": "arrow-right",
+   "category": "Navigation & layout",
+   "tags": [
+    "forward",
+    "next",
+    "direction",
+    "east",
+    "->"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-arrow-right\"/></svg>"
+  },
+  {
+   "name": "arrow-up",
+   "category": "Navigation & layout",
+   "tags": [
+    "forward",
+    "direction",
+    "north"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-arrow-up\"/></svg>"
+  },
+  {
+   "name": "arrow-down",
+   "category": "Navigation & layout",
+   "tags": [
+    "backwards",
+    "reverse",
+    "direction",
+    "south"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-arrow-down\"/></svg>"
+  },
+  {
+   "name": "arrow-up-right",
+   "category": "Navigation & layout",
+   "tags": [
+    "direction",
+    "north-east",
+    "diagonal"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-arrow-up-right\"/></svg>"
+  },
+  {
+   "name": "arrow-down-right",
+   "category": "Navigation & layout",
+   "tags": [
+    "direction",
+    "south-east",
+    "diagonal"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-arrow-down-right\"/></svg>"
+  },
+  {
+   "name": "arrow-up-left",
+   "category": "Navigation & layout",
+   "tags": [
+    "direction",
+    "north-west",
+    "diagonal"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-arrow-up-left\"/></svg>"
+  },
+  {
+   "name": "arrow-down-left",
+   "category": "Navigation & layout",
+   "tags": [
+    "direction",
+    "south-west",
+    "diagonal"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-arrow-down-left\"/></svg>"
+  },
+  {
+   "name": "arrow-left-right",
+   "category": "Navigation & layout",
+   "tags": [
+    "bidirectional",
+    "two-way",
+    "2-way",
+    "swap",
+    "switch",
+    "transaction",
+    "reorder",
+    "move"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-arrow-left-right\"/></svg>"
+  },
+  {
+   "name": "arrow-up-down",
+   "category": "Navigation & layout",
+   "tags": [
+    "bidirectional",
+    "two-way",
+    "2-way",
+    "swap",
+    "switch",
+    "network",
+    "mobile data",
+    "internet"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-arrow-up-down\"/></svg>"
+  },
+  {
+   "name": "chevron-left",
+   "category": "Navigation & layout",
+   "tags": [
+    "back",
+    "previous",
+    "less than",
+    "fewer",
+    "menu",
+    "<"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-chevron-left\"/></svg>"
+  },
+  {
+   "name": "chevron-right",
+   "category": "Navigation & layout",
+   "tags": [
+    "forward",
+    "next",
+    "more than",
+    "greater",
+    "menu",
+    "code",
+    "coding",
+    "command line"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-chevron-right\"/></svg>"
+  },
+  {
+   "name": "chevron-up",
+   "category": "Navigation & layout",
+   "tags": [
+    "caret",
+    "keyboard",
+    "mac",
+    "control",
+    "ctrl",
+    "superscript",
+    "exponential",
+    "power"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-chevron-up\"/></svg>"
+  },
+  {
+   "name": "chevron-down",
+   "category": "Navigation & layout",
+   "tags": [
+    "backwards",
+    "reverse",
+    "slow",
+    "dropdown"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-chevron-down\"/></svg>"
+  },
+  {
+   "name": "chevrons-left",
+   "category": "Navigation & layout",
+   "tags": [
+    "turn",
+    "corner"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-chevrons-left\"/></svg>"
+  },
+  {
+   "name": "chevrons-right",
+   "category": "Navigation & layout",
+   "tags": [
+    "turn",
+    "corner"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-chevrons-right\"/></svg>"
+  },
+  {
+   "name": "chevrons-up-down",
+   "category": "Navigation & layout",
+   "tags": [
+    "expand",
+    "unfold",
+    "vertical"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-chevrons-up-down\"/></svg>"
+  },
+  {
+   "name": "corner-down-right",
+   "category": "Navigation & layout",
+   "tags": [
+    "arrow",
+    "indent",
+    "tab"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-corner-down-right\"/></svg>"
+  },
+  {
+   "name": "external-link",
+   "category": "Navigation & layout",
+   "tags": [
+    "outbound",
+    "open",
+    "share"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-external-link\"/></svg>"
+  },
+  {
+   "name": "link",
+   "category": "Navigation & layout",
+   "tags": [
+    "chain",
+    "url"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-link\"/></svg>"
+  },
+  {
+   "name": "unlink",
+   "category": "Navigation & layout",
+   "tags": [
+    "url",
+    "unchain"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-unlink\"/></svg>"
+  },
+  {
+   "name": "maximize",
+   "category": "Navigation & layout",
+   "tags": [
+    "fullscreen",
+    "expand",
+    "dashed"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-maximize\"/></svg>"
+  },
+  {
+   "name": "minimize",
+   "category": "Navigation & layout",
+   "tags": [
+    "exit fullscreen",
+    "close",
+    "shrink"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-minimize\"/></svg>"
+  },
+  {
+   "name": "expand",
+   "category": "Navigation & layout",
+   "tags": [
+    "scale",
+    "fullscreen",
+    "maximize",
+    "minimize",
+    "contract"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-expand\"/></svg>"
+  },
+  {
+   "name": "shrink",
+   "category": "Navigation & layout",
+   "tags": [
+    "scale",
+    "fullscreen"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-shrink\"/></svg>"
+  },
+  {
+   "name": "move",
+   "category": "Navigation & layout",
+   "tags": [
+    "arrows"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-move\"/></svg>"
+  },
+  {
+   "name": "grip-vertical",
+   "category": "Navigation & layout",
+   "tags": [
+    "grab",
+    "dots",
+    "handle",
+    "move",
+    "drag"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-grip-vertical\"/></svg>"
+  },
+  {
+   "name": "grip-horizontal",
+   "category": "Navigation & layout",
+   "tags": [
+    "grab",
+    "dots",
+    "handle",
+    "move",
+    "drag"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-grip-horizontal\"/></svg>"
+  },
+  {
+   "name": "columns-3",
+   "category": "Navigation & layout",
+   "tags": [
+    "lines",
+    "list",
+    "queue",
+    "preview",
+    "parallel",
+    "series",
+    "split",
+    "vertical"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-columns-3\"/></svg>"
+  },
+  {
+   "name": "rows-3",
+   "category": "Navigation & layout",
+   "tags": [
+    "lines",
+    "list",
+    "queue",
+    "preview",
+    "paragraphs",
+    "parallel",
+    "series",
+    "split"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-rows-3\"/></svg>"
+  },
+  {
+   "name": "table",
+   "category": "Navigation & layout",
+   "tags": [
+    "spreadsheet",
+    "grid"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-table\"/></svg>"
+  },
+  {
+   "name": "kanban",
+   "category": "Navigation & layout",
+   "tags": [
+    "projects",
+    "manage",
+    "overview",
+    "board",
+    "tickets",
+    "issues",
+    "roadmap",
+    "plan"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-kanban\"/></svg>"
+  },
+  {
+   "name": "list",
+   "category": "Navigation & layout",
+   "tags": [
+    "options"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-list\"/></svg>"
+  },
+  {
+   "name": "list-checks",
+   "category": "Navigation & layout",
+   "tags": [
+    "todo",
+    "done",
+    "check",
+    "tick",
+    "complete",
+    "tasks",
+    "items",
+    "pending"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-list-checks\"/></svg>"
+  },
+  {
+   "name": "list-filter",
+   "category": "Navigation & layout",
+   "tags": [
+    "options"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-list-filter\"/></svg>"
+  },
+  {
+   "name": "list-ordered",
+   "category": "Navigation & layout",
+   "tags": [
+    "number",
+    "order",
+    "queue"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-list-ordered\"/></svg>"
+  },
+  {
+   "name": "list-todo",
+   "category": "Navigation & layout",
+   "tags": [
+    "todo",
+    "done",
+    "check",
+    "tick",
+    "complete",
+    "tasks",
+    "items",
+    "pending"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-list-todo\"/></svg>"
+  },
+  {
+   "name": "plus",
+   "category": "Actions",
+   "tags": [
+    "add",
+    "new",
+    "increase",
+    "increment",
+    "positive",
+    "calculate",
+    "toolbar",
+    "crosshair"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-plus\"/></svg>"
+  },
+  {
+   "name": "minus",
+   "category": "Actions",
+   "tags": [
+    "subtract",
+    "remove",
+    "decrease",
+    "decrement",
+    "reduce",
+    "negative",
+    "calculate",
+    "line"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-minus\"/></svg>"
+  },
+  {
+   "name": "x",
+   "category": "Actions",
+   "tags": [
+    "cancel",
+    "close",
+    "cross",
+    "delete",
+    "ex",
+    "remove",
+    "times",
+    "clear"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-x\"/></svg>"
+  },
+  {
+   "name": "check",
+   "category": "Actions",
+   "tags": [
+    "done",
+    "todo",
+    "tick",
+    "complete",
+    "task"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-check\"/></svg>"
+  },
+  {
+   "name": "check-check",
+   "category": "Actions",
+   "tags": [
+    "done",
+    "received",
+    "double",
+    "todo",
+    "tick",
+    "complete",
+    "task"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-check-check\"/></svg>"
+  },
+  {
+   "name": "search",
+   "category": "Actions",
+   "tags": [
+    "find",
+    "scan",
+    "magnifier",
+    "magnifying glass",
+    "lens",
+    "locate",
+    "explore",
+    "discover"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-search\"/></svg>"
+  },
+  {
+   "name": "funnel",
+   "category": "Actions",
+   "tags": [
+    "filter",
+    "hopper"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-funnel\"/></svg>"
+  },
+  {
+   "name": "sliders-horizontal",
+   "category": "Actions",
+   "tags": [
+    "settings",
+    "filters",
+    "controls"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-sliders-horizontal\"/></svg>"
+  },
+  {
+   "name": "sliders-vertical",
+   "category": "Actions",
+   "tags": [
+    "settings",
+    "controls"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-sliders-vertical\"/></svg>"
+  },
+  {
+   "name": "settings",
+   "category": "Actions",
+   "tags": [
+    "cog",
+    "edit",
+    "gear",
+    "preferences"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-settings\"/></svg>"
+  },
+  {
+   "name": "settings-2",
+   "category": "Actions",
+   "tags": [
+    "cog",
+    "edit",
+    "gear",
+    "preferences",
+    "slider"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-settings-2\"/></svg>"
+  },
+  {
+   "name": "pencil",
+   "category": "Actions",
+   "tags": [
+    "rubber",
+    "edit",
+    "create",
+    "draw",
+    "sketch",
+    "draft",
+    "writer",
+    "writing"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-pencil\"/></svg>"
+  },
+  {
+   "name": "square-pen",
+   "category": "Actions",
+   "tags": [
+    "pencil",
+    "edit",
+    "change",
+    "create",
+    "draw",
+    "sketch",
+    "draft",
+    "writer"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-square-pen\"/></svg>"
+  },
+  {
+   "name": "trash-2",
+   "category": "Actions",
+   "tags": [],
+   "use": "<svg class=\"f-i\"><use href=\"#i-trash-2\"/></svg>"
+  },
+  {
+   "name": "copy",
+   "category": "Actions",
+   "tags": [
+    "clone",
+    "duplicate",
+    "multiple"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-copy\"/></svg>"
+  },
+  {
+   "name": "clipboard",
+   "category": "Actions",
+   "tags": [
+    "copy",
+    "paste"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-clipboard\"/></svg>"
+  },
+  {
+   "name": "clipboard-check",
+   "category": "Actions",
+   "tags": [
+    "copied",
+    "pasted",
+    "done",
+    "todo",
+    "tick",
+    "complete",
+    "task"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-clipboard-check\"/></svg>"
+  },
+  {
+   "name": "clipboard-list",
+   "category": "Actions",
+   "tags": [
+    "copy",
+    "paste",
+    "tasks"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-clipboard-list\"/></svg>"
+  },
+  {
+   "name": "save",
+   "category": "Actions",
+   "tags": [
+    "floppy disk"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-save\"/></svg>"
+  },
+  {
+   "name": "download",
+   "category": "Actions",
+   "tags": [
+    "import",
+    "export",
+    "save"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-download\"/></svg>"
+  },
+  {
+   "name": "upload",
+   "category": "Actions",
+   "tags": [
+    "file"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-upload\"/></svg>"
+  },
+  {
+   "name": "share-2",
+   "category": "Actions",
+   "tags": [
+    "network",
+    "connections"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-share-2\"/></svg>"
+  },
+  {
+   "name": "send",
+   "category": "Actions",
+   "tags": [
+    "email",
+    "message",
+    "mail",
+    "paper airplane",
+    "paper aeroplane",
+    "submit"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-send\"/></svg>"
+  },
+  {
+   "name": "refresh-cw",
+   "category": "Actions",
+   "tags": [
+    "rotate",
+    "reload",
+    "rerun",
+    "synchronise",
+    "synchronize",
+    "arrows",
+    "circular",
+    "cycle"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-refresh-cw\"/></svg>"
+  },
+  {
+   "name": "rotate-ccw",
+   "category": "Actions",
+   "tags": [
+    "arrow",
+    "left",
+    "counter-clockwise",
+    "restart",
+    "reload",
+    "rerun",
+    "refresh",
+    "backup"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-rotate-ccw\"/></svg>"
+  },
+  {
+   "name": "rotate-cw",
+   "category": "Actions",
+   "tags": [
+    "arrow",
+    "right",
+    "clockwise",
+    "refresh",
+    "reload",
+    "rerun",
+    "redo"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-rotate-cw\"/></svg>"
+  },
+  {
+   "name": "undo-2",
+   "category": "Actions",
+   "tags": [
+    "redo",
+    "rerun",
+    "history",
+    "back",
+    "return",
+    "reverse",
+    "revert",
+    "direction"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-undo-2\"/></svg>"
+  },
+  {
+   "name": "redo-2",
+   "category": "Actions",
+   "tags": [
+    "undo",
+    "rerun",
+    "history"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-redo-2\"/></svg>"
+  },
+  {
+   "name": "log-in",
+   "category": "Actions",
+   "tags": [
+    "sign in",
+    "arrow",
+    "enter",
+    "auth"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-log-in\"/></svg>"
+  },
+  {
+   "name": "log-out",
+   "category": "Actions",
+   "tags": [
+    "sign out",
+    "arrow",
+    "exit",
+    "auth"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-log-out\"/></svg>"
+  },
+  {
+   "name": "power",
+   "category": "Actions",
+   "tags": [
+    "on",
+    "off",
+    "device",
+    "switch",
+    "toggle",
+    "binary",
+    "boolean",
+    "reboot"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-power\"/></svg>"
+  },
+  {
+   "name": "play",
+   "category": "Actions",
+   "tags": [
+    "music",
+    "audio",
+    "video",
+    "start",
+    "run"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-play\"/></svg>"
+  },
+  {
+   "name": "pause",
+   "category": "Actions",
+   "tags": [
+    "music",
+    "stop"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-pause\"/></svg>"
+  },
+  {
+   "name": "square",
+   "category": "Actions",
+   "tags": [
+    "stop",
+    "playback",
+    "music",
+    "audio",
+    "video",
+    "rectangle",
+    "aspect ratio",
+    "1:1"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-square\"/></svg>"
+  },
+  {
+   "name": "eye",
+   "category": "Actions",
+   "tags": [
+    "view",
+    "watch",
+    "see",
+    "show",
+    "expose",
+    "reveal",
+    "display",
+    "visible"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-eye\"/></svg>"
+  },
+  {
+   "name": "eye-off",
+   "category": "Actions",
+   "tags": [
+    "view",
+    "watch",
+    "see",
+    "hide",
+    "conceal",
+    "mask",
+    "hidden",
+    "visibility"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-eye-off\"/></svg>"
+  },
+  {
+   "name": "lock",
+   "category": "Actions",
+   "tags": [
+    "security",
+    "password",
+    "secure",
+    "admin"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-lock\"/></svg>"
+  },
+  {
+   "name": "lock-open",
+   "category": "Actions",
+   "tags": [
+    "security"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-lock-open\"/></svg>"
+  },
+  {
+   "name": "key-round",
+   "category": "Actions",
+   "tags": [
+    "password",
+    "login",
+    "authentication",
+    "secure",
+    "unlock"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-key-round\"/></svg>"
+  },
+  {
+   "name": "shield",
+   "category": "Actions",
+   "tags": [
+    "cybersecurity",
+    "secure",
+    "safety",
+    "protection",
+    "guardian",
+    "armored",
+    "armoured",
+    "defense"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-shield\"/></svg>"
+  },
+  {
+   "name": "shield-check",
+   "category": "Actions",
+   "tags": [
+    "cybersecurity",
+    "secured",
+    "safety",
+    "protection",
+    "protected",
+    "guardian",
+    "guarded",
+    "armored"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-shield-check\"/></svg>"
+  },
+  {
+   "name": "shield-alert",
+   "category": "Actions",
+   "tags": [
+    "unshielded",
+    "cybersecurity",
+    "insecure",
+    "unsecured",
+    "safety",
+    "unsafe",
+    "protection",
+    "unprotected"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-shield-alert\"/></svg>"
+  },
+  {
+   "name": "scan",
+   "category": "Actions",
+   "tags": [
+    "qr-code",
+    "barcode",
+    "checkout",
+    "augmented reality",
+    "ar",
+    "target",
+    "surveillance",
+    "camera"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-scan\"/></svg>"
+  },
+  {
+   "name": "qr-code",
+   "category": "Actions",
+   "tags": [
+    "barcode",
+    "scan",
+    "link",
+    "url",
+    "information",
+    "digital"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-qr-code\"/></svg>"
+  },
+  {
+   "name": "printer",
+   "category": "Actions",
+   "tags": [
+    "fax",
+    "office",
+    "device"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-printer\"/></svg>"
+  },
+  {
+   "name": "archive",
+   "category": "Actions",
+   "tags": [
+    "index",
+    "backup",
+    "box",
+    "storage",
+    "records"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-archive\"/></svg>"
+  },
+  {
+   "name": "pin",
+   "category": "Actions",
+   "tags": [
+    "save",
+    "map",
+    "lock",
+    "fix"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-pin\"/></svg>"
+  },
+  {
+   "name": "bookmark",
+   "category": "Actions",
+   "tags": [
+    "save",
+    "favorite",
+    "mark",
+    "label",
+    "attachment",
+    "file",
+    "stick",
+    "pin"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-bookmark\"/></svg>"
+  },
+  {
+   "name": "star",
+   "category": "Actions",
+   "tags": [
+    "bookmark",
+    "favorite",
+    "like",
+    "review",
+    "rating"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-star\"/></svg>"
+  },
+  {
+   "name": "heart",
+   "category": "Actions",
+   "tags": [
+    "like",
+    "love",
+    "emotion",
+    "suit",
+    "playing",
+    "cards"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-heart\"/></svg>"
+  },
+  {
+   "name": "thumbs-up",
+   "category": "Actions",
+   "tags": [
+    "like",
+    "good",
+    "emotion"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-thumbs-up\"/></svg>"
+  },
+  {
+   "name": "thumbs-down",
+   "category": "Actions",
+   "tags": [
+    "dislike",
+    "bad",
+    "emotion"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-thumbs-down\"/></svg>"
+  },
+  {
+   "name": "flag",
+   "category": "Actions",
+   "tags": [
+    "report",
+    "marker",
+    "notification",
+    "warning",
+    "milestone",
+    "goal",
+    "notice",
+    "signal"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-flag\"/></svg>"
+  },
+  {
+   "name": "tag",
+   "category": "Actions",
+   "tags": [
+    "label",
+    "badge",
+    "ticket",
+    "mark"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-tag\"/></svg>"
+  },
+  {
+   "name": "tags",
+   "category": "Actions",
+   "tags": [
+    "labels",
+    "badges",
+    "tickets",
+    "marks",
+    "copy",
+    "multiple"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-tags\"/></svg>"
+  },
+  {
+   "name": "ellipsis",
+   "category": "Actions",
+   "tags": [
+    "et cetera",
+    "etc",
+    "loader",
+    "loading",
+    "progress",
+    "pending",
+    "throbber",
+    "menu"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-ellipsis\"/></svg>"
+  },
+  {
+   "name": "ellipsis-vertical",
+   "category": "Actions",
+   "tags": [
+    "menu",
+    "options",
+    "spread",
+    "more",
+    "further",
+    "extra",
+    "overflow",
+    "dots"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-ellipsis-vertical\"/></svg>"
+  },
+  {
+   "name": "circle-check",
+   "category": "Status & feedback",
+   "tags": [
+    "done",
+    "todo",
+    "tick",
+    "complete",
+    "task"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-circle-check\"/></svg>"
+  },
+  {
+   "name": "circle-x",
+   "category": "Status & feedback",
+   "tags": [
+    "cancel",
+    "close",
+    "delete",
+    "remove",
+    "times",
+    "clear",
+    "error",
+    "incorrect"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-circle-x\"/></svg>"
+  },
+  {
+   "name": "circle-alert",
+   "category": "Status & feedback",
+   "tags": [
+    "warning",
+    "alert",
+    "danger",
+    "exclamation mark"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-circle-alert\"/></svg>"
+  },
+  {
+   "name": "triangle-alert",
+   "category": "Status & feedback",
+   "tags": [
+    "warning",
+    "alert",
+    "danger",
+    "exclamation mark",
+    "linter"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-triangle-alert\"/></svg>"
+  },
+  {
+   "name": "info",
+   "category": "Status & feedback",
+   "tags": [
+    "about",
+    "advice",
+    "clue",
+    "details",
+    "help",
+    "hint",
+    "indicator",
+    "information"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-info\"/></svg>"
+  },
+  {
+   "name": "circle-help",
+   "category": "Status & feedback",
+   "tags": [],
+   "use": "<svg class=\"f-i\"><use href=\"#i-circle-help\"/></svg>"
+  },
+  {
+   "name": "octagon-alert",
+   "category": "Status & feedback",
+   "tags": [
+    "warning",
+    "alert",
+    "danger",
+    "exclamation mark"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-octagon-alert\"/></svg>"
+  },
+  {
+   "name": "ban",
+   "category": "Status & feedback",
+   "tags": [
+    "cancel",
+    "no",
+    "stop",
+    "forbidden",
+    "prohibited",
+    "error",
+    "incorrect",
+    "mistake"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-ban\"/></svg>"
+  },
+  {
+   "name": "bell",
+   "category": "Status & feedback",
+   "tags": [
+    "alarm",
+    "notification",
+    "sound",
+    "reminder"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-bell\"/></svg>"
+  },
+  {
+   "name": "bell-ring",
+   "category": "Status & feedback",
+   "tags": [
+    "alarm",
+    "notification",
+    "sound",
+    "reminder"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-bell-ring\"/></svg>"
+  },
+  {
+   "name": "bell-off",
+   "category": "Status & feedback",
+   "tags": [
+    "alarm",
+    "notification",
+    "silent",
+    "reminder"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-bell-off\"/></svg>"
+  },
+  {
+   "name": "loader",
+   "category": "Status & feedback",
+   "tags": [
+    "loading",
+    "wait",
+    "busy",
+    "progress",
+    "spinner",
+    "spinning",
+    "throbber"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-loader\"/></svg>"
+  },
+  {
+   "name": "loader-circle",
+   "category": "Status & feedback",
+   "tags": [
+    "loading",
+    "wait",
+    "busy",
+    "progress",
+    "spinner",
+    "spinning",
+    "throbber",
+    "circle"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-loader-circle\"/></svg>"
+  },
+  {
+   "name": "hourglass",
+   "category": "Status & feedback",
+   "tags": [
+    "timer",
+    "time",
+    "sandglass"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-hourglass\"/></svg>"
+  },
+  {
+   "name": "clock",
+   "category": "Status & feedback",
+   "tags": [
+    "time",
+    "watch",
+    "alarm"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-clock\"/></svg>"
+  },
+  {
+   "name": "timer",
+   "category": "Status & feedback",
+   "tags": [
+    "time",
+    "timer",
+    "stopwatch"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-timer\"/></svg>"
+  },
+  {
+   "name": "alarm-clock",
+   "category": "Status & feedback",
+   "tags": [
+    "morning"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-alarm-clock\"/></svg>"
+  },
+  {
+   "name": "calendar",
+   "category": "Status & feedback",
+   "tags": [
+    "date",
+    "month",
+    "year",
+    "event",
+    "birthday",
+    "birthdate"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-calendar\"/></svg>"
+  },
+  {
+   "name": "calendar-days",
+   "category": "Status & feedback",
+   "tags": [
+    "date",
+    "month",
+    "year",
+    "event"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-calendar-days\"/></svg>"
+  },
+  {
+   "name": "calendar-check",
+   "category": "Status & feedback",
+   "tags": [
+    "date",
+    "day",
+    "month",
+    "year",
+    "event",
+    "confirm",
+    "subscribe",
+    "schedule"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-calendar-check\"/></svg>"
+  },
+  {
+   "name": "calendar-clock",
+   "category": "Status & feedback",
+   "tags": [
+    "date",
+    "day",
+    "month",
+    "year",
+    "event",
+    "clock",
+    "hour"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-calendar-clock\"/></svg>"
+  },
+  {
+   "name": "history",
+   "category": "Status & feedback",
+   "tags": [],
+   "use": "<svg class=\"f-i\"><use href=\"#i-history\"/></svg>"
+  },
+  {
+   "name": "activity",
+   "category": "Status & feedback",
+   "tags": [
+    "pulse",
+    "action",
+    "motion",
+    "movement",
+    "exercise",
+    "fitness",
+    "healthcare",
+    "heart rate monitor"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-activity\"/></svg>"
+  },
+  {
+   "name": "zap",
+   "category": "Status & feedback",
+   "tags": [
+    "flash",
+    "camera",
+    "lightning",
+    "electricity",
+    "energy",
+    "power",
+    "quick"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-zap\"/></svg>"
+  },
+  {
+   "name": "flame",
+   "category": "Status & feedback",
+   "tags": [
+    "heat",
+    "burn",
+    "light",
+    "glow",
+    "ignite",
+    "passion",
+    "ember",
+    "fire"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-flame\"/></svg>"
+  },
+  {
+   "name": "sparkles",
+   "category": "Status & feedback",
+   "tags": [
+    "stars",
+    "effect",
+    "filter",
+    "night",
+    "magic"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-sparkles\"/></svg>"
+  },
+  {
+   "name": "bot",
+   "category": "Status & feedback",
+   "tags": [
+    "robot",
+    "ai",
+    "chat",
+    "assistant"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-bot\"/></svg>"
+  },
+  {
+   "name": "brain",
+   "category": "Status & feedback",
+   "tags": [
+    "medical",
+    "mind",
+    "mental",
+    "intellect",
+    "cerebral",
+    "consciousness",
+    "genius",
+    "artificial intelligence"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-brain\"/></svg>"
+  },
+  {
+   "name": "wand-sparkles",
+   "category": "Status & feedback",
+   "tags": [
+    "magic",
+    "wizard",
+    "magician"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-wand-sparkles\"/></svg>"
+  },
+  {
+   "name": "lightbulb",
+   "category": "Status & feedback",
+   "tags": [
+    "idea",
+    "bright",
+    "lights"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-lightbulb\"/></svg>"
+  },
+  {
+   "name": "rocket",
+   "category": "Status & feedback",
+   "tags": [
+    "release",
+    "boost",
+    "launch",
+    "space",
+    "version"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-rocket\"/></svg>"
+  },
+  {
+   "name": "trophy",
+   "category": "Status & feedback",
+   "tags": [
+    "prize",
+    "sports",
+    "winner",
+    "achievement",
+    "award",
+    "champion",
+    "celebration",
+    "victory"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-trophy\"/></svg>"
+  },
+  {
+   "name": "party-popper",
+   "category": "Status & feedback",
+   "tags": [
+    "emoji",
+    "congratulations",
+    "celebration",
+    "party",
+    "tada",
+    "\ud83c\udf89",
+    "\ud83c\udf8a",
+    "excitement"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-party-popper\"/></svg>"
+  },
+  {
+   "name": "accessibility",
+   "category": "Status & feedback",
+   "tags": [
+    "disability",
+    "disabled",
+    "dda",
+    "wheelchair"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-accessibility\"/></svg>"
+  },
+  {
+   "name": "file",
+   "category": "Files & data",
+   "tags": [
+    "document"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-file\"/></svg>"
+  },
+  {
+   "name": "file-text",
+   "category": "Files & data",
+   "tags": [
+    "data",
+    "txt",
+    "pdf",
+    "document"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-file-text\"/></svg>"
+  },
+  {
+   "name": "file-plus",
+   "category": "Files & data",
+   "tags": [
+    "add",
+    "create",
+    "new",
+    "document"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-file-plus\"/></svg>"
+  },
+  {
+   "name": "file-check",
+   "category": "Files & data",
+   "tags": [
+    "done",
+    "document",
+    "todo",
+    "tick",
+    "complete",
+    "task"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-file-check\"/></svg>"
+  },
+  {
+   "name": "file-x",
+   "category": "Files & data",
+   "tags": [
+    "lost",
+    "delete",
+    "remove",
+    "document"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-file-x\"/></svg>"
+  },
+  {
+   "name": "file-spreadsheet",
+   "category": "Files & data",
+   "tags": [
+    "spreadsheet",
+    "sheet",
+    "table"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-file-spreadsheet\"/></svg>"
+  },
+  {
+   "name": "file-chart-column",
+   "category": "Files & data",
+   "tags": [
+    "statistics",
+    "analytics",
+    "diagram",
+    "graph",
+    "presentation"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-file-chart-column\"/></svg>"
+  },
+  {
+   "name": "file-image",
+   "category": "Files & data",
+   "tags": [
+    "image",
+    "graphics",
+    "photo",
+    "picture"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-file-image\"/></svg>"
+  },
+  {
+   "name": "file-code",
+   "category": "Files & data",
+   "tags": [
+    "script",
+    "document",
+    "gist",
+    "html",
+    "xml",
+    "property list",
+    "plist"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-file-code\"/></svg>"
+  },
+  {
+   "name": "file-archive",
+   "category": "Files & data",
+   "tags": [
+    "zip",
+    "package",
+    "archive"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-file-archive\"/></svg>"
+  },
+  {
+   "name": "files",
+   "category": "Files & data",
+   "tags": [
+    "multiple",
+    "copy",
+    "documents"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-files\"/></svg>"
+  },
+  {
+   "name": "folder",
+   "category": "Files & data",
+   "tags": [
+    "directory"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-folder\"/></svg>"
+  },
+  {
+   "name": "folder-open",
+   "category": "Files & data",
+   "tags": [
+    "directory"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-folder-open\"/></svg>"
+  },
+  {
+   "name": "folder-plus",
+   "category": "Files & data",
+   "tags": [
+    "directory",
+    "add",
+    "create",
+    "new"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-folder-plus\"/></svg>"
+  },
+  {
+   "name": "paperclip",
+   "category": "Files & data",
+   "tags": [
+    "attachment",
+    "file"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-paperclip\"/></svg>"
+  },
+  {
+   "name": "image",
+   "category": "Files & data",
+   "tags": [
+    "picture",
+    "photo"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-image\"/></svg>"
+  },
+  {
+   "name": "images",
+   "category": "Files & data",
+   "tags": [
+    "picture",
+    "photo",
+    "multiple",
+    "copy",
+    "gallery",
+    "album",
+    "collection",
+    "slideshow"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-images\"/></svg>"
+  },
+  {
+   "name": "camera",
+   "category": "Files & data",
+   "tags": [
+    "photography",
+    "lens",
+    "focus",
+    "capture",
+    "shot",
+    "visual",
+    "image",
+    "device"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-camera\"/></svg>"
+  },
+  {
+   "name": "video",
+   "category": "Files & data",
+   "tags": [
+    "camera",
+    "movie",
+    "film",
+    "recording",
+    "motion picture",
+    "camcorder",
+    "reel"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-video\"/></svg>"
+  },
+  {
+   "name": "music",
+   "category": "Files & data",
+   "tags": [
+    "note",
+    "quaver",
+    "eighth note"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-music\"/></svg>"
+  },
+  {
+   "name": "database",
+   "category": "Files & data",
+   "tags": [
+    "storage",
+    "memory",
+    "container",
+    "tin",
+    "pot",
+    "bytes",
+    "servers"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-database\"/></svg>"
+  },
+  {
+   "name": "server",
+   "category": "Files & data",
+   "tags": [
+    "cloud",
+    "storage"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-server\"/></svg>"
+  },
+  {
+   "name": "hard-drive",
+   "category": "Files & data",
+   "tags": [
+    "computer",
+    "server",
+    "memory",
+    "data",
+    "ssd",
+    "disk",
+    "hard disk",
+    "storage"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-hard-drive\"/></svg>"
+  },
+  {
+   "name": "cloud",
+   "category": "Files & data",
+   "tags": [
+    "weather"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-cloud\"/></svg>"
+  },
+  {
+   "name": "cloud-upload",
+   "category": "Files & data",
+   "tags": [
+    "file"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-cloud-upload\"/></svg>"
+  },
+  {
+   "name": "cloud-download",
+   "category": "Files & data",
+   "tags": [
+    "import"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-cloud-download\"/></svg>"
+  },
+  {
+   "name": "book-open",
+   "category": "Files & data",
+   "tags": [
+    "reading",
+    "pages",
+    "booklet",
+    "magazine",
+    "leaflet",
+    "pamphlet",
+    "library",
+    "writing"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-book-open\"/></svg>"
+  },
+  {
+   "name": "notebook",
+   "category": "Files & data",
+   "tags": [
+    "notepad",
+    "notes",
+    "stationery",
+    "sketchbook",
+    "moleskine",
+    "closure",
+    "strap",
+    "band"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-notebook\"/></svg>"
+  },
+  {
+   "name": "newspaper",
+   "category": "Files & data",
+   "tags": [
+    "news",
+    "feed",
+    "home",
+    "magazine",
+    "article",
+    "headline"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-newspaper\"/></svg>"
+  },
+  {
+   "name": "scroll-text",
+   "category": "Files & data",
+   "tags": [
+    "paper",
+    "log",
+    "scripture",
+    "document",
+    "notes",
+    "parchment",
+    "list",
+    "long"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-scroll-text\"/></svg>"
+  },
+  {
+   "name": "receipt",
+   "category": "Files & data",
+   "tags": [
+    "bill",
+    "voucher",
+    "slip",
+    "check",
+    "counterfoil",
+    "currency",
+    "dollar",
+    "usd"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-receipt\"/></svg>"
+  },
+  {
+   "name": "receipt-text",
+   "category": "Files & data",
+   "tags": [
+    "bill",
+    "voucher",
+    "slip",
+    "check",
+    "counterfoil",
+    "details",
+    "small print",
+    "terms"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-receipt-text\"/></svg>"
+  },
+  {
+   "name": "chart-column",
+   "category": "Charts & finance",
+   "tags": [
+    "statistics",
+    "analytics",
+    "diagram",
+    "graph"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-chart-column\"/></svg>"
+  },
+  {
+   "name": "chart-bar",
+   "category": "Charts & finance",
+   "tags": [
+    "statistics",
+    "analytics",
+    "diagram",
+    "graph"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-chart-bar\"/></svg>"
+  },
+  {
+   "name": "chart-line",
+   "category": "Charts & finance",
+   "tags": [
+    "statistics",
+    "analytics",
+    "diagram",
+    "graph"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-chart-line\"/></svg>"
+  },
+  {
+   "name": "chart-pie",
+   "category": "Charts & finance",
+   "tags": [
+    "statistics",
+    "analytics",
+    "diagram",
+    "presentation"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-chart-pie\"/></svg>"
+  },
+  {
+   "name": "chart-area",
+   "category": "Charts & finance",
+   "tags": [
+    "statistics",
+    "analytics",
+    "diagram",
+    "graph",
+    "area"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-chart-area\"/></svg>"
+  },
+  {
+   "name": "chart-gantt",
+   "category": "Charts & finance",
+   "tags": [
+    "diagram",
+    "graph",
+    "timeline",
+    "planning"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-chart-gantt\"/></svg>"
+  },
+  {
+   "name": "trending-up",
+   "category": "Charts & finance",
+   "tags": [
+    "statistics"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-trending-up\"/></svg>"
+  },
+  {
+   "name": "trending-down",
+   "category": "Charts & finance",
+   "tags": [
+    "statistics"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-trending-down\"/></svg>"
+  },
+  {
+   "name": "gauge",
+   "category": "Charts & finance",
+   "tags": [
+    "dashboard",
+    "dial",
+    "meter",
+    "speed",
+    "pressure",
+    "measure",
+    "level"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-gauge\"/></svg>"
+  },
+  {
+   "name": "percent",
+   "category": "Charts & finance",
+   "tags": [
+    "percentage",
+    "modulo",
+    "modulus",
+    "remainder",
+    "%",
+    "sale",
+    "discount",
+    "offer"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-percent\"/></svg>"
+  },
+  {
+   "name": "dollar-sign",
+   "category": "Charts & finance",
+   "tags": [
+    "currency",
+    "money",
+    "payment"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-dollar-sign\"/></svg>"
+  },
+  {
+   "name": "indian-rupee",
+   "category": "Charts & finance",
+   "tags": [
+    "currency",
+    "money",
+    "payment"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-indian-rupee\"/></svg>"
+  },
+  {
+   "name": "euro",
+   "category": "Charts & finance",
+   "tags": [
+    "currency",
+    "money",
+    "payment"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-euro\"/></svg>"
+  },
+  {
+   "name": "pound-sterling",
+   "category": "Charts & finance",
+   "tags": [
+    "currency",
+    "money",
+    "payment"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-pound-sterling\"/></svg>"
+  },
+  {
+   "name": "credit-card",
+   "category": "Charts & finance",
+   "tags": [
+    "bank",
+    "purchase",
+    "payment",
+    "cc"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-credit-card\"/></svg>"
+  },
+  {
+   "name": "wallet",
+   "category": "Charts & finance",
+   "tags": [
+    "money",
+    "finance",
+    "pocket"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-wallet\"/></svg>"
+  },
+  {
+   "name": "banknote",
+   "category": "Charts & finance",
+   "tags": [
+    "currency",
+    "money",
+    "payment"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-banknote\"/></svg>"
+  },
+  {
+   "name": "coins",
+   "category": "Charts & finance",
+   "tags": [
+    "money",
+    "cash",
+    "finance",
+    "gamble"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-coins\"/></svg>"
+  },
+  {
+   "name": "calculator",
+   "category": "Charts & finance",
+   "tags": [
+    "count",
+    "calculating machine"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-calculator\"/></svg>"
+  },
+  {
+   "name": "landmark",
+   "category": "Charts & finance",
+   "tags": [
+    "bank",
+    "building",
+    "capitol",
+    "finance",
+    "money",
+    "museum",
+    "art gallery",
+    "hall"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-landmark\"/></svg>"
+  },
+  {
+   "name": "piggy-bank",
+   "category": "Charts & finance",
+   "tags": [
+    "money",
+    "savings"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-piggy-bank\"/></svg>"
+  },
+  {
+   "name": "hand-coins",
+   "category": "Charts & finance",
+   "tags": [
+    "savings",
+    "banking",
+    "money",
+    "finance",
+    "offers",
+    "mortgage",
+    "payment",
+    "received"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-hand-coins\"/></svg>"
+  },
+  {
+   "name": "badge-percent",
+   "category": "Charts & finance",
+   "tags": [
+    "verified",
+    "unverified",
+    "sale",
+    "discount",
+    "offer",
+    "marketing",
+    "sticker",
+    "price tag"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-badge-percent\"/></svg>"
+  },
+  {
+   "name": "scale",
+   "category": "Charts & finance",
+   "tags": [
+    "balance",
+    "legal",
+    "license",
+    "right",
+    "rule",
+    "law",
+    "justice",
+    "weight"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-scale\"/></svg>"
+  },
+  {
+   "name": "user",
+   "category": "People & communication",
+   "tags": [
+    "person",
+    "account",
+    "contact"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-user\"/></svg>"
+  },
+  {
+   "name": "user-round",
+   "category": "People & communication",
+   "tags": [
+    "person",
+    "account",
+    "contact"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-user-round\"/></svg>"
+  },
+  {
+   "name": "users",
+   "category": "People & communication",
+   "tags": [
+    "group",
+    "people"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-users\"/></svg>"
+  },
+  {
+   "name": "users-round",
+   "category": "People & communication",
+   "tags": [
+    "group",
+    "people"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-users-round\"/></svg>"
+  },
+  {
+   "name": "user-plus",
+   "category": "People & communication",
+   "tags": [
+    "new",
+    "add",
+    "create",
+    "follow",
+    "subscribe"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-user-plus\"/></svg>"
+  },
+  {
+   "name": "user-check",
+   "category": "People & communication",
+   "tags": [
+    "followed",
+    "subscribed",
+    "done",
+    "todo",
+    "tick",
+    "complete",
+    "task"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-user-check\"/></svg>"
+  },
+  {
+   "name": "user-x",
+   "category": "People & communication",
+   "tags": [
+    "delete",
+    "remove",
+    "unfollow",
+    "unsubscribe",
+    "unavailable"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-user-x\"/></svg>"
+  },
+  {
+   "name": "user-cog",
+   "category": "People & communication",
+   "tags": [
+    "settings",
+    "edit",
+    "cog",
+    "gear"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-user-cog\"/></svg>"
+  },
+  {
+   "name": "circle-user",
+   "category": "People & communication",
+   "tags": [
+    "person",
+    "account",
+    "contact"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-circle-user\"/></svg>"
+  },
+  {
+   "name": "contact",
+   "category": "People & communication",
+   "tags": [
+    "user",
+    "person",
+    "family",
+    "friend",
+    "acquaintance",
+    "listing",
+    "networking"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-contact\"/></svg>"
+  },
+  {
+   "name": "id-card",
+   "category": "People & communication",
+   "tags": [
+    "card",
+    "badge",
+    "identity",
+    "authentication",
+    "secure"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-id-card\"/></svg>"
+  },
+  {
+   "name": "mail",
+   "category": "People & communication",
+   "tags": [
+    "email",
+    "message",
+    "letter",
+    "unread"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-mail\"/></svg>"
+  },
+  {
+   "name": "mail-open",
+   "category": "People & communication",
+   "tags": [
+    "email",
+    "message",
+    "letter",
+    "read"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-mail-open\"/></svg>"
+  },
+  {
+   "name": "inbox",
+   "category": "People & communication",
+   "tags": [
+    "email"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-inbox\"/></svg>"
+  },
+  {
+   "name": "message-circle",
+   "category": "People & communication",
+   "tags": [
+    "comment",
+    "chat",
+    "conversation",
+    "dialog",
+    "feedback",
+    "speech bubble"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-message-circle\"/></svg>"
+  },
+  {
+   "name": "message-square",
+   "category": "People & communication",
+   "tags": [
+    "comment",
+    "chat",
+    "conversation",
+    "dialog",
+    "feedback",
+    "speech bubble"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-message-square\"/></svg>"
+  },
+  {
+   "name": "messages-square",
+   "category": "People & communication",
+   "tags": [
+    "comment",
+    "chat",
+    "conversation",
+    "dialog",
+    "feedback",
+    "speech bubbles",
+    "copy",
+    "multiple"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-messages-square\"/></svg>"
+  },
+  {
+   "name": "phone",
+   "category": "People & communication",
+   "tags": [
+    "call"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-phone\"/></svg>"
+  },
+  {
+   "name": "phone-call",
+   "category": "People & communication",
+   "tags": [
+    "ring"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-phone-call\"/></svg>"
+  },
+  {
+   "name": "at-sign",
+   "category": "People & communication",
+   "tags": [
+    "mention",
+    "at",
+    "email",
+    "message",
+    "@"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-at-sign\"/></svg>"
+  },
+  {
+   "name": "megaphone",
+   "category": "People & communication",
+   "tags": [
+    "advertisement",
+    "announcement",
+    "attention",
+    "alert",
+    "loudspeaker",
+    "megaphone",
+    "notification"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-megaphone\"/></svg>"
+  },
+  {
+   "name": "headset",
+   "category": "People & communication",
+   "tags": [
+    "music",
+    "audio",
+    "sound",
+    "gaming",
+    "headphones",
+    "headset",
+    "call",
+    "center"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-headset\"/></svg>"
+  },
+  {
+   "name": "handshake",
+   "category": "People & communication",
+   "tags": [
+    "agreement",
+    "partnership",
+    "deal",
+    "business",
+    "assistance",
+    "cooperation",
+    "friendship",
+    "union"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-handshake\"/></svg>"
+  },
+  {
+   "name": "building",
+   "category": "People & communication",
+   "tags": [
+    "organisation",
+    "organization"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-building\"/></svg>"
+  },
+  {
+   "name": "building-2",
+   "category": "People & communication",
+   "tags": [],
+   "use": "<svg class=\"f-i\"><use href=\"#i-building-2\"/></svg>"
+  },
+  {
+   "name": "factory",
+   "category": "People & communication",
+   "tags": [
+    "building",
+    "business",
+    "energy",
+    "industry",
+    "manufacture",
+    "sector"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-factory\"/></svg>"
+  },
+  {
+   "name": "store",
+   "category": "People & communication",
+   "tags": [
+    "shop",
+    "supermarket",
+    "stand",
+    "boutique",
+    "building"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-store\"/></svg>"
+  },
+  {
+   "name": "warehouse",
+   "category": "People & communication",
+   "tags": [
+    "storage",
+    "storehouse",
+    "depot",
+    "depository",
+    "repository",
+    "stockroom",
+    "logistics",
+    "building"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-warehouse\"/></svg>"
+  },
+  {
+   "name": "briefcase",
+   "category": "People & communication",
+   "tags": [
+    "work",
+    "bag",
+    "baggage",
+    "folder"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-briefcase\"/></svg>"
+  },
+  {
+   "name": "graduation-cap",
+   "category": "People & communication",
+   "tags": [
+    "school",
+    "university",
+    "learn",
+    "study",
+    "mortarboard",
+    "education",
+    "ceremony",
+    "academic"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-graduation-cap\"/></svg>"
+  },
+  {
+   "name": "school",
+   "category": "People & communication",
+   "tags": [
+    "building",
+    "education",
+    "childhood",
+    "university",
+    "learning",
+    "campus",
+    "scholar",
+    "student"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-school\"/></svg>"
+  },
+  {
+   "name": "book-marked",
+   "category": "People & communication",
+   "tags": [],
+   "use": "<svg class=\"f-i\"><use href=\"#i-book-marked\"/></svg>"
+  },
+  {
+   "name": "languages",
+   "category": "People & communication",
+   "tags": [
+    "translate"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-languages\"/></svg>"
+  },
+  {
+   "name": "globe",
+   "category": "People & communication",
+   "tags": [
+    "world",
+    "browser",
+    "language",
+    "translate"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-globe\"/></svg>"
+  },
+  {
+   "name": "package",
+   "category": "Operations & fabrication",
+   "tags": [
+    "box",
+    "container",
+    "storage",
+    "sealed",
+    "delivery",
+    "undelivered",
+    "unopened",
+    "packed"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-package\"/></svg>"
+  },
+  {
+   "name": "package-check",
+   "category": "Operations & fabrication",
+   "tags": [
+    "confirm",
+    "verified",
+    "done",
+    "todo",
+    "tick",
+    "complete",
+    "task",
+    "delivered"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-package-check\"/></svg>"
+  },
+  {
+   "name": "package-open",
+   "category": "Operations & fabrication",
+   "tags": [
+    "box",
+    "container",
+    "storage",
+    "unpack",
+    "unarchive",
+    "unzip",
+    "opened",
+    "delivered"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-package-open\"/></svg>"
+  },
+  {
+   "name": "package-plus",
+   "category": "Operations & fabrication",
+   "tags": [
+    "new",
+    "add",
+    "create"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-package-plus\"/></svg>"
+  },
+  {
+   "name": "box",
+   "category": "Operations & fabrication",
+   "tags": [
+    "cube",
+    "package",
+    "container",
+    "storage",
+    "geometry",
+    "3d",
+    "isometric"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-box\"/></svg>"
+  },
+  {
+   "name": "boxes",
+   "category": "Operations & fabrication",
+   "tags": [
+    "cubes",
+    "packages",
+    "parts",
+    "group",
+    "units",
+    "collection",
+    "cluster",
+    "geometry"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-boxes\"/></svg>"
+  },
+  {
+   "name": "truck",
+   "category": "Operations & fabrication",
+   "tags": [
+    "delivery",
+    "van",
+    "shipping",
+    "haulage",
+    "lorry"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-truck\"/></svg>"
+  },
+  {
+   "name": "container",
+   "category": "Operations & fabrication",
+   "tags": [
+    "storage",
+    "shipping",
+    "freight",
+    "supply chain",
+    "environment",
+    "devops",
+    "code",
+    "coding"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-container\"/></svg>"
+  },
+  {
+   "name": "shopping-cart",
+   "category": "Operations & fabrication",
+   "tags": [
+    "trolley",
+    "cart",
+    "basket",
+    "e-commerce",
+    "store",
+    "purchase",
+    "products",
+    "items"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-shopping-cart\"/></svg>"
+  },
+  {
+   "name": "shopping-bag",
+   "category": "Operations & fabrication",
+   "tags": [
+    "ecommerce",
+    "cart",
+    "purchase",
+    "store"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-shopping-bag\"/></svg>"
+  },
+  {
+   "name": "barcode",
+   "category": "Operations & fabrication",
+   "tags": [
+    "scan",
+    "checkout",
+    "till",
+    "cart",
+    "transaction",
+    "purchase",
+    "buy",
+    "product"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-barcode\"/></svg>"
+  },
+  {
+   "name": "scan-barcode",
+   "category": "Operations & fabrication",
+   "tags": [
+    "checkout",
+    "till",
+    "cart",
+    "transaction",
+    "purchase",
+    "buy",
+    "product",
+    "packaging"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-scan-barcode\"/></svg>"
+  },
+  {
+   "name": "ruler",
+   "category": "Operations & fabrication",
+   "tags": [
+    "measurements",
+    "centimeters",
+    "cm",
+    "millimeters",
+    "mm",
+    "metre",
+    "foot",
+    "feet"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-ruler\"/></svg>"
+  },
+  {
+   "name": "drafting-compass",
+   "category": "Operations & fabrication",
+   "tags": [
+    "geometry",
+    "trigonometry",
+    "radius",
+    "diameter",
+    "circumference",
+    "calculate",
+    "measure",
+    "arc"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-drafting-compass\"/></svg>"
+  },
+  {
+   "name": "hammer",
+   "category": "Operations & fabrication",
+   "tags": [
+    "mallet",
+    "nails",
+    "diy",
+    "toolbox",
+    "build",
+    "construction"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-hammer\"/></svg>"
+  },
+  {
+   "name": "cog",
+   "category": "Operations & fabrication",
+   "tags": [
+    "computing",
+    "settings",
+    "cog",
+    "edit",
+    "gear",
+    "preferences",
+    "controls",
+    "configuration"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-cog\"/></svg>"
+  },
+  {
+   "name": "wrench",
+   "category": "Operations & fabrication",
+   "tags": [
+    "account",
+    "settings",
+    "spanner",
+    "diy",
+    "toolbox",
+    "build",
+    "construction"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-wrench\"/></svg>"
+  },
+  {
+   "name": "forklift",
+   "category": "Operations & fabrication",
+   "tags": [
+    "machinery",
+    "industrial",
+    "warehouse",
+    "lifting",
+    "storage",
+    "equipment",
+    "heavy-duty",
+    "moving"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-forklift\"/></svg>"
+  },
+  {
+   "name": "scissors",
+   "category": "Operations & fabrication",
+   "tags": [
+    "cut",
+    "snip",
+    "chop",
+    "stationery",
+    "crafts"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-scissors\"/></svg>"
+  },
+  {
+   "name": "drill",
+   "category": "Operations & fabrication",
+   "tags": [
+    "power",
+    "bit",
+    "head",
+    "hole",
+    "diy",
+    "toolbox",
+    "build",
+    "construction"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-drill\"/></svg>"
+  },
+  {
+   "name": "hard-hat",
+   "category": "Operations & fabrication",
+   "tags": [
+    "helmet",
+    "construction",
+    "safety"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-hard-hat\"/></svg>"
+  },
+  {
+   "name": "nut",
+   "category": "Operations & fabrication",
+   "tags": [
+    "hazelnut",
+    "acorn",
+    "food",
+    "diet"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-nut\"/></svg>"
+  },
+  {
+   "name": "bolt",
+   "category": "Operations & fabrication",
+   "tags": [
+    "nut",
+    "screw",
+    "settings",
+    "preferences",
+    "configuration",
+    "controls",
+    "edit",
+    "diy"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-bolt\"/></svg>"
+  },
+  {
+   "name": "blocks",
+   "category": "Operations & fabrication",
+   "tags": [
+    "addon",
+    "plugin",
+    "integration",
+    "extension",
+    "package",
+    "build",
+    "stack",
+    "toys"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-blocks\"/></svg>"
+  },
+  {
+   "name": "component",
+   "category": "Operations & fabrication",
+   "tags": [
+    "design",
+    "element",
+    "group",
+    "module",
+    "part",
+    "symbol"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-component\"/></svg>"
+  },
+  {
+   "name": "layers",
+   "category": "Operations & fabrication",
+   "tags": [
+    "stack",
+    "pile",
+    "pages",
+    "sheets",
+    "paperwork",
+    "copies",
+    "copy"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-layers\"/></svg>"
+  },
+  {
+   "name": "layers-2",
+   "category": "Operations & fabrication",
+   "tags": [
+    "stack",
+    "pile",
+    "pages",
+    "sheets",
+    "paperwork",
+    "copies",
+    "copy",
+    "duplicate"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-layers-2\"/></svg>"
+  },
+  {
+   "name": "shapes",
+   "category": "Operations & fabrication",
+   "tags": [
+    "triangle",
+    "equilateral",
+    "square",
+    "circle",
+    "classification",
+    "different",
+    "collection",
+    "toy"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-shapes\"/></svg>"
+  },
+  {
+   "name": "box-select",
+   "category": "Operations & fabrication",
+   "tags": [],
+   "use": "<svg class=\"f-i\"><use href=\"#i-box-select\"/></svg>"
+  },
+  {
+   "name": "vector-square",
+   "category": "Operations & fabrication",
+   "tags": [
+    "shape",
+    "geometry",
+    "art",
+    "width",
+    "height",
+    "size",
+    "calculate",
+    "measure"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-vector-square\"/></svg>"
+  },
+  {
+   "name": "pen-tool",
+   "category": "Operations & fabrication",
+   "tags": [
+    "vector",
+    "drawing",
+    "path"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-pen-tool\"/></svg>"
+  },
+  {
+   "name": "square-dashed",
+   "category": "Operations & fabrication",
+   "tags": [
+    "selection",
+    "square",
+    "rectangular",
+    "marquee",
+    "tool",
+    "dashed",
+    "box"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-square-dashed\"/></svg>"
+  },
+  {
+   "name": "monitor",
+   "category": "Devices & developer",
+   "tags": [
+    "tv",
+    "computer",
+    "desktop",
+    "screen",
+    "display",
+    "external display",
+    "screen sharing",
+    "virtual machine"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-monitor\"/></svg>"
+  },
+  {
+   "name": "smartphone",
+   "category": "Devices & developer",
+   "tags": [
+    "phone",
+    "cellphone",
+    "device",
+    "mobile",
+    "screen",
+    "display",
+    "touchscreen",
+    "portable"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-smartphone\"/></svg>"
+  },
+  {
+   "name": "tablet",
+   "category": "Devices & developer",
+   "tags": [
+    "device",
+    "mobile",
+    "screen",
+    "display",
+    "touchscreen",
+    "portable",
+    "responsive"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-tablet\"/></svg>"
+  },
+  {
+   "name": "laptop",
+   "category": "Devices & developer",
+   "tags": [
+    "computer",
+    "screen",
+    "remote"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-laptop\"/></svg>"
+  },
+  {
+   "name": "keyboard",
+   "category": "Devices & developer",
+   "tags": [
+    "layout",
+    "spell",
+    "settings",
+    "mouse"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-keyboard\"/></svg>"
+  },
+  {
+   "name": "mouse-pointer",
+   "category": "Devices & developer",
+   "tags": [
+    "click",
+    "select"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-mouse-pointer\"/></svg>"
+  },
+  {
+   "name": "mouse-pointer-click",
+   "category": "Devices & developer",
+   "tags": [
+    "click",
+    "select"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-mouse-pointer-click\"/></svg>"
+  },
+  {
+   "name": "terminal",
+   "category": "Devices & developer",
+   "tags": [
+    "code",
+    "command line",
+    "prompt",
+    "shell"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-terminal\"/></svg>"
+  },
+  {
+   "name": "code",
+   "category": "Devices & developer",
+   "tags": [
+    "source",
+    "programming",
+    "html",
+    "xml"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-code\"/></svg>"
+  },
+  {
+   "name": "code-xml",
+   "category": "Devices & developer",
+   "tags": [
+    "source",
+    "programming",
+    "html",
+    "xml"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-code-xml\"/></svg>"
+  },
+  {
+   "name": "git-branch",
+   "category": "Devices & developer",
+   "tags": [
+    "code",
+    "version control",
+    "vcs",
+    "repository"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-git-branch\"/></svg>"
+  },
+  {
+   "name": "git-pull-request",
+   "category": "Devices & developer",
+   "tags": [
+    "code",
+    "version control",
+    "open"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-git-pull-request\"/></svg>"
+  },
+  {
+   "name": "bug",
+   "category": "Devices & developer",
+   "tags": [
+    "issue",
+    "error",
+    "defect",
+    "testing",
+    "troubleshoot",
+    "problem",
+    "report",
+    "debug"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-bug\"/></svg>"
+  },
+  {
+   "name": "webhook",
+   "category": "Devices & developer",
+   "tags": [
+    "push api",
+    "interface",
+    "callback"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-webhook\"/></svg>"
+  },
+  {
+   "name": "plug",
+   "category": "Devices & developer",
+   "tags": [
+    "electricity",
+    "energy",
+    "electronics",
+    "socket",
+    "outlet",
+    "power",
+    "voltage",
+    "current"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-plug\"/></svg>"
+  },
+  {
+   "name": "plug-zap",
+   "category": "Devices & developer",
+   "tags": [
+    "electricity",
+    "energy",
+    "electronics",
+    "charge",
+    "charging",
+    "battery",
+    "connect"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-plug-zap\"/></svg>"
+  },
+  {
+   "name": "cpu",
+   "category": "Devices & developer",
+   "tags": [
+    "processor",
+    "cores",
+    "technology",
+    "computer",
+    "chip",
+    "circuit",
+    "memory",
+    "ram"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-cpu\"/></svg>"
+  },
+  {
+   "name": "wifi",
+   "category": "Devices & developer",
+   "tags": [
+    "connection",
+    "signal",
+    "wireless"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-wifi\"/></svg>"
+  },
+  {
+   "name": "wifi-off",
+   "category": "Devices & developer",
+   "tags": [
+    "disabled"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-wifi-off\"/></svg>"
+  },
+  {
+   "name": "battery",
+   "category": "Devices & developer",
+   "tags": [
+    "power",
+    "electricity",
+    "energy",
+    "accumulator",
+    "charge"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-battery\"/></svg>"
+  },
+  {
+   "name": "bluetooth",
+   "category": "Devices & developer",
+   "tags": [
+    "wireless"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-bluetooth\"/></svg>"
+  },
+  {
+   "name": "braces",
+   "category": "Devices & developer",
+   "tags": [
+    "json",
+    "code",
+    "token",
+    "curly brackets",
+    "data",
+    "{",
+    "}"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-braces\"/></svg>"
+  },
+  {
+   "name": "sun",
+   "category": "Appearance & text",
+   "tags": [
+    "brightness",
+    "weather",
+    "light",
+    "summer"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-sun\"/></svg>"
+  },
+  {
+   "name": "moon",
+   "category": "Appearance & text",
+   "tags": [
+    "dark",
+    "night"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-moon\"/></svg>"
+  },
+  {
+   "name": "sun-moon",
+   "category": "Appearance & text",
+   "tags": [
+    "dark",
+    "light",
+    "moon",
+    "sun",
+    "brightness",
+    "theme",
+    "auto theme",
+    "system theme"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-sun-moon\"/></svg>"
+  },
+  {
+   "name": "palette",
+   "category": "Appearance & text",
+   "tags": [
+    "colors",
+    "colours",
+    "theme",
+    "scheme",
+    "paint",
+    "watercolor",
+    "watercolour",
+    "artist"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-palette\"/></svg>"
+  },
+  {
+   "name": "paintbrush",
+   "category": "Appearance & text",
+   "tags": [
+    "brush",
+    "paintbrush",
+    "design",
+    "color",
+    "colour",
+    "decoration",
+    "diy"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-paintbrush\"/></svg>"
+  },
+  {
+   "name": "brush",
+   "category": "Appearance & text",
+   "tags": [
+    "clean",
+    "sweep",
+    "refactor",
+    "remove",
+    "draw",
+    "paint",
+    "color",
+    "artist"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-brush\"/></svg>"
+  },
+  {
+   "name": "droplet",
+   "category": "Appearance & text",
+   "tags": [
+    "water",
+    "weather",
+    "liquid",
+    "fluid",
+    "wet",
+    "moisture",
+    "damp",
+    "bead"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-droplet\"/></svg>"
+  },
+  {
+   "name": "contrast",
+   "category": "Appearance & text",
+   "tags": [
+    "display",
+    "accessibility"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-contrast\"/></svg>"
+  },
+  {
+   "name": "type",
+   "category": "Appearance & text",
+   "tags": [
+    "text",
+    "font",
+    "typography"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-type\"/></svg>"
+  },
+  {
+   "name": "bold",
+   "category": "Appearance & text",
+   "tags": [
+    "text",
+    "strong",
+    "format"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-bold\"/></svg>"
+  },
+  {
+   "name": "italic",
+   "category": "Appearance & text",
+   "tags": [
+    "oblique",
+    "text",
+    "format"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-italic\"/></svg>"
+  },
+  {
+   "name": "underline",
+   "category": "Appearance & text",
+   "tags": [
+    "text",
+    "format"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-underline\"/></svg>"
+  },
+  {
+   "name": "align-left",
+   "category": "Appearance & text",
+   "tags": [],
+   "use": "<svg class=\"f-i\"><use href=\"#i-align-left\"/></svg>"
+  },
+  {
+   "name": "align-center",
+   "category": "Appearance & text",
+   "tags": [],
+   "use": "<svg class=\"f-i\"><use href=\"#i-align-center\"/></svg>"
+  },
+  {
+   "name": "align-right",
+   "category": "Appearance & text",
+   "tags": [],
+   "use": "<svg class=\"f-i\"><use href=\"#i-align-right\"/></svg>"
+  },
+  {
+   "name": "align-justify",
+   "category": "Appearance & text",
+   "tags": [],
+   "use": "<svg class=\"f-i\"><use href=\"#i-align-justify\"/></svg>"
+  },
+  {
+   "name": "text-cursor-input",
+   "category": "Appearance & text",
+   "tags": [
+    "select"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-text-cursor-input\"/></svg>"
+  },
+  {
+   "name": "circle",
+   "category": "Shapes & misc",
+   "tags": [
+    "off",
+    "zero",
+    "record",
+    "shape"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-circle\"/></svg>"
+  },
+  {
+   "name": "triangle",
+   "category": "Shapes & misc",
+   "tags": [
+    "equilateral",
+    "delta",
+    "shape",
+    "pyramid",
+    "hierarchy"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-triangle\"/></svg>"
+  },
+  {
+   "name": "diamond",
+   "category": "Shapes & misc",
+   "tags": [
+    "square",
+    "rectangle",
+    "oblique",
+    "rhombus",
+    "shape",
+    "suit",
+    "playing",
+    "cards"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-diamond\"/></svg>"
+  },
+  {
+   "name": "hexagon",
+   "category": "Shapes & misc",
+   "tags": [
+    "shape",
+    "node.js",
+    "logo"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-hexagon\"/></svg>"
+  },
+  {
+   "name": "circle-plus",
+   "category": "Shapes & misc",
+   "tags": [
+    "add",
+    "new",
+    "increase",
+    "increment",
+    "positive",
+    "calculate",
+    "crosshair",
+    "aim"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-circle-plus\"/></svg>"
+  },
+  {
+   "name": "circle-minus",
+   "category": "Shapes & misc",
+   "tags": [
+    "subtract",
+    "remove",
+    "decrease",
+    "reduce",
+    "calculate",
+    "line",
+    "operator",
+    "code"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-circle-minus\"/></svg>"
+  },
+  {
+   "name": "circle-dot",
+   "category": "Shapes & misc",
+   "tags": [
+    "pending",
+    "dot",
+    "progress",
+    "issue",
+    "code",
+    "coding",
+    "version control",
+    "choices"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-circle-dot\"/></svg>"
+  },
+  {
+   "name": "dot",
+   "category": "Shapes & misc",
+   "tags": [
+    "interpunct",
+    "interpoint",
+    "middot",
+    "step",
+    "punctuation",
+    "period",
+    "full stop",
+    "end"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-dot\"/></svg>"
+  },
+  {
+   "name": "hash",
+   "category": "Shapes & misc",
+   "tags": [
+    "hashtag",
+    "number",
+    "pound"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-hash\"/></svg>"
+  },
+  {
+   "name": "asterisk",
+   "category": "Shapes & misc",
+   "tags": [
+    "symbol",
+    "sterisk",
+    "mark",
+    "pointer",
+    "pencil",
+    "sign",
+    "alert",
+    "notification"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-asterisk\"/></svg>"
+  },
+  {
+   "name": "command",
+   "category": "Shapes & misc",
+   "tags": [
+    "keyboard",
+    "key",
+    "mac",
+    "cmd",
+    "button"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-command\"/></svg>"
+  },
+  {
+   "name": "option",
+   "category": "Shapes & misc",
+   "tags": [
+    "keyboard",
+    "key",
+    "mac",
+    "alt",
+    "button"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-option\"/></svg>"
+  },
+  {
+   "name": "life-buoy",
+   "category": "Shapes & misc",
+   "tags": [
+    "preserver",
+    "life belt",
+    "lifesaver",
+    "help",
+    "rescue",
+    "ship",
+    "ring",
+    "raft"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-life-buoy\"/></svg>"
+  },
+  {
+   "name": "hand-helping",
+   "category": "Shapes & misc",
+   "tags": [
+    "agreement",
+    "help",
+    "proposal",
+    "charity",
+    "begging",
+    "terms"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-hand-helping\"/></svg>"
+  },
+  {
+   "name": "crown",
+   "category": "Shapes & misc",
+   "tags": [
+    "diadem",
+    "tiara",
+    "circlet",
+    "corona",
+    "king",
+    "ruler",
+    "winner",
+    "favourite"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-crown\"/></svg>"
+  },
+  {
+   "name": "gift",
+   "category": "Shapes & misc",
+   "tags": [
+    "present",
+    "box",
+    "birthday",
+    "party"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-gift\"/></svg>"
+  },
+  {
+   "name": "coffee",
+   "category": "Shapes & misc",
+   "tags": [
+    "drink",
+    "cup",
+    "mug",
+    "tea",
+    "cafe",
+    "hot",
+    "beverage"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-coffee\"/></svg>"
+  },
+  {
+   "name": "leaf",
+   "category": "Shapes & misc",
+   "tags": [
+    "sustainability",
+    "nature",
+    "energy",
+    "plant",
+    "autumn"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-leaf\"/></svg>"
+  },
+  {
+   "name": "mountain",
+   "category": "Shapes & misc",
+   "tags": [
+    "climb",
+    "hike",
+    "rock"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-mountain\"/></svg>"
+  },
+  {
+   "name": "sprout",
+   "category": "Shapes & misc",
+   "tags": [
+    "eco",
+    "green",
+    "growth",
+    "leaf",
+    "nature",
+    "plant",
+    "seed",
+    "spring"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-sprout\"/></svg>"
+  },
+  {
+   "name": "film",
+   "category": "Shapes & misc",
+   "tags": [
+    "movie",
+    "video",
+    "reel",
+    "camera",
+    "cinema",
+    "entertainment"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-film\"/></svg>"
+  }
+ ]
+}

@@ -1,0 +1,68 @@
+<!-- OVERLAYS & UI — a living catalogue: every overlay trigger, buttons, pills, alerts, form controls,
+     navigation, feedback. Copy any block. -->
+<section data-screen="ui" hidden class="f-stack" style="gap:16px">
+  <div class="f-head"><div><h1 class="f-h1">Overlays &amp; UI</h1><p class="f-subtitle">Everything that is not a page: drawers, modals, menus, toasts, controls and feedback.</p></div></div>
+
+  <div class="f-grid f-cols-2" style="align-items:start">
+    <div class="f-card"><div class="f-card__head"><div><h2 class="f-card__title">Overlays</h2><p class="f-card__sub">Native <code class="f-mono">&lt;dialog&gt;</code>: focus trap, Esc and backdrop close.</p></div></div>
+      <div class="f-row f-wrap" style="gap:8px">
+        <button class="f-btn" data-f-open="#orderDrawer">Drawer</button>
+        <button class="f-btn" data-f-open="#editDrawer">Wide drawer · form</button>
+        <button class="f-btn" data-f-open="#filterDrawer">Left drawer · filters</button>
+        <button class="f-btn" data-f-open="#inviteModal">Modal · form</button>
+        <button class="f-btn" data-f-open="#confirmDelete">Confirm · destructive</button>
+        <button class="f-btn" data-f-open="#confirmPublish">Confirm · neutral</button>
+        <button class="f-btn" data-f-open="#cmd">Command palette <span class="f-kbd">⌘K</span></button>
+        <button class="f-btn" data-f-open="#helpModal">Shortcuts</button>
+      </div></div>
+
+    <div class="f-card"><div class="f-card__head"><div><h2 class="f-card__title">Menus, popovers, toasts, tooltips</h2></div></div>
+      <div class="f-row f-wrap" style="gap:8px">
+        <button class="f-btn" data-f-menu="#kebabMenu">Menu<svg class="f-i f-i--sm"><use href="#i-chevron-down"/></svg></button>
+        <button class="f-btn" data-f-menu="#filterPop">Popover<svg class="f-i f-i--sm"><use href="#i-chevron-down"/></svg></button>
+        <button class="f-btn" data-tip="Tooltip above">Hover me</button>
+        <button class="f-btn" data-tip="Tooltip below" data-tip-pos="bottom">Hover me too</button>
+      </div>
+      <div class="f-row f-wrap" style="gap:8px">
+        <button class="f-btn" data-f-toast="ok|Order shipped|ORD-1842 left the warehouse.">Success toast</button>
+        <button class="f-btn" data-f-toast="info|Heads up|A new version is available.">Info</button>
+        <button class="f-btn" data-f-toast="warn|Stock is low|Mild steel 3 mm is below reorder point.">Warning</button>
+        <button class="f-btn" data-f-toast="danger|Could not save|Check your connection and try again.">Error</button>
+      </div></div>
+
+    <div class="f-card"><div class="f-card__head"><h2 class="f-card__title">Buttons</h2></div>
+      <div class="f-row f-wrap" style="gap:8px"><button class="f-btn f-btn--primary">Primary</button><button class="f-btn">Secondary</button><button class="f-btn f-btn--accent">Accent</button><button class="f-btn f-btn--ghost">Ghost</button><button class="f-btn f-btn--destructive">Destructive</button><button class="f-btn" disabled style="opacity:.5;cursor:not-allowed">Disabled</button></div>
+      <div class="f-row f-wrap" style="gap:8px"><button class="f-btn f-btn--primary f-btn--sm">Small</button><button class="f-btn f-btn--sm"><svg class="f-i f-i--sm"><use href="#i-download"/></svg>With icon</button><button class="f-btn f-btn--icon" aria-label="Add"><svg class="f-i"><use href="#i-plus"/></svg></button><button class="f-btn f-btn--primary f-btn--icon" aria-label="Send"><svg class="f-i"><use href="#i-send"/></svg></button>
+        <span class="f-seg"><button aria-pressed="true">Day</button><button aria-pressed="false">Week</button><button aria-pressed="false">Month</button></span></div></div>
+
+    <div class="f-card"><div class="f-card__head"><h2 class="f-card__title">Pills, tags, avatars</h2></div>
+      <div class="f-row f-wrap" style="gap:8px"><span class="f-pill">Neutral</span><span class="f-pill f-pill--ok f-pill--dot">Shipped</span><span class="f-pill f-pill--warn f-pill--dot">Waiting</span><span class="f-pill f-pill--danger f-pill--dot">Urgent</span><span class="f-pill f-pill--info f-pill--dot">New</span><span class="f-pill f-pill--ai"><svg class="f-i f-i--sm"><use href="#i-sparkles"/></svg>AI</span><span class="f-pill f-pill--brand">Brand</span><span class="f-pill f-pill--accent">Accent</span><span class="f-pill f-pill--outline">Outline</span></div>
+      <div class="f-row f-wrap" style="gap:8px"><span class="f-tag">Repeat order<button data-f-remove aria-label="Remove">✕</button></span><span class="f-tag">Stainless<button data-f-remove aria-label="Remove">✕</button></span><span class="f-fchip"><span>Status</span> In production<button data-f-remove aria-label="Remove">✕</button></span></div>
+      <div class="f-row" style="gap:18px"><div class="f-avatars"><span class="f-avatar f-avatar--lg" style="--av:40">PS</span><span class="f-avatar f-avatar--lg" style="--av:200">AK</span><span class="f-avatar f-avatar--lg" style="--av:320">RM</span><span class="f-avatar f-avatar--lg" style="--av:120">+3</span></div><span class="f-avatar" style="--av:260">JD</span></div></div>
+
+    <div class="f-card" style="grid-column:1/-1"><div class="f-card__head"><h2 class="f-card__title">Alerts &amp; banners</h2></div>
+      <div class="f-grid f-cols-2">
+        <div class="f-alert f-alert--info"><svg class="f-i"><use href="#i-sparkles"/></svg><div class="f-alert__body"><div class="f-alert__title">New pricing rules</div><div class="f-alert__text">Quotes now include material surcharges automatically.</div></div><button class="f-alert__x" data-f-dismiss aria-label="Dismiss"><svg class="f-i f-i--sm"><use href="#i-x"/></svg></button></div>
+        <div class="f-alert f-alert--ok"><svg class="f-i"><use href="#i-check"/></svg><div class="f-alert__body"><div class="f-alert__title">Payment received</div><div class="f-alert__text">$48,200 from Halden Mechanical.</div></div><button class="f-alert__x" data-f-dismiss aria-label="Dismiss"><svg class="f-i f-i--sm"><use href="#i-x"/></svg></button></div>
+        <div class="f-alert f-alert--warn"><svg class="f-i"><use href="#i-triangle-alert"/></svg><div class="f-alert__body"><div class="f-alert__title">Stock is running low</div><div class="f-alert__text">3 materials are below their reorder point.</div></div><button class="f-btn f-btn--sm">Review</button></div>
+        <div class="f-alert f-alert--danger"><svg class="f-i"><use href="#i-triangle-alert"/></svg><div class="f-alert__body"><div class="f-alert__title">Sync failed</div><div class="f-alert__text">We could not reach your accounting system.</div></div><button class="f-btn f-btn--sm">Retry</button></div>
+      </div></div>
+
+    <div class="f-card"><div class="f-card__head"><h2 class="f-card__title">Form controls</h2></div>
+      <div class="f-grid f-cols-2">
+        <div class="f-field"><label class="f-label" for="fld-ui-25">Text</label><input id="fld-ui-25" class="f-input" placeholder="Placeholder"></div>
+        <div class="f-field"><label class="f-label" for="fld-ui-26">Select</label><select id="fld-ui-26" class="f-select"><option>Mild steel</option><option>Stainless</option></select></div>
+        <div class="f-field f-field--error"><label class="f-label" for="fld-ui-27">Error state</label><input id="fld-ui-27" class="f-input" value="abc"><span class="f-hint">Must be at least 6 characters</span></div>
+        <div class="f-field"><label class="f-label" for="fld-ui-28">Input group</label><div class="f-ig"><span class="f-ig__addon">$</span><input id="fld-ui-28" class="f-input" value="120.00"></div></div>
+      </div>
+      <div class="f-row f-wrap" style="gap:22px"><label class="f-row"><input type="checkbox" class="f-check" checked>Checkbox</label><label class="f-row"><input type="checkbox" class="f-check" id="indet">Indeterminate</label><label class="f-row"><input type="radio" class="f-radio" name="r" checked>Radio</label><label class="f-row"><input type="radio" class="f-radio" name="r">Radio</label><label class="f-row"><input type="checkbox" class="f-switch" checked>Switch</label></div>
+      <div class="f-choices"><label class="f-choice"><input type="radio" class="f-radio" name="plan" checked><span><div class="f-choice__title">Standard</div><div class="f-choice__sub">5–7 days</div></span></label><label class="f-choice"><input type="radio" class="f-radio" name="plan"><span><div class="f-choice__title">Express</div><div class="f-choice__sub">2–3 days · +20%</div></span></label></div></div>
+
+    <div class="f-card"><div class="f-card__head"><h2 class="f-card__title">Navigation &amp; feedback</h2></div>
+      <div class="f-tabs" data-f-tabs style="align-self:flex-start"><button class="f-tab" aria-selected="true">Overview</button><button class="f-tab" aria-selected="false">Files <span class="f-tab__n">4/5</span></button><button class="f-tab" aria-selected="false">Activity</button></div>
+      <div class="f-crumb"><a>Orders</a><svg class="f-i f-i--sm"><use href="#i-chevron-right"/></svg><a>ORD-4821</a><svg class="f-i f-i--sm"><use href="#i-chevron-right"/></svg><span>Files</span></div>
+      <div class="f-pages"><button aria-label="Previous"><svg class="f-i f-i--sm"><use href="#i-chevron-left"/></svg></button><button aria-current="page">1</button><button>2</button><button>3</button><span class="f-faint">…</span><button>12</button><button aria-label="Next"><svg class="f-i f-i--sm"><use href="#i-chevron-right"/></svg></button></div>
+      <div class="f-stack" style="gap:10px"><div class="f-row f-between"><span>Uploading</span><span class="f-faint">64%</span></div><div class="f-progress" style="--v:64"><i></i></div></div>
+      <div><details class="f-acc" open><summary>How is lead time calculated?<svg class="f-i f-i--sm"><use href="#i-chevron-down"/></svg></summary><div>From the day files are approved to the day the order leaves the dock.</div></details><details class="f-acc"><summary>Can I change the delivery date?<svg class="f-i f-i--sm"><use href="#i-chevron-down"/></svg></summary><div>Yes, until production starts.</div></details></div></div>
+  </div>
+</section>

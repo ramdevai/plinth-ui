@@ -1,0 +1,27 @@
+<!-- INBOX — master / detail: filterable thread list on the left, conversation + composer on the right. -->
+<section data-screen="inbox" hidden class="f-stack" style="gap:16px;flex:1;min-height:0">
+  <div class="f-head"><div><h1 class="f-h1">Inbox</h1><p class="f-subtitle">3 unread · customer conversations linked to orders</p></div>
+    <div class="f-head__actions"><button class="f-btn" data-f-toast="ok|All caught up|Marked 3 conversations as read."><svg class="f-i f-i--sm"><use href="#i-check"/></svg>Mark all read</button><button class="f-btn f-btn--primary" data-f-open="#composeModal"><svg class="f-i f-i--sm"><use href="#i-pencil"/></svg>Compose</button></div></div>
+  <div class="f-split">
+    <div class="f-pane">
+      <div class="f-pane__head">
+        <label class="f-search" style="background:var(--surface-2);height:calc(40px*var(--density))"><svg class="f-i f-i--sm"><use href="#i-search"/></svg><input placeholder="Search conversations"></label>
+        <div class="f-chips" data-f-chips><button class="f-chip f-chip--drop" aria-pressed="true">All</button><button class="f-chip f-chip--drop" aria-pressed="false">Unread <span class="f-chip__n">3</span></button><button class="f-chip f-chip--drop" aria-pressed="false">Mine</button></div>
+      </div>
+      <div class="f-pane__scroll" id="threadList" role="listbox" aria-label="Conversations"></div>
+    </div>
+    <div class="f-pane">
+      <div class="f-pane__head" style="flex-direction:row;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:16px">
+        <div class="f-row" style="gap:12px"><span class="f-avatar f-avatar--lg" style="--av:40">HM</span><div><div style="font-weight:600;font-size:16px">Halden Mechanical</div><div class="f-faint" style="font-size:13px">Priya Nair · re <a style="text-decoration:underline;cursor:pointer" data-go="detail">ORD-4821</a></div></div></div>
+        <div class="f-row"><span class="f-pill f-pill--warn f-pill--dot">Needs files</span><button class="f-btn f-btn--icon f-btn--sm" data-f-menu="#kebabMenu" data-align="end" aria-label="More"><svg class="f-i f-i--sm"><use href="#i-ellipsis"/></svg></button></div>
+      </div>
+      <div class="f-msgs">
+        <div class="f-msg"><span class="f-avatar" style="--av:40">PN</span><div><div class="f-msg__bubble">Hi, we need the bracket plates by the 9th. Is revision B of the drawing enough, or do you still need C?</div><div class="f-msg__meta">Priya · Tue 9:04 AM</div></div></div>
+        <div class="f-msg f-msg--me"><span class="f-avatar" style="--av:200">PS</span><div><div class="f-msg__bubble">We need revision C before we can release to production. It changes the hole spacing on the left flange.</div><div class="f-msg__meta" style="text-align:right">You · Tue 9:20 AM</div></div></div>
+        <div class="f-msg"><span class="f-avatar" style="--av:40">PN</span><div><div class="f-msg__bubble">Understood. Engineering is finishing it today. Can we hold the slot on the laser until tomorrow morning?</div><div class="f-msg__meta">Priya · Tue 11:48 AM</div></div></div>
+        <div class="f-alert f-alert--ai" style="align-self:stretch"><svg class="f-i"><use href="#i-sparkles"/></svg><div class="f-alert__body"><div class="f-alert__title">Suggested reply</div><div class="f-alert__text">“Yes, we will hold the slot until 10 AM tomorrow. Please send revision C by then.”</div></div><button class="f-btn f-btn--sm" data-f-toast="ok|Reply inserted|Edit it before you send.">Use reply</button></div>
+      </div>
+      <div class="f-composer"><textarea placeholder="Reply to Priya…" aria-label="Reply"></textarea><div class="f-row f-between"><div class="f-row"><button class="f-btn f-btn--ghost f-btn--icon f-btn--sm" data-tip="Attach file" aria-label="Attach"><svg class="f-i f-i--sm"><use href="#i-file-text"/></svg></button><button class="f-btn f-btn--ghost f-btn--icon f-btn--sm" data-tip="Insert template" aria-label="Template"><svg class="f-i f-i--sm"><use href="#i-sparkles"/></svg></button></div><button class="f-btn f-btn--primary f-btn--sm" data-f-toast="ok|Reply sent|Priya will get it by email."><svg class="f-i f-i--sm"><use href="#i-send"/></svg>Send</button></div></div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,34 @@
+# Curated Lucide icons for Frame UI, grouped for the icons page. Add with: python3 tools/icons.py add NAME "Category"
+Navigation & layout:
+  layout-grid layout-dashboard layout-list panel-left panel-left-close panel-left-open panel-right menu house compass map map-pin navigation
+  arrow-left arrow-right arrow-up arrow-down arrow-up-right arrow-down-right arrow-up-left arrow-down-left arrow-left-right arrow-up-down
+  chevron-left chevron-right chevron-up chevron-down chevrons-left chevrons-right chevrons-up-down corner-down-right
+  external-link link unlink maximize minimize expand shrink move grip-vertical grip-horizontal columns-3 rows-3 table kanban list list-checks list-filter list-ordered list-todo
+Actions:
+  plus minus x check check-check search funnel sliders-horizontal sliders-vertical settings settings-2 pencil square-pen trash-2 copy clipboard clipboard-check clipboard-list
+  save download upload share-2 send refresh-cw rotate-ccw rotate-cw undo-2 redo-2 log-in log-out power play pause square eye eye-off lock lock-open key-round
+  shield shield-check shield-alert scan qr-code printer archive pin bookmark star heart thumbs-up thumbs-down flag tag tags ellipsis ellipsis-vertical
+Status & feedback:
+  circle-check circle-x circle-alert triangle-alert info circle-help octagon-alert ban bell bell-ring bell-off loader loader-circle hourglass clock timer alarm-clock
+  calendar calendar-days calendar-check calendar-clock history activity zap flame sparkles bot brain wand-sparkles lightbulb rocket trophy party-popper
+  accessibility
+Files & data:
+  file file-text file-plus file-check file-x file-spreadsheet file-chart-column file-image file-code file-archive files folder folder-open folder-plus paperclip
+  image images camera video music database server hard-drive cloud cloud-upload cloud-download book-open notebook newspaper scroll-text receipt receipt-text
+Charts & finance:
+  chart-column chart-bar chart-line chart-pie chart-area chart-gantt trending-up trending-down gauge percent dollar-sign indian-rupee euro pound-sterling
+  credit-card wallet banknote coins calculator landmark piggy-bank hand-coins badge-percent scale
+People & communication:
+  user user-round users users-round user-plus user-check user-x user-cog circle-user contact id-card mail mail-open inbox message-circle message-square messages-square
+  phone phone-call at-sign megaphone headset handshake building building-2 factory store warehouse briefcase graduation-cap school book-marked languages globe
+Operations & fabrication:
+  package package-check package-open package-plus box boxes truck container shopping-cart shopping-bag barcode scan-barcode ruler drafting-compass hammer cog wrench
+  forklift scissors drill hard-hat nut bolt blocks component layers layers-2 shapes box-select vector-square pen-tool square-dashed
+Devices & developer:
+  monitor smartphone tablet laptop keyboard mouse-pointer mouse-pointer-click terminal code code-xml git-branch git-pull-request bug webhook plug plug-zap cpu wifi wifi-off battery bluetooth
+  braces
+Appearance & text:
+  sun moon sun-moon palette paintbrush brush droplet contrast type bold italic underline align-left align-center align-right align-justify text-cursor-input
+Shapes & misc:
+  circle triangle diamond hexagon circle-plus circle-minus circle-dot dot hash asterisk command option life-buoy hand-helping crown gift coffee leaf mountain sprout
+  film

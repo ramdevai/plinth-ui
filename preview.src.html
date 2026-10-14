@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en" data-theme="pine">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frame UI — preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+<!--CSS-->
+</style>
+<style>
+  /* preview-only chrome (the "studio" bar) — not part of the framework */
+  html, body { height: 100%; }
+  body { display: flex; flex-direction: column; }
+  .studio { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; padding: 8px 16px; background: var(--surface); border-bottom: 1px solid var(--line); font-size: 13px; position: relative; z-index: 2; }
+  .studio__group { display: flex; align-items: center; gap: 6px; }
+  .studio__label { color: var(--text-3); font-size: 12px; }
+  .studio .f-seg button { height: 26px; padding: 0 10px; font-size: 12.5px; }
+  .sw { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--surface); box-shadow: 0 0 0 1px var(--line-strong); cursor: pointer; padding: 0; }
+  .sw[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--text); }
+  .studio input[type=text] { height: 28px; width: 120px; border-radius: var(--r-pill); border: 1px solid var(--line-strong); background: var(--surface); color: var(--text); padding: 0 12px; font: 13px var(--font-sans); }
+  .studio .f-btn { height: 28px; font-size: 12.5px; padding: 0 12px; }
+  #stage { flex: 1; min-height: 0; position: relative; }
+  #shell { height: 100%; }
+  #stage .f-app { height: 100%; }
+  #stage[data-auth] .f-app { display: none; }
+  #authHost { position: absolute; inset: 0; background: var(--surface); overflow: auto; }
+  #authHost[hidden] { display: none; }
+  #authHost > section { height: 100%; }
+</style>
+</head>
+<body class="f-root">
+<!--SPRITE-->
+
+<!-- ============ STUDIO BAR (preview only) ============ -->
+<div class="studio">
+  <div class="studio__group"><span class="studio__label">Theme</span><span id="swatches"></span><select id="themeSel" aria-label="daisyUI theme" style="height:28px;border-radius:var(--r-sm);border:1px solid var(--line-strong);background:var(--surface);color:var(--text);font:12.5px var(--font-sans);padding:0 8px"></select></div>
+  <div class="studio__group"><span class="studio__label">Mode</span>
+    <span class="f-seg" data-ctl="mode"><button data-v="light" aria-pressed="true">Light</button><button data-v="dark" aria-pressed="false">Dark</button></span></div>
+  <div class="studio__group"><span class="studio__label">Corners</span>
+    <span class="f-seg" data-ctl="radius"><button data-v="soft" aria-pressed="true">Soft</button><button data-v="crisp" aria-pressed="false">Crisp</button><button data-v="square" aria-pressed="false">Square</button></span></div>
+  <div class="studio__group"><span class="studio__label">Panels</span>
+    <span class="f-seg" data-ctl="layout"><button data-v="floating" aria-pressed="true">Floating</button><button data-v="docked" aria-pressed="false">Docked</button></span></div>
+  <div class="studio__group"><span class="studio__label">Density</span>
+    <span class="f-seg" data-ctl="density"><button data-v="comfortable" aria-pressed="true">Comfortable</button><button data-v="compact" aria-pressed="false">Compact</button></span></div>
+  <div class="studio__group"><span class="studio__label">Shell</span>
+    <span class="f-seg" data-ctl="shell"><button data-v="side" aria-pressed="true">Sidebar</button><button data-v="top" aria-pressed="false">Top nav</button></span></div>
+  <div class="studio__group"><span class="studio__label">Logo</span>
+    <input type="text" id="brandName" value="Northwind" aria-label="Product name">
+    <label class="f-btn" style="cursor:pointer">Upload<input type="file" id="logoFile" accept="image/*,.svg" hidden></label>
+    <button class="f-btn" id="logoReset">Reset</button></div>
+  <div class="studio__group" style="margin-left:auto"><button class="f-btn f-btn--primary" id="copyCss">Copy theme CSS</button></div>
+</div>
+
+<div id="stage"><div id="shell"></div><div id="authHost" hidden></div></div>
+
+<!-- ============ SHELL TEMPLATES ============ -->
+<template id="tpl-side">
+  <div class="f-app f-app--side">
+    <aside class="f-side">
+      <div class="f-side__head"><a class="f-logo" data-logo="full" data-go="dashboard"></a></div>
+      <label class="f-search" data-f-open="#cmd"><svg class="f-i"><use href="#i-search"/></svg><input placeholder="Search" readonly><span class="f-kbd">⌘K</span></label>
+      <nav class="f-nav" data-nav></nav>
+      <div class="f-side__foot">
+        <nav class="f-nav">
+          <a data-f-open="#notifDrawer"><svg class="f-i"><use href="#i-bell"/></svg><span>Notifications</span><span class="f-nav__n">3</span></a>
+          <a data-f-open="#helpModal"><svg class="f-i"><use href="#i-circle-help"/></svg><span>Help &amp; shortcuts</span></a>
+        </nav>
+        <div class="f-userbox" data-f-menu="#userMenu" style="cursor:pointer"><span class="f-avatar f-avatar--lg" style="--av:40">PS</span><div><div class="f-userbox__name">Priya Shah</div><div class="f-userbox__role">Operations lead</div></div></div>
+      </div>
+    </aside>
+    <main class="f-main" id="main" data-slot></main>
+  </div>
+</template>
+
+<template id="tpl-top">
+  <div class="f-app f-app--top">
+    <header class="f-top">
+      <a class="f-logo f-logo--mark" data-logo="mark" data-go="dashboard"></a>
+      <nav class="f-top__nav" data-nav></nav>
+      <span class="f-top__spacer"></span>
+      <label class="f-search" data-f-open="#cmd"><svg class="f-i"><use href="#i-search"/></svg><input placeholder="Search orders, customers…" readonly></label>
+      <button class="f-btn f-btn--icon" style="width:48px;height:48px" aria-label="Notifications" data-f-open="#notifDrawer"><svg class="f-i"><use href="#i-bell"/></svg></button>
+      <div class="f-userbox" data-f-menu="#userMenu" data-align="end" style="background:var(--surface);padding:6px 14px 6px 6px;border-radius:var(--r-pill);cursor:pointer"><span class="f-avatar f-avatar--lg" style="--av:40">PS</span><span style="font-weight:500">Priya</span><svg class="f-i f-i--sm f-faint"><use href="#i-chevron-down"/></svg></div>
+    </header>
+    <main class="f-main" id="main" data-slot></main>
+  </div>
+</template>
+
+<!-- ============ SCREENS ============ -->
+<div id="content" hidden>
+<!--PAGES-->
+</div>
+
+<!-- ============ OVERLAYS ============ -->
+<!--OVERLAYS-->
+
+<script>
+<!--FRAMEJS-->
+</script>
+<script>
+<!--PREVIEWJS-->
+</script>
+</body>
+</html>

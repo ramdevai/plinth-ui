@@ -1,0 +1,5 @@
+---
+description: Frame UI rules for building screens
+alwaysApply: true
+---
+Read AGENTS.md (or frame/AGENTS.md) before writing UI. Use only f- classes from components.json, copy from pages/, no custom CSS or JS, no build tools.
