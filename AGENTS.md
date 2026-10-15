@@ -27,7 +27,7 @@ No Python, Node or npm needed to build with it. Read this file fully before writ
 | File | Use |
 |---|---|
 | `frame.css`, `frame.js` | The kit. Do not edit per client |
-| `themes/NAME.css` | ONE theme, light + dark. Link exactly one. 40 names in `themes.json` (5 Frame + 35 daisyUI) |
+| `themes/NAME.css` | ONE theme, light + dark. Link exactly one. 10 names in `themes.json` (5 Frame + 5 daisyUI) |
 | `theme.css` | A client's own colours (copy `theme.example.css`), linked after the theme |
 | `components.json` | Every component: classes, modifiers, example markup, daisyUI name |
 | `icons.svg`, `icons.json` | 320+ Lucide icons with tags. All are in the sprite |

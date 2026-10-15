@@ -11,7 +11,7 @@ Read `AGENTS.md` for the full rules (or `llms-full.txt`, the same plus every com
 1. **Pick the page.** Match the request to a file in `pages/` (dashboard, orders, detail, pipeline, inbox, reports, tables, form, calendar, notifications, settings, profile, billing, onboarding, errors, ui, auth). Copy its `<section>`; replace text and rows.
 2. **Look up parts** in `components.json` (classes, modifiers, example, daisyUI name). Use only `f-` classes.
 3. **Behaviour is attributes**, not JS: `data-f-open`, `data-f-menu`, `data-f-tabs`, `data-f-filter`, `data-f-wizard`, `th[data-sort]`, `data-f-toast`, `data-f-copy`. See the header of `frame.js`.
-4. **Theme**: `<html data-theme="pine">` + `<link rel="stylesheet" href="themes/pine.css">` (one file, light + dark; 40 names in `themes.json`). `data-mode="dark|light"` works with every theme. A client theme is 3 colours in `theme.css`:
+4. **Theme**: `<html data-theme="pine">` + `<link rel="stylesheet" href="themes/pine.css">` (one file, light + dark; 10 names in `themes.json`). `data-mode="dark|light"` works with every theme. A client theme is 3 colours in `theme.css`:
    ```css
    [data-theme="acme"] { --neutral-hue: 300; --color-primary: #7a1fa2; --color-primary-content: #fff; --color-accent: #ffe14d; --color-accent-content: #1d1800; }
    ```

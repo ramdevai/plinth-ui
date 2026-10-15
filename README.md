@@ -3,15 +3,15 @@
 A no-build UI kit for building tight, professional, responsive, accessible, fast client apps (SaaS, enterprise, internal tools).
 Plain CSS plus one optional ~15 KB script. No framework, no npm, no bundler, no Python needed to build an app.
 
-Borrowed on purpose: the **colour-token contract and 35 themes from [daisyUI](https://daisyui.com) 5** (MIT) and the icons from **[Lucide](https://lucide.dev)** (ISC). Licences are in `LICENSES/`.
+Borrowed on purpose: the **colour-token contract and 5 themes from [daisyUI](https://daisyui.com) 5** (MIT) and the icons from **[Lucide](https://lucide.dev)** (ISC). Licences are in `LICENSES/`.
 Built for agents as much as people: see `AGENTS.md`.
 
 ```
 frame-ui/
   frame.css          the kit (do not edit per client)
   frame.js           optional behaviour via data-attributes (overlays, tabs, filters, tables, wizard…)
-  themes/NAME.css    one file per theme (40: 5 Frame + 35 daisyUI), each with light AND dark; link exactly one
-  themes.css         all 40 in one file (used by preview.html and the gallery)
+  themes/NAME.css    one file per theme (10: 5 Frame + 5 daisyUI, all contrast-checked), each with light AND dark; link exactly one
+  themes.css         all 10 in one file (used by preview.html and the gallery)
   theme.example.css  copy to theme.css: the one file you edit per client
   icons.svg          Lucide sprite, 320+ icons (generated: python3 tools/icons.py build)
   pages/             17 page templates + _overlays.html (modals, drawers, menus) + docs, themes, icons, roadmap
@@ -72,10 +72,10 @@ Full set: `--color-base-100/200/300/content`, `--color-primary/secondary/accent/
 | `data-density` | `compact` |
 
 Notes on themes:
-- Link ONE file: `themes/NAME.css` (about 2 KB, light + dark). `themes.css` holds all 40 for the gallery.
+- Link ONE file: `themes/NAME.css` (about 2 KB, light + dark). `themes.css` holds all 10 for the gallery.
 - Our "pine" preset is the old "forest" look (renamed so it does not clash with daisyUI's `forest`).
 - `themes.py` swaps a daisyUI theme's `-content` colour for white/black where it missed WCAG AA 4.5:1 (listed as `a11y_patched` in `themes.json`).
-- Contrast: an axe-core colour-contrast sweep of 80 theme × mode combinations (dashboard, orders, UI kit) is clean for 71. Known weak themes, because of their own base colours: **valentine** and **retro** (light), **coffee**, **dim**, **luxury**, **aqua**, **sunset** (dark) and two marginal hits on **lemonade**. Avoid those for production, or override the colours in `theme.css`. Text tiers and the destructive button adapt to the theme automatically.
+- Contrast: every shipped theme (5 Frame + 5 daisyUI: corporate, business, nord, dracula, cupcake) passes an axe-core colour-contrast sweep in light and dark. The other 30 daisyUI themes were dropped: 8 fail it, and the rest were curated out. To ship another, add its name to `KEEP` in `tools/themes.py`, rebuild, and re-check. Text tiers and the destructive button adapt to the theme automatically.
 - Chart colours are fixed (`--chart-1..4`, validated for colour-blind separation) and some fall below 3:1 against white. That is by design: charts always carry a legend, direct labels and a table view.
 
 ### Panels: floating or docked
