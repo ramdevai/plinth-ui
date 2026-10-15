@@ -174,7 +174,7 @@ def build():
     for n, (scheme, d) in allt.items():
         other = 'dark' if scheme == 'light' else 'light'
         base = f'[data-theme="{n}"] {{ {body_of(d)} }}' if n not in PRESETS else next(l for l in css if l.startswith(f'[data-theme="{n}"] '))
-        (out / f'{n}.css').write_text(f'/* Frame UI theme "{n}" ({scheme}); data-mode="{other}" gives its {other} version. Link this ONE file after frame.css. */\n{base}\n[data-theme="{n}"][data-mode="{other}"] {{ {body_of(counterpart(d, scheme))} }}\n')
+        (out / f'{n}.css').write_text(f'/* Frame UI theme "{n}" ({scheme}); data-mode="{other}" gives its {other} version. Link this ONE file after frame.css.{"" if n in PRESETS else " Colours from daisyUI (MIT, (c) Pouya Saadeghi); see LICENSES/daisyui-MIT.txt."} */\n{base}\n[data-theme="{n}"][data-mode="{other}"] {{ {body_of(counterpart(d, scheme))} }}\n')
     (ROOT / 'themes.css').write_text('\n'.join(css) + '\n')
     (ROOT / 'pages' / 'themes.html').write_text(page(man, ver))
     (ROOT / 'themes.json').write_text(json.dumps(dict(daisyui=ver, count=len(man), themes=man), indent=1))
