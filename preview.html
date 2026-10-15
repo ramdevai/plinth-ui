@@ -1283,7 +1283,7 @@ a.f-li { text-decoration: none; color: inherit; }
     <input type="text" id="brandName" value="Northwind" aria-label="Product name">
     <label class="f-btn" style="cursor:pointer">Upload<input type="file" id="logoFile" accept="image/*,.svg" hidden></label>
     <button class="f-btn" id="logoReset">Reset</button></div>
-  <div class="studio__group" style="margin-left:auto"><button class="f-btn f-btn--primary" id="copyCss">Copy theme CSS</button></div>
+  <div class="studio__group" style="margin-left:auto"><button class="f-btn f-btn--primary" id="copyCss">Copy client brief</button></div>
 </div>
 
 <div id="stage"><div id="shell"></div><div id="authHost" hidden></div></div>
@@ -3334,9 +3334,11 @@ $('#logoFile').addEventListener('change', (e) => { const f = e.target.files[0]; 
 $('#logoReset').addEventListener('click', () => { state.logo = null; $('#logoFile').value = ''; relogo(); });
 $('#copyCss').addEventListener('click', async () => {
   const cs = getComputedStyle(document.documentElement), g = (v) => cs.getPropertyValue(v).trim();
-  const css = `[data-theme="client"] {\n  --neutral-hue: ${g('--neutral-hue')};\n  --color-primary: ${g('--color-primary')};\n  --color-primary-content: ${g('--color-primary-content')};\n  --color-accent: ${g('--color-accent')};\n  --color-accent-content: ${g('--color-accent-content')};\n}\n/* on <html>: data-radius="${state.radius === 'soft' ? '' : state.radius}" data-layout="${state.layout}" data-density="${state.density === 'compact' ? 'compact' : ''}" */`;
+  const attrs = [['lang', 'en'], ['data-theme', 'client'], ['data-mode', state.mode], ['data-radius', state.radius === 'soft' ? '' : state.radius], ['data-layout', state.layout === 'floating' ? '' : state.layout], ['data-density', state.density === 'compact' ? 'compact' : '']].filter((x) => x[1]).map((x) => `${x[0]}="${x[1]}"`).join(' ');
+  const logo = state.logo ? (state.logo.length <= 8000 ? state.logo : '(logo was uploaded in the preview but is too large to paste: attach the file to the chat)') : '(none: use the initial letter mark)';
+  const css = `/* FRAME CLIENT BRIEF: give this to your agent together with the Frame link. */\n[data-theme="client"] {\n  --neutral-hue: ${g('--neutral-hue')};\n  --color-primary: ${g('--color-primary')};\n  --color-primary-content: ${g('--color-primary-content')};\n  --color-accent: ${g('--color-accent')};\n  --color-accent-content: ${g('--color-accent-content')};\n}\n/* html:  <html ${attrs}> */\n/* shell: ${state.shell === 'top' ? 'top-nav (f-app--top)' : 'sidebar (f-app--side)'} */\n/* app-name: ${state.name} */\n/* logo: ${logo} */`;
   try { await navigator.clipboard.writeText(css); } catch (_) {}
-  Frame.toast({ kind: 'ok', title: 'Theme CSS copied', text: 'Paste it into theme.css.' });
+  Frame.toast({ kind: 'ok', title: 'Client brief copied', text: 'Paste it to your agent with the Frame link.' });
 });
 
 /* ---------------- boot ---------------- */

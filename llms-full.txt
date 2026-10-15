@@ -17,6 +17,15 @@ No Python, Node or npm needed to build with it. Read this file fully before writ
   ```
   Page templates are at `BASE/pages/NAME.html`. (The icon sprite loads cross-origin only if the host sends CORS headers: GitHub Pages, Cloudflare Pages, jsDelivr and the bundled `_headers` file do. Otherwise copy `icons.svg` next to your page.)
 
+## A client brief (the usual start)
+The user may paste a block that begins `/* FRAME CLIENT BRIEF`. It is the whole client setup. Apply it exactly:
+1. Save the `[data-theme="client"] { ... }` block as `theme.css`. Link `frame.css` then `theme.css` (no `themes/NAME.css` needed).
+2. Copy the `html:` comment's attributes onto `<html>` (`data-theme="client"`, `data-mode`, `data-radius`, `data-layout`, `data-density`).
+3. `shell:` sidebar means `<div class="f-app f-app--side">` with `<aside class="f-side">`; top-nav means `f-app--top` with `<header class="f-top">`.
+4. `app-name:` is the product name: use it in the logo wordmark, the `<title>` and the sign-in page.
+5. `logo:` is a `data:` URI (save it as `logo.svg` or `logo.png` and use `<span class="f-logo__mark f-logo__mark--bare"><img src="logo.svg" alt=""></span>`), or says to attach a file, or none (then use the initial letter in `f-logo__mark`). Never invent a logo.
+6. Then build the screens the user asked for from `pages/`.
+
 ## Principles
 - **No build.** Plain HTML, CSS, a little JS. Never add Tailwind, npm, bundlers or frameworks.
 - **Write less, copy more.** Start from the closest page in `pages/` (or `starter.html`), edit text and data. Do not invent layouts.
