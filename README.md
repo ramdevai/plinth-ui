@@ -70,6 +70,9 @@ Full set: `--color-base-100/200/300/content`, `--color-primary/secondary/accent/
 | `data-radius` | `crisp`, `square` (square implies docked panels) |
 | `data-layout` | `floating` (default), `docked` |
 | `data-density` | `compact` |
+| `data-style` | secondary palette + style: `warm` (uppercase lozenges, warm status colours), `mono` (near-black primary, neutral badges with a status dot), `fine` (small bordered badges), `dev` (bordered labels, muted status colours). Omit for default. Changes status colours and badge/alert shape only, works with every theme and mode (contrast-checked: 5 styles x 10 themes x 2 modes) |
+
+Status colours (`--ok --warn --danger --info --ai --high --neu`, each with `-fg` and `-bg`) are fixed hues, the same in every theme; a `data-style` swaps the whole set. Extra classes: `f-pill--high|neutral|brand-soft|quiet`, `f-alert--bordered`.
 
 Notes on themes:
 - Link ONE file: `themes/NAME.css` (about 2 KB, light + dark). `themes.css` holds all 10 for the gallery.

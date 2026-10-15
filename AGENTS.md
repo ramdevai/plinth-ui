@@ -86,3 +86,7 @@ The user may paste a block that begins `/* FRAME CLIENT BRIEF`. It is the whole 
 
 ## Definition of done
 The browser check reports no issues; keyboard-only walk-through works; looks right in light and dark at 375px and 1440px.
+
+## Secondary palette and style
+
+`<html data-style="warm|mono|fine|dev">` (omit for default) swaps status colours and badge/alert shape; independent of `data-theme`. If the client brief has a `data-style` in its `html:` line, set it. Never hard-code status colours: use `f-pill--ok|warn|danger|info|ai|high|neutral`, `f-alert--*`.

@@ -9,12 +9,12 @@ const money = (n) => '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2,
 const k = (n) => '$' + Math.round(n).toLocaleString('en-US');
 const av = (i, h) => `<span class="f-avatar" style="--av:${h}">${i}</span>`;
 const OWNERS = { PS: ['Priya Shah', 40], AK: ['Arun Kapoor', 200], RM: ['Rhea Mehta', 320] };
-const STATUS_PILL = { New: 'info', 'In production': 'brand', Waiting: 'warn', Shipped: 'ok' };
-const PRIO_PILL = { Urgent: 'danger', High: 'warn', Normal: '' };
+const STATUS_PILL = { New: 'info', 'In production': 'brand-soft', Waiting: 'warn', Shipped: 'ok' };
+const PRIO_PILL = { Urgent: 'danger', High: 'high', Normal: '' };
 const PRIO_RANK = { Urgent: 3, High: 2, Normal: 1 };
 
 /* ---------------- state ---------------- */
-const state = { name: 'Northwind', logo: null, theme: 'pine', mode: 'light', radius: 'soft', layout: 'floating', density: 'comfortable', shell: 'side', screen: 'dashboard' };
+const state = { name: 'Northwind', logo: null, theme: 'pine', mode: 'light', radius: 'soft', layout: 'floating', density: 'comfortable', style: 'default', shell: 'side', screen: 'dashboard' };
 const NAV = [
   { k: 'dashboard', label: 'Overview', icon: 'layout-grid' }, { k: 'orders', label: 'Orders', icon: 'inbox', n: '128' },
   { k: 'pipeline', label: 'Pipeline', icon: 'package' }, { k: 'inbox', label: 'Inbox', icon: 'message-circle', n: '3' }, { k: 'reports', label: 'Reports', icon: 'chart-column' },
@@ -327,6 +327,7 @@ function apply() {
   h.dataset.theme = state.theme; h.dataset.mode = state.mode; h.dataset.layout = state.layout;
   state.radius === 'soft' ? h.removeAttribute('data-radius') : (h.dataset.radius = state.radius);
   state.density === 'comfortable' ? h.removeAttribute('data-density') : (h.dataset.density = 'compact');
+  state.style === 'default' ? h.removeAttribute('data-style') : (h.dataset.style = state.style);
   $$('.sw').forEach((b) => b.setAttribute('aria-pressed', b.dataset.themePick === state.theme));
   tsel.value = DAISY.some((t) => t.name === state.theme) ? state.theme : '';
   $$('.studio .f-seg').forEach((s) => $$('button', s).forEach((b) => b.setAttribute('aria-pressed', state[s.dataset.ctl] === b.dataset.v)));
@@ -343,7 +344,7 @@ $('#logoFile').addEventListener('change', (e) => { const f = e.target.files[0]; 
 $('#logoReset').addEventListener('click', () => { state.logo = null; $('#logoFile').value = ''; relogo(); });
 $('#copyCss').addEventListener('click', async () => {
   const cs = getComputedStyle(document.documentElement), g = (v) => cs.getPropertyValue(v).trim();
-  const attrs = [['lang', 'en'], ['data-theme', 'client'], ['data-mode', state.mode], ['data-radius', state.radius === 'soft' ? '' : state.radius], ['data-layout', state.layout === 'floating' ? '' : state.layout], ['data-density', state.density === 'compact' ? 'compact' : '']].filter((x) => x[1]).map((x) => `${x[0]}="${x[1]}"`).join(' ');
+  const attrs = [['lang', 'en'], ['data-theme', 'client'], ['data-mode', state.mode], ['data-radius', state.radius === 'soft' ? '' : state.radius], ['data-layout', state.layout === 'floating' ? '' : state.layout], ['data-density', state.density === 'compact' ? 'compact' : ''], ['data-style', state.style === 'default' ? '' : state.style]].filter((x) => x[1]).map((x) => `${x[0]}="${x[1]}"`).join(' ');
   const logo = state.logo ? (state.logo.length <= 8000 ? state.logo : '(logo was uploaded in the preview but is too large to paste: attach the file to the chat)') : '(none: use the initial letter mark)';
   const css = `/* FRAME CLIENT BRIEF: give this to your agent together with the Frame link. */\n[data-theme="client"] {\n  --neutral-hue: ${g('--neutral-hue')};\n  --color-primary: ${g('--color-primary')};\n  --color-primary-content: ${g('--color-primary-content')};\n  --color-accent: ${g('--color-accent')};\n  --color-accent-content: ${g('--color-accent-content')};\n}\n/* html:  <html ${attrs}> */\n/* shell: ${state.shell === 'top' ? 'top-nav (f-app--top)' : 'sidebar (f-app--side)'} */\n/* app-name: ${state.name} */\n/* logo: ${logo} */`;
   try { await navigator.clipboard.writeText(css); } catch (_) {}
