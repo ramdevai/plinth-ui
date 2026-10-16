@@ -82,7 +82,7 @@ def page(manifest, cats):
 {tiles}    </div>
     <div class="f-empty" data-f-filter-empty="#iconGrid" hidden><span class="f-empty__icon"><svg class="f-i f-i--lg"><use href="#i-search"/></svg></span><h3>No icons match</h3><p>Try a broader word. Need one that isn't here? Run <code class="f-mono">python3 tools/icons.py add NAME</code> (any name from lucide.dev).</p></div>
   </div>
-  <div class="f-card"><h3 class="f-card__title">Using icons</h3>
+  <div class="f-card"><h2 class="f-card__title">Using icons</h2>
     <pre class="f-code">&lt;svg class="f-i"&gt;&lt;use href="#i-search"/&gt;&lt;/svg&gt;          &lt;!-- 18px --&gt;
 &lt;svg class="f-i f-i--sm"&gt;&lt;use href="#i-search"/&gt;&lt;/svg&gt;    &lt;!-- 15px --&gt;
 &lt;svg class="f-i f-i--lg"&gt;&lt;use href="#i-search"/&gt;&lt;/svg&gt;    &lt;!-- 22px --&gt;</pre>

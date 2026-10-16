@@ -90,18 +90,6 @@
   --accent-soft:   light-dark(color-mix(in oklab, var(--accent) 35%, var(--surface)), color-mix(in oklab, var(--accent) 22%, var(--surface)));
   --link:          color-mix(in oklab, var(--brand) 45%, var(--text));
 
-  /* semantic colours: FIXED hues, the same in every theme (themes change the brand, not the meaning).
-     --X mark, --X-fg readable text on the tint, --X-bg tint (defined below so a nested [data-style] recomputes it).
-     Alternative palettes + component styles: <html data-style="warm|mono|fine|dev"> (see STYLE PACKS at the end).
-     To override one for a client, set --ok / --ok-fg etc. in theme.css. */
-  --ok:     light-dark(#2F9E5E, #58C487);  --ok-fg:     light-dark(color-mix(in oklab, #176B3C, #000 16%), #8FDDB0);
-  --warn:   light-dark(#D9A00B, #E8B83A);  --warn-fg:   light-dark(color-mix(in oklab, #7A5300, #000 16%), #F5CF6B);
-  --danger: light-dark(#D63A2F, #F0716A);  --danger-fg: light-dark(color-mix(in oklab, #A3241B, #000 16%), #FFA9A2);
-  --info:   light-dark(#2E7FD9, #6AA5EC);  --info-fg:   light-dark(color-mix(in oklab, #1B5AAA, #000 16%), #9CC4F5);
-  --ai:     light-dark(#7C5CD6, #A58BEA);  --ai-fg:     light-dark(color-mix(in oklab, #5337A8, #000 16%), #C7B4F7);
-  --high:   light-dark(#E8721C, #F59A56);  --high-fg:   light-dark(color-mix(in oklab, #9A4708, #000 16%), #FFBE8C);
-  --neu:    light-dark(#6B7280, #9AA1AD);  --neu-fg:    light-dark(color-mix(in oklab, #3A4150, #000 16%), #CDD2DA);
-  --tint-l: 12%; --tint-d: 20%;
 
   /* shape */
   --r-xs: calc(6px * var(--radius-scale));
@@ -135,15 +123,37 @@
   --chart-grid: var(--line); --chart-axis: var(--line-strong);
 }
 
+:root, [data-theme], [data-palette="default"] {
+  /* semantic colours: FIXED hues, the same in every theme (themes change the brand, not the meaning).
+     --X mark, --X-fg readable text on the tint, --X-bg tint (defined below so a nested [data-style] recomputes it).
+     Alternative palettes: <html data-palette="warm|mono|fine|dev">; badge/alert treatment: data-style="caps|outline|dot"; canvas grey: data-canvas (see the end of this file).
+     To override one for a client, set --ok / --ok-fg etc. in theme.css. */
+  --ok:     light-dark(#2F9E5E, #58C487);  --ok-fg:     light-dark(color-mix(in oklab, #176B3C, #000 16%), #8FDDB0);
+  --warn:   light-dark(#D9A00B, #E8B83A);  --warn-fg:   light-dark(color-mix(in oklab, #7A5300, #000 16%), #F5CF6B);
+  --danger: light-dark(#D63A2F, #F0716A);  --danger-fg: light-dark(color-mix(in oklab, #A3241B, #000 16%), #FFA9A2);
+  --info:   light-dark(#2E7FD9, #6AA5EC);  --info-fg:   light-dark(color-mix(in oklab, #1B5AAA, #000 16%), #9CC4F5);
+  --ai:     light-dark(#7C5CD6, #A58BEA);  --ai-fg:     light-dark(color-mix(in oklab, #5337A8, #000 16%), #C7B4F7);
+  --high:   light-dark(#E8721C, #F59A56);  --high-fg:   light-dark(color-mix(in oklab, #9A4708, #000 16%), #FFBE8C);
+  --neu:    light-dark(#6B7280, #9AA1AD);  --neu-fg:    light-dark(color-mix(in oklab, #3A4150, #000 16%), #CDD2DA);
+  --tint-l: 12%; --tint-d: 20%;
+}
+
 /* status tints: own rule so a [data-style] set on any element recomputes them */
-:root, [data-theme], [data-style] {
-  --ok-bg: light-dark(color-mix(in oklab, var(--ok) var(--tint-l), var(--surface)), color-mix(in oklab, var(--ok) var(--tint-d), var(--surface)));
-  --warn-bg: light-dark(color-mix(in oklab, var(--warn) var(--tint-l), var(--surface)), color-mix(in oklab, var(--warn) var(--tint-d), var(--surface)));
-  --danger-bg: light-dark(color-mix(in oklab, var(--danger) var(--tint-l), var(--surface)), color-mix(in oklab, var(--danger) var(--tint-d), var(--surface)));
-  --info-bg: light-dark(color-mix(in oklab, var(--info) var(--tint-l), var(--surface)), color-mix(in oklab, var(--info) var(--tint-d), var(--surface)));
-  --ai-bg: light-dark(color-mix(in oklab, var(--ai) var(--tint-l), var(--surface)), color-mix(in oklab, var(--ai) var(--tint-d), var(--surface)));
-  --high-bg: light-dark(color-mix(in oklab, var(--high) var(--tint-l), var(--surface)), color-mix(in oklab, var(--high) var(--tint-d), var(--surface)));
-  --neu-bg: light-dark(color-mix(in oklab, var(--neu) var(--tint-l), var(--surface)), color-mix(in oklab, var(--neu) var(--tint-d), var(--surface)));
+:root, [data-theme], [data-palette], [data-style] {
+  --ok-ic: color-mix(in oklab, var(--ok), var(--ok-fg) 45%);
+  --warn-ic: color-mix(in oklab, var(--warn), var(--warn-fg) 45%);
+  --danger-ic: color-mix(in oklab, var(--danger), var(--danger-fg) 45%);
+  --info-ic: color-mix(in oklab, var(--info), var(--info-fg) 45%);
+  --ai-ic: color-mix(in oklab, var(--ai), var(--ai-fg) 45%);
+  --high-ic: color-mix(in oklab, var(--high), var(--high-fg) 45%);
+  --neu-ic: color-mix(in oklab, var(--neu), var(--neu-fg) 45%);
+  --ok-bg: light-dark(color-mix(in oklab, var(--ok) var(--sty-tint-l, var(--tint-l)), var(--surface)), color-mix(in oklab, var(--ok) var(--sty-tint-d, var(--tint-d)), var(--surface)));
+  --warn-bg: light-dark(color-mix(in oklab, var(--warn) var(--sty-tint-l, var(--tint-l)), var(--surface)), color-mix(in oklab, var(--warn) var(--sty-tint-d, var(--tint-d)), var(--surface)));
+  --danger-bg: light-dark(color-mix(in oklab, var(--danger) var(--sty-tint-l, var(--tint-l)), var(--surface)), color-mix(in oklab, var(--danger) var(--sty-tint-d, var(--tint-d)), var(--surface)));
+  --info-bg: light-dark(color-mix(in oklab, var(--info) var(--sty-tint-l, var(--tint-l)), var(--surface)), color-mix(in oklab, var(--info) var(--sty-tint-d, var(--tint-d)), var(--surface)));
+  --ai-bg: light-dark(color-mix(in oklab, var(--ai) var(--sty-tint-l, var(--tint-l)), var(--surface)), color-mix(in oklab, var(--ai) var(--sty-tint-d, var(--tint-d)), var(--surface)));
+  --high-bg: light-dark(color-mix(in oklab, var(--high) var(--sty-tint-l, var(--tint-l)), var(--surface)), color-mix(in oklab, var(--high) var(--sty-tint-d, var(--tint-d)), var(--surface)));
+  --neu-bg: light-dark(color-mix(in oklab, var(--neu) var(--sty-tint-l, var(--tint-l)), var(--surface)), color-mix(in oklab, var(--neu) var(--sty-tint-d, var(--tint-d)), var(--surface)));
 }
 
 /* ---------- LIGHT / DARK: <html data-mode="light|dark"> ------------------------
@@ -350,21 +360,24 @@
    PILLS (status / priority / tags) — colour = meaning, never decoration
    ========================================================================== */
 .f-pill { display: inline-flex; align-items: center; gap: 6px; height: 24px; padding: 0 10px; border-radius: var(--r-pill);
-          font: 500 12.5px/1 var(--font-sans); letter-spacing: 0; background: var(--surface-3); color: var(--text-2); white-space: nowrap; }
-.f-pill--dot::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--dot, currentColor); }
+          font: var(--sty-fw, 500) var(--sty-fs, 12.5px)/1 var(--font-sans); letter-spacing: var(--sty-ls, 0); text-transform: var(--sty-case, none); background: var(--surface-3); color: var(--text-2); white-space: nowrap;
+          box-shadow: inset 0 0 0 var(--sty-ring-w, 0px) var(--sty-ring-c, color-mix(in oklab, var(--_c, var(--neu)) 45%, transparent)); }
+.f-pill--dot::before { content: ""; display: var(--sty-dot-hide, block); width: 6px; height: 6px; border-radius: 50%; background: color-mix(in oklab, var(--_c, currentColor) var(--sty-dot-mix, 0%), var(--dot, currentColor)); }
 .f-pill--lg { height: 28px; padding: 0 12px; font-size: 13px; }
-.f-pill--ok     { background: var(--ok-bg);     color: var(--ok-fg); }
-.f-pill--warn   { background: var(--warn-bg);   color: var(--warn-fg); }
-.f-pill--danger { background: var(--danger-bg); color: var(--danger-fg); }
-.f-pill--info   { background: var(--info-bg);   color: var(--info-fg); }
-.f-pill--ai     { background: var(--ai-bg);     color: var(--ai-fg); }
-.f-pill--high   { background: var(--high-bg);   color: var(--high-fg); }
-.f-pill--neutral{ background: var(--neu-bg);    color: var(--neu-fg); }
-.f-pill--brand-soft { background: var(--brand-soft-2); color: color-mix(in oklab, var(--link), var(--text) 35%); }
+.f-pill--ok     { background: var(--sty-bg, var(--ok-bg));     color: var(--ok-fg); }
+.f-pill--warn   { background: var(--sty-bg, var(--warn-bg));   color: var(--warn-fg); }
+.f-pill--danger { background: var(--sty-bg, var(--danger-bg)); color: var(--sty-fg, var(--danger-fg)); }
+.f-pill--info   { background: var(--sty-bg, var(--info-bg));   color: var(--info-fg); }
+.f-pill--ai     { background: var(--sty-bg, var(--ai-bg));     color: var(--ai-fg); }
+.f-pill--high   { background: var(--sty-bg, var(--high-bg));   color: var(--high-fg); }
+.f-pill--neutral{ background: var(--sty-bg, var(--neu-bg));    color: var(--sty-fg, var(--text)); }
+.f-pill--brand-soft { background: var(--sty-bg, var(--brand-soft-2)); color: var(--sty-fg, color-mix(in oklab, var(--link), var(--text) 35%)); }
 /* quiet: neutral badge, status only as the dot (dense tables). Use with --ok|warn|danger|info|ai|high */
 .f-pill.f-pill--quiet { background: var(--neu-bg); color: var(--text); }
 .f-pill--quiet::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--_c, var(--neu)); }
 .f-pill--ok { --_c: var(--ok); } .f-pill--warn { --_c: var(--warn); } .f-pill--danger { --_c: var(--danger); } .f-pill--info { --_c: var(--info); } .f-pill--ai { --_c: var(--ai); } .f-pill--high { --_c: var(--high); } .f-pill--neutral { --_c: var(--neu); }
+.f-pill:is(.f-pill--ok, .f-pill--warn, .f-pill--danger, .f-pill--info, .f-pill--ai, .f-pill--high)::before { content: var(--sty-dot-content, none); width: 6px; height: 6px; border-radius: 50%; background: var(--_c); }
+.f-pill--brand, .f-pill--accent, .f-pill--white, .f-pill--outline { --sty-ring-w: 0px; }
 .f-pill--brand  { background: var(--primary);   color: var(--on-primary); }
 .f-pill--accent { background: var(--accent);    color: var(--on-accent); }
 .f-pill--outline{ background: transparent; box-shadow: inset 0 0 0 1px var(--line-strong); }
@@ -422,9 +435,10 @@
 .f-kpi { background: var(--surface-2); border-radius: var(--r-md); padding: calc(16px * var(--density)); display: flex; flex-direction: column; justify-content: space-between; gap: 26px; min-height: 150px; }
 .f-kpi__top { display: flex; justify-content: space-between; gap: 8px; color: var(--text-2); font-size: 13px; line-height: 1.3; }
 .f-kpi__badge { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; flex: none; background: var(--surface-3); color: var(--text-2); }
-.f-kpi__badge--ok { background: var(--ok-bg); color: var(--ok-fg); }
-.f-kpi__badge--warn { background: var(--warn-bg); color: var(--warn-fg); }
-.f-kpi__badge--ai { background: var(--ai-bg); color: var(--ai-fg); }
+.f-kpi__badge--ok { background: var(--ok-bg); color: var(--ok-ic); }
+.f-kpi__badge--warn { background: var(--warn-bg); color: var(--warn-ic); }
+.f-kpi__badge--ai { background: var(--ai-bg); color: var(--ai-ic); }
+.f-kpi__badge, .f-li__icon, .f-tl__dot { box-shadow: inset 0 0 0 var(--sty-ibd-w, 0px) var(--sty-ibd-c, color-mix(in oklab, currentColor 35%, transparent)); }
 .f-delta { font-size: 12.5px; color: var(--text-3); margin-top: 8px; }
 .f-delta b { color: var(--ok-fg); font-weight: 600; } .f-delta--bad b { color: var(--danger-fg); }
 
@@ -434,8 +448,8 @@
 .f-list { display: flex; flex-direction: column; gap: 8px; }
 .f-li { display: flex; align-items: center; gap: 14px; background: var(--surface-2); border-radius: var(--r-md); padding: calc(12px * var(--density)) 16px; min-width: 0; }
 .f-li__icon { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--surface); color: var(--text-2); flex: none; }
-.f-li__icon--ok { background: var(--ok-bg); color: var(--ok-fg); } .f-li__icon--warn { background: var(--warn-bg); color: var(--warn-fg); } .f-li__icon--info { background: var(--info-bg); color: var(--info-fg); } .f-li__icon--high { background: var(--high-bg); color: var(--high-fg); }
-.f-li__icon--danger { background: var(--danger-bg); color: var(--danger-fg); } .f-li__icon--ai { background: var(--ai-bg); color: var(--ai-fg); }
+.f-li__icon--ok { background: var(--ok-bg); color: var(--ok-ic); } .f-li__icon--warn { background: var(--warn-bg); color: var(--warn-ic); } .f-li__icon--info { background: var(--info-bg); color: var(--info-ic); } .f-li__icon--high { background: var(--high-bg); color: var(--high-ic); }
+.f-li__icon--danger { background: var(--danger-bg); color: var(--danger-ic); } .f-li__icon--ai { background: var(--ai-bg); color: var(--ai-ic); }
 .f-li__body { flex: 1; min-width: 0; }
 .f-li__title { font-weight: 500; line-height: 1.3; } .f-li__sub { font-size: 12.5px; color: var(--text-3); line-height: 1.3; }
 .f-li__end { color: var(--text-3); font-size: 12.5px; white-space: nowrap; }
@@ -518,8 +532,8 @@
 .f-tl__item:not(:last-child)::before { content: ""; position: absolute; left: 15px; top: 34px; bottom: 2px; width: 2px; background: var(--line-strong); }
 .f-tl__item[data-state="todo"]::before { background: repeating-linear-gradient(var(--line-strong) 0 4px, transparent 4px 8px); }
 .f-tl__dot { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: var(--surface-3); color: var(--text-3); }
-.f-tl__item[data-state="done"] .f-tl__dot { background: var(--ok-bg); color: var(--ok-fg); }
-.f-tl__item[data-state="warn"] .f-tl__dot { background: var(--warn-bg); color: var(--warn-fg); }
+.f-tl__item[data-state="done"] .f-tl__dot { background: var(--ok-bg); color: var(--ok-ic); }
+.f-tl__item[data-state="warn"] .f-tl__dot { background: var(--warn-bg); color: var(--warn-ic); }
 .f-tl__item[data-state="todo"] .f-tl__dot { background: transparent; border: 2px dashed var(--line-strong); }
 .f-tl__title { font-weight: 600; line-height: 1.3; padding-top: 5px; }
 .f-tl__item[data-state="todo"] .f-tl__title { color: var(--text-3); font-weight: 500; }
@@ -656,8 +670,8 @@ dialog[data-closing]::backdrop { animation: f-fade-out .16s forwards; }
 .f-toasts:popover-open { display: flex; }
 .f-toast { display: flex; gap: 12px; align-items: flex-start; width: 340px; max-width: calc(100vw - 40px); padding: 14px 14px 14px 16px; background: var(--text); color: var(--surface);
            border-radius: var(--r-md); box-shadow: var(--shadow-lg); font: 400 14px/1.4 var(--font-sans); animation: f-in-up .22s cubic-bezier(.2, .8, .2, 1); }
-.f-toast__icon { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; flex: none; background: var(--ok-bg); color: var(--ok-fg); }
-.f-toast--warn .f-toast__icon { background: var(--warn); color: oklch(.3 .06 70); } .f-toast--danger .f-toast__icon { background: var(--danger); } .f-toast--info .f-toast__icon { background: var(--info); }
+.f-toast__icon { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; flex: none; background: var(--ok-bg); color: var(--ok-ic); }
+.f-toast--warn .f-toast__icon { background: var(--warn-bg); color: var(--warn-ic); } .f-toast--danger .f-toast__icon { background: var(--danger-bg); color: var(--danger-ic); } .f-toast--info .f-toast__icon { background: var(--info-bg); color: var(--info-ic); }
 .f-toast__body { flex: 1; min-width: 0; display: flex; flex-direction: column; } .f-toast__body span { opacity: .72; font-size: 13px; }
 .f-toast__x { border: 0; background: transparent; color: inherit; opacity: .6; cursor: pointer; padding: 2px; display: grid; } .f-toast__x:hover { opacity: 1; }
 
@@ -669,7 +683,7 @@ dialog[data-closing]::backdrop { animation: f-fade-out .16s forwards; }
 [data-tip-pos="bottom"]::after { bottom: auto; top: calc(100% + 8px); }
 
 /* Alerts / banners */
-.f-alert { --_c: var(--info); display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: var(--r-md); background: var(--info-bg); color: var(--info-fg); border: 1px solid var(--alert-bd, transparent); }
+.f-alert { --_c: var(--info); display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: var(--r-md); background: var(--info-bg); color: var(--info-fg); border: 1px solid var(--alert-bd, color-mix(in oklab, var(--_c) var(--sty-bd, 0%), transparent)); }
 .f-alert--ok { --_c: var(--ok); } .f-alert--warn { --_c: var(--warn); } .f-alert--danger { --_c: var(--danger); } .f-alert--ai { --_c: var(--ai); } .f-alert--high { --_c: var(--high); background: var(--high-bg); color: var(--high-fg); }
 .f-alert--bordered { --alert-bd: color-mix(in oklab, var(--_c) 45%, transparent); }
 .f-alert--ok { background: var(--ok-bg); color: var(--ok-fg); } .f-alert--warn { background: var(--warn-bg); color: var(--warn-fg); }
@@ -915,13 +929,15 @@ a.f-li { text-decoration: none; color: inherit; }
 .f-select { appearance: none; -webkit-appearance: none; padding-right: 38px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238a8f98' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; }
 
 /* ==========================================================================
-   STYLE PACKS: a secondary palette + badge/alert style, independent of the theme.
-   <html data-style="warm|mono|fine|dev">  (no attribute = default)
-   Inspired by common patterns: warm = uppercase lozenges (CRM look), mono = neutral badges with a
-   status dot + near-black primary, fine = tiny bordered badges (payments look), dev = bordered
-   pill labels (code-host look). They change status colours, badge/alert shape and nothing else.
+   SECONDARY PALETTE  <html data-palette="warm|mono|fine|dev">   colours only
+   SECONDARY STYLE    <html data-style="caps|outline|dot">       how badges, alerts and
+                      icon badges are drawn. No radii here: corners always follow the
+                      global data-radius (soft, crisp, square).
+   CANVAS             <html data-canvas="soft|cool|mist|paper|white">   page grey (light mode)
+   All three are independent of each other and of data-theme.
    ========================================================================== */
-[data-style="warm"] {
+/* warm (CRM look): teal, coral, yellow */
+[data-palette="warm"] {
   --ok: light-dark(#00BDA5, #2DD4BF);     --ok-fg: light-dark(color-mix(in oklab, #00685C, #000 16%), #5EEAD4);
   --warn: light-dark(#E5A82E, #F5CF6B);   --warn-fg: light-dark(color-mix(in oklab, #7A5A00, #000 16%), #F5D98B);
   --danger: light-dark(#F2545B, #FF7B80); --danger-fg: light-dark(color-mix(in oklab, #B3202A, #000 16%), #FF9FA3);
@@ -929,26 +945,17 @@ a.f-li { text-decoration: none; color: inherit; }
   --ai: light-dark(#6A78D1, #98A3EC);     --ai-fg: light-dark(color-mix(in oklab, #3F4A9E, #000 16%), #B8C0F5);
   --high: light-dark(#FF7A59, #FF9A80);   --high-fg: light-dark(color-mix(in oklab, #B83A1B, #000 16%), #FFB9A5);
 }
-[data-style="warm"] .f-pill { border-radius: 4px; height: 22px; padding: 0 8px; font-size: 11px; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; }
-[data-style="warm"] .f-pill--dot::before { display: none; }
-[data-style="warm"] .f-alert { --r-md: 6px; }
-
-[data-style="mono"] {
+/* mono (deploy-tool look): blue, green, amber, red */
+[data-palette="mono"] {
   --ok: light-dark(#45A557, #52C26A);     --ok-fg: light-dark(color-mix(in oklab, #16723A, #000 16%), #7FD98D);
   --warn: light-dark(#F5A623, #F5B544);   --warn-fg: light-dark(color-mix(in oklab, #9A5B00, #000 16%), #FFCB6B);
   --danger: light-dark(#E5484D, #FF6369); --danger-fg: light-dark(color-mix(in oklab, #C42B31, #000 16%), #FF8F93);
   --info: light-dark(#0070F3, #3291FF);   --info-fg: light-dark(color-mix(in oklab, #0068D6, #000 16%), #79B8FF);
   --ai: light-dark(#8E4EC6, #BF7AF0);     --ai-fg: light-dark(color-mix(in oklab, #6B3FBF, #000 16%), #D9AEF7);
   --high: light-dark(#F76808, #FF8F40);   --high-fg: light-dark(color-mix(in oklab, #9A4300, #000 16%), #FFB57A);
-  --primary: var(--text); --on-primary: var(--surface);
-  --primary-hover: color-mix(in oklab, var(--text), var(--surface) 20%);
 }
-[data-style="mono"] :is(.f-pill--ok, .f-pill--warn, .f-pill--danger, .f-pill--info, .f-pill--ai, .f-pill--high) { background: var(--neu-bg); color: var(--text); }
-[data-style="mono"] :is(.f-pill--ok, .f-pill--warn, .f-pill--danger, .f-pill--info, .f-pill--ai, .f-pill--high)::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--_c); }
-[data-style="mono"] .f-alert { --alert-bd: color-mix(in oklab, var(--_c) 45%, transparent); --r-md: 8px; }
-[data-style="mono"] :is(.f-li__icon, .f-kpi__badge, .f-tl__dot):is([class*="--ok"], [class*="--warn"], [class*="--danger"], [class*="--info"], [class*="--high"], [class*="--ai"]) { background: transparent; box-shadow: inset 0 0 0 1px var(--line-strong); }
-
-[data-style="fine"] {
+/* fine (payments look): green, magenta-red, violet */
+[data-palette="fine"] {
   --ok: light-dark(#15BE53, #3DD68C);     --ok-fg: light-dark(color-mix(in oklab, #0E7A36, #000 16%), #7BE3A8);
   --warn: light-dark(#9B6829, #D9A441);   --warn-fg: light-dark(color-mix(in oklab, #7C4F12, #000 16%), #F0C879);
   --danger: light-dark(#EA2261, #FF6B9A); --danger-fg: light-dark(color-mix(in oklab, #B8123F, #000 16%), #FF9DBC);
@@ -956,11 +963,8 @@ a.f-li { text-decoration: none; color: inherit; }
   --ai: light-dark(#533AFD, #8B7BFF);     --ai-fg: light-dark(color-mix(in oklab, #4331C9, #000 16%), #B7ADFF);
   --high: light-dark(#F27A2A, #FF9A55);   --high-fg: light-dark(color-mix(in oklab, #A24A10, #000 16%), #FFBE8C);
 }
-[data-style="fine"] .f-pill { border-radius: 4px; height: 22px; padding: 0 7px; font-size: 12px; box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--_c, var(--neu)) 40%, transparent); }
-[data-style="fine"] .f-pill--dot::before { display: none; }
-[data-style="fine"] .f-alert { --alert-bd: color-mix(in oklab, var(--_c) 40%, transparent); --r-md: 6px; }
-
-[data-style="dev"] {
+/* dev (code-host look): muted green, amber, red */
+[data-palette="dev"] {
   --ok: light-dark(#1A7F37, #3FB950);     --ok-fg: light-dark(color-mix(in oklab, #1A7F37, #000 16%), #56D364);
   --warn: light-dark(#9A6700, #D29922);   --warn-fg: light-dark(color-mix(in oklab, #7D4E00, #000 16%), #E3B341);
   --danger: light-dark(#CF222E, #F85149); --danger-fg: light-dark(color-mix(in oklab, #CF222E, #000 16%), #FF7B72);
@@ -970,9 +974,35 @@ a.f-li { text-decoration: none; color: inherit; }
   --neu: light-dark(#59636E, #8B949E);    --neu-fg: light-dark(color-mix(in oklab, #59636E, #000 16%), #9198A1);
   --tint-l: 10%; --tint-d: 15%;
 }
-[data-style="dev"] .f-pill { box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--_c, var(--neu)) 45%, transparent); }
-[data-style="dev"] .f-pill--dot::before { display: none; }
-[data-style="dev"] .f-alert { --alert-bd: color-mix(in oklab, var(--_c) 45%, transparent); --r-md: 6px; }
+
+/* ---- styles: tokens only, so any element can carry its own data-style (the palettes page does) ---- */
+[data-style="soft"] { --sty-tint-l: initial; --sty-tint-d: initial; --sty-bg: initial; --sty-fg: initial; --sty-case: initial; --sty-ls: initial; --sty-fs: initial; --sty-fw: initial;
+  --sty-ring-w: initial; --sty-ring-c: initial; --sty-dot-hide: initial; --sty-dot-mix: initial; --sty-dot-content: initial; --sty-bd: initial; --sty-ibd-w: initial; --sty-ibd-c: initial; }
+/* caps: small bold uppercase labels */
+[data-style="caps"] { --sty-case: uppercase; --sty-ls: .04em; --sty-fs: 11px; --sty-fw: 700; --sty-dot-hide: none; }
+/* outline: tint plus a hairline in the status colour */
+[data-style="outline"] { --sty-ring-w: 1px; --sty-bd: 45%; --sty-ibd-w: 1px; }
+/* dot: surface-coloured label with a status dot and a hairline (stays visible on the grey canvas) */
+[data-style="dot"] { --sty-tint-l: 0%; --sty-tint-d: 0%; --sty-bg: var(--surface); --sty-fg: var(--text); --sty-ring-w: 1px; --sty-ring-c: var(--line-strong);
+  --sty-dot-content: ""; --sty-dot-mix: 100%; --sty-bd: 45%; --sty-ibd-w: 1px; --sty-ibd-c: var(--line-strong); }
+
+/* ---- canvas greys (light mode; dark keeps the theme's own) ---- */
+[data-canvas] {
+  --canvas: light-dark(var(--_cv), var(--color-base-200));
+  --surface-2: light-dark(color-mix(in oklab, #fff 55%, var(--_cv)), color-mix(in oklab, var(--color-base-100) 55%, var(--color-base-200)));
+  --surface-3: light-dark(color-mix(in oklab, var(--_cv), #000 6%), color-mix(in oklab, var(--color-base-200) 70%, var(--color-base-300)));
+}
+[data-canvas="tint"]  { --_cv: var(--color-base-200); }
+[data-canvas="soft"]  { --_cv: oklch(0.972 0.005 var(--nh)); }   /* same hue as the theme, lighter */
+[data-canvas="cool"]  { --_cv: #F6F8FA; }                          /* neutral cool grey */
+[data-canvas="mist"]  { --_cv: #F6F9FC; }                          /* blue-white */
+[data-canvas="paper"] { --_cv: #F7F6F3; }                          /* warm off-white */
+[data-canvas="white"] { --_cv: #FAFAFA; }                          /* neutral near-white */
+
+/* palettes page */
+.f-pgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 16px; align-items: start; }
+.f-pgrid--sm { grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); }
+.f-canvaspanel { background: var(--canvas); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 18px; display: flex; flex-direction: column; gap: 12px; }
 
 /* Frame UI themes (generated by tools/themes.py, do not hand-edit; client colours go in theme.css).
    Frame presets first, then 5 daisyUI 5.7.47 themes (MIT, https://daisyui.com).
@@ -1351,6 +1381,7 @@ a.f-li { text-decoration: none; color: inherit; }
 <symbol id="i-mountain" viewBox="0 0 24 24"><path d="m8 3 4 8 5-5 5 15H2L8 3z" /></symbol>
 <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M14 9.536V7a4 4 0 0 1 4-4h1.5a.5.5 0 0 1 .5.5V5a4 4 0 0 1-4 4 4 4 0 0 0-4 4c0 2 1 3 1 5a5 5 0 0 1-1 3" /><path d="M4 9a5 5 0 0 1 8 4 5 5 0 0 1-8-4" /><path d="M5 21h14" /></symbol>
 <symbol id="i-film" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2" /><path d="M7 3v18" /><path d="M3 7.5h4" /><path d="M3 12h18" /><path d="M3 16.5h4" /><path d="M17 3v18" /><path d="M17 7.5h4" /><path d="M17 16.5h4" /></symbol>
+<symbol id="i-swatch-book" viewBox="0 0 24 24"><path d="M11 17a4 4 0 0 1-8 0V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2Z" /><path d="M16.7 13H19a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H7" /><path d="M 7 17h.01" /><path d="m11 8 2.3-2.3a2.4 2.4 0 0 1 3.404.004L18.6 7.6a2.4 2.4 0 0 1 .026 3.434L9.9 19.8" /></symbol>
 </svg>
 
 
@@ -1365,8 +1396,12 @@ a.f-li { text-decoration: none; color: inherit; }
     <span class="f-seg" data-ctl="layout"><button data-v="floating" aria-pressed="true">Floating</button><button data-v="docked" aria-pressed="false">Docked</button></span></div>
   <div class="studio__group"><span class="studio__label">Density</span>
     <span class="f-seg" data-ctl="density"><button data-v="comfortable" aria-pressed="true">Comfortable</button><button data-v="compact" aria-pressed="false">Compact</button></span></div>
-  <div class="studio__group"><span class="studio__label">Secondary palette &amp; style</span>
-    <span class="f-seg" data-ctl="style"><button data-v="default" aria-pressed="true">Default</button><button data-v="warm" aria-pressed="false" title="Uppercase lozenges, warm status colours (CRM look)">Warm</button><button data-v="mono" aria-pressed="false" title="Dark primary, neutral badges with a status dot">Mono</button><button data-v="fine" aria-pressed="false" title="Small bordered badges (payments look)">Fine</button><button data-v="dev" aria-pressed="false" title="Bordered labels, muted status colours (code-host look)">Dev</button></span></div>
+  <div class="studio__group"><span class="studio__label">Secondary palette</span>
+    <span class="f-seg" data-ctl="palette"><button data-v="default" aria-pressed="true">Default</button><button data-v="warm" aria-pressed="false" title="Teal, coral and yellow (CRM look)">Warm</button><button data-v="mono" aria-pressed="false" title="Blue, green, amber, red (deploy-tool look)">Mono</button><button data-v="fine" aria-pressed="false" title="Green, magenta-red, violet (payments look)">Fine</button><button data-v="dev" aria-pressed="false" title="Muted green, amber, red (code-host look)">Dev</button></span></div>
+  <div class="studio__group"><span class="studio__label">Secondary style</span>
+    <span class="f-seg" data-ctl="style"><button data-v="soft" aria-pressed="true">Soft</button><button data-v="caps" aria-pressed="false">Caps</button><button data-v="outline" aria-pressed="false">Outline</button><button data-v="dot" aria-pressed="false">Dot</button></span></div>
+  <div class="studio__group"><span class="studio__label">Canvas</span>
+    <span class="f-seg" data-ctl="canvas"><button data-v="default" aria-pressed="true">Tint</button><button data-v="soft" aria-pressed="false">Soft</button><button data-v="cool" aria-pressed="false">Cool</button><button data-v="mist" aria-pressed="false">Mist</button><button data-v="paper" aria-pressed="false">Paper</button><button data-v="white" aria-pressed="false">White</button></span></div>
   <div class="studio__group"><span class="studio__label">Shell</span>
     <span class="f-seg" data-ctl="shell"><button data-v="side" aria-pressed="true">Sidebar</button><button data-v="top" aria-pressed="false">Top nav</button></span></div>
   <div class="studio__group"><span class="studio__label">Logo</span>
@@ -2133,10 +2168,123 @@ a.f-li { text-decoration: none; color: inherit; }
   <div class="f-card"><h2 class="f-h2">Make a client theme</h2><p class="f-muted">Copy <code class="f-mono">theme.example.css</code> to <code class="f-mono">theme.css</code>: a primary colour, an accent and a neutral hue is enough. Or paste a block from the daisyUI theme generator. Every theme has both modes: <code class="f-mono">data-mode="dark"</code> or <code class="f-mono">"light"</code> on <code class="f-mono">&lt;html&gt;</code> picks the other version (generated from the theme's own colours). Use the Natural / Light / Dark switch above to preview them.</p></div>
 </section>
 
+<!-- PALETTES: palettes, styles and canvas greys. Each card sets its own attributes, so all can show at once. -->
+<section data-screen="palettes" hidden class="f-stack" style="gap:20px">
+  <div class="f-head"><div><h1 class="f-h1">Palettes, styles &amp; canvas</h1><p class="f-subtitle">Three independent switches on <code class="f-mono">&lt;html&gt;</code>: <code class="f-mono">data-palette</code> (status colours), <code class="f-mono">data-style</code> (how badges and alerts are drawn), <code class="f-mono">data-canvas</code> (page grey). Corners always follow the global Corners setting. Pick them in the studio bar or here.</p></div></div>
+  <h2 class="f-h2">Secondary palettes <span class="f-muted" style="font-weight:400;font-size:14px">colour only, drawn in the Soft style</span></h2>
+  <div class="f-pgrid">
+    <div class="f-card" data-palette="default" data-style="soft" style="gap:12px"><div><h3 class="f-h3">Default</h3><p class="f-muted" style="margin:4px 0 0;font-size:13px">Balanced and clean: green, amber, orange, red, blue, violet.</p></div><div class="f-row" style="gap:4px"><span style="width:28px;height:18px;border-radius:5px;background:var(--ok)" title="ok"></span><span style="width:28px;height:18px;border-radius:5px;background:var(--warn)" title="warn"></span><span style="width:28px;height:18px;border-radius:5px;background:var(--high)" title="high"></span><span style="width:28px;height:18px;border-radius:5px;background:var(--danger)" title="danger"></span><span style="width:28px;height:18px;border-radius:5px;background:var(--info)" title="info"></span><span style="width:28px;height:18px;border-radius:5px;background:var(--ai)" title="ai"></span><span style="width:28px;height:18px;border-radius:5px;background:var(--neu)" title="neu"></span></div><div class="f-stack" style="gap:12px">
+      <div class="f-row f-wrap" style="gap:6px"><span class="f-pill f-pill--danger">Urgent</span><span class="f-pill f-pill--high">High</span><span class="f-pill f-pill--neutral">Normal</span><span class="f-pill f-pill--info">New</span><span class="f-pill f-pill--brand-soft">In production</span><span class="f-pill f-pill--warn">Waiting</span><span class="f-pill f-pill--ok">Shipped</span><span class="f-pill f-pill--ai">AI review</span></div>
+      <div class="f-row f-wrap" style="gap:6px"><span class="f-pill f-pill--dot f-pill--ok">On site</span><span class="f-pill f-pill--dot f-pill--warn">27 min left</span><span class="f-pill f-pill--dot f-pill--danger">Overdue</span></div>
+      <div class="f-row f-wrap" style="gap:8px"><span class="f-li__icon f-li__icon--ok" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-check"/></svg></span><span class="f-li__icon f-li__icon--warn" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span><span class="f-li__icon f-li__icon--danger" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-x"/></svg></span><span class="f-li__icon f-li__icon--info" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-info"/></svg></span><span class="f-li__icon f-li__icon--high" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-flame"/></svg></span><span class="f-li__icon f-li__icon--ai" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-sparkles"/></svg></span></div>
+      <div class="f-row f-wrap" style="gap:8px"><button class="f-btn f-btn--primary f-btn--sm">Primary</button><button class="f-btn f-btn--destructive f-btn--sm">Destructive</button></div>
+      <div class="f-kpi" style="min-height:0;gap:14px"><div class="f-kpi__top"><span>At risk</span><span class="f-kpi__badge f-kpi__badge--warn"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span></div><div><span class="f-num" style="font-size:30px">8</span> <span class="f-muted">orders</span></div></div>
+      <div class="f-stack" style="gap:8px"><div class="f-alert f-alert--info"><div class="f-alert__body"><div class="f-alert__title">New pricing rules</div><div class="f-alert__text">Quotes now include surcharges.</div></div></div><div class="f-alert f-alert--ok"><div class="f-alert__body"><div class="f-alert__title">Payment received</div><div class="f-alert__text">$48,200 from Halden.</div></div></div><div class="f-alert f-alert--warn"><div class="f-alert__body"><div class="f-alert__title">Stock is running low</div><div class="f-alert__text">3 materials below reorder.</div></div></div><div class="f-alert f-alert--danger"><div class="f-alert__body"><div class="f-alert__title">Sync failed</div><div class="f-alert__text">Could not reach accounting.</div></div></div></div></div></div>
+    <div class="f-card" data-palette="warm" data-style="soft" style="gap:12px"><div><h3 class="f-h3">Warm</h3><p class="f-muted" style="margin:4px 0 0;font-size:13px">Teal success, coral urgency, soft yellow. Friendly, CRM-like.</p></div><div class="f-row" style="gap:4px"><span style="width:28px;height:18px;border-radius:5px;background:var(--ok)" title="ok"></span><span style="width:28px;height:18px;border-radius:5px;background:var(--warn)" title="warn"></span><span style="width:28px;height:18px;border-radius:5px;background:var(--high)" title="high"></span><span style="width:28px;height:18px;border-radius:5px;background:var(--danger)" title="danger"></span><span style="width:28px;height:18px;border-radius:5px;background:var(--info)" title="info"></span><span style="width:28px;height:18px;border-radius:5px;background:var(--ai)" title="ai"></span><span style="width:28px;height:18px;border-radius:5px;background:var(--neu)" title="neu"></span></div><div class="f-stack" style="gap:12px">
+      <div class="f-row f-wrap" style="gap:6px"><span class="f-pill f-pill--danger">Urgent</span><span class="f-pill f-pill--high">High</span><span class="f-pill f-pill--neutral">Normal</span><span class="f-pill f-pill--info">New</span><span class="f-pill f-pill--brand-soft">In production</span><span class="f-pill f-pill--warn">Waiting</span><span class="f-pill f-pill--ok">Shipped</span><span class="f-pill f-pill--ai">AI review</span></div>
+      <div class="f-row f-wrap" style="gap:6px"><span class="f-pill f-pill--dot f-pill--ok">On site</span><span class="f-pill f-pill--dot f-pill--warn">27 min left</span><span class="f-pill f-pill--dot f-pill--danger">Overdue</span></div>
+      <div class="f-row f-wrap" style="gap:8px"><span class="f-li__icon f-li__icon--ok" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-check"/></svg></span><span class="f-li__icon f-li__icon--warn" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span><span class="f-li__icon f-li__icon--danger" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-x"/></svg></span><span class="f-li__icon f-li__icon--info" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-info"/></svg></span><span class="f-li__icon f-li__icon--high" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-flame"/></svg></span><span class="f-li__icon f-li__icon--ai" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-sparkles"/></svg></span></div>
+      <div class="f-row f-wrap" style="gap:8px"><button class="f-btn f-btn--primary f-btn--sm">Primary</button><button class="f-btn f-btn--destructive f-btn--sm">Destructive</button></div>
+      <div class="f-kpi" style="min-height:0;gap:14px"><div class="f-kpi__top"><span>At risk</span><span class="f-kpi__badge f-kpi__badge--warn"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span></div><div><span class="f-num" style="font-size:30px">8</span> <span class="f-muted">orders</span></div></div>
+      <div class="f-stack" style="gap:8px"><div class="f-alert f-alert--info"><div class="f-alert__body"><div class="f-alert__title">New pricing rules</div><div class="f-alert__text">Quotes now include surcharges.</div></div></div><div class="f-alert f-alert--ok"><div class="f-alert__body"><div class="f-alert__title">Payment received</div><div class="f-alert__text">$48,200 from Halden.</div></div></div><div class="f-alert f-alert--warn"><div class="f-alert__body"><div class="f-alert__title">Stock is running low</div><div class="f-alert__text">3 materials below reorder.</div></div></div><div class="f-alert f-alert--danger"><div class="f-alert__body"><div class="f-alert__title">Sync failed</div><div class="f-alert__text">Could not reach accounting.</div></div></div></div></div></div>
+    <div class="f-card" data-palette="mono" data-style="soft" style="gap:12px"><div><h3 class="f-h3">Mono</h3><p class="f-muted" style="margin:4px 0 0;font-size:13px">Vivid blue, green, amber, red. Reads well next to neutral UI.</p></div><div class="f-row" style="gap:4px"><span style="width:28px;height:18px;border-radius:5px;background:var(--ok)" title="ok"></span><span style="width:28px;height:18px;border-radius:5px;background:var(--warn)" title="warn"></span><span style="width:28px;height:18px;border-radius:5px;background:var(--high)" title="high"></span><span style="width:28px;height:18px;border-radius:5px;background:var(--danger)" title="danger"></span><span style="width:28px;height:18px;border-radius:5px;background:var(--info)" title="info"></span><span style="width:28px;height:18px;border-radius:5px;background:var(--ai)" title="ai"></span><span style="width:28px;height:18px;border-radius:5px;background:var(--neu)" title="neu"></span></div><div class="f-stack" style="gap:12px">
+      <div class="f-row f-wrap" style="gap:6px"><span class="f-pill f-pill--danger">Urgent</span><span class="f-pill f-pill--high">High</span><span class="f-pill f-pill--neutral">Normal</span><span class="f-pill f-pill--info">New</span><span class="f-pill f-pill--brand-soft">In production</span><span class="f-pill f-pill--warn">Waiting</span><span class="f-pill f-pill--ok">Shipped</span><span class="f-pill f-pill--ai">AI review</span></div>
+      <div class="f-row f-wrap" style="gap:6px"><span class="f-pill f-pill--dot f-pill--ok">On site</span><span class="f-pill f-pill--dot f-pill--warn">27 min left</span><span class="f-pill f-pill--dot f-pill--danger">Overdue</span></div>
+      <div class="f-row f-wrap" style="gap:8px"><span class="f-li__icon f-li__icon--ok" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-check"/></svg></span><span class="f-li__icon f-li__icon--warn" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span><span class="f-li__icon f-li__icon--danger" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-x"/></svg></span><span class="f-li__icon f-li__icon--info" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-info"/></svg></span><span class="f-li__icon f-li__icon--high" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-flame"/></svg></span><span class="f-li__icon f-li__icon--ai" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-sparkles"/></svg></span></div>
+      <div class="f-row f-wrap" style="gap:8px"><button class="f-btn f-btn--primary f-btn--sm">Primary</button><button class="f-btn f-btn--destructive f-btn--sm">Destructive</button></div>
+      <div class="f-kpi" style="min-height:0;gap:14px"><div class="f-kpi__top"><span>At risk</span><span class="f-kpi__badge f-kpi__badge--warn"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span></div><div><span class="f-num" style="font-size:30px">8</span> <span class="f-muted">orders</span></div></div>
+      <div class="f-stack" style="gap:8px"><div class="f-alert f-alert--info"><div class="f-alert__body"><div class="f-alert__title">New pricing rules</div><div class="f-alert__text">Quotes now include surcharges.</div></div></div><div class="f-alert f-alert--ok"><div class="f-alert__body"><div class="f-alert__title">Payment received</div><div class="f-alert__text">$48,200 from Halden.</div></div></div><div class="f-alert f-alert--warn"><div class="f-alert__body"><div class="f-alert__title">Stock is running low</div><div class="f-alert__text">3 materials below reorder.</div></div></div><div class="f-alert f-alert--danger"><div class="f-alert__body"><div class="f-alert__title">Sync failed</div><div class="f-alert__text">Could not reach accounting.</div></div></div></div></div></div>
+    <div class="f-card" data-palette="fine" data-style="soft" style="gap:12px"><div><h3 class="f-h3">Fine</h3><p class="f-muted" style="margin:4px 0 0;font-size:13px">Bright green, magenta-red, deep violet. Payments feel.</p></div><div class="f-row" style="gap:4px"><span style="width:28px;height:18px;border-radius:5px;background:var(--ok)" title="ok"></span><span style="width:28px;height:18px;border-radius:5px;background:var(--warn)" title="warn"></span><span style="width:28px;height:18px;border-radius:5px;background:var(--high)" title="high"></span><span style="width:28px;height:18px;border-radius:5px;background:var(--danger)" title="danger"></span><span style="width:28px;height:18px;border-radius:5px;background:var(--info)" title="info"></span><span style="width:28px;height:18px;border-radius:5px;background:var(--ai)" title="ai"></span><span style="width:28px;height:18px;border-radius:5px;background:var(--neu)" title="neu"></span></div><div class="f-stack" style="gap:12px">
+      <div class="f-row f-wrap" style="gap:6px"><span class="f-pill f-pill--danger">Urgent</span><span class="f-pill f-pill--high">High</span><span class="f-pill f-pill--neutral">Normal</span><span class="f-pill f-pill--info">New</span><span class="f-pill f-pill--brand-soft">In production</span><span class="f-pill f-pill--warn">Waiting</span><span class="f-pill f-pill--ok">Shipped</span><span class="f-pill f-pill--ai">AI review</span></div>
+      <div class="f-row f-wrap" style="gap:6px"><span class="f-pill f-pill--dot f-pill--ok">On site</span><span class="f-pill f-pill--dot f-pill--warn">27 min left</span><span class="f-pill f-pill--dot f-pill--danger">Overdue</span></div>
+      <div class="f-row f-wrap" style="gap:8px"><span class="f-li__icon f-li__icon--ok" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-check"/></svg></span><span class="f-li__icon f-li__icon--warn" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span><span class="f-li__icon f-li__icon--danger" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-x"/></svg></span><span class="f-li__icon f-li__icon--info" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-info"/></svg></span><span class="f-li__icon f-li__icon--high" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-flame"/></svg></span><span class="f-li__icon f-li__icon--ai" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-sparkles"/></svg></span></div>
+      <div class="f-row f-wrap" style="gap:8px"><button class="f-btn f-btn--primary f-btn--sm">Primary</button><button class="f-btn f-btn--destructive f-btn--sm">Destructive</button></div>
+      <div class="f-kpi" style="min-height:0;gap:14px"><div class="f-kpi__top"><span>At risk</span><span class="f-kpi__badge f-kpi__badge--warn"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span></div><div><span class="f-num" style="font-size:30px">8</span> <span class="f-muted">orders</span></div></div>
+      <div class="f-stack" style="gap:8px"><div class="f-alert f-alert--info"><div class="f-alert__body"><div class="f-alert__title">New pricing rules</div><div class="f-alert__text">Quotes now include surcharges.</div></div></div><div class="f-alert f-alert--ok"><div class="f-alert__body"><div class="f-alert__title">Payment received</div><div class="f-alert__text">$48,200 from Halden.</div></div></div><div class="f-alert f-alert--warn"><div class="f-alert__body"><div class="f-alert__title">Stock is running low</div><div class="f-alert__text">3 materials below reorder.</div></div></div><div class="f-alert f-alert--danger"><div class="f-alert__body"><div class="f-alert__title">Sync failed</div><div class="f-alert__text">Could not reach accounting.</div></div></div></div></div></div>
+    <div class="f-card" data-palette="dev" data-style="soft" style="gap:12px"><div><h3 class="f-h3">Dev</h3><p class="f-muted" style="margin:4px 0 0;font-size:13px">Muted green, amber, red. Calm and technical, code-host feel.</p></div><div class="f-row" style="gap:4px"><span style="width:28px;height:18px;border-radius:5px;background:var(--ok)" title="ok"></span><span style="width:28px;height:18px;border-radius:5px;background:var(--warn)" title="warn"></span><span style="width:28px;height:18px;border-radius:5px;background:var(--high)" title="high"></span><span style="width:28px;height:18px;border-radius:5px;background:var(--danger)" title="danger"></span><span style="width:28px;height:18px;border-radius:5px;background:var(--info)" title="info"></span><span style="width:28px;height:18px;border-radius:5px;background:var(--ai)" title="ai"></span><span style="width:28px;height:18px;border-radius:5px;background:var(--neu)" title="neu"></span></div><div class="f-stack" style="gap:12px">
+      <div class="f-row f-wrap" style="gap:6px"><span class="f-pill f-pill--danger">Urgent</span><span class="f-pill f-pill--high">High</span><span class="f-pill f-pill--neutral">Normal</span><span class="f-pill f-pill--info">New</span><span class="f-pill f-pill--brand-soft">In production</span><span class="f-pill f-pill--warn">Waiting</span><span class="f-pill f-pill--ok">Shipped</span><span class="f-pill f-pill--ai">AI review</span></div>
+      <div class="f-row f-wrap" style="gap:6px"><span class="f-pill f-pill--dot f-pill--ok">On site</span><span class="f-pill f-pill--dot f-pill--warn">27 min left</span><span class="f-pill f-pill--dot f-pill--danger">Overdue</span></div>
+      <div class="f-row f-wrap" style="gap:8px"><span class="f-li__icon f-li__icon--ok" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-check"/></svg></span><span class="f-li__icon f-li__icon--warn" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span><span class="f-li__icon f-li__icon--danger" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-x"/></svg></span><span class="f-li__icon f-li__icon--info" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-info"/></svg></span><span class="f-li__icon f-li__icon--high" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-flame"/></svg></span><span class="f-li__icon f-li__icon--ai" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-sparkles"/></svg></span></div>
+      <div class="f-row f-wrap" style="gap:8px"><button class="f-btn f-btn--primary f-btn--sm">Primary</button><button class="f-btn f-btn--destructive f-btn--sm">Destructive</button></div>
+      <div class="f-kpi" style="min-height:0;gap:14px"><div class="f-kpi__top"><span>At risk</span><span class="f-kpi__badge f-kpi__badge--warn"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span></div><div><span class="f-num" style="font-size:30px">8</span> <span class="f-muted">orders</span></div></div>
+      <div class="f-stack" style="gap:8px"><div class="f-alert f-alert--info"><div class="f-alert__body"><div class="f-alert__title">New pricing rules</div><div class="f-alert__text">Quotes now include surcharges.</div></div></div><div class="f-alert f-alert--ok"><div class="f-alert__body"><div class="f-alert__title">Payment received</div><div class="f-alert__text">$48,200 from Halden.</div></div></div><div class="f-alert f-alert--warn"><div class="f-alert__body"><div class="f-alert__title">Stock is running low</div><div class="f-alert__text">3 materials below reorder.</div></div></div><div class="f-alert f-alert--danger"><div class="f-alert__body"><div class="f-alert__title">Sync failed</div><div class="f-alert__text">Could not reach accounting.</div></div></div></div></div></div>
+  </div>
+  <h2 class="f-h2">Secondary styles <span class="f-muted" style="font-weight:400;font-size:14px">shape only, drawn in the Default palette; corner radius is the global setting</span></h2>
+  <div class="f-pgrid">
+    <div class="f-card" data-palette="default" data-style="soft" style="gap:12px"><div><h3 class="f-h3">Soft</h3><p class="f-muted" style="margin:4px 0 0;font-size:13px">Tinted fill. The default.</p></div><div class="f-stack" style="gap:12px">
+      <div class="f-row f-wrap" style="gap:6px"><span class="f-pill f-pill--danger">Urgent</span><span class="f-pill f-pill--high">High</span><span class="f-pill f-pill--neutral">Normal</span><span class="f-pill f-pill--info">New</span><span class="f-pill f-pill--brand-soft">In production</span><span class="f-pill f-pill--warn">Waiting</span><span class="f-pill f-pill--ok">Shipped</span><span class="f-pill f-pill--ai">AI review</span></div>
+      <div class="f-row f-wrap" style="gap:6px"><span class="f-pill f-pill--dot f-pill--ok">On site</span><span class="f-pill f-pill--dot f-pill--warn">27 min left</span><span class="f-pill f-pill--dot f-pill--danger">Overdue</span></div>
+      <div class="f-row f-wrap" style="gap:8px"><span class="f-li__icon f-li__icon--ok" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-check"/></svg></span><span class="f-li__icon f-li__icon--warn" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span><span class="f-li__icon f-li__icon--danger" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-x"/></svg></span><span class="f-li__icon f-li__icon--info" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-info"/></svg></span><span class="f-li__icon f-li__icon--high" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-flame"/></svg></span><span class="f-li__icon f-li__icon--ai" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-sparkles"/></svg></span></div>
+      <div class="f-row f-wrap" style="gap:8px"><button class="f-btn f-btn--primary f-btn--sm">Primary</button><button class="f-btn f-btn--destructive f-btn--sm">Destructive</button></div>
+      <div class="f-kpi" style="min-height:0;gap:14px"><div class="f-kpi__top"><span>At risk</span><span class="f-kpi__badge f-kpi__badge--warn"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span></div><div><span class="f-num" style="font-size:30px">8</span> <span class="f-muted">orders</span></div></div>
+      <div class="f-stack" style="gap:8px"><div class="f-alert f-alert--info"><div class="f-alert__body"><div class="f-alert__title">New pricing rules</div><div class="f-alert__text">Quotes now include surcharges.</div></div></div><div class="f-alert f-alert--ok"><div class="f-alert__body"><div class="f-alert__title">Payment received</div><div class="f-alert__text">$48,200 from Halden.</div></div></div><div class="f-alert f-alert--warn"><div class="f-alert__body"><div class="f-alert__title">Stock is running low</div><div class="f-alert__text">3 materials below reorder.</div></div></div><div class="f-alert f-alert--danger"><div class="f-alert__body"><div class="f-alert__title">Sync failed</div><div class="f-alert__text">Could not reach accounting.</div></div></div></div></div></div>
+    <div class="f-card" data-palette="default" data-style="caps" style="gap:12px"><div><h3 class="f-h3">Caps</h3><p class="f-muted" style="margin:4px 0 0;font-size:13px">Small bold uppercase labels. Good for dense tables.</p></div><div class="f-stack" style="gap:12px">
+      <div class="f-row f-wrap" style="gap:6px"><span class="f-pill f-pill--danger">Urgent</span><span class="f-pill f-pill--high">High</span><span class="f-pill f-pill--neutral">Normal</span><span class="f-pill f-pill--info">New</span><span class="f-pill f-pill--brand-soft">In production</span><span class="f-pill f-pill--warn">Waiting</span><span class="f-pill f-pill--ok">Shipped</span><span class="f-pill f-pill--ai">AI review</span></div>
+      <div class="f-row f-wrap" style="gap:6px"><span class="f-pill f-pill--dot f-pill--ok">On site</span><span class="f-pill f-pill--dot f-pill--warn">27 min left</span><span class="f-pill f-pill--dot f-pill--danger">Overdue</span></div>
+      <div class="f-row f-wrap" style="gap:8px"><span class="f-li__icon f-li__icon--ok" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-check"/></svg></span><span class="f-li__icon f-li__icon--warn" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span><span class="f-li__icon f-li__icon--danger" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-x"/></svg></span><span class="f-li__icon f-li__icon--info" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-info"/></svg></span><span class="f-li__icon f-li__icon--high" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-flame"/></svg></span><span class="f-li__icon f-li__icon--ai" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-sparkles"/></svg></span></div>
+      <div class="f-row f-wrap" style="gap:8px"><button class="f-btn f-btn--primary f-btn--sm">Primary</button><button class="f-btn f-btn--destructive f-btn--sm">Destructive</button></div>
+      <div class="f-kpi" style="min-height:0;gap:14px"><div class="f-kpi__top"><span>At risk</span><span class="f-kpi__badge f-kpi__badge--warn"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span></div><div><span class="f-num" style="font-size:30px">8</span> <span class="f-muted">orders</span></div></div>
+      <div class="f-stack" style="gap:8px"><div class="f-alert f-alert--info"><div class="f-alert__body"><div class="f-alert__title">New pricing rules</div><div class="f-alert__text">Quotes now include surcharges.</div></div></div><div class="f-alert f-alert--ok"><div class="f-alert__body"><div class="f-alert__title">Payment received</div><div class="f-alert__text">$48,200 from Halden.</div></div></div><div class="f-alert f-alert--warn"><div class="f-alert__body"><div class="f-alert__title">Stock is running low</div><div class="f-alert__text">3 materials below reorder.</div></div></div><div class="f-alert f-alert--danger"><div class="f-alert__body"><div class="f-alert__title">Sync failed</div><div class="f-alert__text">Could not reach accounting.</div></div></div></div></div></div>
+    <div class="f-card" data-palette="default" data-style="outline" style="gap:12px"><div><h3 class="f-h3">Outline</h3><p class="f-muted" style="margin:4px 0 0;font-size:13px">Tint plus a hairline in the status colour.</p></div><div class="f-stack" style="gap:12px">
+      <div class="f-row f-wrap" style="gap:6px"><span class="f-pill f-pill--danger">Urgent</span><span class="f-pill f-pill--high">High</span><span class="f-pill f-pill--neutral">Normal</span><span class="f-pill f-pill--info">New</span><span class="f-pill f-pill--brand-soft">In production</span><span class="f-pill f-pill--warn">Waiting</span><span class="f-pill f-pill--ok">Shipped</span><span class="f-pill f-pill--ai">AI review</span></div>
+      <div class="f-row f-wrap" style="gap:6px"><span class="f-pill f-pill--dot f-pill--ok">On site</span><span class="f-pill f-pill--dot f-pill--warn">27 min left</span><span class="f-pill f-pill--dot f-pill--danger">Overdue</span></div>
+      <div class="f-row f-wrap" style="gap:8px"><span class="f-li__icon f-li__icon--ok" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-check"/></svg></span><span class="f-li__icon f-li__icon--warn" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span><span class="f-li__icon f-li__icon--danger" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-x"/></svg></span><span class="f-li__icon f-li__icon--info" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-info"/></svg></span><span class="f-li__icon f-li__icon--high" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-flame"/></svg></span><span class="f-li__icon f-li__icon--ai" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-sparkles"/></svg></span></div>
+      <div class="f-row f-wrap" style="gap:8px"><button class="f-btn f-btn--primary f-btn--sm">Primary</button><button class="f-btn f-btn--destructive f-btn--sm">Destructive</button></div>
+      <div class="f-kpi" style="min-height:0;gap:14px"><div class="f-kpi__top"><span>At risk</span><span class="f-kpi__badge f-kpi__badge--warn"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span></div><div><span class="f-num" style="font-size:30px">8</span> <span class="f-muted">orders</span></div></div>
+      <div class="f-stack" style="gap:8px"><div class="f-alert f-alert--info"><div class="f-alert__body"><div class="f-alert__title">New pricing rules</div><div class="f-alert__text">Quotes now include surcharges.</div></div></div><div class="f-alert f-alert--ok"><div class="f-alert__body"><div class="f-alert__title">Payment received</div><div class="f-alert__text">$48,200 from Halden.</div></div></div><div class="f-alert f-alert--warn"><div class="f-alert__body"><div class="f-alert__title">Stock is running low</div><div class="f-alert__text">3 materials below reorder.</div></div></div><div class="f-alert f-alert--danger"><div class="f-alert__body"><div class="f-alert__title">Sync failed</div><div class="f-alert__text">Could not reach accounting.</div></div></div></div></div></div>
+    <div class="f-card" data-palette="default" data-style="dot" style="gap:12px"><div><h3 class="f-h3">Dot</h3><p class="f-muted" style="margin:4px 0 0;font-size:13px">Plain label with a status dot and a hairline. Quietest.</p></div><div class="f-stack" style="gap:12px">
+      <div class="f-row f-wrap" style="gap:6px"><span class="f-pill f-pill--danger">Urgent</span><span class="f-pill f-pill--high">High</span><span class="f-pill f-pill--neutral">Normal</span><span class="f-pill f-pill--info">New</span><span class="f-pill f-pill--brand-soft">In production</span><span class="f-pill f-pill--warn">Waiting</span><span class="f-pill f-pill--ok">Shipped</span><span class="f-pill f-pill--ai">AI review</span></div>
+      <div class="f-row f-wrap" style="gap:6px"><span class="f-pill f-pill--dot f-pill--ok">On site</span><span class="f-pill f-pill--dot f-pill--warn">27 min left</span><span class="f-pill f-pill--dot f-pill--danger">Overdue</span></div>
+      <div class="f-row f-wrap" style="gap:8px"><span class="f-li__icon f-li__icon--ok" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-check"/></svg></span><span class="f-li__icon f-li__icon--warn" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span><span class="f-li__icon f-li__icon--danger" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-x"/></svg></span><span class="f-li__icon f-li__icon--info" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-info"/></svg></span><span class="f-li__icon f-li__icon--high" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-flame"/></svg></span><span class="f-li__icon f-li__icon--ai" style="width:34px;height:34px"><svg class="f-i f-i--sm"><use href="#i-sparkles"/></svg></span></div>
+      <div class="f-row f-wrap" style="gap:8px"><button class="f-btn f-btn--primary f-btn--sm">Primary</button><button class="f-btn f-btn--destructive f-btn--sm">Destructive</button></div>
+      <div class="f-kpi" style="min-height:0;gap:14px"><div class="f-kpi__top"><span>At risk</span><span class="f-kpi__badge f-kpi__badge--warn"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span></div><div><span class="f-num" style="font-size:30px">8</span> <span class="f-muted">orders</span></div></div>
+      <div class="f-stack" style="gap:8px"><div class="f-alert f-alert--info"><div class="f-alert__body"><div class="f-alert__title">New pricing rules</div><div class="f-alert__text">Quotes now include surcharges.</div></div></div><div class="f-alert f-alert--ok"><div class="f-alert__body"><div class="f-alert__title">Payment received</div><div class="f-alert__text">$48,200 from Halden.</div></div></div><div class="f-alert f-alert--warn"><div class="f-alert__body"><div class="f-alert__title">Stock is running low</div><div class="f-alert__text">3 materials below reorder.</div></div></div><div class="f-alert f-alert--danger"><div class="f-alert__body"><div class="f-alert__title">Sync failed</div><div class="f-alert__text">Could not reach accounting.</div></div></div></div></div></div>
+  </div>
+  <h2 class="f-h2">Canvas greys <span class="f-muted" style="font-weight:400;font-size:14px">the page background; shown with your current palette and style</span></h2>
+  <div class="f-pgrid f-pgrid--sm">
+    <div class="f-canvaspanel" data-canvas="tint"><div class="f-row" style="justify-content:space-between"><b>Tint (current)</b><span class="f-mono f-muted" style="font-size:12px">theme hue, L 95.3%</span></div><p class="f-muted" style="margin:0;font-size:13px">Warm-tinted, the darkest of the set.</p>
+      <div class="f-row f-wrap" style="gap:6px"><span class="f-pill f-pill--ok f-pill--dot">Shipped</span><span class="f-pill f-pill--warn">Waiting</span><span class="f-pill f-pill--danger">Urgent</span><span class="f-pill f-pill--neutral">Normal</span><span class="f-pill f-pill--ai">AI review</span></div>
+      <div class="f-alert f-alert--warn"><div class="f-alert__body"><div class="f-alert__title">Stock is running low</div><div class="f-alert__text">On the canvas, no card behind it.</div></div></div>
+      <div class="f-card" style="padding:14px;gap:10px"><div class="f-row" style="gap:8px"><span class="f-li__icon f-li__icon--ok" style="width:32px;height:32px"><svg class="f-i f-i--sm"><use href="#i-check"/></svg></span><span class="f-li__icon f-li__icon--warn" style="width:32px;height:32px"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span><span class="f-li__icon f-li__icon--danger" style="width:32px;height:32px"><svg class="f-i f-i--sm"><use href="#i-x"/></svg></span><span class="f-li__icon f-li__icon--ai" style="width:32px;height:32px"><svg class="f-i f-i--sm"><use href="#i-sparkles"/></svg></span></div>
+        <div class="f-kpi"  style="min-height:0;gap:8px"><div class="f-kpi__top"><span>At risk</span><span class="f-kpi__badge f-kpi__badge--warn"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span></div><div><span class="f-num" style="font-size:26px">8</span> <span class="f-muted">orders</span></div></div></div>
+    </div>
+    <div class="f-canvaspanel" data-canvas="soft"><div class="f-row" style="justify-content:space-between"><b>Soft</b><span class="f-mono f-muted" style="font-size:12px">theme hue, L 97.2%</span></div><p class="f-muted" style="margin:0;font-size:13px">Same hue, lighter. Recommended.</p>
+      <div class="f-row f-wrap" style="gap:6px"><span class="f-pill f-pill--ok f-pill--dot">Shipped</span><span class="f-pill f-pill--warn">Waiting</span><span class="f-pill f-pill--danger">Urgent</span><span class="f-pill f-pill--neutral">Normal</span><span class="f-pill f-pill--ai">AI review</span></div>
+      <div class="f-alert f-alert--warn"><div class="f-alert__body"><div class="f-alert__title">Stock is running low</div><div class="f-alert__text">On the canvas, no card behind it.</div></div></div>
+      <div class="f-card" style="padding:14px;gap:10px"><div class="f-row" style="gap:8px"><span class="f-li__icon f-li__icon--ok" style="width:32px;height:32px"><svg class="f-i f-i--sm"><use href="#i-check"/></svg></span><span class="f-li__icon f-li__icon--warn" style="width:32px;height:32px"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span><span class="f-li__icon f-li__icon--danger" style="width:32px;height:32px"><svg class="f-i f-i--sm"><use href="#i-x"/></svg></span><span class="f-li__icon f-li__icon--ai" style="width:32px;height:32px"><svg class="f-i f-i--sm"><use href="#i-sparkles"/></svg></span></div>
+        <div class="f-kpi"  style="min-height:0;gap:8px"><div class="f-kpi__top"><span>At risk</span><span class="f-kpi__badge f-kpi__badge--warn"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span></div><div><span class="f-num" style="font-size:26px">8</span> <span class="f-muted">orders</span></div></div></div>
+    </div>
+    <div class="f-canvaspanel" data-canvas="cool"><div class="f-row" style="justify-content:space-between"><b>Cool</b><span class="f-mono f-muted" style="font-size:12px">#F6F8FA</span></div><p class="f-muted" style="margin:0;font-size:13px">Neutral cool grey (code-host feel).</p>
+      <div class="f-row f-wrap" style="gap:6px"><span class="f-pill f-pill--ok f-pill--dot">Shipped</span><span class="f-pill f-pill--warn">Waiting</span><span class="f-pill f-pill--danger">Urgent</span><span class="f-pill f-pill--neutral">Normal</span><span class="f-pill f-pill--ai">AI review</span></div>
+      <div class="f-alert f-alert--warn"><div class="f-alert__body"><div class="f-alert__title">Stock is running low</div><div class="f-alert__text">On the canvas, no card behind it.</div></div></div>
+      <div class="f-card" style="padding:14px;gap:10px"><div class="f-row" style="gap:8px"><span class="f-li__icon f-li__icon--ok" style="width:32px;height:32px"><svg class="f-i f-i--sm"><use href="#i-check"/></svg></span><span class="f-li__icon f-li__icon--warn" style="width:32px;height:32px"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span><span class="f-li__icon f-li__icon--danger" style="width:32px;height:32px"><svg class="f-i f-i--sm"><use href="#i-x"/></svg></span><span class="f-li__icon f-li__icon--ai" style="width:32px;height:32px"><svg class="f-i f-i--sm"><use href="#i-sparkles"/></svg></span></div>
+        <div class="f-kpi"  style="min-height:0;gap:8px"><div class="f-kpi__top"><span>At risk</span><span class="f-kpi__badge f-kpi__badge--warn"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span></div><div><span class="f-num" style="font-size:26px">8</span> <span class="f-muted">orders</span></div></div></div>
+    </div>
+    <div class="f-canvaspanel" data-canvas="mist"><div class="f-row" style="justify-content:space-between"><b>Mist</b><span class="f-mono f-muted" style="font-size:12px">#F6F9FC</span></div><p class="f-muted" style="margin:0;font-size:13px">Blue-white (payments feel).</p>
+      <div class="f-row f-wrap" style="gap:6px"><span class="f-pill f-pill--ok f-pill--dot">Shipped</span><span class="f-pill f-pill--warn">Waiting</span><span class="f-pill f-pill--danger">Urgent</span><span class="f-pill f-pill--neutral">Normal</span><span class="f-pill f-pill--ai">AI review</span></div>
+      <div class="f-alert f-alert--warn"><div class="f-alert__body"><div class="f-alert__title">Stock is running low</div><div class="f-alert__text">On the canvas, no card behind it.</div></div></div>
+      <div class="f-card" style="padding:14px;gap:10px"><div class="f-row" style="gap:8px"><span class="f-li__icon f-li__icon--ok" style="width:32px;height:32px"><svg class="f-i f-i--sm"><use href="#i-check"/></svg></span><span class="f-li__icon f-li__icon--warn" style="width:32px;height:32px"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span><span class="f-li__icon f-li__icon--danger" style="width:32px;height:32px"><svg class="f-i f-i--sm"><use href="#i-x"/></svg></span><span class="f-li__icon f-li__icon--ai" style="width:32px;height:32px"><svg class="f-i f-i--sm"><use href="#i-sparkles"/></svg></span></div>
+        <div class="f-kpi"  style="min-height:0;gap:8px"><div class="f-kpi__top"><span>At risk</span><span class="f-kpi__badge f-kpi__badge--warn"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span></div><div><span class="f-num" style="font-size:26px">8</span> <span class="f-muted">orders</span></div></div></div>
+    </div>
+    <div class="f-canvaspanel" data-canvas="paper"><div class="f-row" style="justify-content:space-between"><b>Paper</b><span class="f-mono f-muted" style="font-size:12px">#F7F6F3</span></div><p class="f-muted" style="margin:0;font-size:13px">Warm off-white (notes-app feel).</p>
+      <div class="f-row f-wrap" style="gap:6px"><span class="f-pill f-pill--ok f-pill--dot">Shipped</span><span class="f-pill f-pill--warn">Waiting</span><span class="f-pill f-pill--danger">Urgent</span><span class="f-pill f-pill--neutral">Normal</span><span class="f-pill f-pill--ai">AI review</span></div>
+      <div class="f-alert f-alert--warn"><div class="f-alert__body"><div class="f-alert__title">Stock is running low</div><div class="f-alert__text">On the canvas, no card behind it.</div></div></div>
+      <div class="f-card" style="padding:14px;gap:10px"><div class="f-row" style="gap:8px"><span class="f-li__icon f-li__icon--ok" style="width:32px;height:32px"><svg class="f-i f-i--sm"><use href="#i-check"/></svg></span><span class="f-li__icon f-li__icon--warn" style="width:32px;height:32px"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span><span class="f-li__icon f-li__icon--danger" style="width:32px;height:32px"><svg class="f-i f-i--sm"><use href="#i-x"/></svg></span><span class="f-li__icon f-li__icon--ai" style="width:32px;height:32px"><svg class="f-i f-i--sm"><use href="#i-sparkles"/></svg></span></div>
+        <div class="f-kpi"  style="min-height:0;gap:8px"><div class="f-kpi__top"><span>At risk</span><span class="f-kpi__badge f-kpi__badge--warn"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span></div><div><span class="f-num" style="font-size:26px">8</span> <span class="f-muted">orders</span></div></div></div>
+    </div>
+    <div class="f-canvaspanel" data-canvas="white"><div class="f-row" style="justify-content:space-between"><b>White</b><span class="f-mono f-muted" style="font-size:12px">#FAFAFA</span></div><p class="f-muted" style="margin:0;font-size:13px">Near-white, minimal tint.</p>
+      <div class="f-row f-wrap" style="gap:6px"><span class="f-pill f-pill--ok f-pill--dot">Shipped</span><span class="f-pill f-pill--warn">Waiting</span><span class="f-pill f-pill--danger">Urgent</span><span class="f-pill f-pill--neutral">Normal</span><span class="f-pill f-pill--ai">AI review</span></div>
+      <div class="f-alert f-alert--warn"><div class="f-alert__body"><div class="f-alert__title">Stock is running low</div><div class="f-alert__text">On the canvas, no card behind it.</div></div></div>
+      <div class="f-card" style="padding:14px;gap:10px"><div class="f-row" style="gap:8px"><span class="f-li__icon f-li__icon--ok" style="width:32px;height:32px"><svg class="f-i f-i--sm"><use href="#i-check"/></svg></span><span class="f-li__icon f-li__icon--warn" style="width:32px;height:32px"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span><span class="f-li__icon f-li__icon--danger" style="width:32px;height:32px"><svg class="f-i f-i--sm"><use href="#i-x"/></svg></span><span class="f-li__icon f-li__icon--ai" style="width:32px;height:32px"><svg class="f-i f-i--sm"><use href="#i-sparkles"/></svg></span></div>
+        <div class="f-kpi"  style="min-height:0;gap:8px"><div class="f-kpi__top"><span>At risk</span><span class="f-kpi__badge f-kpi__badge--warn"><svg class="f-i f-i--sm"><use href="#i-triangle-alert"/></svg></span></div><div><span class="f-num" style="font-size:26px">8</span> <span class="f-muted">orders</span></div></div></div>
+    </div>
+  </div>
+</section>
+
 <!-- ICONS — GENERATED by tools/icons.py from icons.list. Do not edit by hand. -->
 <section data-screen="icons" hidden class="f-stack" style="gap:16px">
   <div class="f-head">
-    <div><h1 class="f-h1">Icons</h1><p class="f-subtitle"><span data-f-filter-count="#iconGrid">323</span> icons · <a href="https://lucide.dev" target="_blank" rel="noopener" style="text-decoration:underline">Lucide</a> (ISC licence), 24px grid, 2px round stroke · click an icon to copy its markup</p></div>
+    <div><h1 class="f-h1">Icons</h1><p class="f-subtitle"><span data-f-filter-count="#iconGrid">324</span> icons · <a href="https://lucide.dev" target="_blank" rel="noopener" style="text-decoration:underline">Lucide</a> (ISC licence), 24px grid, 2px round stroke · click an icon to copy its markup</p></div>
     <div class="f-head__actions">
       <div class="f-seg" data-f-var-group aria-label="Size"><button aria-pressed="false" data-f-var="#iconGrid|--s|15px">15</button><button aria-pressed="true" data-f-var="#iconGrid|--s|18px">18</button><button aria-pressed="false" data-f-var="#iconGrid|--s|22px">22</button><button aria-pressed="false" data-f-var="#iconGrid|--s|32px">32</button></div>
       <div class="f-seg" data-f-var-group aria-label="Stroke"><button aria-pressed="false" data-f-var="#iconGrid|--sw|1.25">Light</button><button aria-pressed="true" data-f-var="#iconGrid|--sw|1.6">Regular</button><button aria-pressed="false" data-f-var="#iconGrid|--sw|2.1">Bold</button></div>
@@ -2144,7 +2292,7 @@ a.f-li { text-decoration: none; color: inherit; }
   </div>
   <div class="f-toolbar">
     <label class="f-search" style="width:min(320px,100%)"><svg class="f-i"><use href="#i-search"/></svg><input data-f-filter="#iconGrid" placeholder="Search icons, e.g. download, user, chart…" aria-label="Search icons"></label>
-    <div class="f-chips" data-f-chips data-f-filter-cat="#iconGrid" style="flex-wrap:wrap"><button class="f-chip" aria-pressed="true" data-value="">All <span class="f-chip__n">323</span></button><button class="f-chip" aria-pressed="false" data-value="Navigation &amp; layout">Navigation &amp; layout <span class="f-chip__n">50</span></button><button class="f-chip" aria-pressed="false" data-value="Actions">Actions <span class="f-chip__n">57</span></button><button class="f-chip" aria-pressed="false" data-value="Status &amp; feedback">Status &amp; feedback <span class="f-chip__n">34</span></button><button class="f-chip" aria-pressed="false" data-value="Files &amp; data">Files &amp; data <span class="f-chip__n">32</span></button><button class="f-chip" aria-pressed="false" data-value="Charts &amp; finance">Charts &amp; finance <span class="f-chip__n">24</span></button><button class="f-chip" aria-pressed="false" data-value="People &amp; communication">People &amp; communication <span class="f-chip__n">34</span></button><button class="f-chip" aria-pressed="false" data-value="Operations &amp; fabrication">Operations &amp; fabrication <span class="f-chip__n">32</span></button><button class="f-chip" aria-pressed="false" data-value="Devices &amp; developer">Devices &amp; developer <span class="f-chip__n">22</span></button><button class="f-chip" aria-pressed="false" data-value="Appearance &amp; text">Appearance &amp; text <span class="f-chip__n">17</span></button><button class="f-chip" aria-pressed="false" data-value="Shapes &amp; misc">Shapes &amp; misc <span class="f-chip__n">21</span></button></div>
+    <div class="f-chips" data-f-chips data-f-filter-cat="#iconGrid" style="flex-wrap:wrap"><button class="f-chip" aria-pressed="true" data-value="">All <span class="f-chip__n">324</span></button><button class="f-chip" aria-pressed="false" data-value="Navigation &amp; layout">Navigation &amp; layout <span class="f-chip__n">50</span></button><button class="f-chip" aria-pressed="false" data-value="Actions">Actions <span class="f-chip__n">57</span></button><button class="f-chip" aria-pressed="false" data-value="Status &amp; feedback">Status &amp; feedback <span class="f-chip__n">34</span></button><button class="f-chip" aria-pressed="false" data-value="Files &amp; data">Files &amp; data <span class="f-chip__n">32</span></button><button class="f-chip" aria-pressed="false" data-value="Charts &amp; finance">Charts &amp; finance <span class="f-chip__n">24</span></button><button class="f-chip" aria-pressed="false" data-value="People &amp; communication">People &amp; communication <span class="f-chip__n">34</span></button><button class="f-chip" aria-pressed="false" data-value="Operations &amp; fabrication">Operations &amp; fabrication <span class="f-chip__n">32</span></button><button class="f-chip" aria-pressed="false" data-value="Devices &amp; developer">Devices &amp; developer <span class="f-chip__n">22</span></button><button class="f-chip" aria-pressed="false" data-value="Appearance &amp; text">Appearance &amp; text <span class="f-chip__n">17</span></button><button class="f-chip" aria-pressed="false" data-value="Shapes &amp; misc">Shapes &amp; misc <span class="f-chip__n">21</span></button><button class="f-chip" aria-pressed="false" data-value="Design &amp; media">Design &amp; media <span class="f-chip__n">1</span></button></div>
   </div>
   <div class="f-card">
     <div class="f-icongrid" id="iconGrid">
@@ -2471,6 +2619,7 @@ a.f-li { text-decoration: none; color: inherit; }
 <button class="f-icontile" data-name="mountain" data-cat="Shapes &amp; misc" data-f-text="mountain shapes &amp; misc climb hike rock" data-f-copy="&lt;svg class=&quot;f-i&quot;&gt;&lt;use href=&quot;#i-mountain&quot;/&gt;&lt;/svg&gt;" aria-label="Copy mountain"><svg class="f-i"><use href="#i-mountain"/></svg><span>mountain</span></button>
 <button class="f-icontile" data-name="sprout" data-cat="Shapes &amp; misc" data-f-text="sprout shapes &amp; misc eco green growth leaf nature plant seed spring" data-f-copy="&lt;svg class=&quot;f-i&quot;&gt;&lt;use href=&quot;#i-sprout&quot;/&gt;&lt;/svg&gt;" aria-label="Copy sprout"><svg class="f-i"><use href="#i-sprout"/></svg><span>sprout</span></button>
 <button class="f-icontile" data-name="film" data-cat="Shapes &amp; misc" data-f-text="film shapes &amp; misc movie video reel camera cinema entertainment" data-f-copy="&lt;svg class=&quot;f-i&quot;&gt;&lt;use href=&quot;#i-film&quot;/&gt;&lt;/svg&gt;" aria-label="Copy film"><svg class="f-i"><use href="#i-film"/></svg><span>film</span></button>
+<button class="f-icontile" data-name="swatch-book" data-cat="Design &amp; media" data-f-text="swatch book design &amp; media colors colours swatches pantone shades tint hue saturation" data-f-copy="&lt;svg class=&quot;f-i&quot;&gt;&lt;use href=&quot;#i-swatch-book&quot;/&gt;&lt;/svg&gt;" aria-label="Copy swatch-book"><svg class="f-i"><use href="#i-swatch-book"/></svg><span>swatch-book</span></button>
     </div>
     <div class="f-empty" data-f-filter-empty="#iconGrid" hidden><span class="f-empty__icon"><svg class="f-i f-i--lg"><use href="#i-search"/></svg></span><h3>No icons match</h3><p>Try a broader word. Need one that isn't here? Run <code class="f-mono">python3 tools/icons.py add NAME</code> (any name from lucide.dev).</p></div>
   </div>
@@ -3095,7 +3244,7 @@ const PRIO_PILL = { Urgent: 'danger', High: 'high', Normal: '' };
 const PRIO_RANK = { Urgent: 3, High: 2, Normal: 1 };
 
 /* ---------------- state ---------------- */
-const state = { name: 'Northwind', logo: null, theme: 'pine', mode: 'light', radius: 'soft', layout: 'floating', density: 'comfortable', style: 'default', shell: 'side', screen: 'dashboard' };
+const state = { name: 'Northwind', logo: null, theme: 'pine', mode: 'light', radius: 'soft', layout: 'floating', density: 'comfortable', palette: 'default', style: 'soft', canvas: 'default', shell: 'side', screen: 'dashboard' };
 const NAV = [
   { k: 'dashboard', label: 'Overview', icon: 'layout-grid' }, { k: 'orders', label: 'Orders', icon: 'inbox', n: '128' },
   { k: 'pipeline', label: 'Pipeline', icon: 'package' }, { k: 'inbox', label: 'Inbox', icon: 'message-circle', n: '3' }, { k: 'reports', label: 'Reports', icon: 'chart-column' },
@@ -3104,7 +3253,7 @@ const GROUPS = [
   { label: 'Patterns', items: [{ k: 'tables', label: 'Data tables', icon: 'table' }, { k: 'form', label: 'New order form', icon: 'pencil' }, { k: 'calendar', label: 'Calendar', icon: 'calendar' }, { k: 'notifications', label: 'Notifications', icon: 'bell' }, { k: 'ui', label: 'Overlays & UI', icon: 'sparkles' }] },
   { label: 'Account & billing', items: [{ k: 'settings', label: 'Settings', icon: 'settings' }, { k: 'profile', label: 'Profile & security', icon: 'user' }, { k: 'billing', label: 'Billing', icon: 'credit-card' }, { k: 'onboarding', label: 'Onboarding', icon: 'rocket' }] },
   { label: 'States & sign-in', items: [{ k: 'errors', label: 'Error states', icon: 'triangle-alert' }, { k: 'auth', label: 'Sign in / up', icon: 'log-in' }] },
-  { label: 'Kit', items: [{ k: 'docs', label: 'How to use', icon: 'book-open' }, { k: 'themes', label: 'Themes', icon: 'palette' }, { k: 'icons', label: 'Icons', icon: 'shapes' }, { k: 'roadmap', label: 'Roadmap', icon: 'map' }] },
+  { label: 'Kit', items: [{ k: 'docs', label: 'How to use', icon: 'book-open' }, { k: 'themes', label: 'Themes', icon: 'palette' }, { k: 'palettes', label: 'Palettes & styles', icon: 'swatch-book' }, { k: 'icons', label: 'Icons', icon: 'shapes' }, { k: 'roadmap', label: 'Roadmap', icon: 'map' }] },
 ];
 const ALIAS = { detail: 'orders' };
 
@@ -3136,7 +3285,7 @@ const age = (m) => (m < 60 ? m + ' min' : m < 1440 ? Math.round(m / 60) + ' h' :
 /* ---------------- fill: dashboard / orders ---------------- */
 function fillDashboard() {
   $('[data-rows=attention]').innerHTML = ATTN.map((r) => `<tr data-click data-go="detail"><td><div class="f-cell__title">${r[0]}</div></td>
-    <td><span class="f-row" style="gap:8px"><span class="f-li__icon f-li__icon--warn" style="width:26px;height:26px">${ic('triangle-alert')}</span>${r[1]}</span></td><td class="f-muted">${r[2]}</td>
+    <td><span class="f-row" style="gap:8px"><span class="f-li__icon f-li__icon--${r[4]}" style="width:26px;height:26px">${ic('triangle-alert')}</span>${r[1]}</span></td><td class="f-muted">${r[2]}</td>
     <td style="white-space:nowrap"><b style="font-size:16px;font-weight:500;margin-right:8px">${r[3]}%</b><span class="f-meter f-meter--${r[4]}" style="--v:${r[3]};width:70px"><i></i></span></td>
     <td class="f-muted" style="white-space:nowrap">${r[5]}</td><td class="f-r"><button class="f-btn f-btn--sm">Review</button></td></tr>`).join('');
   $('[data-rows=activity]').innerHTML = ACT.map((r) => `<div class="f-li"><span class="f-li__icon f-li__icon--${r[0]}">${ic(r[1])}</span><div class="f-li__body"><div class="f-li__title">${r[2]}</div><div class="f-li__sub">${r[3]}</div></div><span class="f-li__end">${r[4]}</span></div>`).join('');
@@ -3408,7 +3557,9 @@ function apply() {
   h.dataset.theme = state.theme; h.dataset.mode = state.mode; h.dataset.layout = state.layout;
   state.radius === 'soft' ? h.removeAttribute('data-radius') : (h.dataset.radius = state.radius);
   state.density === 'comfortable' ? h.removeAttribute('data-density') : (h.dataset.density = 'compact');
-  state.style === 'default' ? h.removeAttribute('data-style') : (h.dataset.style = state.style);
+  state.palette === 'default' ? h.removeAttribute('data-palette') : (h.dataset.palette = state.palette);
+  state.style === 'soft' ? h.removeAttribute('data-style') : (h.dataset.style = state.style);
+  state.canvas === 'default' ? h.removeAttribute('data-canvas') : (h.dataset.canvas = state.canvas);
   $$('.sw').forEach((b) => b.setAttribute('aria-pressed', b.dataset.themePick === state.theme));
   tsel.value = DAISY.some((t) => t.name === state.theme) ? state.theme : '';
   $$('.studio .f-seg').forEach((s) => $$('button', s).forEach((b) => b.setAttribute('aria-pressed', state[s.dataset.ctl] === b.dataset.v)));
@@ -3425,7 +3576,7 @@ $('#logoFile').addEventListener('change', (e) => { const f = e.target.files[0]; 
 $('#logoReset').addEventListener('click', () => { state.logo = null; $('#logoFile').value = ''; relogo(); });
 $('#copyCss').addEventListener('click', async () => {
   const cs = getComputedStyle(document.documentElement), g = (v) => cs.getPropertyValue(v).trim();
-  const attrs = [['lang', 'en'], ['data-theme', 'client'], ['data-mode', state.mode], ['data-radius', state.radius === 'soft' ? '' : state.radius], ['data-layout', state.layout === 'floating' ? '' : state.layout], ['data-density', state.density === 'compact' ? 'compact' : ''], ['data-style', state.style === 'default' ? '' : state.style]].filter((x) => x[1]).map((x) => `${x[0]}="${x[1]}"`).join(' ');
+  const attrs = [['lang', 'en'], ['data-theme', 'client'], ['data-mode', state.mode], ['data-radius', state.radius === 'soft' ? '' : state.radius], ['data-layout', state.layout === 'floating' ? '' : state.layout], ['data-density', state.density === 'compact' ? 'compact' : ''], ['data-palette', state.palette === 'default' ? '' : state.palette], ['data-style', state.style === 'soft' ? '' : state.style], ['data-canvas', state.canvas === 'default' ? '' : state.canvas]].filter((x) => x[1]).map((x) => `${x[0]}="${x[1]}"`).join(' ');
   const logo = state.logo ? (state.logo.length <= 8000 ? state.logo : '(logo was uploaded in the preview but is too large to paste: attach the file to the chat)') : '(none: use the initial letter mark)';
   const css = `/* FRAME CLIENT BRIEF: give this to your agent together with the Frame link. */\n[data-theme="client"] {\n  --neutral-hue: ${g('--neutral-hue')};\n  --color-primary: ${g('--color-primary')};\n  --color-primary-content: ${g('--color-primary-content')};\n  --color-accent: ${g('--color-accent')};\n  --color-accent-content: ${g('--color-accent-content')};\n}\n/* html:  <html ${attrs}> */\n/* shell: ${state.shell === 'top' ? 'top-nav (f-app--top)' : 'sidebar (f-app--side)'} */\n/* app-name: ${state.name} */\n/* logo: ${logo} */`;
   try { await navigator.clipboard.writeText(css); } catch (_) {}

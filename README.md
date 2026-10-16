@@ -70,9 +70,11 @@ Full set: `--color-base-100/200/300/content`, `--color-primary/secondary/accent/
 | `data-radius` | `crisp`, `square` (square implies docked panels) |
 | `data-layout` | `floating` (default), `docked` |
 | `data-density` | `compact` |
-| `data-style` | secondary palette + style: `warm` (uppercase lozenges, warm status colours), `mono` (near-black primary, neutral badges with a status dot), `fine` (small bordered badges), `dev` (bordered labels, muted status colours). Omit for default. Changes status colours and badge/alert shape only, works with every theme and mode (contrast-checked: 5 styles x 10 themes x 2 modes) |
+| `data-palette` | secondary palette, colours only: `warm` (teal, coral, yellow), `mono` (blue, green, amber, red), `fine` (green, magenta-red, violet), `dev` (muted green, amber, red). Omit for default |
+| `data-style` | secondary style, how badges, alerts and icon badges are drawn: `caps`, `outline`, `dot`. Omit for soft. No radii: corners follow `data-radius` |
+| `data-canvas` | page grey (light mode): `soft` (theme hue, lighter), `cool`, `mist`, `paper`, `white`. Omit for the original tint |
 
-Status colours (`--ok --warn --danger --info --ai --high --neu`, each with `-fg` and `-bg`) are fixed hues, the same in every theme; a `data-style` swaps the whole set. Extra classes: `f-pill--high|neutral|brand-soft|quiet`, `f-alert--bordered`.
+Status colours (`--ok --warn --danger --info --ai --high --neu`, each with `-fg` and `-bg`) are fixed hues, the same in every theme; a `data-palette` swaps the whole set (contrast-checked: 5 palettes x 4 styles x 6 canvases x themes x light/dark). Extra classes: `f-pill--high|neutral|brand-soft|quiet`, `f-alert--bordered`.
 
 Notes on themes:
 - Link ONE file: `themes/NAME.css` (about 2 KB, light + dark). `themes.css` holds all 10 for the gallery.
@@ -119,7 +121,7 @@ Each is a `<section data-screen="…">` fragment using only Frame classes. `prev
 | errors | 404, 403, 500, maintenance, offline |
 | auth | Sign in, sign up, forgot password, 2FA (switch with `data-f-view`) |
 | ui | Every overlay, control and feedback component |
-| docs · themes · icons · roadmap | In-app how-to page, theme gallery (click to apply), icon browser, roadmap |
+| docs · themes · palettes · icons · roadmap | In-app how-to page, theme gallery (click to apply), palettes, styles and canvas greys side by side, icon browser, roadmap |
 | `_overlays` | Shared dialogs, drawers, confirm dialogs, command palette, menus |
 
 ## Icons

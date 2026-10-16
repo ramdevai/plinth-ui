@@ -1,6 +1,6 @@
 {
  "source": "Lucide (ISC) https://lucide.dev",
- "count": 323,
+ "count": 324,
  "sizes": {
   "default": 18,
   "sm": 15,
@@ -3850,6 +3850,21 @@
     "entertainment"
    ],
    "use": "<svg class=\"f-i\"><use href=\"#i-film\"/></svg>"
+  },
+  {
+   "name": "swatch-book",
+   "category": "Design & media",
+   "tags": [
+    "colors",
+    "colours",
+    "swatches",
+    "pantone",
+    "shades",
+    "tint",
+    "hue",
+    "saturation"
+   ],
+   "use": "<svg class=\"f-i\"><use href=\"#i-swatch-book\"/></svg>"
   }
  ]
 }

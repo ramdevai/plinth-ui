@@ -5,7 +5,7 @@ Pages live in pages/*.html (each a <section data-screen="…">), shared dialogs/
 import pathlib, json
 d = pathlib.Path(__file__).parent
 rd = lambda p: (d / p).read_text()
-order = ['dashboard', 'orders', 'detail', 'pipeline', 'inbox', 'reports', 'tables', 'form', 'calendar', 'notifications', 'settings', 'profile', 'billing', 'onboarding', 'errors', 'ui', 'docs', 'themes', 'icons', 'roadmap', 'auth']
+order = ['dashboard', 'orders', 'detail', 'pipeline', 'inbox', 'reports', 'tables', 'form', 'calendar', 'notifications', 'settings', 'profile', 'billing', 'onboarding', 'errors', 'ui', 'docs', 'themes', 'palettes', 'icons', 'roadmap', 'auth']
 pages = '\n'.join(rd(f'pages/{n}.html') for n in order)
 src = rd('preview.src.html')
 for k, v in {

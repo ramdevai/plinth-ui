@@ -81,18 +81,6 @@
   --accent-soft:   light-dark(color-mix(in oklab, var(--accent) 35%, var(--surface)), color-mix(in oklab, var(--accent) 22%, var(--surface)));
   --link:          color-mix(in oklab, var(--brand) 45%, var(--text));
 
-  /* semantic colours: FIXED hues, the same in every theme (themes change the brand, not the meaning).
-     --X mark, --X-fg readable text on the tint, --X-bg tint (defined below so a nested [data-style] recomputes it).
-     Alternative palettes + component styles: <html data-style="warm|mono|fine|dev"> (see STYLE PACKS at the end).
-     To override one for a client, set --ok / --ok-fg etc. in theme.css. */
-  --ok:     light-dark(#2F9E5E, #58C487);  --ok-fg:     light-dark(color-mix(in oklab, #176B3C, #000 16%), #8FDDB0);
-  --warn:   light-dark(#D9A00B, #E8B83A);  --warn-fg:   light-dark(color-mix(in oklab, #7A5300, #000 16%), #F5CF6B);
-  --danger: light-dark(#D63A2F, #F0716A);  --danger-fg: light-dark(color-mix(in oklab, #A3241B, #000 16%), #FFA9A2);
-  --info:   light-dark(#2E7FD9, #6AA5EC);  --info-fg:   light-dark(color-mix(in oklab, #1B5AAA, #000 16%), #9CC4F5);
-  --ai:     light-dark(#7C5CD6, #A58BEA);  --ai-fg:     light-dark(color-mix(in oklab, #5337A8, #000 16%), #C7B4F7);
-  --high:   light-dark(#E8721C, #F59A56);  --high-fg:   light-dark(color-mix(in oklab, #9A4708, #000 16%), #FFBE8C);
-  --neu:    light-dark(#6B7280, #9AA1AD);  --neu-fg:    light-dark(color-mix(in oklab, #3A4150, #000 16%), #CDD2DA);
-  --tint-l: 12%; --tint-d: 20%;
 
   /* shape */
   --r-xs: calc(6px * var(--radius-scale));
@@ -126,15 +114,37 @@
   --chart-grid: var(--line); --chart-axis: var(--line-strong);
 }
 
+:root, [data-theme], [data-palette="default"] {
+  /* semantic colours: FIXED hues, the same in every theme (themes change the brand, not the meaning).
+     --X mark, --X-fg readable text on the tint, --X-bg tint (defined below so a nested [data-style] recomputes it).
+     Alternative palettes: <html data-palette="warm|mono|fine|dev">; badge/alert treatment: data-style="caps|outline|dot"; canvas grey: data-canvas (see the end of this file).
+     To override one for a client, set --ok / --ok-fg etc. in theme.css. */
+  --ok:     light-dark(#2F9E5E, #58C487);  --ok-fg:     light-dark(color-mix(in oklab, #176B3C, #000 16%), #8FDDB0);
+  --warn:   light-dark(#D9A00B, #E8B83A);  --warn-fg:   light-dark(color-mix(in oklab, #7A5300, #000 16%), #F5CF6B);
+  --danger: light-dark(#D63A2F, #F0716A);  --danger-fg: light-dark(color-mix(in oklab, #A3241B, #000 16%), #FFA9A2);
+  --info:   light-dark(#2E7FD9, #6AA5EC);  --info-fg:   light-dark(color-mix(in oklab, #1B5AAA, #000 16%), #9CC4F5);
+  --ai:     light-dark(#7C5CD6, #A58BEA);  --ai-fg:     light-dark(color-mix(in oklab, #5337A8, #000 16%), #C7B4F7);
+  --high:   light-dark(#E8721C, #F59A56);  --high-fg:   light-dark(color-mix(in oklab, #9A4708, #000 16%), #FFBE8C);
+  --neu:    light-dark(#6B7280, #9AA1AD);  --neu-fg:    light-dark(color-mix(in oklab, #3A4150, #000 16%), #CDD2DA);
+  --tint-l: 12%; --tint-d: 20%;
+}
+
 /* status tints: own rule so a [data-style] set on any element recomputes them */
-:root, [data-theme], [data-style] {
-  --ok-bg: light-dark(color-mix(in oklab, var(--ok) var(--tint-l), var(--surface)), color-mix(in oklab, var(--ok) var(--tint-d), var(--surface)));
-  --warn-bg: light-dark(color-mix(in oklab, var(--warn) var(--tint-l), var(--surface)), color-mix(in oklab, var(--warn) var(--tint-d), var(--surface)));
-  --danger-bg: light-dark(color-mix(in oklab, var(--danger) var(--tint-l), var(--surface)), color-mix(in oklab, var(--danger) var(--tint-d), var(--surface)));
-  --info-bg: light-dark(color-mix(in oklab, var(--info) var(--tint-l), var(--surface)), color-mix(in oklab, var(--info) var(--tint-d), var(--surface)));
-  --ai-bg: light-dark(color-mix(in oklab, var(--ai) var(--tint-l), var(--surface)), color-mix(in oklab, var(--ai) var(--tint-d), var(--surface)));
-  --high-bg: light-dark(color-mix(in oklab, var(--high) var(--tint-l), var(--surface)), color-mix(in oklab, var(--high) var(--tint-d), var(--surface)));
-  --neu-bg: light-dark(color-mix(in oklab, var(--neu) var(--tint-l), var(--surface)), color-mix(in oklab, var(--neu) var(--tint-d), var(--surface)));
+:root, [data-theme], [data-palette], [data-style] {
+  --ok-ic: color-mix(in oklab, var(--ok), var(--ok-fg) 45%);
+  --warn-ic: color-mix(in oklab, var(--warn), var(--warn-fg) 45%);
+  --danger-ic: color-mix(in oklab, var(--danger), var(--danger-fg) 45%);
+  --info-ic: color-mix(in oklab, var(--info), var(--info-fg) 45%);
+  --ai-ic: color-mix(in oklab, var(--ai), var(--ai-fg) 45%);
+  --high-ic: color-mix(in oklab, var(--high), var(--high-fg) 45%);
+  --neu-ic: color-mix(in oklab, var(--neu), var(--neu-fg) 45%);
+  --ok-bg: light-dark(color-mix(in oklab, var(--ok) var(--sty-tint-l, var(--tint-l)), var(--surface)), color-mix(in oklab, var(--ok) var(--sty-tint-d, var(--tint-d)), var(--surface)));
+  --warn-bg: light-dark(color-mix(in oklab, var(--warn) var(--sty-tint-l, var(--tint-l)), var(--surface)), color-mix(in oklab, var(--warn) var(--sty-tint-d, var(--tint-d)), var(--surface)));
+  --danger-bg: light-dark(color-mix(in oklab, var(--danger) var(--sty-tint-l, var(--tint-l)), var(--surface)), color-mix(in oklab, var(--danger) var(--sty-tint-d, var(--tint-d)), var(--surface)));
+  --info-bg: light-dark(color-mix(in oklab, var(--info) var(--sty-tint-l, var(--tint-l)), var(--surface)), color-mix(in oklab, var(--info) var(--sty-tint-d, var(--tint-d)), var(--surface)));
+  --ai-bg: light-dark(color-mix(in oklab, var(--ai) var(--sty-tint-l, var(--tint-l)), var(--surface)), color-mix(in oklab, var(--ai) var(--sty-tint-d, var(--tint-d)), var(--surface)));
+  --high-bg: light-dark(color-mix(in oklab, var(--high) var(--sty-tint-l, var(--tint-l)), var(--surface)), color-mix(in oklab, var(--high) var(--sty-tint-d, var(--tint-d)), var(--surface)));
+  --neu-bg: light-dark(color-mix(in oklab, var(--neu) var(--sty-tint-l, var(--tint-l)), var(--surface)), color-mix(in oklab, var(--neu) var(--sty-tint-d, var(--tint-d)), var(--surface)));
 }
 
 /* ---------- LIGHT / DARK: <html data-mode="light|dark"> ------------------------
@@ -341,21 +351,24 @@
    PILLS (status / priority / tags) — colour = meaning, never decoration
    ========================================================================== */
 .f-pill { display: inline-flex; align-items: center; gap: 6px; height: 24px; padding: 0 10px; border-radius: var(--r-pill);
-          font: 500 12.5px/1 var(--font-sans); letter-spacing: 0; background: var(--surface-3); color: var(--text-2); white-space: nowrap; }
-.f-pill--dot::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--dot, currentColor); }
+          font: var(--sty-fw, 500) var(--sty-fs, 12.5px)/1 var(--font-sans); letter-spacing: var(--sty-ls, 0); text-transform: var(--sty-case, none); background: var(--surface-3); color: var(--text-2); white-space: nowrap;
+          box-shadow: inset 0 0 0 var(--sty-ring-w, 0px) var(--sty-ring-c, color-mix(in oklab, var(--_c, var(--neu)) 45%, transparent)); }
+.f-pill--dot::before { content: ""; display: var(--sty-dot-hide, block); width: 6px; height: 6px; border-radius: 50%; background: color-mix(in oklab, var(--_c, currentColor) var(--sty-dot-mix, 0%), var(--dot, currentColor)); }
 .f-pill--lg { height: 28px; padding: 0 12px; font-size: 13px; }
-.f-pill--ok     { background: var(--ok-bg);     color: var(--ok-fg); }
-.f-pill--warn   { background: var(--warn-bg);   color: var(--warn-fg); }
-.f-pill--danger { background: var(--danger-bg); color: var(--danger-fg); }
-.f-pill--info   { background: var(--info-bg);   color: var(--info-fg); }
-.f-pill--ai     { background: var(--ai-bg);     color: var(--ai-fg); }
-.f-pill--high   { background: var(--high-bg);   color: var(--high-fg); }
-.f-pill--neutral{ background: var(--neu-bg);    color: var(--neu-fg); }
-.f-pill--brand-soft { background: var(--brand-soft-2); color: color-mix(in oklab, var(--link), var(--text) 35%); }
+.f-pill--ok     { background: var(--sty-bg, var(--ok-bg));     color: var(--ok-fg); }
+.f-pill--warn   { background: var(--sty-bg, var(--warn-bg));   color: var(--warn-fg); }
+.f-pill--danger { background: var(--sty-bg, var(--danger-bg)); color: var(--sty-fg, var(--danger-fg)); }
+.f-pill--info   { background: var(--sty-bg, var(--info-bg));   color: var(--info-fg); }
+.f-pill--ai     { background: var(--sty-bg, var(--ai-bg));     color: var(--ai-fg); }
+.f-pill--high   { background: var(--sty-bg, var(--high-bg));   color: var(--high-fg); }
+.f-pill--neutral{ background: var(--sty-bg, var(--neu-bg));    color: var(--sty-fg, var(--text)); }
+.f-pill--brand-soft { background: var(--sty-bg, var(--brand-soft-2)); color: var(--sty-fg, color-mix(in oklab, var(--link), var(--text) 35%)); }
 /* quiet: neutral badge, status only as the dot (dense tables). Use with --ok|warn|danger|info|ai|high */
 .f-pill.f-pill--quiet { background: var(--neu-bg); color: var(--text); }
 .f-pill--quiet::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--_c, var(--neu)); }
 .f-pill--ok { --_c: var(--ok); } .f-pill--warn { --_c: var(--warn); } .f-pill--danger { --_c: var(--danger); } .f-pill--info { --_c: var(--info); } .f-pill--ai { --_c: var(--ai); } .f-pill--high { --_c: var(--high); } .f-pill--neutral { --_c: var(--neu); }
+.f-pill:is(.f-pill--ok, .f-pill--warn, .f-pill--danger, .f-pill--info, .f-pill--ai, .f-pill--high)::before { content: var(--sty-dot-content, none); width: 6px; height: 6px; border-radius: 50%; background: var(--_c); }
+.f-pill--brand, .f-pill--accent, .f-pill--white, .f-pill--outline { --sty-ring-w: 0px; }
 .f-pill--brand  { background: var(--primary);   color: var(--on-primary); }
 .f-pill--accent { background: var(--accent);    color: var(--on-accent); }
 .f-pill--outline{ background: transparent; box-shadow: inset 0 0 0 1px var(--line-strong); }
@@ -413,9 +426,10 @@
 .f-kpi { background: var(--surface-2); border-radius: var(--r-md); padding: calc(16px * var(--density)); display: flex; flex-direction: column; justify-content: space-between; gap: 26px; min-height: 150px; }
 .f-kpi__top { display: flex; justify-content: space-between; gap: 8px; color: var(--text-2); font-size: 13px; line-height: 1.3; }
 .f-kpi__badge { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; flex: none; background: var(--surface-3); color: var(--text-2); }
-.f-kpi__badge--ok { background: var(--ok-bg); color: var(--ok-fg); }
-.f-kpi__badge--warn { background: var(--warn-bg); color: var(--warn-fg); }
-.f-kpi__badge--ai { background: var(--ai-bg); color: var(--ai-fg); }
+.f-kpi__badge--ok { background: var(--ok-bg); color: var(--ok-ic); }
+.f-kpi__badge--warn { background: var(--warn-bg); color: var(--warn-ic); }
+.f-kpi__badge--ai { background: var(--ai-bg); color: var(--ai-ic); }
+.f-kpi__badge, .f-li__icon, .f-tl__dot { box-shadow: inset 0 0 0 var(--sty-ibd-w, 0px) var(--sty-ibd-c, color-mix(in oklab, currentColor 35%, transparent)); }
 .f-delta { font-size: 12.5px; color: var(--text-3); margin-top: 8px; }
 .f-delta b { color: var(--ok-fg); font-weight: 600; } .f-delta--bad b { color: var(--danger-fg); }
 
@@ -425,8 +439,8 @@
 .f-list { display: flex; flex-direction: column; gap: 8px; }
 .f-li { display: flex; align-items: center; gap: 14px; background: var(--surface-2); border-radius: var(--r-md); padding: calc(12px * var(--density)) 16px; min-width: 0; }
 .f-li__icon { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--surface); color: var(--text-2); flex: none; }
-.f-li__icon--ok { background: var(--ok-bg); color: var(--ok-fg); } .f-li__icon--warn { background: var(--warn-bg); color: var(--warn-fg); } .f-li__icon--info { background: var(--info-bg); color: var(--info-fg); } .f-li__icon--high { background: var(--high-bg); color: var(--high-fg); }
-.f-li__icon--danger { background: var(--danger-bg); color: var(--danger-fg); } .f-li__icon--ai { background: var(--ai-bg); color: var(--ai-fg); }
+.f-li__icon--ok { background: var(--ok-bg); color: var(--ok-ic); } .f-li__icon--warn { background: var(--warn-bg); color: var(--warn-ic); } .f-li__icon--info { background: var(--info-bg); color: var(--info-ic); } .f-li__icon--high { background: var(--high-bg); color: var(--high-ic); }
+.f-li__icon--danger { background: var(--danger-bg); color: var(--danger-ic); } .f-li__icon--ai { background: var(--ai-bg); color: var(--ai-ic); }
 .f-li__body { flex: 1; min-width: 0; }
 .f-li__title { font-weight: 500; line-height: 1.3; } .f-li__sub { font-size: 12.5px; color: var(--text-3); line-height: 1.3; }
 .f-li__end { color: var(--text-3); font-size: 12.5px; white-space: nowrap; }
@@ -509,8 +523,8 @@
 .f-tl__item:not(:last-child)::before { content: ""; position: absolute; left: 15px; top: 34px; bottom: 2px; width: 2px; background: var(--line-strong); }
 .f-tl__item[data-state="todo"]::before { background: repeating-linear-gradient(var(--line-strong) 0 4px, transparent 4px 8px); }
 .f-tl__dot { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: var(--surface-3); color: var(--text-3); }
-.f-tl__item[data-state="done"] .f-tl__dot { background: var(--ok-bg); color: var(--ok-fg); }
-.f-tl__item[data-state="warn"] .f-tl__dot { background: var(--warn-bg); color: var(--warn-fg); }
+.f-tl__item[data-state="done"] .f-tl__dot { background: var(--ok-bg); color: var(--ok-ic); }
+.f-tl__item[data-state="warn"] .f-tl__dot { background: var(--warn-bg); color: var(--warn-ic); }
 .f-tl__item[data-state="todo"] .f-tl__dot { background: transparent; border: 2px dashed var(--line-strong); }
 .f-tl__title { font-weight: 600; line-height: 1.3; padding-top: 5px; }
 .f-tl__item[data-state="todo"] .f-tl__title { color: var(--text-3); font-weight: 500; }
@@ -647,8 +661,8 @@ dialog[data-closing]::backdrop { animation: f-fade-out .16s forwards; }
 .f-toasts:popover-open { display: flex; }
 .f-toast { display: flex; gap: 12px; align-items: flex-start; width: 340px; max-width: calc(100vw - 40px); padding: 14px 14px 14px 16px; background: var(--text); color: var(--surface);
            border-radius: var(--r-md); box-shadow: var(--shadow-lg); font: 400 14px/1.4 var(--font-sans); animation: f-in-up .22s cubic-bezier(.2, .8, .2, 1); }
-.f-toast__icon { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; flex: none; background: var(--ok-bg); color: var(--ok-fg); }
-.f-toast--warn .f-toast__icon { background: var(--warn); color: oklch(.3 .06 70); } .f-toast--danger .f-toast__icon { background: var(--danger); } .f-toast--info .f-toast__icon { background: var(--info); }
+.f-toast__icon { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; flex: none; background: var(--ok-bg); color: var(--ok-ic); }
+.f-toast--warn .f-toast__icon { background: var(--warn-bg); color: var(--warn-ic); } .f-toast--danger .f-toast__icon { background: var(--danger-bg); color: var(--danger-ic); } .f-toast--info .f-toast__icon { background: var(--info-bg); color: var(--info-ic); }
 .f-toast__body { flex: 1; min-width: 0; display: flex; flex-direction: column; } .f-toast__body span { opacity: .72; font-size: 13px; }
 .f-toast__x { border: 0; background: transparent; color: inherit; opacity: .6; cursor: pointer; padding: 2px; display: grid; } .f-toast__x:hover { opacity: 1; }
 
@@ -660,7 +674,7 @@ dialog[data-closing]::backdrop { animation: f-fade-out .16s forwards; }
 [data-tip-pos="bottom"]::after { bottom: auto; top: calc(100% + 8px); }
 
 /* Alerts / banners */
-.f-alert { --_c: var(--info); display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: var(--r-md); background: var(--info-bg); color: var(--info-fg); border: 1px solid var(--alert-bd, transparent); }
+.f-alert { --_c: var(--info); display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: var(--r-md); background: var(--info-bg); color: var(--info-fg); border: 1px solid var(--alert-bd, color-mix(in oklab, var(--_c) var(--sty-bd, 0%), transparent)); }
 .f-alert--ok { --_c: var(--ok); } .f-alert--warn { --_c: var(--warn); } .f-alert--danger { --_c: var(--danger); } .f-alert--ai { --_c: var(--ai); } .f-alert--high { --_c: var(--high); background: var(--high-bg); color: var(--high-fg); }
 .f-alert--bordered { --alert-bd: color-mix(in oklab, var(--_c) 45%, transparent); }
 .f-alert--ok { background: var(--ok-bg); color: var(--ok-fg); } .f-alert--warn { background: var(--warn-bg); color: var(--warn-fg); }
@@ -906,13 +920,15 @@ a.f-li { text-decoration: none; color: inherit; }
 .f-select { appearance: none; -webkit-appearance: none; padding-right: 38px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238a8f98' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; }
 
 /* ==========================================================================
-   STYLE PACKS: a secondary palette + badge/alert style, independent of the theme.
-   <html data-style="warm|mono|fine|dev">  (no attribute = default)
-   Inspired by common patterns: warm = uppercase lozenges (CRM look), mono = neutral badges with a
-   status dot + near-black primary, fine = tiny bordered badges (payments look), dev = bordered
-   pill labels (code-host look). They change status colours, badge/alert shape and nothing else.
+   SECONDARY PALETTE  <html data-palette="warm|mono|fine|dev">   colours only
+   SECONDARY STYLE    <html data-style="caps|outline|dot">       how badges, alerts and
+                      icon badges are drawn. No radii here: corners always follow the
+                      global data-radius (soft, crisp, square).
+   CANVAS             <html data-canvas="soft|cool|mist|paper|white">   page grey (light mode)
+   All three are independent of each other and of data-theme.
    ========================================================================== */
-[data-style="warm"] {
+/* warm (CRM look): teal, coral, yellow */
+[data-palette="warm"] {
   --ok: light-dark(#00BDA5, #2DD4BF);     --ok-fg: light-dark(color-mix(in oklab, #00685C, #000 16%), #5EEAD4);
   --warn: light-dark(#E5A82E, #F5CF6B);   --warn-fg: light-dark(color-mix(in oklab, #7A5A00, #000 16%), #F5D98B);
   --danger: light-dark(#F2545B, #FF7B80); --danger-fg: light-dark(color-mix(in oklab, #B3202A, #000 16%), #FF9FA3);
@@ -920,26 +936,17 @@ a.f-li { text-decoration: none; color: inherit; }
   --ai: light-dark(#6A78D1, #98A3EC);     --ai-fg: light-dark(color-mix(in oklab, #3F4A9E, #000 16%), #B8C0F5);
   --high: light-dark(#FF7A59, #FF9A80);   --high-fg: light-dark(color-mix(in oklab, #B83A1B, #000 16%), #FFB9A5);
 }
-[data-style="warm"] .f-pill { border-radius: 4px; height: 22px; padding: 0 8px; font-size: 11px; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; }
-[data-style="warm"] .f-pill--dot::before { display: none; }
-[data-style="warm"] .f-alert { --r-md: 6px; }
-
-[data-style="mono"] {
+/* mono (deploy-tool look): blue, green, amber, red */
+[data-palette="mono"] {
   --ok: light-dark(#45A557, #52C26A);     --ok-fg: light-dark(color-mix(in oklab, #16723A, #000 16%), #7FD98D);
   --warn: light-dark(#F5A623, #F5B544);   --warn-fg: light-dark(color-mix(in oklab, #9A5B00, #000 16%), #FFCB6B);
   --danger: light-dark(#E5484D, #FF6369); --danger-fg: light-dark(color-mix(in oklab, #C42B31, #000 16%), #FF8F93);
   --info: light-dark(#0070F3, #3291FF);   --info-fg: light-dark(color-mix(in oklab, #0068D6, #000 16%), #79B8FF);
   --ai: light-dark(#8E4EC6, #BF7AF0);     --ai-fg: light-dark(color-mix(in oklab, #6B3FBF, #000 16%), #D9AEF7);
   --high: light-dark(#F76808, #FF8F40);   --high-fg: light-dark(color-mix(in oklab, #9A4300, #000 16%), #FFB57A);
-  --primary: var(--text); --on-primary: var(--surface);
-  --primary-hover: color-mix(in oklab, var(--text), var(--surface) 20%);
 }
-[data-style="mono"] :is(.f-pill--ok, .f-pill--warn, .f-pill--danger, .f-pill--info, .f-pill--ai, .f-pill--high) { background: var(--neu-bg); color: var(--text); }
-[data-style="mono"] :is(.f-pill--ok, .f-pill--warn, .f-pill--danger, .f-pill--info, .f-pill--ai, .f-pill--high)::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--_c); }
-[data-style="mono"] .f-alert { --alert-bd: color-mix(in oklab, var(--_c) 45%, transparent); --r-md: 8px; }
-[data-style="mono"] :is(.f-li__icon, .f-kpi__badge, .f-tl__dot):is([class*="--ok"], [class*="--warn"], [class*="--danger"], [class*="--info"], [class*="--high"], [class*="--ai"]) { background: transparent; box-shadow: inset 0 0 0 1px var(--line-strong); }
-
-[data-style="fine"] {
+/* fine (payments look): green, magenta-red, violet */
+[data-palette="fine"] {
   --ok: light-dark(#15BE53, #3DD68C);     --ok-fg: light-dark(color-mix(in oklab, #0E7A36, #000 16%), #7BE3A8);
   --warn: light-dark(#9B6829, #D9A441);   --warn-fg: light-dark(color-mix(in oklab, #7C4F12, #000 16%), #F0C879);
   --danger: light-dark(#EA2261, #FF6B9A); --danger-fg: light-dark(color-mix(in oklab, #B8123F, #000 16%), #FF9DBC);
@@ -947,11 +954,8 @@ a.f-li { text-decoration: none; color: inherit; }
   --ai: light-dark(#533AFD, #8B7BFF);     --ai-fg: light-dark(color-mix(in oklab, #4331C9, #000 16%), #B7ADFF);
   --high: light-dark(#F27A2A, #FF9A55);   --high-fg: light-dark(color-mix(in oklab, #A24A10, #000 16%), #FFBE8C);
 }
-[data-style="fine"] .f-pill { border-radius: 4px; height: 22px; padding: 0 7px; font-size: 12px; box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--_c, var(--neu)) 40%, transparent); }
-[data-style="fine"] .f-pill--dot::before { display: none; }
-[data-style="fine"] .f-alert { --alert-bd: color-mix(in oklab, var(--_c) 40%, transparent); --r-md: 6px; }
-
-[data-style="dev"] {
+/* dev (code-host look): muted green, amber, red */
+[data-palette="dev"] {
   --ok: light-dark(#1A7F37, #3FB950);     --ok-fg: light-dark(color-mix(in oklab, #1A7F37, #000 16%), #56D364);
   --warn: light-dark(#9A6700, #D29922);   --warn-fg: light-dark(color-mix(in oklab, #7D4E00, #000 16%), #E3B341);
   --danger: light-dark(#CF222E, #F85149); --danger-fg: light-dark(color-mix(in oklab, #CF222E, #000 16%), #FF7B72);
@@ -961,6 +965,32 @@ a.f-li { text-decoration: none; color: inherit; }
   --neu: light-dark(#59636E, #8B949E);    --neu-fg: light-dark(color-mix(in oklab, #59636E, #000 16%), #9198A1);
   --tint-l: 10%; --tint-d: 15%;
 }
-[data-style="dev"] .f-pill { box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--_c, var(--neu)) 45%, transparent); }
-[data-style="dev"] .f-pill--dot::before { display: none; }
-[data-style="dev"] .f-alert { --alert-bd: color-mix(in oklab, var(--_c) 45%, transparent); --r-md: 6px; }
+
+/* ---- styles: tokens only, so any element can carry its own data-style (the palettes page does) ---- */
+[data-style="soft"] { --sty-tint-l: initial; --sty-tint-d: initial; --sty-bg: initial; --sty-fg: initial; --sty-case: initial; --sty-ls: initial; --sty-fs: initial; --sty-fw: initial;
+  --sty-ring-w: initial; --sty-ring-c: initial; --sty-dot-hide: initial; --sty-dot-mix: initial; --sty-dot-content: initial; --sty-bd: initial; --sty-ibd-w: initial; --sty-ibd-c: initial; }
+/* caps: small bold uppercase labels */
+[data-style="caps"] { --sty-case: uppercase; --sty-ls: .04em; --sty-fs: 11px; --sty-fw: 700; --sty-dot-hide: none; }
+/* outline: tint plus a hairline in the status colour */
+[data-style="outline"] { --sty-ring-w: 1px; --sty-bd: 45%; --sty-ibd-w: 1px; }
+/* dot: surface-coloured label with a status dot and a hairline (stays visible on the grey canvas) */
+[data-style="dot"] { --sty-tint-l: 0%; --sty-tint-d: 0%; --sty-bg: var(--surface); --sty-fg: var(--text); --sty-ring-w: 1px; --sty-ring-c: var(--line-strong);
+  --sty-dot-content: ""; --sty-dot-mix: 100%; --sty-bd: 45%; --sty-ibd-w: 1px; --sty-ibd-c: var(--line-strong); }
+
+/* ---- canvas greys (light mode; dark keeps the theme's own) ---- */
+[data-canvas] {
+  --canvas: light-dark(var(--_cv), var(--color-base-200));
+  --surface-2: light-dark(color-mix(in oklab, #fff 55%, var(--_cv)), color-mix(in oklab, var(--color-base-100) 55%, var(--color-base-200)));
+  --surface-3: light-dark(color-mix(in oklab, var(--_cv), #000 6%), color-mix(in oklab, var(--color-base-200) 70%, var(--color-base-300)));
+}
+[data-canvas="tint"]  { --_cv: var(--color-base-200); }
+[data-canvas="soft"]  { --_cv: oklch(0.972 0.005 var(--nh)); }   /* same hue as the theme, lighter */
+[data-canvas="cool"]  { --_cv: #F6F8FA; }                          /* neutral cool grey */
+[data-canvas="mist"]  { --_cv: #F6F9FC; }                          /* blue-white */
+[data-canvas="paper"] { --_cv: #F7F6F3; }                          /* warm off-white */
+[data-canvas="white"] { --_cv: #FAFAFA; }                          /* neutral near-white */
+
+/* palettes page */
+.f-pgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 16px; align-items: start; }
+.f-pgrid--sm { grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); }
+.f-canvaspanel { background: var(--canvas); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 18px; display: flex; flex-direction: column; gap: 12px; }

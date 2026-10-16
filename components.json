@@ -9,7 +9,10 @@
    "data-mode": "light|dark, works with every theme (or Frame.setMode(\"auto\"))",
    "data-radius": "crisp|square",
    "data-layout": "floating|docked",
-   "data-density": "compact"
+   "data-density": "compact",
+   "data-palette": "warm|mono|fine|dev (status colours only)",
+   "data-style": "caps|outline|dot (badge/alert/icon-badge drawing; no radii)",
+   "data-canvas": "soft|cool|mist|paper|white (page grey, light mode)"
   }
  },
  "tokens": [
@@ -95,7 +98,7 @@
    "daisyui": [
     "card"
    ],
-   "example": "<div class=\"f-card\"><div class=\"f-card__head\"><div><h3 class=\"f-card__title\">Title</h3><p class=\"f-card__sub\">Sub</p></div></div>\u2026</div>",
+   "example": "<div class=\"f-card\"><div class=\"f-card__head\"><div><h3 class=\"f-card__title\">Title</h3><p class=\"f-card__sub\">Sub</p></div></div>…</div>",
    "a11y": ""
   },
   {
@@ -158,7 +161,7 @@
    "daisyui": [
     "table"
    ],
-   "example": "<div class=\"f-tablewrap\"><table class=\"f-table\"><thead><tr><th data-sort>Order</th></tr></thead><tbody><tr><td>\u2026</td></tr></tbody></table></div>",
+   "example": "<div class=\"f-tablewrap\"><table class=\"f-table\"><thead><tr><th data-sort>Order</th></tr></thead><tbody><tr><td>…</td></tr></tbody></table></div>",
    "a11y": "Use <th scope> and a caption or aria-label for complex tables."
   },
   {
@@ -248,7 +251,7 @@
    "daisyui": [
     "modal"
    ],
-   "example": "<dialog class=\"f-modal\" id=\"m\">\u2026</dialog> <button data-f-open=\"#m\">Open</button>",
+   "example": "<dialog class=\"f-modal\" id=\"m\">…</dialog> <button data-f-open=\"#m\">Open</button>",
    "a11y": "Native dialog: focus trap and Esc included."
   },
   {
@@ -264,7 +267,7 @@
    "daisyui": [
     "drawer"
    ],
-   "example": "<dialog class=\"f-drawer\" id=\"d\">\u2026</dialog>",
+   "example": "<dialog class=\"f-drawer\" id=\"d\">…</dialog>",
    "a11y": ""
   },
   {
@@ -302,7 +305,7 @@
    "daisyui": [
     "alert"
    ],
-   "example": "<div class=\"f-alert f-alert--warn\" role=\"alert\">\u2026</div>",
+   "example": "<div class=\"f-alert f-alert--warn\" role=\"alert\">…</div>",
    "a11y": ""
   },
   {
@@ -361,7 +364,7 @@
    "daisyui": [
     "timeline"
    ],
-   "example": "<div class=\"f-tl\"><div class=\"f-tl__item\" data-state=\"done\">\u2026</div></div>",
+   "example": "<div class=\"f-tl\"><div class=\"f-tl__item\" data-state=\"done\">…</div></div>",
    "a11y": ""
   },
   {
@@ -406,7 +409,7 @@
    "daisyui": [
     "hero"
    ],
-   "example": "<div class=\"f-empty\"><span class=\"f-empty__icon\">\u2026</span><h3>No orders</h3><p>\u2026</p></div>",
+   "example": "<div class=\"f-empty\"><span class=\"f-empty__icon\">…</span><h3>No orders</h3><p>…</p></div>",
    "a11y": ""
   },
   {
@@ -424,7 +427,7 @@
    "daisyui": [
     "list"
    ],
-   "example": "<div class=\"f-li\"><span class=\"f-li__icon\">\u2026</span><div class=\"f-li__body\"><div class=\"f-li__title\">Title</div></div></div>",
+   "example": "<div class=\"f-li\"><span class=\"f-li__icon\">…</span><div class=\"f-li__body\"><div class=\"f-li__title\">Title</div></div></div>",
    "a11y": ""
   },
   {
@@ -456,7 +459,7 @@
    "daisyui": [
     "stat"
    ],
-   "example": "<div class=\"f-kpi\">\u2026</div>",
+   "example": "<div class=\"f-kpi\">…</div>",
    "a11y": ""
   },
   {
@@ -471,7 +474,7 @@
    "daisyui": [
     "(none)"
    ],
-   "example": "<div class=\"f-board\"><div class=\"f-col\">\u2026</div></div>",
+   "example": "<div class=\"f-board\"><div class=\"f-col\">…</div></div>",
    "a11y": ""
   },
   {
@@ -484,7 +487,7 @@
    "daisyui": [
     "(none)"
    ],
-   "example": "<dialog class=\"f-cmd\" id=\"cmd\">\u2026</dialog>",
+   "example": "<dialog class=\"f-cmd\" id=\"cmd\">…</dialog>",
    "a11y": ""
   },
   {
@@ -560,7 +563,7 @@
    "daisyui": [
     "(none)"
    ],
-   "example": "<input data-f-filter=\"#rows\" aria-label=\"Search\"> <table class=\"f-table\"><tbody id=\"rows\"><tr data-f-text=\"acme tools active\">\u2026</tr></tbody></table> <div class=\"f-empty\" data-f-filter-empty=\"#rows\" hidden>No matches</div>",
+   "example": "<input data-f-filter=\"#rows\" aria-label=\"Search\"> <table class=\"f-table\"><tbody id=\"rows\"><tr data-f-text=\"acme tools active\">…</tr></tbody></table> <div class=\"f-empty\" data-f-filter-empty=\"#rows\" hidden>No matches</div>",
    "a11y": "Give the input a label. Optional chips: data-f-filter-cat; count: data-f-filter-count."
   },
   {
@@ -676,6 +679,11 @@
    "file": "pages/auth.html",
    "screen": "auth",
    "pattern": "Sign in, up, forgot, 2FA"
+  },
+  {
+   "file": "pages/palettes.html",
+   "screen": "palettes",
+   "pattern": "Secondary palettes, styles and canvas greys side by side"
   }
  ],
  "validation": "Add data-check to the frame.js script tag (or ?check in the URL). Console + badge list problems; Frame.check() returns an array."

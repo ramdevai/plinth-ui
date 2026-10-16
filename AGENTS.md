@@ -16,7 +16,7 @@ No Python, Node or npm needed to build with it. Read this file fully before writ
 ## A client brief (the usual start)
 The user may paste a block that begins `/* FRAME CLIENT BRIEF`. It is the whole client setup. Apply it exactly:
 1. Save the `[data-theme="client"] { ... }` block as `theme.css`. Link `frame.css` then `theme.css` (no `themes/NAME.css` needed).
-2. Copy the `html:` comment's attributes onto `<html>` (`data-theme="client"`, `data-mode`, `data-radius`, `data-layout`, `data-density`).
+2. Copy the `html:` comment's attributes onto `<html>` (`data-theme="client"`, `data-mode`, `data-radius`, `data-layout`, `data-density`, and `data-palette` / `data-style` / `data-canvas` when present).
 3. `shell:` sidebar means `<div class="f-app f-app--side">` with `<aside class="f-side">`; top-nav means `f-app--top` with `<header class="f-top">`.
 4. `app-name:` is the product name: use it in the logo wordmark, the `<title>` and the sign-in page.
 5. `logo:` is a `data:` URI (save it as `logo.svg` or `logo.png` and use `<span class="f-logo__mark f-logo__mark--bare"><img src="logo.svg" alt=""></span>`), or says to attach a file, or none (then use the initial letter in `f-logo__mark`). Never invent a logo.
@@ -87,6 +87,6 @@ The user may paste a block that begins `/* FRAME CLIENT BRIEF`. It is the whole 
 ## Definition of done
 The browser check reports no issues; keyboard-only walk-through works; looks right in light and dark at 375px and 1440px.
 
-## Secondary palette and style
+## Secondary palette, style and canvas
 
-`<html data-style="warm|mono|fine|dev">` (omit for default) swaps status colours and badge/alert shape; independent of `data-theme`. If the client brief has a `data-style` in its `html:` line, set it. Never hard-code status colours: use `f-pill--ok|warn|danger|info|ai|high|neutral`, `f-alert--*`.
+Three independent switches on `<html>`, all optional: `data-palette="warm|mono|fine|dev"` (status colours), `data-style="caps|outline|dot"` (how badges, alerts and icon badges are drawn), `data-canvas="soft|cool|mist|paper|white"` (page grey). Corners are never part of them: use `data-radius`. If the client brief's `html:` line has any of these, copy them onto `<html>`. Never hard-code status colours: use `f-pill--ok|warn|danger|info|ai|high|neutral`, `f-alert--*`, `f-li__icon--*`, `f-kpi__badge--*`. See the Palettes page.
