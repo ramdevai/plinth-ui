@@ -6,7 +6,7 @@ If you are an AI agent asked to build UI with Plinth, read ONE of these and star
 - [llms-full.txt](llms-full.txt): everything in a single document (rules, components with markup, behaviours, themes, icons, pages, starter). Best when you can only fetch URLs.
 - [AGENTS.md](AGENTS.md): the rules and workflow, if you have the folder.
 
-Hosted copy: https://plinth.pages.dev/ . Link the kit from the same base URL as this file (replace BASE, e.g. BASE = https://plinth.pages.dev):
+Hosted copy: https://plinth-ui.pages.dev/ . Link the kit from the same base URL as this file (replace BASE, e.g. BASE = https://plinth-ui.pages.dev):
 ```
 <link rel="stylesheet" href="BASE/plinth.css" crossorigin>
 <link rel="stylesheet" href="BASE/themes/pine.css" crossorigin>

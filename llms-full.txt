@@ -9,7 +9,7 @@ No Python, Node or npm needed to build with it. Read this file fully before writ
 
 ## How you were pointed at it
 - **A folder** (`plinth/` in the project, or this repo): use the files directly, paths below are relative to it.
-- **A URL** (`https://plinth.pages.dev/llms.txt`, or any file on another host): the folder of that URL is BASE. Fetch `BASE/llms-full.txt` for everything in one document, then link the kit straight from BASE:
+- **A URL** (`https://plinth-ui.pages.dev/llms.txt`, or any file on another host): the folder of that URL is BASE. Fetch `BASE/llms-full.txt` for everything in one document, then link the kit straight from BASE:
   ```html
   <link rel="stylesheet" href="BASE/plinth.css" crossorigin>
   <link rel="stylesheet" href="BASE/themes/pine.css" crossorigin>
