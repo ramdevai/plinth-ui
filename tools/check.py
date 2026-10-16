@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""Frame UI checker: catches the mistakes agents (and people) make. Stdlib only.
+"""Plinth checker: catches the mistakes agents (and people) make. Stdlib only.
 
   python3 tools/check.py FILE.html [FILE.html ...]     exit code 1 if any error
 
 Errors:   unknown f- class · missing icon id · unknown data-theme · icon-only control with no accessible name · <img> without alt
-Warnings: inline <script> blocks · daisyUI class used instead of the Frame one (suggests the translation) · form control with no label
+Warnings: inline <script> blocks · daisyUI class used instead of the Plinth one (suggests the translation) · form control with no label
 """
 import json, pathlib, re, sys
 from html.parser import HTMLParser
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
-CSS = (ROOT / 'frame.css').read_text()
+CSS = (ROOT / 'plinth.css').read_text()
 CLASSES = set(re.findall(r'\.(f-[a-z0-9_-]+)', CSS))
 ICONS = {i['name'] for i in json.loads((ROOT / 'icons.json').read_text())['icons']}
 THEMES = {t['name'] for t in json.loads((ROOT / 'themes.json').read_text())['themes']}
@@ -32,7 +32,7 @@ class P(HTMLParser):
             h = a.get('href') or a.get('xlink:href') or ''
             if h.startswith('#i-') and h[3:] not in ICONS: self.add('error', f'icon "{h[3:]}" not in icons.json (python3 tools/icons.py add {h[3:]})')
         if tag == 'html' and a.get('data-theme') and a['data-theme'] not in THEMES: self.add('error', f'unknown data-theme "{a["data-theme"]}"')
-        if tag == 'script' and not a.get('src') and a.get('type') not in ('application/json', 'application/ld+json', 'importmap'): self.add('warn', 'inline <script>: UI behaviour is data-f-* attributes (see header of frame.js); put app logic in app.js')
+        if tag == 'script' and not a.get('src') and a.get('type') not in ('application/json', 'application/ld+json', 'importmap'): self.add('warn', 'inline <script>: UI behaviour is data-f-* attributes (see header of plinth.js); put app logic in app.js')
         if tag == 'img' and 'alt' not in a: self.add('error', '<img> without alt')
         if tag == 'label' and a.get('for'): self.labels.add(a['for'])
         if tag in ('input', 'select', 'textarea') and a.get('type') not in ('hidden', 'submit', 'button'):

@@ -26,7 +26,7 @@
    specificity) so a theme always wins regardless of file order.            */
 :where(:root, [data-theme]) {
   color-scheme: light;
-  --neutral-hue: 90;                 /* Frame presets only: tints the default greys */
+  --neutral-hue: 90;                 /* Plinth presets only: tints the default greys */
   --nh: var(--neutral-hue);
   --color-base-100: oklch(1 0 0);
   --color-base-200: oklch(0.953 0.008 var(--nh));
@@ -153,7 +153,7 @@
    Works with EVERY theme. themes.css generates, for each theme, its other mode
    (a dark version of a light theme and vice versa, keeping the brand hues), so
    data-mode="dark" on data-theme="corporate" gives dark corporate. Without a
-   data-mode a theme shows its natural scheme. Frame.setMode('auto') follows the OS.
+   data-mode a theme shows its natural scheme. Plinth.setMode('auto') follows the OS.
    Below: the same for a page with no data-theme at all (the built-in pine look). */
 :root:not([data-theme])[data-mode="dark"] {
   color-scheme: dark;
@@ -586,7 +586,7 @@
 /* ==========================================================================
    OVERLAYS — drawer, modal, menu/popover, command palette, toast, tooltip
    Dialogs use the native <dialog> element (focus trap, Esc, top layer).
-   Open with  data-f-open="#id"   Close with  data-f-close   (frame.js)
+   Open with  data-f-open="#id"   Close with  data-f-close   (plinth.js)
    ========================================================================== */
 @keyframes f-in-right { from { transform: translateX(28px); opacity: 0; } }
 @keyframes f-out-right { to { transform: translateX(28px); opacity: 0; } }
@@ -637,7 +637,7 @@ dialog[data-closing]::backdrop { animation: f-fade-out .16s forwards; }
 .f-confirm__icon--danger { background: var(--danger-bg); color: var(--danger-fg); } .f-confirm__icon--warn { background: var(--warn-bg); color: var(--warn-fg); }
 .f-btn--destructive { --_bg: light-dark(#C62E24, #E5594F); background: var(--_bg); border-color: var(--_bg); color: light-dark(#fff, #1a0806); } .f-btn--destructive:hover { --_bg: light-dark(#A8261D, #F06C62); border-color: transparent; }
 
-/* Menu / popover — positioned by frame.js (fixed, flips near edges) */
+/* Menu / popover — positioned by plinth.js (fixed, flips near edges) */
 .f-menu { position: fixed; z-index: 80; display: none; min-width: 220px; max-width: min(380px, calc(100vw - 16px)); max-height: min(70dvh, 520px); overflow: auto;
           background: var(--surface); color: var(--text); border: 1px solid var(--line); border-radius: var(--r-md); box-shadow: var(--shadow-lg); padding: 6px; font: 400 14px/1.4 var(--font-sans); }
 .f-menu[data-open] { display: block; animation: f-pop .14s ease-out; }

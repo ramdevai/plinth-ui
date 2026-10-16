@@ -1,16 +1,16 @@
 /* ==========================================================================
-   frame.js — optional behaviour for Frame UI. No dependencies, no build.
+   plinth.js — optional behaviour for Plinth. No dependencies, no build.
    Everything is driven by data-attributes, so pages stay plain HTML.
 
-   Check      <script src="frame.js" data-check defer>  or ?check in the URL: console + badge. Frame.check() returns the list
+   Check      <script src="plinth.js" data-check defer>  or ?check in the URL: console + badge. Plinth.check() returns the list
    Base URL   [data-f-base]  replaces {BASE} in its text and data-f-copy with this page's folder URL
-   Sprite     <script src="frame.js" data-sprite="icons.svg" defer>   auto-inject the icon sprite (http only)
+   Sprite     <script src="plinth.js" data-sprite="icons.svg" defer>   auto-inject the icon sprite (http only)
    Attribute  data-f-set-attr="#grid > *|data-mode|dark"  set an attribute on every match (value - removes it)
-   Mode       Frame.setMode('light'|'dark'|'auto')   [data-f-mode="dark"] on any button; works with every theme
+   Mode       Plinth.setMode('light'|'dark'|'auto')   [data-f-mode="dark"] on any button; works with every theme
    Overlays   data-f-open="#id"        open a <dialog class="f-drawer|f-modal">
               data-f-close             close the dialog it sits in
               data-f-menu="#id"        toggle a .f-menu (data-align="end|center")
-              Frame.toast({kind,title,text})   data-f-toast="ok|Title|Text"
+              Plinth.toast({kind,title,text})   data-f-toast="ok|Title|Text"
               ⌘K / Ctrl+K              opens #cmd if present
    Tabs       [data-f-tabs] > [aria-controls="panelId"]
    Wizard     [data-f-wizard]  [data-f-step]  [data-f-next] [data-f-prev] [data-f-finish]
@@ -32,27 +32,27 @@
    ========================================================================== */
 (function () {
   'use strict';
-  const Frame = (window.Frame = window.Frame || {});
+  const Plinth = (window.Plinth = window.Frame = window.Plinth || window.Frame || {});  // window.Frame kept as an alias for older pages
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
   const icon = (n) => `<svg class="f-i f-i--sm"><use href="#i-${n}"/></svg>`;
 
-  /* ---------- icon sprite: <script src="frame.js" data-sprite="icons.svg" defer> injects it (needs http, not file://) ---------- */
+  /* ---------- icon sprite: <script src="plinth.js" data-sprite="icons.svg" defer> injects it (needs http, not file://) ---------- */
   const me = document.currentScript;
-  if (me && me.dataset.sprite && !document.getElementById('frame-sprite')) {
-    fetch(me.dataset.sprite).then((r) => r.text()).then((t) => { const d = document.createElement('div'); d.id = 'frame-sprite'; d.hidden = true; d.innerHTML = t; (document.body || document.documentElement).prepend(d); })
-      .catch(() => console.warn('Frame: could not load', me.dataset.sprite, '(serve over http, or inline icons.svg)'));
+  if (me && me.dataset.sprite && !document.getElementById('plinth-sprite')) {
+    fetch(me.dataset.sprite).then((r) => r.text()).then((t) => { const d = document.createElement('div'); d.id = 'plinth-sprite'; d.hidden = true; d.innerHTML = t; (document.body || document.documentElement).prepend(d); })
+      .catch(() => console.warn('Plinth: could not load', me.dataset.sprite, '(serve over http, or inline icons.svg)'));
   }
 
-  /* ---------- light / dark: Frame.setMode('light'|'dark'|'auto'), data-f-mode="dark" ---------- */
+  /* ---------- light / dark: Plinth.setMode('light'|'dark'|'auto'), data-f-mode="dark" ---------- */
   const root = document.documentElement, mq = window.matchMedia ? matchMedia('(prefers-color-scheme: dark)') : null;
   let modePref = null;
   const effective = () => (modePref === 'auto' ? (mq && mq.matches ? 'dark' : 'light') : modePref);
-  Frame.setMode = function (m) {
+  Plinth.setMode = function (m) {
     modePref = m; root.dataset.mode = effective(); try { localStorage.setItem('f-mode', m); } catch (_) {}
   };
   if (mq) mq.addEventListener('change', () => { if (modePref === 'auto') root.dataset.mode = effective(); });
-  try { const saved = localStorage.getItem('f-mode'); if (saved && root.hasAttribute('data-f-remember')) Frame.setMode(saved); } catch (_) {}
+  try { const saved = localStorage.getItem('f-mode'); if (saved && root.hasAttribute('data-f-remember')) Plinth.setMode(saved); } catch (_) {}
   /* data-scheme mirrors the theme's real colour-scheme so logo swaps etc. work for every theme */
   const syncScheme = () => { const cs = getComputedStyle(root).colorScheme || ''; root.dataset.scheme = /dark/.test(cs) && !/light/.test(cs) ? 'dark' : 'light'; };
   new MutationObserver(syncScheme).observe(root, { attributes: true, attributeFilter: ['data-theme', 'data-mode'] });
@@ -65,7 +65,7 @@
   });
 
   /* ---------- dialogs ---------- */
-  Frame.open = function (target) {
+  Plinth.open = function (target) {
     const d = typeof target === 'string' ? $(target) : target;
     if (!d) return null;
     closeMenus();
@@ -75,7 +75,7 @@
     d.dispatchEvent(new CustomEvent('f-open'));
     return d;
   };
-  Frame.close = function (d) {
+  Plinth.close = function (d) {
     if (!d || !d.open || d.hasAttribute('data-closing')) return;
     d.setAttribute('data-closing', '');
     setTimeout(() => { d.removeAttribute('data-closing'); d.close(); }, 160);
@@ -98,7 +98,7 @@
     if (top + h > innerHeight - 8 && r.top - h - 6 > 8) top = r.top - h - 6;
     m.style.left = left + 'px'; m.style.top = Math.max(8, top) + 'px'; m.style.visibility = '';
   }
-  Frame.menu = function (t) {
+  Plinth.menu = function (t) {
     const m = $(t.dataset.fMenu); if (!m) return;
     if (menu === m) { closeMenus(); return; }
     closeMenus(); place(m, t); t.setAttribute('aria-expanded', 'true'); menu = m; trigger = t;
@@ -107,7 +107,7 @@
   document.addEventListener('scroll', (e) => { if (menu && !menu.contains(e.target)) closeMenus(); }, true);
 
   /* ---------- toasts ---------- */
-  Frame.toast = function (o) {
+  Plinth.toast = function (o) {
     o = o || {};
     let box = $('.f-toasts');
     if (!box) { box = document.createElement('div'); box.className = 'f-toasts'; box.setAttribute('popover', 'manual'); document.body.append(box); }
@@ -163,7 +163,7 @@
     $$('pre.f-code:not([tabindex])', root).forEach((p) => { p.tabIndex = 0; });
     $$('thead th:empty', root).forEach((th) => { th.innerHTML = '<span class="f-sr">Actions</span>'; });
   }
-  Frame.semantics = semantics;
+  Plinth.semantics = semantics;
   document.addEventListener('keydown', (e) => {
     const tb = e.target.closest && e.target.closest('[data-f-kind="tabs"] [role="tab"]');
     if (tb && /^(ArrowLeft|ArrowRight|Home|End)$/.test(e.key)) {
@@ -189,9 +189,9 @@
     $$('[data-f-prev]', root).forEach((b) => (b.hidden = i === 0));
     $$('[data-f-next]', root).forEach((b) => (b.hidden = i === panels.length - 1));
     $$('[data-f-finish]', root).forEach((b) => (b.hidden = i !== panels.length - 1));
-    Frame.onWizard && Frame.onWizard(root, i);
+    Plinth.onWizard && Plinth.onWizard(root, i);
   }
-  Frame.wizard = wizard;
+  Plinth.wizard = wizard;
 
   /* ---------- table selection + bulk bar ---------- */
   function syncSelect(scope) {
@@ -253,7 +253,7 @@
   });
   document.addEventListener('f-open', (e) => { const d = e.target; if (d.classList && d.classList.contains('f-cmd')) { const i = $('input', d); if (i) { i.value = ''; i.dispatchEvent(new Event('input', { bubbles: true })); i.focus(); } cmdSelect(d, 0); } });
   document.addEventListener('keydown', (e) => {
-    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { const c = $('#cmd'); if (c) { e.preventDefault(); Frame.open(c); } return; }
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { const c = $('#cmd'); if (c) { e.preventDefault(); Plinth.open(c); } return; }
     if (e.key === 'Escape' && menu) { closeMenus(); return; }
     const d = e.target.closest && e.target.closest('.f-cmd'); if (!d) return;
     const it = cmdItems(d), cur = it.findIndex((i) => i.getAttribute('aria-selected') === 'true');
@@ -265,10 +265,10 @@
   /* ---------- delegated clicks ---------- */
   document.addEventListener('click', (e) => {
     const t = e.target;
-    if (t.matches && t.matches('dialog.f-drawer, dialog.f-modal')) { Frame.close(t); return; }   // backdrop click
+    if (t.matches && t.matches('dialog.f-drawer, dialog.f-modal')) { Plinth.close(t); return; }   // backdrop click
 
     const mt = t.closest('[data-f-menu]');
-    if (mt) { e.preventDefault(); Frame.menu(mt); return; }
+    if (mt) { e.preventDefault(); Plinth.menu(mt); return; }
     if (menu && !menu.contains(t)) closeMenus();
     const st = t.closest('[data-f-set]');
     if (st && menu && menu.contains(st)) {          // radio-style menu item: check it, copy text to the trigger's [data-f-label]
@@ -279,15 +279,15 @@
     const item = t.closest('.f-menu__item');
     if (item && menu && menu.contains(item) && !item.hasAttribute('data-f-keep') && !item.closest('label')) closeMenus();
 
-    const op = t.closest('[data-f-open]'); if (op) { e.preventDefault(); Frame.open(op.dataset.fOpen); return; }
-    const cl = t.closest('[data-f-close]'); if (cl) { Frame.close(cl.closest('dialog')); return; }
-    const ct = t.closest('[data-f-toast]'); if (ct) { const [k, ti, tx] = ct.dataset.fToast.split('|'); Frame.toast({ kind: k, title: ti, text: tx }); }
+    const op = t.closest('[data-f-open]'); if (op) { e.preventDefault(); Plinth.open(op.dataset.fOpen); return; }
+    const cl = t.closest('[data-f-close]'); if (cl) { Plinth.close(cl.closest('dialog')); return; }
+    const ct = t.closest('[data-f-toast]'); if (ct) { const [k, ti, tx] = ct.dataset.fToast.split('|'); Plinth.toast({ kind: k, title: ti, text: tx }); }
     const sa = t.closest('[data-f-set-attr]');
     if (sa) { const [sel, name, val] = sa.dataset.fSetAttr.split('|'); $$(sel).forEach((e) => (val === '-' ? e.removeAttribute(name) : e.setAttribute(name, val))); $$('[data-f-set-attr]', sa.parentNode).forEach((x) => x.setAttribute('aria-pressed', x === sa)); }
-    const md = t.closest('[data-f-mode]'); if (md) Frame.setMode(md.dataset.fMode);
+    const md = t.closest('[data-f-mode]'); if (md) Plinth.setMode(md.dataset.fMode);
     const vw = t.closest('[data-f-view]'); if (vw) { const tg = $(vw.dataset.fView); if (tg) { $$(':scope > [data-f-viewitem]', tg.parentNode).forEach((c) => (c.hidden = c !== tg)); const f = $('input', tg); if (f) f.focus(); } }
     const tcard = t.closest('[data-f-theme]'); if (tcard) { document.documentElement.dataset.theme = tcard.dataset.fTheme; document.dispatchEvent(new CustomEvent('f-theme', { detail: tcard.dataset.fTheme })); $$('[data-f-theme]').forEach((x) => x.setAttribute('aria-pressed', x === tcard)); }
-    const cp = t.closest('[data-f-copy]'); if (cp) { try { navigator.clipboard.writeText(cp.dataset.fCopy); } catch (_) {} Frame.toast({ kind: 'ok', title: 'Copied to clipboard' }); }
+    const cp = t.closest('[data-f-copy]'); if (cp) { try { navigator.clipboard.writeText(cp.dataset.fCopy); } catch (_) {} Plinth.toast({ kind: 'ok', title: 'Copied to clipboard' }); }
     const ds = t.closest('[data-f-dismiss]'); if (ds) { const a = ds.closest('.f-alert'); if (a) a.remove(); }
     const tg = t.closest('[data-f-toggle]'); if (tg) { const el = $(tg.dataset.fToggle); if (el) { el.hidden = !el.hidden; tg.setAttribute('aria-pressed', !el.hidden); } }
     const tb = t.closest('[data-f-tabs] [aria-controls], [data-f-tabs] .f-tab'); if (tb) { tabs(tb); return; }
@@ -327,9 +327,9 @@
     $$('[data-f-var]', b.parentNode).forEach((x) => x.setAttribute('aria-pressed', x === b));
   });
 
-  /* ---------- Frame.check(): the validator, in the browser. No Python, no Node. ----------
-     <script src="frame.js" data-check defer>  (or add ?check to the URL) logs problems to the console and shows a badge.
-     Agents with a browser: call Frame.check() and read the returned array.  Each item: { level, msg, el } */
+  /* ---------- Plinth.check(): the validator, in the browser. No Python, no Node. ----------
+     <script src="plinth.js" data-check defer>  (or add ?check to the URL) logs problems to the console and shows a badge.
+     Agents with a browser: call Plinth.check() and read the returned array.  Each item: { level, msg, el } */
   const TW = { btn: 'f-btn', card: 'f-card', badge: 'f-pill', input: 'f-input', modal: 'f-modal', drawer: 'f-drawer', table: 'f-table', tabs: 'f-tabs', tab: 'f-tab', alert: 'f-alert', avatar: 'f-avatar', progress: 'f-progress', toggle: 'f-switch', checkbox: 'f-check', radio: 'f-radio', textarea: 'f-textarea', menu: 'f-menu', skeleton: 'f-skel', steps: 'f-steps', timeline: 'f-tl', stat: 'f-kpi', navbar: 'f-top', flex: 'f-row', grid: 'f-grid', 'text-sm': '(no utilities: use f- classes)', container: 'f-main' };
   /* inline-edit cells get an accessible name from their column header and row label */
   function labelCells(root) {
@@ -340,16 +340,16 @@
       i.setAttribute('aria-label', [th && th.textContent.trim(), first].filter(Boolean).join(', ') || 'Value');
     });
   }
-  Frame.labelCells = labelCells;
+  Plinth.labelCells = labelCells;
   document.addEventListener('DOMContentLoaded', () => { labelCells(); setTimeout(labelCells, 300); });
   const remoteSheets = {};
-  Frame.checkReady = Promise.resolve();
+  Plinth.checkReady = Promise.resolve();
   function loadRemoteSheets() {
     const jobs = Array.from(document.styleSheets).filter((sh) => { try { sh.cssRules; return false; } catch (_) { return !!sh.href; } }).map((sh) => fetch(sh.href).then((r) => r.text()).then((t) => (remoteSheets[sh.href] = t)).catch(() => {}));
-    return (Frame.checkReady = Promise.all(jobs));
+    return (Plinth.checkReady = Promise.all(jobs));
   }
   if ((me && me.hasAttribute('data-check')) || /[?&]check\b/.test(location.search)) document.addEventListener('DOMContentLoaded', loadRemoteSheets);
-  Frame.check = function (scope) {
+  Plinth.check = function (scope) {
     labelCells();
     const out = [], root = scope || document, add = (level, msg, el) => out.push({ level, msg, el });
     const known = new Set(); let sheetsOk = true, themes = new Set();
@@ -360,7 +360,7 @@
     }
     const th = root.ownerDocument ? root.ownerDocument.documentElement.dataset.theme : document.documentElement.dataset.theme;
     if (th && sheetsOk && themes.size && !themes.has(th)) add('error', `data-theme="${th}" is not defined by any loaded stylesheet`, document.documentElement);
-    if (!sheetsOk) add('info', 'some stylesheets could not be read (cross-origin without CORS); class names were not checked. await Frame.checkReady before Frame.check()');
+    if (!sheetsOk) add('info', 'some stylesheets could not be read (cross-origin without CORS); class names were not checked. await Plinth.checkReady before Plinth.check()');
     $$('[class]', root).forEach((el) => {
       if (el.closest('svg')) return;
       el.classList.forEach((c) => {
@@ -378,14 +378,14 @@
   };
   async function runCheck() {
     await loadRemoteSheets();
-    const r = Frame.check(), n = r.filter((x) => x.level !== 'info').length;
-    r.forEach((x) => console[x.level === 'error' ? 'error' : x.level === 'warn' ? 'warn' : 'info']('[Frame] ' + x.msg, x.el || ''));
-    const b = document.createElement('button'); b.textContent = n ? `Frame: ${n} issue${n > 1 ? 's' : ''}` : 'Frame: no issues';
+    const r = Plinth.check(), n = r.filter((x) => x.level !== 'info').length;
+    r.forEach((x) => console[x.level === 'error' ? 'error' : x.level === 'warn' ? 'warn' : 'info']('[Plinth] ' + x.msg, x.el || ''));
+    const b = document.createElement('button'); b.textContent = n ? `Plinth: ${n} issue${n > 1 ? 's' : ''}` : 'Plinth: no issues';
     b.setAttribute('data-f-check-badge', ''); b.style.cssText = `position:fixed;right:12px;bottom:12px;z-index:99999;padding:6px 12px;border:0;border-radius:999px;font:500 12px system-ui;color:#fff;background:${n ? '#c2410c' : '#15803d'};cursor:pointer;box-shadow:0 2px 8px rgb(0 0 0/.3)`;
     b.onclick = () => { const w = window.open('', '_blank'); if (w) { w.document.write('<pre style="font:13px/1.5 ui-monospace,monospace;padding:16px">' + (r.map((x) => `${x.level.toUpperCase()}  ${x.msg}`).join('\n') || 'No issues').replace(/</g, '&lt;') + '</pre>'); } };
-    document.body.append(b); window.__frameCheck = r;
+    document.body.append(b); window.__plinthCheck = r;
   }
   if ((me && me.hasAttribute('data-check')) || /[?&]check\b/.test(location.search)) document.addEventListener('DOMContentLoaded', () => setTimeout(runCheck, 400));
 
-  Frame.refresh = function (root) { semantics(root); $$('[data-f-wizard]', root || document).forEach((w) => wizard(w)); counts(); labelCells(root); };
+  Plinth.refresh = function (root) { semantics(root); $$('[data-f-wizard]', root || document).forEach((w) => wizard(w)); counts(); labelCells(root); };
 })();

@@ -1,4 +1,4 @@
-# Frame UI
+# Plinth
 
 A no-build UI kit for building tight, professional, responsive, accessible, fast client apps (SaaS, enterprise, internal tools).
 Plain CSS plus one optional ~15 KB script. No framework, no npm, no bundler, no Python needed to build an app.
@@ -7,10 +7,10 @@ Borrowed on purpose: the **colour-token contract and 5 themes from [daisyUI](htt
 Built for agents as much as people: see `AGENTS.md`.
 
 ```
-frame-ui/
-  frame.css          the kit (do not edit per client)
-  frame.js           optional behaviour via data-attributes (overlays, tabs, filters, tables, wizard…)
-  themes/NAME.css    one file per theme (10: 5 Frame + 5 daisyUI, all contrast-checked), each with light AND dark; link exactly one
+plinth/
+  plinth.css          the kit (do not edit per client)
+  plinth.js           optional behaviour via data-attributes (overlays, tabs, filters, tables, wizard…)
+  themes/NAME.css    one file per theme (10: 5 Plinth + 5 daisyUI, all contrast-checked), each with light AND dark; link exactly one
   themes.css         all 10 in one file (used by preview.html and the gallery)
   theme.example.css  copy to theme.css: the one file you edit per client
   icons.svg          Lucide sprite, 320+ icons (generated: python3 tools/icons.py build)
@@ -30,10 +30,10 @@ frame-ui/
 <html lang="en" data-theme="pine">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="frame.css">
+  <link rel="stylesheet" href="plinth.css">
   <link rel="stylesheet" href="themes/pine.css">   <!-- ONE theme file: light + dark -->
   <link rel="stylesheet" href="theme.css">         <!-- optional: this client's own colours -->
-  <script src="frame.js" data-sprite="icons.svg" defer></script>   <!-- injects the icon sprite over http -->
+  <script src="plinth.js" data-sprite="icons.svg" defer></script>   <!-- injects the icon sprite over http -->
 </head>
 <body class="f-root">
   <div class="f-app f-app--side"> <aside class="f-side">…</aside> <main class="f-main">…</main> </div>
@@ -49,13 +49,13 @@ Open `preview.html` to see everything; rebuild it with `python3 build.py`.
 1. Copy `theme.example.css` to `theme.css`; set primary, accent and a neutral hue (or paste a daisyUI theme-generator block, or pick a name from `themes.json`).
 2. Drop the logo into the logo slots (below).
 3. Pick shape and density on `<html>`: `data-radius`, `data-layout`, `data-density`.
-4. Copy the pages you need from `pages/`. Check: add `data-check` to the frame.js tag and open the page (console + badge), or call `Frame.check()`.
+4. Copy the pages you need from `pages/`. Check: add `data-check` to the plinth.js tag and open the page (console + badge), or call `Plinth.check()`.
 
 ### Theme contract (daisyUI-compatible)
 
 ```css
 [data-theme="acme"] {
-  --neutral-hue: 300;                                  /* Frame presets only: tints the default greys */
+  --neutral-hue: 300;                                  /* Plinth presets only: tints the default greys */
   --color-primary: #7a1fa2;  --color-primary-content: #fff;
   --color-accent:  #ffe14d;  --color-accent-content:  #1d1800;
 }
@@ -66,7 +66,7 @@ Full set: `--color-base-100/200/300/content`, `--color-primary/secondary/accent/
 | Switch on `<html>` | Values |
 |---|---|
 | `data-theme` | `pine indigo ink terracotta ocean` + any daisyUI name (`corporate`, `dracula`, `night`…) |
-| `data-mode` | `light` or `dark`. Works with **every** theme: themes.css generates the other mode of each theme from its own colours (`Frame.setMode('auto')` follows the OS) |
+| `data-mode` | `light` or `dark`. Works with **every** theme: themes.css generates the other mode of each theme from its own colours (`Plinth.setMode('auto')` follows the OS) |
 | `data-radius` | `crisp`, `square` (square implies docked panels) |
 | `data-layout` | `floating` (default), `docked` |
 | `data-density` | `compact` |
@@ -80,7 +80,7 @@ Notes on themes:
 - Link ONE file: `themes/NAME.css` (about 2 KB, light + dark). `themes.css` holds all 10 for the gallery.
 - Our "pine" preset is the old "forest" look (renamed so it does not clash with daisyUI's `forest`).
 - `themes.py` swaps a daisyUI theme's `-content` colour for white/black where it missed WCAG AA 4.5:1 (listed as `a11y_patched` in `themes.json`).
-- Contrast: every shipped theme (5 Frame + 5 daisyUI: corporate, business, nord, dracula, cupcake) passes an axe-core colour-contrast sweep in light and dark. The other 30 daisyUI themes were dropped: 8 fail it, and the rest were curated out. To ship another, add its name to `KEEP` in `tools/themes.py`, rebuild, and re-check. Text tiers and the destructive button adapt to the theme automatically.
+- Contrast: every shipped theme (5 Plinth + 5 daisyUI: corporate, business, nord, dracula, cupcake) passes an axe-core colour-contrast sweep in light and dark. The other 30 daisyUI themes were dropped: 8 fail it, and the rest were curated out. To ship another, add its name to `KEEP` in `tools/themes.py`, rebuild, and re-check. Text tiers and the destructive button adapt to the theme automatically.
 - Chart colours are fixed (`--chart-1..4`, validated for colour-blind separation) and some fall below 3:1 against white. That is by design: charts always carry a legend, direct labels and a table view.
 
 ### Panels: floating or docked
@@ -100,7 +100,7 @@ Ask the client for a square mark (SVG, transparent, ≥64×64), a horizontal wor
 
 ## Pages (`pages/`)
 
-Each is a `<section data-screen="…">` fragment using only Frame classes. `preview.js` wires them with sample data; the markup is the reusable part.
+Each is a `<section data-screen="…">` fragment using only Plinth classes. `preview.js` wires them with sample data; the markup is the reusable part.
 
 | Page | Patterns |
 |---|---|
@@ -135,21 +135,21 @@ python3 tools/icons.py subset index.html > sprite.svg         # production: only
 
 ## Components and behaviour
 
-`components.json` lists every component with classes, modifiers, example markup and the daisyUI name. `frame.js` documents its data-attribute API in its header comment; it covers dialogs, menus, toasts, command palette, tabs, wizard, view switching, table selection/sorting/grouping/column picker, live filtering, chips, board drag and drop, copy, theme switching and the icon sprite loader.
+`components.json` lists every component with classes, modifiers, example markup and the daisyUI name. `plinth.js` documents its data-attribute API in its header comment; it covers dialogs, menus, toasts, command palette, tabs, wizard, view switching, table selection/sorting/grouping/column picker, live filtering, chips, board drag and drop, copy, theme switching and the icon sprite loader.
 
 ## For AI agents
 
-Frame is built to be used by agents. Point one at the folder or at a hosted link and say what to build.
+Plinth is built to be used by agents. Point one at the folder or at a hosted link and say what to build.
 
 | Kit is | Tell the agent |
 |---|---|
-| in the project (`frame/`) | "Build the Suppliers screen. Read `frame/AGENTS.md` first." Tools that auto-read `AGENTS.md`/`CLAUDE.md` find it themselves; paste `AGENTS.snippet.md` into the project's own AGENTS.md |
-| hosted | "Build the Suppliers screen. Read `https://frame-ui.pages.dev/llms-full.txt` first and link the kit from `https://frame-ui.pages.dev/`." |
+| in the project (`plinth/`) | "Build the Suppliers screen. Read `plinth/AGENTS.md` first." Tools that auto-read `AGENTS.md`/`CLAUDE.md` find it themselves; paste `AGENTS.snippet.md` into the project's own AGENTS.md |
+| hosted | "Build the Suppliers screen. Read `https://plinth.pages.dev/llms-full.txt` first and link the kit from `https://plinth.pages.dev/`." |
 
 - `llms-full.txt`: the whole kit in one document (rules, components with markup, behaviours, themes, icons, pages, a working starter). Regenerated by `python3 build.py`.
 - `llms.txt` index, `AGENTS.md` rules, `SKILL.md` packaged skill, `components.json` / `icons.json` / `themes.json` machine-readable catalogues, `CLAUDE.md` / `.cursor/` / `.github/` pointers.
-- **Validation runs in the browser**: add `data-check` to the frame.js script tag (or `?check` in the URL). The console lists unknown classes, missing icons, unlabeled controls and stray daisyUI/Tailwind class names; `Frame.check()` returns them as an array. `python3 tools/check.py file.html` does the same statically, optionally.
-- **Hosted copy**: https://frame-ui.pages.dev/ (Cloudflare Pages, free plan; every push to `main` on GitHub `ramdevai/frame-ui` redeploys). Live preview: https://frame-ui.pages.dev/preview.html
+- **Validation runs in the browser**: add `data-check` to the plinth.js script tag (or `?check` in the URL). The console lists unknown classes, missing icons, unlabeled controls and stray daisyUI/Tailwind class names; `Plinth.check()` returns them as an array. `python3 tools/check.py file.html` does the same statically, optionally.
+- **Hosted copy**: https://plinth.pages.dev/ (Cloudflare Pages, free plan; every push to `main` on GitHub `ramdevai/plinth` redeploys). Live preview: https://plinth.pages.dev/preview.html
 - **Hosting elsewhere**: any static host (GitHub Pages, Cloudflare Pages, Netlify, S3), or a public GitHub repo through jsDelivr. `_headers` enables the cross-origin icon sprite. `index.html` is the landing page with copy-paste prompts.
 
 Python is only for maintaining the kit (`tools/icons.py`, `tools/themes.py`, `build.py`). Building an app never needs it.
@@ -160,7 +160,7 @@ Python is only for maintaining the kit (`tools/icons.py`, `tools/themes.py`, `bu
 
 ## Quality rules
 
-Native `<dialog>` (focus trap, Esc), ARIA roles added by frame.js to tabs, toggles and group rows (arrow-key navigation on tabs), skip link (`.f-skip`), every control labelled, visible focus rings, 24px+ hit areas, `prefers-reduced-motion`, `forced-colors` and print styles, container queries, tables scroll inside their wrapper, sidebar collapses to an icon rail under 900px and a bottom tab bar under 600px, two-column layouts stack under 1000px. Checked with axe-core (WCAG 2.2 AA + best practice): 0 violations on every page in light and dark. Not supported: right-to-left layouts (physical margins/paddings are used).
+Native `<dialog>` (focus trap, Esc), ARIA roles added by plinth.js to tabs, toggles and group rows (arrow-key navigation on tabs), skip link (`.f-skip`), every control labelled, visible focus rings, 24px+ hit areas, `prefers-reduced-motion`, `forced-colors` and print styles, container queries, tables scroll inside their wrapper, sidebar collapses to an icon rail under 900px and a bottom tab bar under 600px, two-column layouts stack under 1000px. Checked with axe-core (WCAG 2.2 AA + best practice): 0 violations on every page in light and dark. Not supported: right-to-left layouts (physical margins/paddings are used).
 
 ## Roadmap
 
@@ -170,5 +170,5 @@ See the Roadmap page: **micro-animation** (motion tokens, press/hover, overlay t
 
 - Needs current browsers (2024+): `oklch()`, `color-mix()`, `light-dark()`, container queries, `:has()`, `<dialog>`.
 - The preview loads Geist from Google Fonts; offline it falls back to system fonts.
-- Where daisyUI has a component, Frame uses its own `f-` class implementation (listed per component in `components.json`); it does not ship daisyUI's CSS (1.1 MB), which keeps typical apps small. frame.css is 72 KB (about 15 KB gzipped), one theme adds under 1 KB.
+- Where daisyUI has a component, Plinth uses its own `f-` class implementation (listed per component in `components.json`); it does not ship daisyUI's CSS (1.1 MB), which keeps typical apps small. plinth.css is 72 KB (about 15 KB gzipped), one theme adds under 1 KB.
 - The charts in `preview.js` are hand-drawn SVG to show the spec. Use your charting library in real products and keep `--chart-1..4`.

@@ -1,22 +1,22 @@
 ---
-name: frame-ui
-description: Build polished, accessible, responsive client apps (dashboards, tables, forms, auth, billing, settings) with Frame UI, a no-build CSS/JS kit with daisyUI-compatible themes and Lucide icons. Use whenever the task is to create or edit screens in a project that contains frame.css.
+name: plinth
+description: Build polished, accessible, responsive client apps (dashboards, tables, forms, auth, billing, settings) with Plinth, a no-build CSS/JS kit with daisyUI-compatible themes and Lucide icons. Use whenever the task is to create or edit screens in a project that contains plinth.css.
 ---
 
-# Frame UI
+# Plinth
 
 Read `AGENTS.md` for the full rules (or `llms-full.txt`, the same plus every component, if you can only fetch a URL). This skill is the short version.
 
 ## Use it like this
 1. **Pick the page.** Match the request to a file in `pages/` (dashboard, orders, detail, pipeline, inbox, reports, tables, form, calendar, notifications, settings, profile, billing, onboarding, errors, ui, auth). Copy its `<section>`; replace text and rows.
 2. **Look up parts** in `components.json` (classes, modifiers, example, daisyUI name). Use only `f-` classes.
-3. **Behaviour is attributes**, not JS: `data-f-open`, `data-f-menu`, `data-f-tabs`, `data-f-filter`, `data-f-wizard`, `th[data-sort]`, `data-f-toast`, `data-f-copy`. See the header of `frame.js`.
+3. **Behaviour is attributes**, not JS: `data-f-open`, `data-f-menu`, `data-f-tabs`, `data-f-filter`, `data-f-wizard`, `th[data-sort]`, `data-f-toast`, `data-f-copy`. See the header of `plinth.js`.
 4. **Theme**: `<html data-theme="pine">` + `<link rel="stylesheet" href="themes/pine.css">` (one file, light + dark; 10 names in `themes.json`). `data-mode="dark|light"` works with every theme. A client theme is 3 colours in `theme.css`:
    ```css
    [data-theme="acme"] { --neutral-hue: 300; --color-primary: #7a1fa2; --color-primary-content: #fff; --color-accent: #ffe14d; --color-accent-content: #1d1800; }
    ```
 5. **Icons**: `<svg class="f-i"><use href="#i-NAME"/></svg>`; names from `icons.json`; add with `python3 tools/icons.py add NAME`.
-6. **Validate in the browser**: add `data-check` to the frame.js script tag (or open the page with `?check`); fix everything it logs; `Frame.check()` returns the list. No Python needed.
+6. **Validate in the browser**: add `data-check` to the plinth.js script tag (or open the page with `?check`); fix everything it logs; `Plinth.check()` returns the list. No Python needed.
 
 ## Recipes
 - **Primary action**: `<button class="f-btn f-btn--primary">Save</button>` (one per view).

@@ -1,16 +1,16 @@
-# Frame UI
+# Plinth
 
 > A no-build CSS + JS UI kit for client apps (dashboards, tables, forms, auth, billing, settings). Accessible, responsive, fast. 10 themes (each with light and dark), 320+ icons, 17 page templates. Built to be used by AI agents: no Python, Node or npm required.
 
-If you are an AI agent asked to build UI with Frame, read ONE of these and start:
+If you are an AI agent asked to build UI with Plinth, read ONE of these and start:
 - [llms-full.txt](llms-full.txt): everything in a single document (rules, components with markup, behaviours, themes, icons, pages, starter). Best when you can only fetch URLs.
 - [AGENTS.md](AGENTS.md): the rules and workflow, if you have the folder.
 
-Hosted copy: https://frame-ui.pages.dev/ . Link the kit from the same base URL as this file (replace BASE, e.g. BASE = https://frame-ui.pages.dev):
+Hosted copy: https://plinth.pages.dev/ . Link the kit from the same base URL as this file (replace BASE, e.g. BASE = https://plinth.pages.dev):
 ```
-<link rel="stylesheet" href="BASE/frame.css" crossorigin>
+<link rel="stylesheet" href="BASE/plinth.css" crossorigin>
 <link rel="stylesheet" href="BASE/themes/pine.css" crossorigin>
-<script src="BASE/frame.js" data-sprite="BASE/icons.svg" defer></script>
+<script src="BASE/plinth.js" data-sprite="BASE/icons.svg" defer></script>
 ```
 
 Parts:
@@ -18,5 +18,5 @@ Parts:
 - [starter.html](starter.html): minimal working app shell. Page templates: `pages/NAME.html` (dashboard, orders, detail, pipeline, inbox, reports, tables, form, calendar, notifications, settings, profile, billing, onboarding, errors, ui, auth).
 - [themes.json](themes.json): 10 themes; link `themes/NAME.css` (one file, light + dark).
 - [icons.json](icons.json): icon names, tags and categories.
-- [frame.js](frame.js): behaviour via data-attributes (documented in its header). Add `data-check` to its script tag to validate a page in the browser.
+- [plinth.js](plinth.js): behaviour via data-attributes (documented in its header). Add `data-check` to its script tag to validate a page in the browser.
 - [preview.html](preview.html): the whole kit rendered, for humans.

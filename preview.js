@@ -101,7 +101,7 @@ function wireOrders() {
   $('#orderSearch').addEventListener('input', (e) => { F.q = e.target.value.trim().toLowerCase(); applyFilters(); });
   $('#statusChips').addEventListener('f-chip', (e) => { F.status = e.detail.dataset.value; applyFilters(); });
   $('#applied').addEventListener('f-removed', () => { ['priority', 'customer', 'owner'].forEach((key) => { if (!$(`#applied [data-k=${key}]`)) F[key] = ''; }); applyFilters(); });
-  $('#applyFilters').addEventListener('click', () => { F.priority = $('#fPriority').value; F.customer = $('#fCustomer').value; F.owner = ($('#fOwner [aria-pressed=true]') || {}).dataset?.v || ''; Frame.menu && closeAny(); applyFilters(); });
+  $('#applyFilters').addEventListener('click', () => { F.priority = $('#fPriority').value; F.customer = $('#fCustomer').value; F.owner = ($('#fOwner [aria-pressed=true]') || {}).dataset?.v || ''; Plinth.menu && closeAny(); applyFilters(); });
   const reset = () => { Object.assign(F, { status: '', priority: '', customer: '', owner: '', q: '' }); $('#orderSearch').value = ''; applyFilters(); };
   $('#resetFilters').addEventListener('click', reset); $('#clearFilters').addEventListener('click', reset);
   $('#viewsMenu').addEventListener('f-set', (e) => {
@@ -114,7 +114,7 @@ function wireOrders() {
     if (!e.target.closest('[data-do="delete"]')) return;
     const rows = $$('#ordersBody [data-f-row]:checked').map((c) => c.closest('tr')); (rows.length ? rows : [rowCtx].filter(Boolean)).forEach((r) => r.remove());
     $$('#ordersCard [data-f-row],#ordersCard [data-f-all]').forEach((c) => (c.checked = false)); $('#bulk').hidden = true; applyFilters();
-    Frame.toast({ kind: 'ok', title: 'Orders deleted', text: 'This is a preview. Reload to restore the sample data.' });
+    Plinth.toast({ kind: 'ok', title: 'Orders deleted', text: 'This is a preview. Reload to restore the sample data.' });
   });
 }
 function closeAny() { document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true })); }
@@ -126,7 +126,7 @@ function openOrder(i) {
   $('#odTitle').textContent = o[1]; $('#odId').textContent = o[0]; $('#odCust').textContent = $('#odCust2').textContent = o[2];
   const st = $('#odStatus'); st.textContent = o[4]; st.className = 'f-pill f-pill--dot f-pill--' + STATUS_PILL[o[4]];
   const p = $('#odPrio'); p.textContent = o[3]; p.className = 'f-pill ' + (PRIO_PILL[o[3]] ? 'f-pill--' + PRIO_PILL[o[3]] : '');
-  Frame.open('#orderDrawer');
+  Plinth.open('#orderDrawer');
 }
 
 /* ---------------- fill: pipeline ---------------- */
@@ -282,7 +282,7 @@ function mount() {
   $$('[data-nav]', stage).forEach((n) => (n.innerHTML = navHTML(state.shell === 'side')));
   const slot = $('[data-slot]', stage);
   $$('#content > section').forEach((s) => (s.dataset.screen === 'auth' ? authHost.append(s) : slot.append(s)));
-  relogo(); show(state.screen); Frame.refresh && Frame.refresh(document); readVars();
+  relogo(); show(state.screen); Plinth.refresh && Plinth.refresh(document); readVars();
 }
 function show(name) {
   if (!$(`[data-screen="${name}"]`)) return;
@@ -348,14 +348,14 @@ $('#copyCss').addEventListener('click', async () => {
   const cs = getComputedStyle(document.documentElement), g = (v) => cs.getPropertyValue(v).trim();
   const attrs = [['lang', 'en'], ['data-theme', 'client'], ['data-mode', state.mode], ['data-radius', state.radius === 'soft' ? '' : state.radius], ['data-layout', state.layout === 'floating' ? '' : state.layout], ['data-density', state.density === 'compact' ? 'compact' : ''], ['data-palette', state.palette === 'default' ? '' : state.palette], ['data-style', state.style === 'soft' ? '' : state.style], ['data-canvas', state.canvas === 'default' ? '' : state.canvas]].filter((x) => x[1]).map((x) => `${x[0]}="${x[1]}"`).join(' ');
   const logo = state.logo ? (state.logo.length <= 8000 ? state.logo : '(logo was uploaded in the preview but is too large to paste: attach the file to the chat)') : '(none: use the initial letter mark)';
-  const css = `/* FRAME CLIENT BRIEF: give this to your agent together with the Frame link. */\n[data-theme="client"] {\n  --neutral-hue: ${g('--neutral-hue')};\n  --color-primary: ${g('--color-primary')};\n  --color-primary-content: ${g('--color-primary-content')};\n  --color-accent: ${g('--color-accent')};\n  --color-accent-content: ${g('--color-accent-content')};\n}\n/* html:  <html ${attrs}> */\n/* shell: ${state.shell === 'top' ? 'top-nav (f-app--top)' : 'sidebar (f-app--side)'} */\n/* app-name: ${state.name} */\n/* logo: ${logo} */`;
+  const css = `/* PLINTH CLIENT BRIEF: give this to your agent together with the Plinth link. */\n[data-theme="client"] {\n  --neutral-hue: ${g('--neutral-hue')};\n  --color-primary: ${g('--color-primary')};\n  --color-primary-content: ${g('--color-primary-content')};\n  --color-accent: ${g('--color-accent')};\n  --color-accent-content: ${g('--color-accent-content')};\n}\n/* html:  <html ${attrs}> */\n/* shell: ${state.shell === 'top' ? 'top-nav (f-app--top)' : 'sidebar (f-app--side)'} */\n/* app-name: ${state.name} */\n/* logo: ${logo} */`;
   try { await navigator.clipboard.writeText(css); } catch (_) {}
-  Frame.toast({ kind: 'ok', title: 'Client brief copied', text: 'Paste it to your agent with the Frame link.' });
+  Plinth.toast({ kind: 'ok', title: 'Client brief copied', text: 'Paste it to your agent with the Plinth link.' });
 });
 
 /* ---------------- boot ---------------- */
 $('#patternsMenu').innerHTML = GROUPS.map((g) => `<div class="f-menu__label">${g.label}</div>` + g.items.map((n) => `<button class="f-menu__item" data-go="${n.k}">${ic(n.icon)}${n.label}</button>`).join('')).join('<div class="f-menu__sep"></div>');
 fillDashboard(); fillOrders(); fillBoard(); fillThreads(); fillTables(); fillSettings(); fillReports(); wireOrders(); applyFilters();
 state.screen = ($$('[data-screen]').some((s) => s.dataset.screen === location.hash.slice(1)) ? location.hash.slice(1) : 'dashboard');
-apply(); mount(); Frame.semantics();
+apply(); mount(); Plinth.semantics();
 })();

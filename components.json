@@ -1,12 +1,12 @@
 {
- "name": "Frame UI",
+ "name": "Plinth",
  "version": "3.0",
  "prefix": "f-",
- "vocabulary": "Frame classes (f-). daisyUI names listed per component for translation. Tokens follow the daisyUI --color-* contract.",
+ "vocabulary": "Plinth classes (f-). daisyUI names listed per component for translation. Tokens follow the daisyUI --color-* contract.",
  "attributes": {
   "html": {
    "data-theme": "any name in themes.json; link themes/NAME.css",
-   "data-mode": "light|dark, works with every theme (or Frame.setMode(\"auto\"))",
+   "data-mode": "light|dark, works with every theme (or Plinth.setMode(\"auto\"))",
    "data-radius": "crisp|square",
    "data-layout": "floating|docked",
    "data-density": "compact",
@@ -310,7 +310,7 @@
   },
   {
    "name": "Toast",
-   "purpose": "Transient message. Frame.toast({kind,title,text}) or data-f-toast=\"ok|Title|Text\".",
+   "purpose": "Transient message. Plinth.toast({kind,title,text}) or data-f-toast=\"ok|Title|Text\".",
    "frame": [
     "f-toast"
    ],
@@ -686,5 +686,5 @@
    "pattern": "Secondary palettes, styles and canvas greys side by side"
   }
  ],
- "validation": "Add data-check to the frame.js script tag (or ?check in the URL). Console + badge list problems; Frame.check() returns an array."
+ "validation": "Add data-check to the plinth.js script tag (or ?check in the URL). Console + badge list problems; Plinth.check() returns an array."
 }

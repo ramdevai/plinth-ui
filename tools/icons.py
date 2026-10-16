@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Frame UI icon tooling (maintenance only, apps never need it).
+"""Plinth icon tooling (maintenance only, apps never need it).
 
 Icons are Lucide (ISC licence, https://lucide.dev), curated into icons.list (category: names).
   python3 tools/icons.py build            icons.list -> icons.svg (sprite) + icons.json (manifest) + pages/icons.html
