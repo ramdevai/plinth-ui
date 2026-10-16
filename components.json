@@ -10,7 +10,7 @@
    "data-radius": "crisp|square",
    "data-layout": "floating|docked",
    "data-density": "compact",
-   "data-palette": "warm|mono|fine|dev (status colours only)",
+   "data-palette": "warm|muted (status colours only; omit for default)",
    "data-style": "caps|outline|dot (badge/alert/icon-badge drawing; no radii)",
    "data-canvas": "soft|cool|mist|paper|white (page grey, light mode)"
   }

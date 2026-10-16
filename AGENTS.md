@@ -5,7 +5,7 @@ No Python, Node or npm needed to build with it. Read this file fully before writ
 
 ## How you were pointed at it
 - **A folder** (`frame/` in the project, or this repo): use the files directly, paths below are relative to it.
-- **A URL** (`https://HOST/llms.txt` or any file on that host): HOST is the base. Fetch `BASE/llms-full.txt` for everything in one document, then link the kit straight from BASE:
+- **A URL** (`https://frame-ui.pages.dev/llms.txt`, or any file on another host): the folder of that URL is BASE. Fetch `BASE/llms-full.txt` for everything in one document, then link the kit straight from BASE:
   ```html
   <link rel="stylesheet" href="BASE/frame.css" crossorigin>
   <link rel="stylesheet" href="BASE/themes/pine.css" crossorigin>
@@ -89,4 +89,4 @@ The browser check reports no issues; keyboard-only walk-through works; looks rig
 
 ## Secondary palette, style and canvas
 
-Three independent switches on `<html>`, all optional: `data-palette="warm|mono|fine|dev"` (status colours), `data-style="caps|outline|dot"` (how badges, alerts and icon badges are drawn), `data-canvas="soft|cool|mist|paper|white"` (page grey). Corners are never part of them: use `data-radius`. If the client brief's `html:` line has any of these, copy them onto `<html>`. Never hard-code status colours: use `f-pill--ok|warn|danger|info|ai|high|neutral`, `f-alert--*`, `f-li__icon--*`, `f-kpi__badge--*`. See the Palettes page.
+Three independent switches on `<html>`, all optional: `data-palette="warm|muted"` (status colours), `data-style="caps|outline|dot"` (how badges, alerts and icon badges are drawn), `data-canvas="soft|cool|mist|paper|white"` (page grey). Corners are never part of them: use `data-radius`. If the client brief's `html:` line has any of these, copy them onto `<html>`. Never hard-code status colours: use `f-pill--ok|warn|danger|info|ai|high|neutral`, `f-alert--*`, `f-li__icon--*`, `f-kpi__badge--*`. See the Palettes page.

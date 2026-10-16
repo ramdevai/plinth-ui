@@ -77,7 +77,9 @@
   --primary-hover: color-mix(in oklab, var(--brand), var(--color-base-content) 14%);
   --brand-soft:    light-dark(color-mix(in oklab, var(--brand) 9%, var(--surface)), color-mix(in oklab, var(--brand) 30%, var(--surface)));
   --brand-soft-2:  light-dark(color-mix(in oklab, var(--brand) 16%, var(--surface)), color-mix(in oklab, var(--brand) 42%, var(--surface)));
-  --brand-hero:    light-dark(color-mix(in oklab, var(--brand), white 28%), color-mix(in oklab, var(--brand), white 10%));
+  /* hero fill: kept out of the mid-lightness band so white or black text always passes (dark brands: L <= .52, light brands: L >= .74) */
+  --brand-hero:    oklch(from var(--brand) calc((1 - clamp(0, (l - .6) * 1000, 1)) * min(l + .1, .52) + clamp(0, (l - .6) * 1000, 1) * max(l, .74)) c h);
+  --on-hero:       oklch(from var(--brand-hero) clamp(0, (0.62 - l) * 1000, 1) 0 0);
   --accent-soft:   light-dark(color-mix(in oklab, var(--accent) 35%, var(--surface)), color-mix(in oklab, var(--accent) 22%, var(--surface)));
   --link:          color-mix(in oklab, var(--brand) 45%, var(--text));
 
@@ -117,7 +119,7 @@
 :root, [data-theme], [data-palette="default"] {
   /* semantic colours: FIXED hues, the same in every theme (themes change the brand, not the meaning).
      --X mark, --X-fg readable text on the tint, --X-bg tint (defined below so a nested [data-style] recomputes it).
-     Alternative palettes: <html data-palette="warm|mono|fine|dev">; badge/alert treatment: data-style="caps|outline|dot"; canvas grey: data-canvas (see the end of this file).
+     Alternative palettes: <html data-palette="warm|muted">; badge/alert treatment: data-style="caps|outline|dot"; canvas grey: data-canvas (see the end of this file).
      To override one for a client, set --ok / --ok-fg etc. in theme.css. */
   --ok:     light-dark(#2F9E5E, #58C487);  --ok-fg:     light-dark(color-mix(in oklab, #176B3C, #000 16%), #8FDDB0);
   --warn:   light-dark(#D9A00B, #E8B83A);  --warn-fg:   light-dark(color-mix(in oklab, #7A5300, #000 16%), #F5CF6B);
@@ -345,6 +347,7 @@
 .f-btn--icon { width: calc(40px * var(--density)); padding: 0; }
 .f-btn--icon.f-btn--sm { width: calc(32px * var(--density)); }
 .f-btn--block { width: 100%; }
+.f-btn:disabled, .f-btn[aria-disabled="true"] { opacity: .55; cursor: not-allowed; }  /* disabled controls are exempt from WCAG contrast */
 .f-btn--on-dark { background: color-mix(in oklab, var(--surface) 12%, transparent); border-color: transparent; color: inherit; }
 
 /* ==========================================================================
@@ -407,11 +410,16 @@
 .f-note { display: flex; gap: 12px; align-items: flex-start; background: var(--surface-2); border-radius: var(--r-md); padding: 14px 16px; color: var(--text-2); font-size: 13.5px; }
 
 /* the highlight cards — use sparingly: ONE per screen */
-.f-card--brand  { background: var(--brand-hero); color: var(--on-brand); }
+.f-card--brand  { background: var(--brand-hero); }
 .f-card--brand .f-inset { background: var(--brand); }
-.f-card--brand .f-muted, .f-card--brand .f-card__sub { color: var(--on-brand); }
+.f-card--brand .f-muted, .f-card--brand .f-card__sub, .f-card--brand .f-faint { color: inherit; }
+.f-card--brand .f-inset .f-muted, .f-card--brand .f-inset .f-card__sub { color: var(--on-brand); }
+/* coloured cards: every text tier is the card's own text colour (secondary tiers would fail on a mid-tone fill) */
+.f-card--brand { color: var(--on-hero); --text-2: var(--on-hero); --text-3: var(--on-hero); }
+.f-card--brand .f-inset { color: var(--on-brand); --text-2: var(--on-brand); --text-3: var(--on-brand); }
+.f-card--accent { --text-2: var(--on-accent); --text-3: var(--on-accent); }
 .f-card--accent { background: var(--accent); color: var(--on-accent); gap: 12px; }
-.f-card--accent .f-card__sub, .f-card--accent .f-muted { color: color-mix(in oklab, var(--on-accent), transparent 30%); }
+.f-card--accent .f-card__sub, .f-card--accent .f-muted { color: var(--on-accent); }
 .f-card--ai     { background: var(--ai-bg); }
 .f-card--ai .f-inset { background: var(--surface); }
 .f-card--warn   { background: var(--warn-bg); }
@@ -826,7 +834,7 @@ td:hover > .f-cellinput { border-color: var(--line-strong); background: var(--su
 .f-auth { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); min-height: 100%; height: 100%; background: var(--surface); }
 .f-auth__form { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 48px 32px; gap: 28px; overflow: auto; }
 .f-auth__box { width: min(380px, 100%); display: flex; flex-direction: column; gap: 18px; }
-.f-auth__panel { background: var(--brand-hero); color: var(--on-brand); padding: 44px 56px; display: flex; flex-direction: column; justify-content: space-between; gap: 32px; margin: var(--app-pad); border-radius: var(--panel-r); }
+.f-auth__panel { background: var(--brand-hero); color: var(--on-hero); --text-2: var(--on-hero); --text-3: var(--on-hero); padding: 44px 56px; display: flex; flex-direction: column; justify-content: space-between; gap: 32px; margin: var(--app-pad); border-radius: var(--panel-r); }
 .f-auth__panel .f-h1 { font-size: 44px; line-height: 1.05; max-width: 14ch; }
 .f-divider { display: flex; align-items: center; gap: 12px; color: var(--text-3); font-size: 12.5px; } .f-divider::before, .f-divider::after { content: ""; flex: 1; height: 1px; background: var(--line); }
 @media (max-width: 900px) { .f-auth { grid-template-columns: minmax(0, 1fr); } .f-auth__panel { display: none; } }
@@ -920,50 +928,34 @@ a.f-li { text-decoration: none; color: inherit; }
 .f-select { appearance: none; -webkit-appearance: none; padding-right: 38px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238a8f98' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; }
 
 /* ==========================================================================
-   SECONDARY PALETTE  <html data-palette="warm|mono|fine|dev">   colours only
+   SECONDARY PALETTE  <html data-palette="warm|muted">   colours only (default = no attribute)
    SECONDARY STYLE    <html data-style="caps|outline|dot">       how badges, alerts and
                       icon badges are drawn. No radii here: corners always follow the
                       global data-radius (soft, crisp, square).
    CANVAS             <html data-canvas="soft|cool|mist|paper|white">   page grey (light mode)
    All three are independent of each other and of data-theme.
    ========================================================================== */
-/* warm (CRM look): teal, coral, yellow */
+/* warm: teal success, coral-pink danger, sunny yellow, stronger tints (friendly, CRM-like) */
 [data-palette="warm"] {
-  --ok: light-dark(#00BDA5, #2DD4BF);     --ok-fg: light-dark(color-mix(in oklab, #00685C, #000 16%), #5EEAD4);
-  --warn: light-dark(#E5A82E, #F5CF6B);   --warn-fg: light-dark(color-mix(in oklab, #7A5A00, #000 16%), #F5D98B);
-  --danger: light-dark(#F2545B, #FF7B80); --danger-fg: light-dark(color-mix(in oklab, #B3202A, #000 16%), #FF9FA3);
-  --info: light-dark(#00A4BD, #3CC3D9);   --info-fg: light-dark(color-mix(in oklab, #00677A, #000 16%), #7DDCEB);
-  --ai: light-dark(#6A78D1, #98A3EC);     --ai-fg: light-dark(color-mix(in oklab, #3F4A9E, #000 16%), #B8C0F5);
-  --high: light-dark(#FF7A59, #FF9A80);   --high-fg: light-dark(color-mix(in oklab, #B83A1B, #000 16%), #FFB9A5);
+  --ok: light-dark(#1BAEA5, #65D3CA);  --ok-fg: light-dark(#03605A, #A5E6DF);
+  --warn: light-dark(#E9C944, #DEC35B);  --warn-fg: light-dark(#6C5902, #E8D899);
+  --danger: light-dark(#F14E7B, #FF9DAF);  --danger-fg: light-dark(#8A2B45, #FDC7D0);
+  --info: light-dark(#25AABE, #6ECEDF);  --info-fg: light-dark(#005E6A, #A9E3EE);
+  --ai: light-dark(#688AD5, #9FBDFD);  --ai-fg: light-dark(#314E94, #C5D8FE);
+  --high: light-dark(#F98662, #FEA387);  --high-fg: light-dark(#8B3111, #FECABA);
+  --neu: light-dark(#837064, #CBBAAF);  --neu-fg: light-dark(#604E43, #E1D5CD);
+  --tint-l: 16%; --tint-d: 22%;
 }
-/* mono (deploy-tool look): blue, green, amber, red */
-[data-palette="mono"] {
-  --ok: light-dark(#45A557, #52C26A);     --ok-fg: light-dark(color-mix(in oklab, #16723A, #000 16%), #7FD98D);
-  --warn: light-dark(#F5A623, #F5B544);   --warn-fg: light-dark(color-mix(in oklab, #9A5B00, #000 16%), #FFCB6B);
-  --danger: light-dark(#E5484D, #FF6369); --danger-fg: light-dark(color-mix(in oklab, #C42B31, #000 16%), #FF8F93);
-  --info: light-dark(#0070F3, #3291FF);   --info-fg: light-dark(color-mix(in oklab, #0068D6, #000 16%), #79B8FF);
-  --ai: light-dark(#8E4EC6, #BF7AF0);     --ai-fg: light-dark(color-mix(in oklab, #6B3FBF, #000 16%), #D9AEF7);
-  --high: light-dark(#F76808, #FF8F40);   --high-fg: light-dark(color-mix(in oklab, #9A4300, #000 16%), #FFB57A);
-}
-/* fine (payments look): green, magenta-red, violet */
-[data-palette="fine"] {
-  --ok: light-dark(#15BE53, #3DD68C);     --ok-fg: light-dark(color-mix(in oklab, #0E7A36, #000 16%), #7BE3A8);
-  --warn: light-dark(#9B6829, #D9A441);   --warn-fg: light-dark(color-mix(in oklab, #7C4F12, #000 16%), #F0C879);
-  --danger: light-dark(#EA2261, #FF6B9A); --danger-fg: light-dark(color-mix(in oklab, #B8123F, #000 16%), #FF9DBC);
-  --info: light-dark(#2874AD, #5AA7DE);   --info-fg: light-dark(color-mix(in oklab, #1E5F92, #000 16%), #8CC5EE);
-  --ai: light-dark(#533AFD, #8B7BFF);     --ai-fg: light-dark(color-mix(in oklab, #4331C9, #000 16%), #B7ADFF);
-  --high: light-dark(#F27A2A, #FF9A55);   --high-fg: light-dark(color-mix(in oklab, #A24A10, #000 16%), #FFBE8C);
-}
-/* dev (code-host look): muted green, amber, red */
-[data-palette="dev"] {
-  --ok: light-dark(#1A7F37, #3FB950);     --ok-fg: light-dark(color-mix(in oklab, #1A7F37, #000 16%), #56D364);
-  --warn: light-dark(#9A6700, #D29922);   --warn-fg: light-dark(color-mix(in oklab, #7D4E00, #000 16%), #E3B341);
-  --danger: light-dark(#CF222E, #F85149); --danger-fg: light-dark(color-mix(in oklab, #CF222E, #000 16%), #FF7B72);
-  --info: light-dark(#0969DA, #58A6FF);   --info-fg: light-dark(color-mix(in oklab, #0969DA, #000 16%), #79C0FF);
-  --ai: light-dark(#8250DF, #A371F7);     --ai-fg: light-dark(color-mix(in oklab, #8250DF, #000 16%), #D2A8FF);
-  --high: light-dark(#BC4C00, #DB6D28);   --high-fg: light-dark(color-mix(in oklab, #BC4C00, #000 16%), #FFA657);
-  --neu: light-dark(#59636E, #8B949E);    --neu-fg: light-dark(color-mix(in oklab, #59636E, #000 16%), #9198A1);
-  --tint-l: 10%; --tint-d: 15%;
+/* muted: low-chroma, darker marks, light tints (calm, technical, dense data) */
+[data-palette="muted"] {
+  --ok: light-dark(#407754, #9BCBAB);  --ok-fg: light-dark(#285F3F, #C2E1CB);
+  --warn: light-dark(#A97D3A, #E5BD86);  --warn-fg: light-dark(#7B5100, #EDD3B0);
+  --danger: light-dark(#A34945, #F9A49D);  --danger-fg: light-dark(#89312F, #FFC8C3);
+  --info: light-dark(#386E99, #94C4EC);  --info-fg: light-dark(#1F5781, #BDDCF7);
+  --ai: light-dark(#685796, #C1B3EF);  --ai-fg: light-dark(#574683, #D9D1F9);
+  --high: light-dark(#AE653A, #EFAC87);  --high-fg: light-dark(#813C0B, #F9CDB4);
+  --neu: light-dark(#636A71, #B8BFC6);  --neu-fg: light-dark(#4C535B, #D3D8DD);
+  --tint-l: 9%; --tint-d: 16%;
 }
 
 /* ---- styles: tokens only, so any element can carry its own data-style (the palettes page does) ---- */
